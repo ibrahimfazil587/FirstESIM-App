@@ -1,27 +1,1964 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ku" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#0862bd">
-  <title>FirstESIM</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="google-site-verification" content="xJStED7URyZT2os0025ErSNb0AGIvjKQsinvdSPod8s">
+
+   
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<!-- PWA -->
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#0862bd">
+
+<!-- iPhone / iOS PWA -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="FirstESIM">
+
+<!-- PWA Icon -->
+<link rel="apple-touch-icon" href="/0016DE22-5EB2-4EBC-834A-F545DBDBC423.png">
+   
+<title>FirstESIM | eSIM Turkey, Global & Travel eSIM Plans</title>
+<meta name="description" content="FirstESIM - پلانەکانی eSIM بۆ تورکیا، ئەوروپا، ئەمریکا، ئاسیا، ڕۆژهەڵاتی ناوەڕاست و جیهان.">
+<link rel="canonical" href="https://firstesim.net/">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+
+<meta property="og:title" content="FirstESIM | eSIM Turkey & Global">
+<meta property="og:description" content="eSIM internet plans for Turkey and destinations around the world.">
+<meta property="og:url" content="https://firstesim.net/">
+<meta property="og:type" content="website">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"OnlineStore","name":"FirstESIM","url":"https://firstesim.net/","description":"FirstESIM - eSIM internet plans for Turkey and destinations around the world."}
+</script>
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,"Noto Sans Arabic",sans-serif;background:#f4f7fb;color:#172033}
+header{background:#fff;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #edf0f5;position:sticky;top:0;z-index:100}
+.logo{font-size:28px;font-weight:900;color:#0862bd}
+.logo span{color:#e53935}
+.whatsapp-top{background:#18bf62;color:#fff;padding:14px 22px;border-radius:15px;font-size:16px;font-weight:900;text-decoration:none}
+
+.hero{
+margin:28px auto 20px;
+width:94%;
+max-width:900px;
+min-height:430px;
+border-radius:30px;
+padding:45px 30px;
+background-image:linear-gradient(90deg,rgba(0,55,145,.30),rgba(0,90,190,.10)),url('/0016DE22-5EB2-4EBC-834A-F545DBDBC423.png');
+background-size:cover;
+background-position:center;
+color:#fff;
+position:relative;
+overflow:hidden;
+box-shadow:0 8px 30px rgba(0,70,150,.18)
+}
+
+.hero h1,.hero p,.search{position:relative;z-index:2}
+.hero h1{
+font-family:"Noto Sans Arabic","SF Arabic","Geeza Pro",Arial,sans-serif;
+font-size:40px;
+line-height:1.4;
+margin:5px 0 12px;
+font-weight:900;
+letter-spacing:-.6px;
+color:#FFF8E7;
+text-shadow:0 3px 4px rgba(0,0,0,.75),0 6px 14px rgba(0,0,0,.45)
+}
+.hero p{
+font-family:"Noto Sans Arabic","SF Arabic","Geeza Pro",Arial,sans-serif;
+font-size:19px;
+line-height:1.7;
+font-weight:800;
+margin:0;
+color:#F5F7FF;
+text-shadow:0 3px 5px rgba(0,0,0,.75),0 5px 12px rgba(0,0,0,.40)
+}
+
+.search{
+margin-top:62px;
+margin-right:0;
+margin-left:auto;
+width:76%;
+max-width:650px;
+background:#fff;
+border-radius:20px;
+padding:5px;
+box-shadow:0 8px 25px rgba(0,0,0,.20)
+}
+.search input{
+width:100%;
+height:50px;
+border:0;
+outline:0;
+padding:12px 18px;
+font-family:"Noto Sans Arabic","SF Arabic","Geeza Pro",Arial,sans-serif;
+font-size:14px;
+font-weight:600;
+border-radius:16px;
+text-align:right;
+color:#222;
+background:#fff
+}
+.search input::placeholder{color:#999;opacity:1}
+
+.filters{
+display:flex;
+gap:12px;
+overflow-x:auto;
+padding:8px 3%;
+margin-bottom:25px;
+scrollbar-width:none
+}
+.filters::-webkit-scrollbar{display:none}
+.filter{
+border:0;
+background:#fff;
+color:#0964bd;
+padding:15px 26px;
+border-radius:19px;
+font-size:17px;
+font-weight:900;
+white-space:nowrap;
+box-shadow:0 3px 12px #0000000b;
+cursor:pointer
+}
+.filter.active{background:#0865c7;color:#fff}
+
+.container{width:94%;max-width:900px;margin:auto}
+.country{
+background:#fff;
+border-radius:27px;
+overflow:hidden;
+margin-bottom:28px;
+box-shadow:0 6px 24px #0000000b
+}
+.country-head{
+height:260px;
+position:relative;
+overflow:hidden;
+color:#fff;
+padding:24px 20px;
+background-size:cover;
+background-position:center
+}
+.country-head:before{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(90deg,rgba(0,0,0,.65),rgba(0,0,0,.12))
+}
+.country-title{
+position:relative;
+z-index:5;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:16px;
+height:100%
+}
+.country-left{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:16px
+}
+.country-flag{
+width:78px;
+height:78px;
+border-radius:22px;
+background:#ffffff20;
+border:1px solid #ffffff45;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:45px;
+backdrop-filter:blur(5px)
+}
+.country-name{
+font-size:46px!important;
+font-weight:900!important;
+color:#fff!important;
+line-height:1.1;
+text-shadow:0 3px 8px rgba(0,0,0,.9),0 0 15px rgba(0,0,0,.55)
+}
+.country-sub{display:none!important}
+.country-badges{
+display:flex;
+flex-direction:column;
+gap:9px;
+position:absolute;
+right:20px;
+top:12px
+}
+.country-badge{
+background:#ffffff20;
+border:1px solid #ffffff45;
+padding:9px 14px;
+border-radius:22px;
+font-size:12px;
+white-space:nowrap;
+backdrop-filter:blur(4px)
+}
+
+.plans{padding:15px;background:#f9fbfe}
+.plan{
+min-height:86px;
+background:#fff;
+border:1px solid #e9edf3;
+border-radius:19px;
+margin-bottom:11px;
+padding:10px 13px;
+display:grid;
+grid-template-columns:minmax(120px,1fr) minmax(180px,230px) auto;
+align-items:center;
+gap:15px;
+box-shadow:0 3px 10px #00000008;
+transition:.2s ease
+}
+.plan:hover{
+transform:translateY(-1px);
+box-shadow:0 6px 17px #00000012
+}
+.plan-info{min-width:80px;order:1}
+.plan-data{font-size:27px;font-weight:900;color:#172033}
+.plan-days{font-size:17px;color:#9299a7;margin-top:5px;font-weight:800}
+
+.plan-price{
+order:2;
+justify-self:center;
+min-width:210px;
+text-align:center;
+background:#ffe8e8;
+color:#df3333;
+border-radius:18px;
+padding:16px 22px;
+font-size:24px;
+font-weight:900;
+white-space:nowrap
+}
+
+.plan.unlimited{
+background:linear-gradient(105deg,#fff9d6 0%,#ffe98a 35%,#ffd84d 65%,#fff1a8 100%)!important;
+border:2px solid #e2ad19!important;
+box-shadow:0 6px 20px rgba(210,150,20,.30),inset 0 1px 0 #fffde8!important
+}
+.plan.unlimited .plan-data{
+color:#704400;
+font-size:29px;
+font-weight:900
+}
+.plan.unlimited .plan-days{
+color:#815900;
+font-size:18px;
+font-weight:900
+}
+.plan.unlimited .plan-price{
+background:linear-gradient(135deg,#fff9dc,#ffd34d)!important;
+color:#5b3500!important;
+border:1px solid #dfa914;
+min-width:210px;
+padding:17px 24px;
+font-size:24px;
+font-weight:900;
+box-shadow:0 3px 8px rgba(155,105,0,.18),inset 0 1px 0 #fff
+}
+
+.buy{
+order:3;
+border:0;
+background:linear-gradient(135deg,#16bd63,#0bb95c);
+color:#fff;
+border-radius:15px;
+padding:13px 18px;
+font-size:15px;
+font-weight:900;
+white-space:nowrap;
+cursor:pointer;
+box-shadow:0 4px 9px #16bd6340;
+transition:.2s ease
+}
+.buy:hover{transform:scale(1.04)}
+.empty{
+text-align:center;
+padding:50px 20px;
+color:#8992a2;
+display:none
+}
+
+@media(max-width:600px){
+header{padding:15px 14px}
+.logo{font-size:22px}
+.whatsapp-top{padding:11px 14px;font-size:12px}
+.hero{
+margin-top:18px;
+min-height:330px;
+padding:30px 20px;
+border-radius:25px;
+background-position:center
+}
+.hero h1{font-size:29px;line-height:1.35}
+.hero p{font-size:15px;line-height:1.6}
+.search{margin-top:38px;width:82%}
+.search input{height:46px;padding:12px 15px;font-size:13px}
+.filter{padding:13px 20px;font-size:14px}
+.country-head{height:220px;padding:20px 15px}
+.country-name{font-size:34px!important}
+.country-flag{width:64px;height:64px;font-size:36px}
+.country-badges{right:10px;top:8px}
+.country-badge{font-size:9px;padding:6px 8px}
+.plan{
+grid-template-columns:minmax(65px,1fr) minmax(115px,145px) auto;
+gap:7px;
+padding:8px;
+min-height:76px
+}
+.plan-data{font-size:19px}
+.plan-days{font-size:13px}
+.plan-price{min-width:115px;padding:11px 7px;font-size:15px}
+.plan.unlimited .plan-price{min-width:120px;font-size:16px}
+.plan.unlimited .plan-data{font-size:20px}
+.plan.unlimited .plan-days{font-size:14px}
+.buy{padding:10px 9px;font-size:11px}
+}
+
+@media(max-width:390px){
+.hero h1{font-size:27px}
+.hero p{font-size:14px}
+.search{width:86%}
+.plan{
+grid-template-columns:minmax(58px,1fr) minmax(100px,115px) auto;
+gap:5px;
+padding:6px
+}
+.plan-data{font-size:16px}
+.plan-days{font-size:11px}
+.plan-price{min-width:100px;font-size:13px;padding:10px 5px}
+.plan.unlimited .plan-price{min-width:102px;font-size:14px}
+.buy{padding:9px 7px;font-size:10px}
+}
+
+/* ===== FirstESIM App reference design ===== */
+body{background:#f3f6fa}
+.top{
+position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid #edf1f6;
+padding:10px 12px;min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:8px;
+box-shadow:0 2px 12px rgba(17,45,80,.05)
+}
+.brand{font-size:23px;font-weight:950;color:#111}
+.brand b{color:#146ed1}
+.top-actions{display:flex;align-items:center;gap:7px}
+.lang{height:42px;border:1px solid #d9e2ee;border-radius:14px;padding:7px 10px;background:#fff;font-weight:900}
+.wa{height:42px;display:flex;align-items:center;background:#55c96f;border-radius:14px;padding:0 12px;font-weight:900;color:#fff}
+.hero{
+width:calc(100% - 18px);max-width:1050px;margin:12px auto 8px;min-height:400px;border-radius:29px;
+overflow:visible;position:relative;color:#fff;padding:34px 18px 20px;
+background:linear-gradient(100deg,rgba(4,103,205,.93),rgba(16,151,230,.45)),url('/0016DE22-5EB2-4EBC-834A-F545DBDBC423.png') center/cover;
+box-shadow:0 12px 34px rgba(16,91,160,.18)
+}
+.hero h1{font-size:clamp(29px,5.4vw,50px);line-height:1.35;margin:10px 0 8px;font-weight:950;text-shadow:0 3px 8px rgba(0,0,0,.28)}
+.hero p{font-size:clamp(16px,3vw,22px);line-height:1.7;margin:0 0 14px;font-weight:800;text-shadow:0 2px 7px rgba(0,0,0,.25)}
+.hero-points{display:flex;flex-direction:column;align-items:flex-start;gap:4px;margin-bottom:26px}
+.point{background:transparent;border:0;padding:0;font-size:13px;font-weight:900}
+.search{
+position:absolute;left:3%;right:3%;bottom:-29px;z-index:5;max-width:none;
+background:#fff;border-radius:24px;padding:5px;box-shadow:0 10px 28px rgba(24,50,90,.18)
+}
+.search input{height:53px;border-radius:20px;font-size:13px}
+.wrap{max-width:1100px;margin:auto;padding:47px 9px 104px}
+.tabs{gap:8px;padding:7px 0 17px;overflow:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{border:0;background:#fff;color:#1659a2;border-radius:18px;padding:11px 15px;white-space:nowrap;font-weight:950;box-shadow:0 6px 18px rgba(28,64,105,.07);font-size:12px}
+.tab.active{background:#2f70ca;color:#fff;box-shadow:0 8px 20px rgba(47,112,202,.25)}
+.section-title{margin:8px 2px 12px}
+.section-title h2{font-size:24px;font-weight:950}
+.featured{grid-template-columns:repeat(4,minmax(135px,1fr));gap:8px}
+.feature-card{border-radius:19px;box-shadow:0 7px 22px rgba(28,63,105,.08)}
+.feature-img{height:110px}
+.feature-flag{width:45px;height:45px;font-size:25px;bottom:-8px;right:8px;border:3px solid #fff}
+.feature-body{padding:15px 9px 9px}
+.feature-name{font-size:14px;font-weight:950}
+.feature-price{font-size:12px;margin:5px 0 7px}
+.feature-btn{background:#ef3340;border-radius:12px;padding:8px 5px;font-size:11px}
+.grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.country{border-radius:16px;box-shadow:0 5px 18px rgba(28,63,105,.06)}
+.country-head{min-height:0;height:0;padding-top:70%;background-size:cover}
+.country-head-inner{bottom:0;padding:7px}
+.country-name{font-size:14px}
+.country-meta,.badges{display:none}
+.flag{font-size:27px}
+.plans{padding:6px}
+.plan{display:grid;grid-template-columns:1fr;gap:3px;border:0;border-radius:10px;padding:5px;margin-bottom:4px;background:#f7fbff}
+.plan-data{font-size:12px;text-align:center}
+.plan-days{font-size:10px;text-align:center}
+.price{text-align:center;font-size:11px;background:#e8f7ff;border-radius:9px;padding:4px;color:#0862bd}
+.buy{font-size:10px;padding:6px;border-radius:9px}
+.bottom{padding:7px 7px calc(7px + env(safe-area-inset-bottom));justify-content:space-around;box-shadow:0 -4px 18px rgba(20,50,90,.08)}
+.nav{font-size:10px;padding:7px 7px}
+.nav.active{background:#edf6ff;border-radius:13px}
+@media(max-width:800px){
+ .featured{grid-template-columns:repeat(4,145px);overflow-x:auto;padding-bottom:3px}
+ .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+}
+@media(max-width:520px){
+ .top{min-height:65px;padding:8px}
+ .brand{font-size:20px}.wa{padding:0 10px;font-size:11px}.lang{height:40px;font-size:11px;padding:6px 7px}
+ .hero{min-height:395px;padding:28px 15px 18px;border-radius:27px}
+ .hero h1{font-size:30px}.hero p{font-size:15px}
+ .featured{grid-template-columns:repeat(4,142px);margin-left:-9px;margin-right:-9px;padding-left:9px;padding-right:9px}
+ .feature-img{height:103px}
+ .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+</style>
 </head>
+
 <body>
-  <header class="topbar">
-    <div class="brand">🌍 <b>First<span>ESIM</span></b></div>
-    <button class="lang" onclick="cycleLanguage()">کوردی</button>
-  </header>
 
-  <main id="app"></main>
+<header class="top">
+<div class="brand">🌍 <b>First</b>ESIM</div>
+<div class="top-actions">
+<select class="lang" id="lang" onchange="setLang(this.value)">
+<option value="ku">کوردی</option><option value="ar">العربية</option><option value="en">English</option>
+</select>
+<a class="wa" href="https://wa.me/9647506021212">💬 WhatsApp</a>
+</div>
+</header>
 
-  <nav class="bottom-nav">
-    <button onclick="showHome()">⌂<span>سەرەکی</span></button>
-    <button onclick="showCountries()">🌍<span>وڵاتەکان</span></button>
-    <button onclick="showOrders()">🧾<span>سەفارشەکان</span></button>
-    <button onclick="showProfile()">👤<span>پرۆفایل</span></button>
-  </nav>
+<section class="hero">
+<h1 id="heroTitle">🌍 eSIM Turkey و پلانەکانی eSIM بۆ گەشت</h1>
+<p id="heroSub">خێراترین ئینتەرنێت گەشتیاری بۆ هەموو جیهان</p>
+<div class="hero-points">
+<span class="point">✓ نەگۆڕی کڕیارەکان</span>
+<span class="point">✓ نرخی ڕوون</span>
+<span class="point">✓ جیهانی</span>
+</div>
+<div class="search">
+<input id="search" type="text" placeholder="گەڕان بە ناوی وڵات، GB، Unlimited، ڕۆژ، نرخ..." oninput="searchPlans()">
+</div>
+</section>
 
-<script src="app.js"></script>
+<div class="wrap">
+<div class="tabs">
+<button id="fAll" class="tab active" onclick="filterRegion('all',this)">▦ هەموو</button>
+<button id="fEurope" class="tab" onclick="filterRegion('europe',this)">🌍 ئەوروپا</button>
+<button id="fAsia" class="tab" onclick="filterRegion('asia',this)">🌏 ئاسیا</button>
+<button id="fMiddle" class="tab" onclick="filterRegion('middle',this)">🌙 ڕۆژهەڵاتی ناوەڕاست</button>
+<button id="fAmerica" class="tab" onclick="filterRegion('america',this)">🌎 ئەمەریکا</button>
+<button id="fGlobal" class="tab" onclick="filterRegion('global',this)">🌐 جیهان</button>
+</div>
+<div class="section-title"><h2>🔥 <span id="featuredTitle">وڵاتە پڕفرۆشەکان</span></h2></div>
+<div id="featured" class="featured"></div>
+<div class="section-title"><h2>⭐ <span id="allTitle">هەموو وڵاتەکان</span></h2><span id="count"></span></div>
+<div class="container" id="countries"></div>
+<div class="empty" id="empty">هیچ پلانێک نەدۆزرایەوە 😕</div>
+</div>
+
+<nav class="bottom">
+<button class="nav active" onclick="scrollTo({top:0,behavior:'smooth'})">⌂ سەرەکی</button>
+<button class="nav" onclick="document.getElementById('countries').scrollIntoView({behavior:'smooth'})">◉ وڵاتەکان</button>
+<button class="nav" onclick="document.getElementById('countries').scrollIntoView({behavior:'smooth'})">🛒 پلانەکان</button>
+<button class="nav" onclick="location.href='https://wa.me/9647506021212'">◌ پەیوەندی</button>
+<button class="nav" onclick="scrollTo({top:document.body.scrollHeight,behavior:'smooth'})">••• زیاتر</button>
+</nav>
+<div class="empty" id="empty">هیچ پلانێک نەدۆزرایەوە 😕</div>
+
+<script>
+
+const WHATSAPP="9647506021212";
+
+const countries=[
+
+{
+name:"تورکیا",
+en:"Turkey",
+flag:"🇹🇷",
+region:"europe",
+place:"ئەوروپا",
+scene:"🕌",
+image:"/0016DE22-5EB2-4EBC-834A-F545DBDBC423.png",
+plans:[
+["10 GB","30 ڕۆژ","IQD 8,500"],
+["20 GB","30 ڕۆژ","IQD 11,500"],
+["10 GB","15 ڕۆژ","IQD 8,500"],
+["20 GB","15 ڕۆژ","IQD 10,500"],
+["50 GB","30 ڕۆژ","IQD 23,000"],
+["Unlimited","3 ڕۆژ","IQD 8,000"],
+["Unlimited","5 ڕۆژ","IQD 10,000"],
+["Unlimited","7 ڕۆژ","IQD 11,500"],
+["Unlimited","10 ڕۆژ","IQD 18,000"],
+["Unlimited","15 ڕۆژ","IQD 23,000"],
+["Unlimited","30 ڕۆژ","IQD 28,000"]
+]
+},
+
+{
+name:"ئەڵمانیا",
+en:"Germany",
+flag:"🇩🇪",
+region:"europe",
+place:"ئەوروپا",
+scene:"🏰",
+image:"/1DD5D2EA-D5E7-40D1-AF10-487874998116.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 6,500"],
+["2 GB","15 ڕۆژ","IQD 7,000"],
+["3 GB","30 ڕۆژ","IQD 8,000"],
+["5 GB","30 ڕۆژ","IQD 9,000"],
+["10 GB","30 ڕۆژ","IQD 12,000"],
+["20 GB","30 ڕۆژ","IQD 19,000"],
+["Unlimited","3 ڕۆژ","IQD 11,500"],
+["Unlimited","5 ڕۆژ","IQD 14,000"],
+["Unlimited","7 ڕۆژ","IQD 16,000"],
+["Unlimited","10 ڕۆژ","IQD 22,000"],
+["Unlimited","15 ڕۆژ","IQD 30,000"],
+["Unlimited","30 ڕۆژ","IQD 44,000"]
+]
+},
+
+{
+name:"ئەمریکا",
+en:"United States",
+flag:"🇺🇸",
+region:"america",
+place:"ئەمەریکا",
+scene:"🗽",
+image:"/07269030-034D-4B1A-B27F-5D05C8C8F215.png",
+plans:[
+["3 GB","30 ڕۆژ","IQD 10,000"],
+["10 GB","30 ڕۆژ","IQD 20,000"],
+["20 GB","30 ڕۆژ","IQD 25,000"],
+["Unlimited","3 ڕۆژ","IQD 15,000"],
+["Unlimited","5 ڕۆژ","IQD 20,000"],
+["Unlimited","7 ڕۆژ","IQD 25,000"],
+["Unlimited","10 ڕۆژ","IQD 30,000"],
+["Unlimited","15 ڕۆژ","IQD 50,000"],
+["Unlimited","30 ڕۆژ","IQD 80,000"]
+]
+},
+
+{
+name:"ئەوروپا + UK",
+en:"Europe + UK",
+flag:"🇪🇺",
+region:"europe",
+place:"ئەوروپا",
+scene:"🌍",
+image:"/4E1BC982-A88B-4B96-A57B-E0AAC5C8BC9B.png",
+plans:[
+["5 GB","30 ڕۆژ","IQD 14,000"],
+["10 GB","30 ڕۆژ","IQD 16,000"],
+["20 GB","30 ڕۆژ","IQD 18,500"],
+["Unlimited","3 ڕۆژ","IQD 15,000"],
+["Unlimited","5 ڕۆژ","IQD 16,500"],
+["Unlimited","7 ڕۆژ","IQD 18,500"],
+["Unlimited","10 ڕۆژ","IQD 25,000"],
+["Unlimited","15 ڕۆژ","IQD 30,000"],
+["Unlimited","30 ڕۆژ","IQD 40,000"]
+]
+},
+
+{
+name:"جیهان",
+en:"Global",
+flag:"🌍",
+region:"global",
+place:"جیهان",
+scene:"🌍",
+image:"/680AF33F-91E2-4F69-B5E7-E260FC374EBB.png",
+plans:[
+["200 MB","30 ڕۆژ","IQD 7,500"],
+["300 MB","3 ڕۆژ","IQD 7,000"],
+["1 GB","5 ڕۆژ","IQD 9,000"],
+["1 GB","7 ڕۆژ","IQD 10,000"],
+["2 GB","15 ڕۆژ","IQD 13,500"],
+["3 GB","30 ڕۆژ","IQD 20,000"],
+["5 GB","30 ڕۆژ","IQD 25,000"],
+["5 GB","60 ڕۆژ","IQD 25,000"],
+["10 GB","30 ڕۆژ","IQD 35,000"],
+["10 GB","180 ڕۆژ","IQD 85,000"],
+["20 GB","30 ڕۆژ","IQD 55,000"],
+["20 GB","365 ڕۆژ","IQD 100,000"],
+["60 GB","125 ڕۆژ","IQD 255,000"]
+]
+},
+
+{
+name:"ئیمارات",
+en:"UAE",
+flag:"🇦🇪",
+region:"middle",
+place:"ڕۆژهەڵاتی ناوەڕاست",
+scene:"🏙️",
+image:"/8DF6A966-A0E8-4F2D-981B-A1AED2247CE2.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 9,500"],
+["2 GB","15 ڕۆژ","IQD 11,500"],
+["3 GB","30 ڕۆژ","IQD 12,500"],
+["5 GB","30 ڕۆژ","IQD 20,000"],
+["10 GB","30 ڕۆژ","IQD 25,000"],
+["Unlimited","10 ڕۆژ","IQD 45,000"],
+["Unlimited","15 ڕۆژ","IQD 80,000"],
+["Unlimited","30 ڕۆژ","IQD 100,000"]
+]
+},
+
+{
+name:"ئازەربایجان",
+en:"Azerbaijan",
+flag:"🇦🇿",
+region:"asia",
+place:"ئاسیا",
+scene:"🏙️",
+image:"/A655C95A-FF07-4651-ADD2-FBC1F76D56B8.png",
+plans:[
+["5 GB","30 ڕۆژ","IQD 15,000"],
+["10 GB","30 ڕۆژ","IQD 25,000"],
+["20 GB","30 ڕۆژ","IQD 30,000"],
+["Unlimited","3 ڕۆژ","IQD 20,000"],
+["Unlimited","5 ڕۆژ","IQD 30,000"],
+["Unlimited","7 ڕۆژ","IQD 35,000"],
+["Unlimited","10 ڕۆژ","IQD 45,000"],
+["Unlimited","15 ڕۆژ","IQD 75,000"],
+["Unlimited","30 ڕۆژ","IQD 100,000"]
+]
+},
+
+{
+name:"چین",
+en:"China",
+flag:"🇨🇳",
+region:"asia",
+place:"ئاسیا",
+scene:"🏯",
+image:"/302F32DB-D0D9-44CD-A467-89B630DCB8D4.png",
+plans:[
+["3 GB","30 ڕۆژ","IQD 10,000"],
+["5 GB","30 ڕۆژ","IQD 11,500"],
+["10 GB","30 ڕۆژ","IQD 20,000"],
+["20 GB","30 ڕۆژ","IQD 25,000"],
+["Unlimited","3 ڕۆژ","IQD 13,500"],
+["Unlimited","5 ڕۆژ","IQD 20,000"],
+["Unlimited","7 ڕۆژ","IQD 25,000"],
+["Unlimited","10 ڕۆژ","IQD 30,000"],
+["Unlimited","15 ڕۆژ","IQD 40,000"],
+["Unlimited","30 ڕۆژ","IQD 55,000"]
+]
+},
+
+{
+name:"عومان",
+en:"Oman",
+flag:"🇴🇲",
+region:"middle",
+place:"ڕۆژهەڵاتی ناوەڕاست",
+scene:"🏜️",
+image:"/C5E1A9C4-3575-493C-8AB7-6877B0240E9C.png",
+plans:[
+["3 GB","30 ڕۆژ","IQD 10,000"],
+["5 GB","30 ڕۆژ","IQD 12,500"],
+["10 GB","30 ڕۆژ","IQD 25,000"],
+["20 GB","30 ڕۆژ","IQD 45,000"],
+["Unlimited","3 ڕۆژ","IQD 20,000"],
+["Unlimited","5 ڕۆژ","IQD 20,000"],
+["Unlimited","7 ڕۆژ","IQD 25,000"],
+["Unlimited","10 ڕۆژ","IQD 30,000"],
+["Unlimited","15 ڕۆژ","IQD 50,000"],
+["Unlimited","30 ڕۆژ","IQD 70,000"]
+]
+},
+
+{
+name:"سوئیسرا",
+en:"Switzerland",
+flag:"🇨🇭",
+region:"europe",
+place:"ئەوروپا",
+scene:"🏔️",
+image:"/AA0B469F-84C9-459D-A5D9-86370712B02B.png",
+plans:[
+["5 GB","30 ڕۆژ","IQD 16,000"],
+["10 GB","30 ڕۆژ","IQD 23,000"],
+["20 GB","30 ڕۆژ","IQD 31,000"],
+["Unlimited","3 ڕۆژ","IQD 15,000"],
+["Unlimited","5 ڕۆژ","IQD 18,000"],
+["Unlimited","7 ڕۆژ","IQD 23,000"],
+["Unlimited","10 ڕۆژ","IQD 28,000"],
+["Unlimited","15 ڕۆژ","IQD 38,000"],
+["Unlimited","30 ڕۆژ","IQD 53,000"]
+]
+},
+
+{
+name:"ئیتالیا",
+en:"Italy",
+flag:"🇮🇹",
+region:"europe",
+place:"ئەوروپا",
+scene:"🏛️",
+image:"/6442CC42-02CD-420B-86A5-63C6BA505559.png",
+plans:[
+["5 GB","30 ڕۆژ","IQD 12,000"],
+["10 GB","30 ڕۆژ","IQD 16,000"],
+["20 GB","30 ڕۆژ","IQD 23,000"],
+["Unlimited","3 ڕۆژ","IQD 13,000"],
+["Unlimited","5 ڕۆژ","IQD 15,000"],
+["Unlimited","7 ڕۆژ","IQD 16,500"],
+["Unlimited","10 ڕۆژ","IQD 23,000"],
+["Unlimited","15 ڕۆژ","IQD 28,000"],
+["Unlimited","30 ڕۆژ","IQD 38,000"]
+]
+},
+
+{
+name:"لوبنان",
+en:"Lebanon",
+flag:"🇱🇧",
+region:"middle",
+place:"ڕۆژهەڵاتی ناوەڕاست",
+scene:"🌲",
+image:"/F158C01E-273C-4662-A6B5-D1188D6F1231.png",
+plans:[
+["1 GB","5 ڕۆژ","$7.99"],
+["1 GB","7 ڕۆژ","$8.99"],
+["2 GB","15 ڕۆژ","$11.99"],
+["3 GB","30 ڕۆژ","$13.99"],
+["5 GB","30 ڕۆژ","$18.99"],
+["5 GB","60 ڕۆژ","$18.99"],
+["10 GB","30 ڕۆژ","$12.99"],
+["10 GB","180 ڕۆژ","$73.99"],
+["20 GB","30 ڕۆژ","$44.99"],
+["20 GB","365 ڕۆژ","$85.99"]
+]
+},
+
+{
+name:"دانمارک",
+en:"Denmark",
+flag:"🇩🇰",
+region:"europe",
+place:"ئەوروپا",
+scene:"🏰",
+image:"/34B8F9F0-D435-4866-A7C1-3AF60292047E.png",
+plans:[
+["5 GB","30 ڕۆژ","IQD 11,500"],
+["10 GB","30 ڕۆژ","IQD 13,500"],
+["20 GB","30 ڕۆژ","IQD 15,000"],
+["Unlimited","3 ڕۆژ","IQD 12,000"],
+["Unlimited","5 ڕۆژ","IQD 14,000"],
+["Unlimited","7 ڕۆژ","IQD 15,500"],
+["Unlimited","10 ڕۆژ","IQD 22,000"],
+["Unlimited","15 ڕۆژ","IQD 27,000"],
+["Unlimited","30 ڕۆژ","IQD 37,000"]
+]
+},
+
+{
+name:"سینگاپور",
+en:"Singapore",
+flag:"🇸🇬",
+region:"asia",
+place:"ئاسیا",
+scene:"🏙️",
+image:"/C655CFC7-AD61-48B4-890C-D605980BD9CD.png",
+plans:[
+["2 GB","15 ڕۆژ","IQD 13,000"],
+["3 GB","30 ڕۆژ","IQD 13,500"],
+["5 GB","30 ڕۆژ","IQD 14,500"],
+["10 GB","30 ڕۆژ","IQD 15,500"],
+["20 GB","30 ڕۆژ","IQD 20,000"],
+["Unlimited","3 ڕۆژ","IQD 16,500"],
+["Unlimited","5 ڕۆژ","IQD 17,500"],
+["Unlimited","7 ڕۆژ","IQD 19,000"],
+["Unlimited","10 ڕۆژ","IQD 25,000"],
+["Unlimited","15 ڕۆژ","IQD 30,000"],
+["Unlimited","30 ڕۆژ","IQD 40,000"]
+]
+},
+
+{
+name:"تایلاند",
+en:"Thailand",
+flag:"🇹🇭",
+region:"asia",
+place:"ئاسیا",
+scene:"🏝️",
+image:"/F5B13CE0-9BD1-48EC-B32A-E516D269AE77.png",
+plans:[
+["5 GB","30 ڕۆژ","IQD 16,000"],
+["10 GB","30 ڕۆژ","IQD 23,000"],
+["20 GB","30 ڕۆژ","IQD 31,000"],
+["Unlimited","3 ڕۆژ","IQD 15,000"],
+["Unlimited","5 ڕۆژ","IQD 18,000"],
+["Unlimited","7 ڕۆژ","IQD 23,000"],
+["Unlimited","10 ڕۆژ","IQD 28,000"],
+["Unlimited","15 ڕۆژ","IQD 38,000"],
+["Unlimited","30 ڕۆژ","IQD 53,000"]
+]
+},
+
+{
+name:"سعودیە",
+en:"Saudi Arabia",
+flag:"🇸🇦",
+region:"middle",
+place:"ڕۆژهەڵاتی ناوەڕاست",
+scene:"🕋",
+image:"/649453C0-8A0B-4954-8CF4-61D659C88541.png",
+plans:[
+["20 GB","30 ڕۆژ","IQD 40,000"],
+["25 GB","45 ڕۆژ","IQD 60,000"],
+["50 GB","30 ڕۆژ","IQD 90,000"],
+["Unlimited","3 ڕۆژ","IQD 15,000"],
+["Unlimited","5 ڕۆژ","IQD 20,000"],
+["Unlimited","7 ڕۆژ","IQD 25,000"],
+["Unlimited","10 ڕۆژ","IQD 35,000"],
+["Unlimited","15 ڕۆژ","IQD 60,000"]
+]
+},
+
+{
+name:"ژاپۆن",
+en:"Japan",
+flag:"🇯🇵",
+region:"asia",
+place:"ئاسیا",
+scene:"🗻",
+image:"/6CC4A6FE-2EEB-41B4-AEC9-7DA57B42BAB8.png",
+plans:[
+["2 GB","15 ڕۆژ","IQD 9,500"],
+["3 GB","30 ڕۆژ","IQD 10,500"],
+["5 GB","30 ڕۆژ","IQD 12,000"],
+["10 GB","30 ڕۆژ","IQD 15,000"],
+["20 GB","30 ڕۆژ","IQD 21,000"],
+["500 MB","7 ڕۆژ","IQD 8,000"],
+["Unlimited","3 ڕۆژ","IQD 14,500"],
+["Unlimited","5 ڕۆژ","IQD 21,000"],
+["Unlimited","7 ڕۆژ","IQD 21,000"],
+["Unlimited","10 ڕۆژ","IQD 26,000"],
+["Unlimited","15 ڕۆژ","IQD 41,000"],
+["Unlimited","30 ڕۆژ","IQD 56,000"]
+]
+},
+
+{
+name:"ئارووبا",
+en:"Aruba",
+flag:"🇦🇼",
+region:"america",
+place:"ئەمەریکا",
+scene:"🏝️",
+image:"/297A9FFA-0002-45C6-A016-2F4533B095AC.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 12,500"],
+["2 GB","15 ڕۆژ","IQD 20,000"],
+["3 GB","30 ڕۆژ","IQD 25,000"],
+["5 GB","30 ڕۆژ","IQD 35,000"],
+["10 GB","30 ڕۆژ","IQD 55,000"]
+]
+},
+
+{
+name:"ئەفغانستان",
+en:"Afghanistan",
+flag:"🇦🇫",
+region:"asia",
+place:"ئاسیا",
+scene:"🏔️",
+image:"/B5920B07-4456-44BD-9817-43699336D7C9.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 12,500"],
+["2 GB","15 ڕۆژ","IQD 20,000"],
+["3 GB","30 ڕۆژ","IQD 25,000"],
+["5 GB","30 ڕۆژ","IQD 30,000"],
+["10 GB","30 ڕۆژ","IQD 55,000"]
+]
+},
+
+{
+name:"نەمسا",
+en:"Austria",
+flag:"🇦🇹",
+region:"europe",
+place:"ئەوروپا",
+scene:"🏰",
+image:"/841E1CA9-BD2D-4AEF-AF5B-CCDA59E44CB6.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 12,000"],
+["2 GB","15 ڕۆژ","IQD 12,500"],
+["3 GB","30 ڕۆژ","IQD 13,500"],
+["5 GB","30 ڕۆژ","IQD 14,000"],
+["10 GB","30 ڕۆژ","IQD 16,000"],
+["20 GB","30 ڕۆژ","IQD 18,500"],
+["Unlimited","3 ڕۆژ","IQD 15,000"],
+["Unlimited","5 ڕۆژ","IQD 15,500"],
+["Unlimited","7 ڕۆژ","IQD 19,500"],
+["Unlimited","10 ڕۆژ","IQD 18,500"],
+["Unlimited","15 ڕۆژ","IQD 30,000"],
+["Unlimited","30 ڕۆژ","IQD 35,000"]
+]
+},
+
+{
+name:"ئەلبانیا",
+en:"Albania",
+flag:"🇦🇱",
+region:"europe",
+place:"ئەوروپا",
+scene:"🏰",
+image:"/76930A21-B06E-4E68-A888-C4E11C6AFD00.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 9,000"],
+["2 GB","15 ڕۆژ","IQD 11,000"],
+["3 GB","30 ڕۆژ","IQD 12,500"],
+["5 GB","30 ڕۆژ","IQD 20,000"],
+["10 GB","30 ڕۆژ","IQD 30,000"],
+["20 GB","30 ڕۆژ","IQD 40,000"],
+["Unlimited","3 ڕۆژ","IQD 20,000"],
+["Unlimited","5 ڕۆژ","IQD 30,000"],
+["Unlimited","7 ڕۆژ","IQD 35,000"],
+["Unlimited","10 ڕۆژ","IQD 40,000"],
+["Unlimited","15 ڕۆژ","IQD 75,000"],
+["Unlimited","30 ڕۆژ","IQD 100,000"]
+]
+},
+
+{
+name:"ئاندۆرا",
+en:"Andorra",
+flag:"🇦🇩",
+region:"europe",
+place:"ئەوروپا",
+scene:"🏔️",
+image:"/467C1306-48E4-4293-9461-409504BEFD25.png",
+plans:[
+["Unlimited","3 ڕۆژ","IQD 25,000"],
+["Unlimited","5 ڕۆژ","IQD 35,000"],
+["Unlimited","7 ڕۆژ","IQD 40,000"],
+["Unlimited","10 ڕۆژ","IQD 55,000"],
+["1 GB","7 ڕۆژ","IQD 9,500"],
+["2 GB","15 ڕۆژ","IQD 12,000"],
+["3 GB","30 ڕۆژ","IQD 14,000"],
+["5 GB","30 ڕۆژ","IQD 20,000"],
+["10 GB","30 ڕۆژ","IQD 30,000"],
+["20 GB","30 ڕۆژ","IQD 45,000"]
+]
+},
+
+{
+name:"ئەرژەنتین",
+en:"Argentina",
+flag:"🇦🇷",
+region:"america",
+place:"ئەمەریکا",
+scene:"🏔️",
+image:"/3DCD6928-C8DB-4FB8-8292-F288D362C4BB.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 9,500"],
+["2 GB","15 ڕۆژ","IQD 12,000"],
+["3 GB","30 ڕۆژ","IQD 13,500"],
+["5 GB","30 ڕۆژ","IQD 20,000"],
+["10 GB","30 ڕۆژ","IQD 30,000"],
+["20 GB","30 ڕۆژ","IQD 40,000"],
+["Unlimited","3 ڕۆژ","IQD 25,000"],
+["Unlimited","5 ڕۆژ","IQD 35,000"],
+["Unlimited","7 ڕۆژ","IQD 40,000"],
+["Unlimited","10 ڕۆژ","IQD 50,000"],
+["Unlimited","15 ڕۆژ","IQD 85,000"],
+["Unlimited","30 ڕۆژ","IQD 155,000"]
+]
+},
+
+{
+name:"ئەرمەنستان",
+en:"Armenia",
+flag:"🇦🇲",
+region:"asia",
+place:"ئاسیا",
+scene:"🏔️",
+image:"/05E4F252-60F7-446E-BAF0-3D29EF006F94.png",
+plans:[
+["Unlimited","3 ڕۆژ","IQD 13,000"],
+["Unlimited","5 ڕۆژ","IQD 11,000"],
+["Unlimited","7 ڕۆژ","IQD 14,000"],
+["Unlimited","10 ڕۆژ","IQD 20,000"],
+["Unlimited","15 ڕۆژ","IQD 25,000"],
+["Unlimited","30 ڕۆژ","IQD 35,000"],
+["1 GB","7 ڕۆژ","IQD 7,000"],
+["2 GB","15 ڕۆژ","IQD 7,500"],
+["3 GB","30 ڕۆژ","IQD 8,000"],
+["5 GB","30 ڕۆژ","IQD 9,500"],
+["10 GB","30 ڕۆژ","IQD 10,000"],
+["20 GB","30 ڕۆژ","IQD 13,000"]
+]
+},
+
+{
+name:"بەلجیکا",
+en:"Belgium",
+flag:"🇧🇪",
+region:"europe",
+place:"ئەوروپا",
+scene:"🏰",
+image:"/A15AEBDA-70F0-400D-868D-0177B2DDC5CA.png",
+plans:[
+["Unlimited","3 ڕۆژ","IQD 14,500"],
+["Unlimited","5 ڕۆژ","IQD 16,000"],
+["Unlimited","7 ڕۆژ","IQD 19,000"],
+["Unlimited","10 ڕۆژ","IQD 25,000"],
+["Unlimited","15 ڕۆژ","IQD 30,000"],
+["Unlimited","30 ڕۆژ","IQD 40,000"],
+["1 GB","7 ڕۆژ","IQD 13,500"],
+["2 GB","15 ڕۆژ","IQD 15,000"],
+["3 GB","30 ڕۆژ","IQD 17,500"],
+["5 GB","30 ڕۆژ","IQD 25,000"],
+["10 GB","30 ڕۆژ","IQD 30,000"],
+["20 GB","30 ڕۆژ","IQD 35,000"]
+]
+},
+
+{
+name:"بەنغلادیش",
+en:"Bangladesh",
+flag:"🇧🇩",
+region:"asia",
+place:"ئاسیا",
+scene:"🌏",
+image:"/CC58BAD1-ADA0-4D79-8A2B-75E7271CDC98.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 8,500"],
+["2 GB","15 ڕۆژ","IQD 10,000"],
+["3 GB","30 ڕۆژ","IQD 12,500"],
+["5 GB","30 ڕۆژ","IQD 20,000"],
+["10 GB","30 ڕۆژ","IQD 25,000"],
+["20 GB","30 ڕۆژ","IQD 30,000"],
+["Unlimited","3 ڕۆژ","IQD 20,000"],
+["Unlimited","5 ڕۆژ","IQD 25,000"],
+["Unlimited","7 ڕۆژ","IQD 30,000"],
+["Unlimited","10 ڕۆژ","IQD 40,000"],
+["Unlimited","15 ڕۆژ","IQD 65,000"],
+["Unlimited","30 ڕۆژ","IQD 90,000"]
+]
+},
+
+{
+name:"برازیل",
+en:"Brazil",
+flag:"🇧🇷",
+region:"america",
+place:"ئەمەریکا",
+scene:"🏝️",
+image:"/EA44E8EA-7072-44EB-B366-5B66CAF6B9ED.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 8,000"],
+["2 GB","15 ڕۆژ","IQD 9,500"],
+["5 GB","30 ڕۆژ","IQD 10,500"],
+["10 GB","30 ڕۆژ","IQD 20,000"],
+["20 GB","30 ڕۆژ","IQD 30,000"],
+["3 GB","30 ڕۆژ","IQD 10,500"],
+["Unlimited","3 ڕۆژ","IQD 20,000"],
+["Unlimited","5 ڕۆژ","IQD 30,000"],
+["Unlimited","7 ڕۆژ","IQD 35,000"],
+["Unlimited","10 ڕۆژ","IQD 40,000"],
+["Unlimited","15 ڕۆژ","IQD 70,000"],
+["Unlimited","30 ڕۆژ","IQD 100,000"]
+]
+},
+
+{
+name:"عێراق",
+en:"Iraq",
+flag:"🇮🇶",
+region:"middle",
+place:"ڕۆژهەڵاتی ناوەڕاست",
+scene:"🇮🇶",
+image:"/9CC1DA2C-0C2C-49FD-AE17-FF6748C0ED2C.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 9,500"],
+["2 GB","15 ڕۆژ","IQD 12,000"],
+["3 GB","30 ڕۆژ","IQD 13,500"],
+["5 GB","30 ڕۆژ","IQD 25,000"],
+["10 GB","30 ڕۆژ","IQD 30,000"],
+["20 GB","30 ڕۆژ","IQD 40,000"]
+]
+},
+
+{
+name:"کرواتیا",
+en:"Croatia",
+flag:"🇭🇷",
+region:"europe",
+place:"ئەوروپا",
+scene:"🏰",
+image:"/7EB24468-E101-4A7B-A94B-8873A66838B1.png",
+plans:[
+["Unlimited","3 ڕۆژ","IQD 13,500"],
+["Unlimited","5 ڕۆژ","IQD 15,500"],
+["Unlimited","7 ڕۆژ","IQD 17,000"],
+["Unlimited","10 ڕۆژ","IQD 23,000"],
+["Unlimited","15 ڕۆژ","IQD 28,000"],
+["Unlimited","30 ڕۆژ","IQD 38,000"],
+["1 GB","7 ڕۆژ","IQD 10,500"],
+["2 GB","15 ڕۆژ","IQD 11,000"],
+["3 GB","30 ڕۆژ","IQD 11,500"],
+["5 GB","30 ڕۆژ","IQD 12,000"],
+["10 GB","30 ڕۆژ","IQD 14,000"],
+["20 GB","30 ڕۆژ","IQD 18,000"]
+]
+},
+
+{
+name:"ئۆزبەکستان",
+en:"Uzbekistan",
+flag:"🇺🇿",
+region:"asia",
+place:"ئاسیا",
+scene:"🏙️",
+image:"/18AD25C3-DA6C-4904-86CC-63DB3D50CACB.png",
+plans:[
+["5 GB","30 ڕۆژ","IQD 22,000"],
+["10 GB","30 ڕۆژ","IQD 32,000"],
+["20 GB","30 ڕۆژ","IQD 42,000"],
+["1 GB","7 ڕۆژ","IQD 11,500"],
+["2 GB","15 ڕۆژ","IQD 14,000"],
+["3 GB","30 ڕۆژ","IQD 16,000"],
+["Unlimited","3 ڕۆژ","IQD 22,000"],
+["Unlimited","5 ڕۆژ","IQD 32,000"],
+["Unlimited","7 ڕۆژ","IQD 42,000"],
+["Unlimited","15 ڕۆژ","IQD 77,000"]
+]
+},
+
+{
+name:"سکۆتلەند",
+en:"Scotland",
+flag:"🏴",
+region:"europe",
+place:"ئەوروپا",
+scene:"🏰",
+image:"/E531E2D4-6F66-4A33-8A52-4CFF08DCA0D3.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 10,500"],
+["2 GB","15 ڕۆژ","IQD 11,500"],
+["3 GB","30 ڕۆژ","IQD 12,000"],
+["5 GB","30 ڕۆژ","IQD 14,000"],
+["10 GB","30 ڕۆژ","IQD 16,000"],
+["20 GB","30 ڕۆژ","IQD 23,000"],
+["Unlimited","10 ڕۆژ","IQD 28,000"]
+]
+},
+
+{
+name:"ڤێتنام",
+en:"Vietnam",
+flag:"🇻🇳",
+region:"asia",
+place:"ئاسیا",
+scene:"🏝️",
+image:"/4F9A8DE8-52EA-4174-93D0-C603F349060F.png",
+plans:[
+["Unlimited","10 ڕۆژ","IQD 42,000"],
+["Unlimited","15 ڕۆژ","IQD 67,000"],
+["Unlimited","3 ڕۆژ","IQD 22,000"],
+["Unlimited","5 ڕۆژ","IQD 27,000"],
+["Unlimited","7 ڕۆژ","IQD 32,000"],
+["Unlimited","30 ڕۆژ","IQD 92,000"],
+["1 GB","7 ڕۆژ","IQD 10,500"],
+["2 GB","15 ڕۆژ","IQD 12,000"],
+["3 GB","30 ڕۆژ","IQD 13,000"],
+["5 GB","30 ڕۆژ","IQD 16,000"],
+["10 GB","30 ڕۆژ","IQD 22,000"],
+["20 GB","30 ڕۆژ","IQD 32,000"]
+]
+},
+
+{
+name:"دوورگەکانی ڤیرجینیای ئەمریکا",
+en:"Virgin Islands (U.S.)",
+flag:"🇻🇮",
+region:"america",
+place:"ئەمەریکا",
+scene:"🏝️",
+image:"/5881DB50-3562-469F-9733-10620C33E163.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 8,000"],
+["2 GB","15 ڕۆژ","IQD 9,500"],
+["3 GB","30 ڕۆژ","IQD 10,000"],
+["5 GB","30 ڕۆژ","IQD 12,500"],
+["10 GB","30 ڕۆژ","IQD 20,000"],
+["20 GB","30 ڕۆژ","IQD 25,000"],
+["Unlimited","3 ڕۆژ","IQD 20,000"],
+["Unlimited","5 ڕۆژ","IQD 25,000"],
+["Unlimited","7 ڕۆژ","IQD 25,000"],
+["Unlimited","10 ڕۆژ","IQD 30,000"],
+["Unlimited","15 ڕۆژ","IQD 55,000"],
+["Unlimited","30 ڕۆژ","IQD 75,000"]
+]
+},
+
+/* =========================
+   وڵاتە نوێکان
+========================= */
+
+{
+name:"ئیسپانیا",
+en:"Spain",
+flag:"🇪🇸",
+region:"europe",
+place:"ئەوروپا",
+scene:"🏰",
+image:"/A82ABA9A-DE74-4128-A70F-3458CD14D6C2.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 12,500"],
+["2 GB","15 ڕۆژ","IQD 13,000"],
+["3 GB","30 ڕۆژ","IQD 13,000"],
+["5 GB","30 ڕۆژ","IQD 14,000"],
+["10 GB","30 ڕۆژ","IQD 16,000"],
+["20 GB","30 ڕۆژ","IQD 18,500"],
+["Unlimited","3 ڕۆژ","IQD 15,500"],
+["Unlimited","5 ڕۆژ","IQD 17,500"],
+["Unlimited","7 ڕۆژ","IQD 19,000"],
+["Unlimited","10 ڕۆژ","IQD 25,000"],
+["Unlimited","15 ڕۆژ","IQD 30,000"],
+["Unlimited","30 ڕۆژ","IQD 40,000"]
+]
+},
+
+{
+name:"مەکسیک",
+en:"Mexico",
+flag:"🇲🇽",
+region:"america",
+place:"ئەمەریکا",
+scene:"🏝️",
+image:"/C35D33FD-B373-48A9-A727-C66B7D81B777.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 8,500"],
+["2 GB","15 ڕۆژ","IQD 10,000"],
+["3 GB","30 ڕۆژ","IQD 11,500"],
+["5 GB","30 ڕۆژ","IQD 14,500"],
+["10 GB","30 ڕۆژ","IQD 25,000"],
+["20 GB","30 ڕۆژ","IQD 35,000"],
+["Unlimited","3 ڕۆژ","IQD 20,000"],
+["Unlimited","5 ڕۆژ","IQD 30,000"],
+["Unlimited","7 ڕۆژ","IQD 35,000"],
+["Unlimited","10 ڕۆژ","IQD 40,000"],
+["Unlimited","15 ڕۆژ","IQD 70,000"],
+["Unlimited","30 ڕۆژ","IQD 100,000"]
+]
+},
+
+{
+name:"یۆنان",
+en:"Greece",
+flag:"🇬🇷",
+region:"europe",
+place:"ئەوروپا",
+scene:"🏛️",
+plans:[
+["Unlimited","3 ڕۆژ","IQD 16,000"],
+["Unlimited","5 ڕۆژ","IQD 18,000"],
+["Unlimited","7 ڕۆژ","IQD 19,500"],
+["Unlimited","10 ڕۆژ","IQD 25,000"],
+["Unlimited","15 ڕۆژ","IQD 35,000"],
+["Unlimited","30 ڕۆژ","IQD 40,000"],
+["1 GB","7 ڕۆژ","IQD 12,500"],
+["2 GB","15 ڕۆژ","IQD 13,000"],
+["3 GB","30 ڕۆژ","IQD 13,500"],
+["5 GB","30 ڕۆژ","IQD 15,500"],
+["10 GB","30 ڕۆژ","IQD 17,500"],
+["20 GB","30 ڕۆژ","IQD 25,000"]
+]
+},
+
+{
+name:"بۆسنیا و هەرزەگۆڤینا",
+en:"Bosnia and Herzegovina",
+flag:"🇧🇦",
+region:"europe",
+place:"ئەوروپا",
+scene:"🏰",
+image:"/2F53CBC1-1899-4108-96CA-43320CA1DD10.png",
+plans:[
+["Unlimited","30 ڕۆژ","IQD 65,000"],
+["1 GB","7 ڕۆژ","IQD 7,500"],
+["2 GB","15 ڕۆژ","IQD 9,000"],
+["3 GB","30 ڕۆژ","IQD 10,000"],
+["5 GB","30 ڕۆژ","IQD 12,000"]
+]
+},
+
+{
+name:"بولگاریا",
+en:"Bulgaria",
+flag:"🇧🇬",
+region:"europe",
+place:"ئەوروپا",
+scene:"🏰",
+image:"/6ADA717F-D74E-4F1E-89B2-58DA2D839A84.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 12,500"],
+["2 GB","15 ڕۆژ","IQD 13,000"],
+["3 GB","30 ڕۆژ","IQD 13,500"],
+["5 GB","30 ڕۆژ","IQD 14,000"],
+["10 GB","30 ڕۆژ","IQD 16,000"],
+["20 GB","30 ڕۆژ","IQD 20,000"],
+["Unlimited","3 ڕۆژ","IQD 15,500"],
+["Unlimited","5 ڕۆژ","IQD 17,500"],
+["Unlimited","7 ڕۆژ","IQD 19,000"],
+["Unlimited","10 ڕۆژ","IQD 25,000"],
+["Unlimited","15 ڕۆژ","IQD 30,000"],
+["Unlimited","30 ڕۆژ","IQD 40,000"]
+]
+},
+
+{
+name:"بۆلیڤیا",
+en:"Bolivia",
+flag:"🇧🇴",
+region:"america",
+place:"ئەمەریکا",
+scene:"🏔️",
+image:"/71CCD1A6-108F-40CE-9635-220FB3159543.png",
+plans:[
+["Unlimited","3 ڕۆژ","IQD 25,000"],
+["Unlimited","5 ڕۆژ","IQD 35,000"],
+["Unlimited","7 ڕۆژ","IQD 40,000"],
+["Unlimited","10 ڕۆژ","IQD 55,000"],
+["Unlimited","15 ڕۆژ","IQD 90,000"],
+["Unlimited","30 ڕۆژ","IQD 155,000"],
+["1 GB","7 ڕۆژ","IQD 9,000"],
+["2 GB","15 ڕۆژ","IQD 11,000"],
+["3 GB","30 ڕۆژ","IQD 12,500"],
+["5 GB","30 ڕۆژ","IQD 20,000"],
+["10 GB","30 ڕۆژ","IQD 25,000"],
+["20 GB","30 ڕۆژ","IQD 40,000"]
+]
+},
+
+{
+name:"باربادۆس",
+en:"Barbados",
+flag:"🇧🇧",
+region:"america",
+place:"ئەمەریکا",
+scene:"🏝️",
+plans:[
+["1 GB","7 ڕۆژ","IQD 12,500"],
+["2 GB","15 ڕۆژ","IQD 20,000"],
+["3 GB","30 ڕۆژ","IQD 25,000"],
+["5 GB","30 ڕۆژ","IQD 35,000"]
+]
+},
+
+{
+name:"کامیرۆن",
+en:"Cameroon",
+flag:"🇨🇲",
+region:"america",
+place:"ئەفریقا",
+scene:"🌍",
+image:"/880B8F1F-DA96-4ABC-94D3-B1DD09A87BB6.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 13,000"],
+["2 GB","15 ڕۆژ","IQD 20,000"],
+["3 GB","30 ڕۆژ","IQD 25,000"],
+["5 GB","30 ڕۆژ","IQD 35,000"],
+["10 GB","30 ڕۆژ","IQD 55,000"]
+]
+},
+
+{
+name:"کۆستاریکا",
+en:"Costa Rica",
+flag:"🇨🇷",
+region:"america",
+place:"ئەمەریکا",
+scene:"🏝️",
+image:"/2EAF829A-6A28-4FB9-A554-524E7D858C7E.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 10,000"],
+["2 GB","15 ڕۆژ","IQD 14,500"],
+["3 GB","30 ڕۆژ","IQD 14,000"],
+["5 GB","30 ڕۆژ","IQD 25,000"],
+["10 GB","30 ڕۆژ","IQD 30,000"],
+["20 GB","30 ڕۆژ","IQD 40,000"]
+]
+},
+
+{
+name:"دۆمینیکان",
+en:"Dominican Republic",
+flag:"🇩🇴",
+region:"america",
+place:"ئەمەریکا",
+scene:"🏝️",
+image:"/B503A389-F665-43E4-96C0-F6B6D51A2B16.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 9,500"],
+["2 GB","15 ڕۆژ","IQD 11,500"],
+["3 GB","30 ڕۆژ","IQD 12,500"],
+["5 GB","30 ڕۆژ","IQD 20,000"],
+["10 GB","30 ڕۆژ","IQD 25,000"],
+["20 GB","30 ڕۆژ","IQD 35,000"],
+["Unlimited","3 ڕۆژ","IQD 20,000"],
+["Unlimited","5 ڕۆژ","IQD 30,000"],
+["Unlimited","7 ڕۆژ","IQD 35,000"],
+["Unlimited","10 ڕۆژ","IQD 45,000"],
+["Unlimited","15 ڕۆژ","IQD 75,000"],
+["Unlimited","30 ڕۆژ","IQD 155,000"]
+]
+},
+
+{
+name:"سابا",
+en:"Saba",
+flag:"🇸🇽",
+region:"america",
+place:"ئەمەریکا",
+scene:"🏝️",
+plans:[
+["1 GB","7 ڕۆژ","IQD 12,500"],
+["2 GB","15 ڕۆژ","IQD 20,000"],
+["3 GB","30 ڕۆژ","IQD 25,000"],
+["5 GB","30 ڕۆژ","IQD 35,000"]
+]
+},
+
+{
+name:"جۆرجیا",
+en:"Georgia",
+flag:"🇬🇪",
+region:"asia",
+place:"ئاسیا",
+scene:"🏔️",
+image:"/9851602A-6957-46E7-AECA-EC6E23377566.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 8,500"],
+["2 GB","15 ڕۆژ","IQD 10,500"],
+["3 GB","30 ڕۆژ","IQD 12,000"],
+["5 GB","30 ڕۆژ","IQD 20,000"],
+["10 GB","30 ڕۆژ","IQD 30,000"],
+["20 GB","30 ڕۆژ","IQD 45,000"]
+]
+},
+
+{
+name:"ئەنتیگوا و باربودا",
+en:"Antigua & Barbuda",
+flag:"🇦🇬",
+region:"america",
+place:"ئەمەریکا",
+scene:"🏝️",
+plans:[
+["1 GB","7 ڕۆژ","IQD 20,000"],
+["2 GB","15 ڕۆژ","IQD 20,000"],
+["3 GB","30 ڕۆژ","IQD 25,000"],
+["5 GB","30 ڕۆژ","IQD 35,000"]
+]
+},
+
+{
+name:"کۆڵۆمبیا",
+en:"Colombia",
+flag:"🇨🇴",
+region:"america",
+place:"ئەمەریکا",
+scene:"🏝️",
+image:"/F1642543-2150-48ED-BE08-A8E544BC65A4.png",
+plans:[
+["5 GB","30 ڕۆژ","IQD 30,000"],
+["3 GB","30 ڕۆژ","IQD 20,000"],
+["2 GB","15 ڕۆژ","IQD 20,000"],
+["1 GB","7 ڕۆژ","IQD 11,500"]
+]
+},
+
+{
+name:"بۆنەیر",
+en:"Bonaire",
+flag:"🇧🇶",
+region:"america",
+place:"ئەمەریکا",
+scene:"🏝️",
+image:"/5FE47BC2-69FC-428D-9791-00307AD71BA8.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 12,500"],
+["2 GB","15 ڕۆژ","IQD 20,000"],
+["3 GB","30 ڕۆژ","IQD 25,000"],
+["5 GB","30 ڕۆژ","IQD 35,000"],
+["Unlimited","3 ڕۆژ","IQD 50,000"],
+["Unlimited","5 ڕۆژ","IQD 70,000"],
+["Unlimited","7 ڕۆژ","IQD 90,000"],
+["Unlimited","10 ڕۆژ","IQD 155,000"]
+]
+},
+
+{
+name:"قوبرس",
+en:"Cyprus",
+flag:"🇨🇾",
+region:"europe",
+place:"ئەوروپا",
+scene:"🏝️",
+image:"/56060452-E3CE-4E87-8BBA-3BA0F0A4619D.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 10,500"],
+["2 GB","15 ڕۆژ","IQD 11,000"],
+["3 GB","30 ڕۆژ","IQD 11,500"],
+["5 GB","30 ڕۆژ","IQD 12,500"],
+["10 GB","30 ڕۆژ","IQD 14,500"],
+["20 GB","30 ڕۆژ","IQD 17,500"],
+["Unlimited","3 ڕۆژ","IQD 13,000"],
+["Unlimited","5 ڕۆژ","IQD 15,000"],
+["Unlimited","7 ڕۆژ","IQD 17,000"],
+["Unlimited","10 ڕۆژ","IQD 23,000"],
+["Unlimited","15 ڕۆژ","IQD 28,000"],
+["Unlimited","30 ڕۆژ","IQD 38,000"]
+]
+},
+
+{
+name:"ئەڵجەزایر",
+en:"Algeria",
+flag:"🇩🇿",
+region:"america",
+place:"ئەفریقا",
+scene:"🌍",
+image:"/62CFC380-AF4B-411D-BBF9-A24FB20602A6.png",
+plans:[
+["Unlimited","3 ڕۆژ","IQD 22,000"],
+["Unlimited","5 ڕۆژ","IQD 27,000"],
+["Unlimited","7 ڕۆژ","IQD 32,000"],
+["Unlimited","10 ڕۆژ","IQD 37,000"],
+["Unlimited","15 ڕۆژ","IQD 62,000"],
+["Unlimited","30 ڕۆژ","IQD 82,000"],
+["1 GB","7 ڕۆژ","IQD 10,500"],
+["2 GB","15 ڕۆژ","IQD 11,500"],
+["3 GB","30 ڕۆژ","IQD 12,500"],
+["5 GB","30 ڕۆژ","IQD 15,000"],
+["10 GB","30 ڕۆژ","IQD 22,000"],
+["20 GB","30 ڕۆژ","IQD 27,000"]
+]
+},
+
+{
+name:"بێرمودا",
+en:"Bermuda",
+flag:"🇧🇲",
+region:"america",
+place:"ئەمەریکا",
+scene:"🏝️",
+plans:[
+["1 GB","7 ڕۆژ","IQD 12,500"],
+["2 GB","15 ڕۆژ","IQD 20,000"],
+["3 GB","30 ڕۆژ","IQD 25,000"],
+["5 GB","30 ڕۆژ","IQD 35,000"]
+]
+},
+
+{
+name:"ئێستۆنیا",
+en:"Estonia",
+flag:"🇪🇪",
+region:"europe",
+place:"ئەوروپا",
+scene:"🏰",
+image:"/1F7E90AD-25DD-4FBD-AABF-1142699B4FF7.png",
+plans:[
+["5 GB","30 ڕۆژ","IQD 14,000"],
+["10 GB","30 ڕۆژ","IQD 15,500"],
+["20 GB","30 ڕۆژ","IQD 18,000"],
+["1 GB","7 ڕۆژ","IQD 12,000"],
+["2 GB","15 ڕۆژ","IQD 12,500"],
+["3 GB","30 ڕۆژ","IQD 13,000"],
+["Unlimited","3 ڕۆژ","IQD 15,000"],
+["Unlimited","5 ڕۆژ","IQD 17,000"],
+["Unlimited","7 ڕۆژ","IQD 19,000"],
+["Unlimited","10 ڕۆژ","IQD 25,000"],
+["Unlimited","15 ڕۆژ","IQD 30,000"],
+["Unlimited","30 ڕۆژ","IQD 35,000"]
+]
+},
+
+{
+name:"فینلەند",
+en:"Finland",
+flag:"🇫🇮",
+region:"europe",
+place:"ئەوروپا",
+scene:"🏔️",
+image:"/6BF770FF-305B-4BAC-811F-351ABDB7178C.png",
+plans:[
+["5 GB","30 ڕۆژ","IQD 9,000"],
+["10 GB","30 ڕۆژ","IQD 13,000"],
+["20 GB","30 ڕۆژ","IQD 13,000"],
+["1 GB","7 ڕۆژ","IQD 7,000"],
+["2 GB","15 ڕۆژ","IQD 7,500"],
+["3 GB","30 ڕۆژ","IQD 8,000"],
+["Unlimited","3 ڕۆژ","IQD 10,000"],
+["Unlimited","5 ڕۆژ","IQD 12,000"],
+["Unlimited","7 ڕۆژ","IQD 14,000"],
+["Unlimited","10 ڕۆژ","IQD 20,000"],
+["Unlimited","15 ڕۆژ","IQD 25,000"],
+["Unlimited","30 ڕۆژ","IQD 35,000"]
+]
+},
+
+{
+name:"گرینلەند",
+en:"Greenland",
+flag:"🇬🇱",
+region:"america",
+place:"ئەمەریکا",
+scene:"🏔️",
+image:"/F77C478E-7346-4B0C-988B-E7407C0E6E16.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 8,500"],
+["2 GB","15 ڕۆژ","IQD 9,500"],
+["3 GB","30 ڕۆژ","IQD 10,500"],
+["Unlimited","10 ڕۆژ","IQD 85,000"]
+]
+},
+
+{
+name:"هەنگاریا",
+en:"Hungary",
+flag:"🇭🇺",
+region:"europe",
+place:"ئەوروپا",
+scene:"🏰",
+image:"/06A39002-6EF9-44D6-8B4D-222A7030F13F.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 12,000"],
+["2 GB","15 ڕۆژ","IQD 12,500"],
+["3 GB","30 ڕۆژ","IQD 13,500"],
+["5 GB","30 ڕۆژ","IQD 15,000"],
+["10 GB","30 ڕۆژ","IQD 17,500"],
+["20 GB","30 ڕۆژ","IQD 18,000"],
+["Unlimited","3 ڕۆژ","IQD 15,000"],
+["Unlimited","5 ڕۆژ","IQD 17,000"],
+["Unlimited","7 ڕۆژ","IQD 19,000"],
+["Unlimited","10 ڕۆژ","IQD 25,000"],
+["Unlimited","15 ڕۆژ","IQD 30,000"],
+["Unlimited","30 ڕۆژ","IQD 40,000"]
+]
+},
+
+{
+name:"سوید",
+en:"Sweden",
+flag:"🇸🇪",
+region:"europe",
+place:"ئەوروپا",
+scene:"🏰",
+image:"/35EDA313-6B2D-4D32-A6FA-6668E9A07319.png",
+plans:[
+["Unlimited","3 ڕۆژ","IQD 10,000"],
+["Unlimited","5 ڕۆژ","IQD 12,000"],
+["Unlimited","7 ڕۆژ","IQD 14,000"],
+["Unlimited","10 ڕۆژ","IQD 20,000"],
+["Unlimited","15 ڕۆژ","IQD 25,000"],
+["Unlimited","30 ڕۆژ","IQD 35,000"],
+["1 GB","7 ڕۆژ","IQD 7,000"],
+["2 GB","15 ڕۆژ","IQD 7,500"],
+["3 GB","30 ڕۆژ","IQD 8,000"],
+["5 GB","30 ڕۆژ","IQD 9,000"],
+["10 GB","30 ڕۆژ","IQD 10,500"],
+["20 GB","30 ڕۆژ","IQD 13,000"]
+]
+},
+
+{
+name:"کوێت",
+en:"Kuwait",
+flag:"🇰🇼",
+region:"middle",
+place:"ڕۆژهەڵاتی ناوەڕاست",
+scene:"🏙️",
+image:"/27CC67DD-196E-489E-A940-784E38BCF483.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 9,000"],
+["2 GB","15 ڕۆژ","IQD 10,500"],
+["3 GB","30 ڕۆژ","IQD 12,000"],
+["5 GB","30 ڕۆژ","IQD 15,000"],
+["10 GB","30 ڕۆژ","IQD 25,000"],
+["20 GB","30 ڕۆژ","IQD 45,000"],
+["Unlimited","3 ڕۆژ","IQD 20,000"],
+["Unlimited","5 ڕۆژ","IQD 25,000"],
+["Unlimited","7 ڕۆژ","IQD 30,000"],
+["Unlimited","10 ڕۆژ","IQD 35,000"],
+["Unlimited","15 ڕۆژ","IQD 60,000"],
+["Unlimited","30 ڕۆژ","IQD 80,000"]
+]
+},
+
+{
+name:"تایوان",
+en:"Taiwan",
+flag:"🇹🇼",
+region:"asia",
+place:"ئاسیا",
+scene:"🏙️",
+image:"/1432EF76-9B51-4C89-9183-C9EFFD1D68AB.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 13,000"],
+["2 GB","15 ڕۆژ","IQD 13,500"],
+["5 GB","30 ڕۆژ","IQD 16,000"],
+["10 GB","30 ڕۆژ","IQD 19,500"],
+["3 GB","30 ڕۆژ","IQD 14,500"],
+["20 GB","30 ڕۆژ","IQD 30,000"],
+["Unlimited","3 ڕۆژ","IQD 18,500"],
+["Unlimited","5 ڕۆژ","IQD 25,000"],
+["Unlimited","7 ڕۆژ","IQD 25,000"],
+["Unlimited","10 ڕۆژ","IQD 30,000"],
+["Unlimited","15 ڕۆژ","IQD 45,000"],
+["Unlimited","30 ڕۆژ","IQD 60,000"]
+]
+}
+
+];
+
+function render(list=countries){
+window.__currentList=list;
+const box=document.getElementById("countries");
+box.innerHTML=list.map(c=>`
+<section class="country" id="c-${countries.indexOf(c)}">
+<div class="country-head" style="background-image:url('${c.image||""}')">
+<div class="country-head-inner">
+<div><div class="country-name">${APP_LANG==="en"?c.en:APP_LANG==="ar"?countryArabic(c.en):c.name}</div></div>
+<div class="flag">${c.flag||"🌍"}</div>
+</div></div>
+<div class="plans">
+${c.plans.map((p,pi)=>{
+ const un=String(p[0]).trim().toLowerCase()==="unlimited";
+ return `<div class="plan ${un?"unlimited":""}">
+ <div><div class="plan-data">${APP_LANG==="ar"&&un?"غير محدود":p[0]}</div><div class="plan-days">${APP_LANG==="en"?String(p[1]).replace(/ڕۆژ/g,"days"):APP_LANG==="ar"?String(p[1]).replace(/ڕۆژ/g,"يوم"):p[1]}</div></div>
+ <div class="price">${p[2]}</div>
+ <button class="buy" onclick="buy(${countries.indexOf(c)},${pi})">${APP_LANG==="en"?"View plans":APP_LANG==="ar"?"عرض الخطط":"بینینی پلانەکان"}</button>
+ </div>`;
+}).join("")}
+</div></section
+const I18N={
+ ku:{heroTitle:"🌍 eSIM Turkey و پلانەکانی eSIM بۆ گەشت",heroSub:"خێراترین ئینتەرنێت گەشتیاری بۆ هەموو جیهان",featured:"وڵاتە پڕفرۆشەکان",all:"هەموو وڵاتەکان",allTab:"▦ هەموو"},
+ ar:{heroTitle:"🌍 شرائح eSIM لتركيا وخطط eSIM للسفر",heroSub:"إنترنت سفر سريع لجميع أنحاء العالم",featured:"الدول الأكثر طلباً",all:"جميع الدول",allTab:"▦ الكل"},
+ en:{heroTitle:"🌍 Turkey eSIM & Travel eSIM Plans",heroSub:"Fast travel internet plans for the whole world",featured:"Popular destinations",all:"All countries",allTab:"▦ All"}
+};
+let APP_LANG=localStorage.getItem("firstesim_lang")||"ku";
+function countryArabic(en){
+ try{
+  const m={"USA":"US","UAE":"AE","Europe + UK":"GB","Global":""};
+  if(en==="Global")return"العالم";
+  if(m[en])return new Intl.DisplayNames(["ar"],{type:"region"}).of(m[en])||en;
+  return en;
+ }catch(e){return en}
+}
+function setLang(v){
+ APP_LANG=["ku","ar","en"].includes(v)?v:"ku";
+ localStorage.setItem("firstesim_lang",APP_LANG);
+ document.documentElement.lang=APP_LANG;
+ document.documentElement.dir=APP_LANG==="en"?"ltr":"rtl";
+ document.getElementById("lang").value=APP_LANG;
+ document.getElementById("heroTitle").textContent=I18N[APP_LANG].heroTitle;
+ document.getElementById("heroSub").textContent=I18N[APP_LANG].heroSub;
+ document.getElementById("featuredTitle").textContent=I18N[APP_LANG].featured;
+ document.getElementById("allTitle").textContent=I18N[APP_LANG].all;
+ document.getElementById("fAll").textContent=I18N[APP_LANG].allTab;
+ renderFeatured();
+ render(window.__currentList||countries);
+}
+function renderFeatured(){
+ const names=["Turkey","Saudi Arabia","UAE","Europe + UK"];
+ const list=names.map(n=>countries.find(c=>c.en===n)).filter(Boolean);
+ document.getElementById("featured").innerHTML=list.map(c=>`
+ <article class="feature-card">
+ <div class="feature-img" style="background-image:url('${c.image||""}')"><div class="feature-flag">${c.flag||"🌍"}</div></div>
+ <div class="feature-body"><div class="feature-name">${APP_LANG==="en"?c.en:APP_LANG==="ar"?countryArabic(c.en):c.name}</div>
+ <div class="feature-price">${c.plans?.[0]?.[2]||""}</div>
+ <button class="feature-btn" onclick="document.getElementById('c-${countries.indexOf(c)}')?.scrollIntoView({behavior:'smooth'})">${APP_LANG==="en"?"View plans":APP_LANG==="ar"?"عرض الخطط":"بینینی پلانەکان"}</button>
+ </div></article>`).join("");
+}
+renderFeatured();
+setLang(APP_LANG);
+>`).join("");
+document.getElementById("empty").style.display=list.length?"none":"block";
+document.getElementById("count").textContent=list.length+" "+(APP_LANG==="en"?"countries":APP_LANG==="ar"?"دولة":"وڵات");
+}
+
+async function buy(ci, pi){
+
+  const c = countries[ci];
+  const p = c.plans[pi];
+
+  const customerName = prompt("ناوی کڕیار بنووسە:");
+  if(!customerName) return;
+
+  const customerPhone = prompt("ژمارەی مۆبایل بنووسە:");
+  if(!customerPhone) return;
+
+  const payment = prompt(
+    "شێوازی پارەدان بنووسە:\nFIB / FastPay / Super Qi / QuickPay"
+  );
+
+  if(!payment) return;
+
+  const orderData = new FormData();
+
+  orderData.append("customerName", customerName);
+  orderData.append("customerPhone", customerPhone);
+
+  orderData.append("country", c.name);
+  orderData.append("plan", p[0]);
+  orderData.append("price", p[2]);
+
+  orderData.append("payment", payment);
+
+  try{
+
+    const response = await fetch(
+      "https://firstesim-api.onrender.com/api/orders",
+      {
+        method:"POST",
+        body:orderData
+      }
+    );
+
+    const data = await response.json();
+
+    if(!response.ok){
+      alert(
+        data.error || "هەڵەیەک ڕوویدا."
+      );
+      return;
+    }
+
+    const order = data.order;
+
+    const message = `سڵاو 👋
+
+داواکاری eSIM ـم کرد:
+
+🌍 وڵات: ${c.name}
+📦 پلان: ${p[0]}
+📅 ماوە: ${p[1]}
+💰 نرخ: ${p[2]}
+
+👤 ناو: ${customerName}
+📱 ژمارە: ${customerPhone}
+💳 پارەدان: ${payment}
+
+🆔 Order ID: ${order.id}
+
+تکایە داواکارییەکەم پشکنین بکەن.`;
+
+    window.location.href =
+      "https://wa.me/" +
+      WHATSAPP +
+      "?text=" +
+      encodeURIComponent(message);
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      "پەیوەندی بە سیستەمی Order نەکرا. تکایە دووبارە هەوڵ بدەرەوە."
+    );
+  }
+}
+
+function filterRegion(region,btn){
+
+document
+.querySelectorAll(".filter")
+.forEach(x=>x.classList.remove("active"));
+
+btn.classList.add("active");
+
+document.getElementById("search").value="";
+
+render(
+region==="all"
+?countries
+:countries.filter(c=>c.region===region)
+);
+
+}
+
+function searchPlans(){
+
+const input=document.getElementById("search");
+const value=String(input?.value||"").trim();
+
+if(!value){
+render(countries);
+return;
+}
+
+const normalize=s=>String(s||"")
+.toLowerCase()
+.normalize("NFKC")
+.replace(/[يى]/g,"ی")
+.replace(/[كک]/g,"ک")
+.replace(/[ةۀ]/g,"ە")
+.replace(/[ؤ]/g,"ۆ")
+.replace(/[إأآ]/g,"ا")
+.replace(/[ئ]/g,"ی")
+.replace(/[ـ]/g,"")
+.replace(/[.,،؛;:!?؟()[\]{}_-]+/g," ")
+.replace(/\s+/g," ")
+.trim();
+
+const q=normalize(value);
+const qc=q.replace(/\s/g,"");
+
+const result=countries.filter(c=>{
+
+const planText=(Array.isArray(c.plans)?c.plans:[])
+.map(p=>Array.isArray(p)?p.join(" "):String(p||""))
+.join(" ");
+
+const text=normalize([
+c.name,
+c.en,
+c.place,
+c.region,
+c.flag,
+c.scene,
+planText
+].join(" "));
+
+const compact=text.replace(/\s/g,"");
+
+return text.includes(q)||compact.includes(qc);
+
+});
+
+render(result);
+
+}
+
+render();
+// =========================
+// FirstESIM PWA
+// =========================
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("/sw.js")
+      .then(() => {
+        console.log("FirstESIM PWA فعالە ✅");
+      })
+      .catch((error) => {
+        console.log("PWA Service Worker Error:", error);
+      });
+  });
+}
+   
+</script>
+
 </body>
 </html>
