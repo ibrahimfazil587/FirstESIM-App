@@ -1,37 +1,106 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ku" dir="rtl">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0862bd">
-<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="FirstESIM">
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/0016DE22-5EB2-4EBC-834A-F545DBDBC423.png">
 <title>FirstESIM App</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#f4f7fb;color:#172033;font-family:Arial,"Noto Sans Arabic",sans-serif}
-button,input{font:inherit}.app{max-width:760px;margin:auto;min-height:100vh;padding-bottom:82px}
-header{position:sticky;top:0;z-index:20;background:#fff;padding:14px 16px;border-bottom:1px solid #e8edf5;display:flex;align-items:center;justify-content:space-between}
-.logo{font-size:25px;font-weight:900;color:#0862bd}.logo span{color:#e53935}.lang{border:0;background:#eef5ff;color:#0862bd;border-radius:14px;padding:8px 11px;font-weight:800}
-.hero{margin:16px;border-radius:26px;padding:25px 20px;color:white;background:linear-gradient(135deg,#064b9c,#1688e8);box-shadow:0 10px 30px #0862bd22}.hero h1{margin:0 0 7px;font-size:30px}.hero p{margin:0;line-height:1.7}
-.search{width:calc(100% - 32px);margin:0 16px 14px;padding:14px 16px;border:1px solid #e2e8f0;border-radius:16px;background:#fff;outline:none}
-.filters{display:flex;gap:8px;overflow:auto;padding:0 16px 12px}.filter{white-space:nowrap;border:0;border-radius:13px;padding:9px 13px;background:#fff;color:#526071}.filter.active{background:#0862bd;color:#fff}
-.section{padding:0 16px}.section-title{display:flex;justify-content:space-between;align-items:center;margin:12px 0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.card{background:#fff;border:1px solid #e8edf5;border-radius:18px;padding:15px;box-shadow:0 4px 18px #1020400a}.country{cursor:pointer;min-height:120px}.flag{font-size:34px}.small{font-size:13px;color:#718096}.price{font-weight:900;color:#0862bd}
-.plan{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:10px 16px;padding:15px;background:#fff;border:1px solid #e7edf5;border-radius:18px}.plan-data{font-weight:900;font-size:17px}
-.buy,.primary{border:0;background:#0862bd;color:#fff;border-radius:13px;padding:11px 14px;font-weight:900;cursor:pointer}.primary{width:100%;margin-top:14px;padding:14px}.back{border:0;background:transparent;color:#0862bd;font-weight:900;padding:15px 16px 4px;cursor:pointer}
-.pay{display:flex;align-items:center;gap:12px;background:#fff;border:2px solid #edf1f6;border-radius:16px;padding:13px;margin:9px 0;cursor:pointer}.pay.active{border-color:#0862bd;background:#f3f8ff}.pay-icon{width:40px;height:40px;border-radius:12px;background:#eef5ff;display:grid;place-items:center;font-weight:900}
-.upload{background:#fff;border:2px dashed #b9c8da;border-radius:18px;padding:16px;margin-top:12px}.status{margin-top:14px;padding:15px;border-radius:17px;background:#fff8df;border:1px solid #f2d98a}.ready{background:#e9fff1;border-color:#a8dfbd}
-.timer{font-size:32px;font-weight:900;text-align:center;color:#0862bd;margin:10px 0}.qr{display:block;width:min(100%,360px);margin:14px auto;border-radius:16px;border:8px solid #fff;box-shadow:0 4px 20px #0002}
-.bottom{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(760px,100%);background:#fff;border-top:1px solid #e5eaf1;display:grid;grid-template-columns:repeat(3,1fr);padding:8px 8px calc(8px + env(safe-area-inset-bottom));z-index:30}
-.bottom button{border:0;background:transparent;padding:8px;color:#64748b;font-weight:800}.bottom button.active{color:#0862bd}.note{line-height:1.8;color:#526071;background:#f7f9fc;border-radius:15px;padding:13px;margin-top:12px}.empty{text-align:center;padding:35px;color:#64748b}
-@media(min-width:700px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+*{box-sizing:border-box}html,body{margin:0;background:#eef6fc;color:#071d50;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+button,input,select{font:inherit}button{cursor:pointer}
+:root{--blue:#0869e8;--dark:#06225c;--soft:#eef6ff;--green:#16a56a;--line:#dbe7f4;--red:#ef3340}
+.app{min-height:100vh;max-width:520px;margin:auto;background:#f8fbff;box-shadow:0 0 35px #0b376015}
+.screen{display:none;min-height:100vh;padding-bottom:88px}.screen.active{display:block}
+.header{height:70px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:9px 14px;border-bottom:1px solid #e8eef7;position:sticky;top:0;z-index:20}
+.header .back{border:0;background:none;color:var(--dark);font-size:28px;width:40px}.brand{display:flex;align-items:center;gap:7px;font-weight:1000;font-size:22px}.brand span{color:#126de2}.bell{border:0;background:none;font-size:22px}
+.langs{display:flex;gap:6px;padding:8px 14px;background:#fff}.lang{border:0;background:#eef3f9;border-radius:13px;padding:7px 12px;font-size:11px;font-weight:900;color:#26334d}.lang.active{background:var(--blue);color:#fff}
+.hero{margin:0 12px;border-radius:20px;overflow:hidden;position:relative;min-height:305px;background:linear-gradient(90deg,#0074dcdd,#0075d255),url('/0016DE22-5EB2-4EBC-834A-F545DBDBC423.png') center/cover}
+.hero .copy{padding:30px 18px;color:#fff;text-align:right}.hero h1{font-size:29px;line-height:1.3;margin:0 0 5px;font-weight:1000;text-shadow:0 2px 4px #001b45aa}.hero p{font-size:16px;line-height:1.65;margin:0 0 14px;font-weight:800}.checks{display:grid;gap:7px;font-size:12px;font-weight:900}.checks div{display:flex;align-items:center;gap:7px}.checks i{font-style:normal;border:2px solid #23ec88;border-radius:50%;width:23px;height:23px;display:grid;place-items:center;color:#23ec88}
+.search{margin:-26px 24px 13px;position:relative;z-index:4;background:#fff;border-radius:25px;padding:5px;box-shadow:0 8px 25px #123b6920}.search input{width:100%;height:49px;border:0;outline:0;border-radius:21px;padding:0 16px;text-align:right;color:#16233d;background:#fff}
+.features{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;padding:0 12px 15px}.feature{background:#fff;border-radius:15px;padding:9px 4px;text-align:center;box-shadow:0 3px 13px #123b6910;font-size:10px;font-weight:900}.feature b{display:block;font-size:20px;margin-bottom:4px}
+.section{padding:0 12px}.sectionHead{display:flex;align-items:center;justify-content:space-between;margin:5px 2px 9px}.sectionHead h2{font-size:19px;margin:0;font-weight:1000}.sectionHead a{font-size:10px;color:var(--blue);font-weight:900}
+.popular{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;overflow:hidden;margin-bottom:16px}.pop{background:#fff;border-radius:14px;box-shadow:0 3px 13px #123b6912;overflow:hidden;text-align:center}.pop img{width:100%;height:62px;object-fit:cover;display:block}.pop .flag{font-size:25px;margin-top:-14px}.pop b{display:block;font-size:11px;margin:2px 2px 8px}
+.countryList{display:grid;gap:7px}.countryRow{background:#fff;border-radius:14px;padding:7px 9px;display:flex;align-items:center;gap:8px;box-shadow:0 3px 12px #123b6910;border:1px solid #edf3fa}.countryRow .flag{font-size:28px;width:38px;text-align:center}.countryRow .ctext{flex:1}.countryRow strong{display:block;font-size:12px}.countryRow small{display:block;color:#68758b;font-size:10px}.countryRow em{font-style:normal;font-weight:950;font-size:11px;color:#0a64c9}.arrow{font-size:20px;color:#7d8ba1}
+.bottom{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(520px,100%);height:78px;background:#fff;border-top:1px solid #e1eaf4;display:flex;justify-content:space-around;align-items:center;z-index:30;padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -6px 20px #123b6910}.nav{border:0;background:none;color:#748198;font-size:10px;font-weight:900;display:flex;flex-direction:column;align-items:center;gap:3px}.nav b{font-size:21px}.nav.active{color:var(--blue)}
+.listSearch{margin:10px 12px;background:#edf4fb;border-radius:22px;padding:4px 12px;display:flex;align-items:center;gap:8px}.listSearch input{width:100%;border:0;background:none;outline:0;height:40px;text-align:right}.chips{display:flex;gap:6px;overflow:auto;padding:2px 12px 11px}.chip{white-space:nowrap;border:0;background:#edf2f8;color:#18315c;border-radius:15px;padding:7px 12px;font-size:10px;font-weight:900}.chip.active{background:var(--blue);color:#fff}
+.detailHero{height:235px;background-size:cover;background-position:center;position:relative;color:#fff}.detailHero:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 30%,#00184dcc)}.detailBack{position:absolute;z-index:2;top:12px;right:12px;border:0;background:#ffffff33;color:#fff;width:42px;height:42px;border-radius:50%;font-size:23px}.detailTitle{position:absolute;z-index:2;bottom:16px;right:18px;left:18px;display:flex;align-items:center;gap:10px}.detailTitle .flag{font-size:48px}.detailTitle h1{font-size:24px;margin:0}.detailTitle small{font-size:12px}.planTabs{display:flex;gap:7px;padding:8px 12px}.planTab{border:0;background:#f0f4f8;border-radius:15px;padding:8px 13px;font-size:10px;font-weight:900}.planTab.active{background:var(--blue);color:#fff}.plans{padding:0 12px}.plan{background:#fff;border:1px solid #e0e9f3;border-radius:14px;padding:9px;display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:7px;margin-bottom:7px;box-shadow:0 3px 11px #123b690d}.plan.unlimited{background:#fff4c6;border-color:#efcf51}.plan .data{font-size:15px;font-weight:1000}.plan .days{font-size:10px;color:#697891;margin-top:2px}.plan .price{font-size:13px;font-weight:1000}.primary{border:0;background:var(--blue);color:#fff;border-radius:11px;padding:7px 10px;font-size:10px;font-weight:1000}
+.infoCard{background:#fff;border-radius:17px;margin:10px 12px;padding:13px;box-shadow:0 4px 15px #123b6910}.infoCard h3{margin:0 0 9px;font-size:15px}.benefits{display:grid;gap:7px;font-size:11px;font-weight:800}.benefits div:before{content:"✓";display:inline-grid;place-items:center;width:19px;height:19px;background:#15a267;color:#fff;border-radius:50%;margin-left:6px}
+.buyBox{position:sticky;bottom:80px;background:#fff;padding:9px 12px;border-top:1px solid #e6edf5;z-index:10}.bigBtn{width:100%;border:0;background:var(--blue);color:#fff;border-radius:14px;padding:13px;font-size:14px;font-weight:1000}
+.formCard{margin:12px;background:#fff;border-radius:20px;padding:14px;box-shadow:0 4px 17px #123b6910}.formCard label{display:block;font-size:11px;font-weight:900;margin:10px 0 5px}.field{width:100%;height:45px;border:1px solid #dce6f1;border-radius:12px;padding:0 12px;outline:0;background:#fff}.payOption{display:flex;align-items:center;gap:10px;border:1px solid #dce6f1;border-radius:13px;padding:10px;margin:7px 0}.payOption.active{border:2px solid var(--blue);background:#f4f9ff}.payIcon{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;color:#fff;font-weight:1000}.fib{background:#14884c}.fast{background:#5422ba}.sq{background:#e51e2a}.quick{background:#155ce8}.radio{margin-right:auto}
+.orderCard{margin:14px 12px;background:#fff;border-radius:18px;padding:14px;box-shadow:0 4px 17px #123b6910}.timeline{display:grid;gap:10px}.step{display:flex;gap:9px;align-items:flex-start;font-size:11px;font-weight:800}.dot{width:18px;height:18px;border-radius:50%;background:#d7e0eb;flex:none}.step.done .dot{background:#15a267}.step.current .dot{background:var(--blue)}
+.qrBox{text-align:center;padding:15px}.qrBox img{width:220px;height:220px;border-radius:8px}.code{font-weight:1000;color:#0b245b;font-size:14px}.profile{margin:12px;background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 4px 17px #123b6910}.profileTop{padding:18px;text-align:center;background:linear-gradient(135deg,#eaf4ff,#fff)}.avatar{width:62px;height:62px;border-radius:50%;margin:auto;background:#1674df;color:#fff;display:grid;place-items:center;font-size:28px}.menuItem{display:flex;align-items:center;justify-content:space-between;padding:14px;border-top:1px solid #edf1f6;font-size:12px;font-weight:850}.menuItem span{color:#7c899d}
+@media(min-width:521px){body{background:#dfeaf4}}
 </style>
 </head>
 <body>
-<div class="app" id="app"></div>
-<nav class="bottom"><button id="navHome" onclick="showHome()">🏠<br>سەرەکی</button><button id="navCountries" onclick="showCountries()">🌍<br>وڵاتەکان</button><button id="navOrders" onclick="showOrders()">🧾<br>سفارشەکان</button></nav>
+<div class="app">
+
+<section id="home" class="screen active">
+<header class="header"><button class="menu" onclick="showScreen('profile')">☰</button><div class="brand">🌐 <span>First</span>ESIM</div><button class="bell">♧</button></header>
+<div class="langs"><button class="lang active" onclick="setLang('ku')">KUR</button><button class="lang" onclick="setLang('en')">English</button><button class="lang" onclick="setLang('ar')">العربي</button></div>
+<div class="hero"><div class="copy"><h1 id="homeTitle">گەشتی بێ سنوور</h1><p id="homeSub">eSIM بۆ هەموو جیهان<br>خێرا، ئاسان و باوەڕپێکراو</p><div class="checks"><div><i>✓</i><span id="c1">خێرا و باوەڕپێکراو</span></div><div><i>✓</i><span id="c2">نرخی باش</span></div><div><i>✓</i><span id="c3">جیهانی</span></div></div></div></div>
+<div class="search"><input id="homeSearch" placeholder="گەڕان بە ناوی وڵات..." oninput="homeSearch()"></div>
+<div class="features"><div class="feature"><b>⚡</b><span id="ft1">خێرا زۆر</span></div><div class="feature"><b>🌐</b><span id="ft2">200+ وڵات</span></div><div class="feature"><b>🛡️</b><span id="ft3">باوەڕپێکراو</span></div><div class="feature"><b>🎧</b><span id="ft4">پشتیوانی 24 کاتژمێر</span></div></div>
+<div class="section"><div class="sectionHead"><h2 id="popTitle">🔥 وڵاتە بناوبانگەکان</h2><a onclick="showScreen('countries')">هەموو وڵاتەکان →</a></div><div id="popular" class="popular"></div></div>
+</section>
+
+<section id="countries" class="screen">
+<header class="header"><button class="back" onclick="showScreen('home')">‹</button><div class="brand" id="countriesTitle">وڵاتەکان</div><button class="bell">⌕</button></header>
+<div class="listSearch">⌕<input id="countrySearch" placeholder="گەڕان..." oninput="countrySearch()"></div>
+<div class="chips"><button class="chip active" onclick="region('all',this)">هەموو</button><button class="chip" onclick="region('europe',this)">ئەوروپا</button><button class="chip" onclick="region('asia',this)">ئاسیا</button><button class="chip" onclick="region('middle',this)">ڕۆژهەڵات</button><button class="chip" onclick="region('global',this)">جیهان</button></div>
+<div class="section"><div id="countryList" class="countryList"></div></div>
+</section>
+
+<section id="plans" class="screen">
+<div id="detail"></div>
+</section>
+
+<section id="checkout" class="screen">
+<header class="header"><button class="back" onclick="showScreen('plans')">‹</button><div class="brand" id="checkoutTitle">ژمارەی پلان</div><span></span></header>
+<div id="checkoutBody"></div>
+</section>
+
+<section id="payment" class="screen">
+<header class="header"><button class="back" onclick="showScreen('checkout')">‹</button><div class="brand">شیوەی پارەدان</div><span></span></header>
+<div class="formCard"><div style="background:#fff4c6;padding:10px;border-radius:12px;font-size:11px;font-weight:900">ⓘ تکایە شێوازی پارەدانت هەڵبژێرە</div>
+<div class="payOption active" onclick="selectPay(this,'FIB')"><div class="payIcon fib">FIB</div><div><b>FIB</b><small style="display:block">بانکی فیدرالی عێراق</small></div><span class="radio">◯</span></div>
+<div class="payOption" onclick="selectPay(this,'FastPay')"><div class="payIcon fast">Fast</div><div><b>FastPay</b><small style="display:block">فاست پی</small></div><span class="radio">◯</span></div>
+<div class="payOption" onclick="selectPay(this,'Super Qi')"><div class="payIcon sq">Q</div><div><b>Super QI</b><small style="display:block">سوپەر کیوای</small></div><span class="radio">◯</span></div>
+<div class="payOption" onclick="selectPay(this,'QuickPay')"><div class="payIcon quick">↗</div><div><b>QuickPay</b><small style="display:block">کویک پی</small></div><span class="radio">🔵</span></div>
+<div class="infoCard" style="margin:12px 0 0"><h3>زانیاری پارەدان</h3><div style="font-size:11px;line-height:1.8">FIB: 7506021212<br>FastPay: 7506021212<br>Super QI: 7111649351<br>QuickPay: 7508107121</div></div>
+<button class="bigBtn" onclick="finishOrder()">بەردەوام بوون بۆ داواکاری</button></div>
+</section>
+
+<section id="orders" class="screen">
+<header class="header"><button class="back" onclick="showScreen('home')">‹</button><div class="brand">سفارشەکانم</div><span></span></header>
+<div id="orderList" class="orderCard"></div>
+</section>
+
+<section id="qr" class="screen">
+<header class="header"><button class="back" onclick="showScreen('orders')">‹</button><div class="brand">ئێسیم ئامادەیە</div><span></span></header>
+<div class="orderCard qrBox"><div style="font-size:40px">🟢</div><h3>eSIM ئامادەیە</h3><p style="font-size:11px">کۆدی QR ـی ئێسیمەکەت لێرەیە</p><img id="qrImg" alt="QR Code"><div class="code" id="qrCode">#FE123456</div><div style="font-size:11px;margin:8px">دەتوانیت QR Code ـەکە بەکاربهێنیت</div><button class="bigBtn" onclick="downloadQR()">⬇ گەڕاندنەوەی QR Code</button></div>
+</section>
+
+<section id="profile" class="screen">
+<header class="header"><button class="back" onclick="showScreen('home')">‹</button><div class="brand">پڕۆفایل</div><span></span></header>
+<div class="profile"><div class="profileTop"><div class="avatar">👤</div><h3 id="profileName">کڕیار</h3><small id="profileEmail">customer@firstesim.net</small></div>
+<div class="menuItem" onclick="showScreen('countries')">زمان / Language <span>›</span></div><div class="menuItem" onclick="showScreen('orders')">ژمارەی داواکارییەکان <span>›</span></div><div class="menuItem" onclick="showScreen('orders')">سفارشەکانم <span>›</span></div><div class="menuItem" onclick="location.href='https://wa.me/9647506021212'">WhatsApp پشتیوانی <span>›</span></div><div class="menuItem">FAQ <span>›</span></div><div class="menuItem">دەربارەمان <span>›</span></div></div>
+</section>
+
+<nav class="bottom">
+<button class="nav active" data-screen="home" onclick="showScreen('home')"><b>⌂</b>سەرەکی</button>
+<button class="nav" data-screen="countries" onclick="showScreen('countries')"><b>◎</b>وڵاتەکان</button>
+<button class="nav" data-screen="orders" onclick="showScreen('orders')"><b>▣</b>سفارشەکانم</button>
+<button class="nav" data-screen="profile" onclick="showScreen('profile')"><b>♙</b>پڕۆفایل</button>
+</nav>
+</div>
+
 <script>
-const API_BASE="https://firstesim-api.onrender.com";
-const WHATSAPP="9647506021212";
 const countries=[
 
 {
@@ -1283,144 +1352,30 @@ plans:[
 }
 
 ];
-let selectedCountry=null,selectedPlan=null,selectedPay="",order=null,timerHandle=null,pollHandle=null;
-function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
-function setNav(id){document.querySelectorAll(".bottom button").forEach(b=>b.classList.remove("active"));document.getElementById(id)?.classList.add("active")}
-function app(html){document.getElementById("app").innerHTML=html}
-function showHome(){setNav("navHome");app(`<header><div class="logo">First<span>ESIM</span></div><button class="lang" onclick="alert('Kurdî → English → العربية')">KUR ▾</button></header><section class="hero"><h1>گەشتی بێ سنوور 🌍</h1><p>eSIM ـی خێرا و ئاسان بۆ هەموو جیهان</p></section><input class="search" placeholder="گەڕان بە ناوی وڵات..." oninput="renderCountries(this.value)"><div class="filters"><button class="filter active" onclick="filterRegion('all',this)">هەموو</button><button class="filter" onclick="filterRegion('europe',this)">🇪🇺 ئەوروپا</button><button class="filter" onclick="filterRegion('asia',this)">🌏 ئاسیا</button><button class="filter" onclick="filterRegion('middle',this)">🌙 ناوەڕاست</button><button class="filter" onclick="filterRegion('america',this)">🌎 ئەمەریکا</button><button class="filter" onclick="filterRegion('global',this)">🌍 جیهان</button></div><section class="section"><div class="section-title"><h3>وڵاتەکان</h3><span class="small">${countries.length} وڵات</span></div><div id="countryGrid" class="grid"></div></section>`);renderCountries("")}
-function countryCard(c,i){return `<div class="card country" onclick="showCountry(${i})"><div class="flag">${esc(c.flag||"🌍")}</div><b>${esc(c.name)}</b><div class="small">${esc(c.en||"")}</div><div class="price">لە ${esc(c.plans?.[0]?.[2]||"—")}</div></div>`}
-function renderCountries(q="",region="all"){const v=String(q).trim().toLowerCase();const list=countries.map((c,i)=>[c,i]).filter(([c])=>(region==="all"||c.region===region)&&(!v||`${c.name} ${c.en} ${c.place}`.toLowerCase().includes(v)));const el=document.getElementById("countryGrid");if(el)el.innerHTML=list.map(([c,i])=>countryCard(c,i)).join("")||`<div class="empty">هیچ وڵاتێک نەدۆزرایەوە.</div>`}
-function filterRegion(region,btn){document.querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));btn.classList.add("active");renderCountries(document.querySelector(".search")?.value||"",region)}
-function showCountries(){setNav("navCountries");app(`<header><div class="logo">First<span>ESIM</span></div></header><input class="search" id="countrySearch" placeholder="گەڕان..." oninput="renderCountries(this.value)"><section class="section"><div id="countryGrid" class="grid"></div></section>`);renderCountries("")}
-function showCountry(i){selectedCountry=countries[i];app(`<button class="back" onclick="showCountries()">← گەڕانەوە</button><section class="section"><div class="card"><div class="flag">${esc(selectedCountry.flag||"🌍")}</div><h2>${esc(selectedCountry.name)}</h2><div class="small">${esc(selectedCountry.en||"")}</div></div></section>${selectedCountry.plans.map((p,j)=>`<div class="plan"><div><div class="plan-data">${esc(p[0])}</div><div class="small">${esc(p[1])}</div></div><div><div class="price">${esc(p[2])}</div><button class="buy" onclick="checkout(${j})">کڕین</button></div></div>`).join("")}`)}
-function checkout(j,resetPay=true){
-selectedPlan=selectedCountry.plans[j];
-if(resetPay)selectedPay="";
-app(`<button class="back" onclick="showCountry(${countries.indexOf(selectedCountry)})">← گەڕانەوە</button>
-<section class="section">
-<h2>کڕینی eSIM</h2>
-<div class="card">
-<b>${esc(selectedCountry.flag)} ${esc(selectedCountry.name)}</b>
-<p>${esc(selectedPlan[0])} — ${esc(selectedPlan[1])}</p>
-<h2>${esc(selectedPlan[2])}</h2>
-</div>
-<h3>شێوازی پارەدان</h3>
-<div id="paymentList">
-${pay("🏦","FIB","7506021212")}
-${pay("⚡","FastPay","7506021212")}
-${pay("Q","Super Qi","7111649351")}
-${pay("↗","QuickPay","7508107121")}
-</div>
-<div id="selectedPaymentName" class="note" style="display:${selectedPay?"block":"none"}">
-پارەدان هەڵبژێردرا: <b>${esc(selectedPay)}</b>
-</div>
-<button class="primary" onclick="paymentStep()">بەردەوام بە</button>
-</section>`)
-}
-function pay(icon,name,number){
-return `<button type="button" class="pay ${selectedPay===name?"active":""}" data-payment="${esc(name)}" onclick="selectPayment('${name}')">
-<div class="pay-icon">${icon}</div>
-<div><b>${name}</b><div class="small">${number}</div></div>
-</button>`
-}
-function selectPayment(name){
-selectedPay=name;
-document.querySelectorAll(".pay[data-payment]").forEach(el=>{
-el.classList.toggle("active",el.getAttribute("data-payment")===name);
-});
-const label=document.getElementById("selectedPaymentName");
-if(label){
-label.style.display="block";
-label.innerHTML=`پارەدان هەڵبژێردرا: <b>${esc(name)}</b>`;
-}
-}
-function paymentStep(){
-if(!selectedPay){
-alert("تکایە شێوازی پارەدان هەڵبژێرە");
-return;
-}
-app(`<button class="back" onclick="checkout(${selectedCountry.plans.indexOf(selectedPlan)},false)">← گەڕانەوە</button>
-<section class="section">
-<h2>پارەدان بە ${esc(selectedPay)}</h2>
-<div class="card">
-<b>${esc(selectedCountry.name)}</b>
-<p>${esc(selectedPlan[0])} — ${esc(selectedPlan[1])}</p>
-<h2>${esc(selectedPlan[2])}</h2>
-<div class="note">دوای پارەدان، تکایە پسوڵەکە لێرە upload بکە. هیچ ناو یان ژمارەی کڕیار پێویست نییە.</div>
-</div>
-<div class="upload">
-<b>📎 پسوڵەی پارەدان</b>
-<p class="small">تکایە وێنەی پسوڵەکە upload بکە.</p>
-<input id="receipt" type="file" accept="image/*,.pdf">
-<div id="receiptName" class="small" style="margin-top:8px"></div>
-</div>
-<button class="primary" id="orderBtn" onclick="createOrder()">تۆمارکردنی Order</button>
-</section>`);
-const receiptInput=document.getElementById("receipt");
-if(receiptInput){
-receiptInput.addEventListener("change",()=>{
-const f=receiptInput.files?.[0];
-const el=document.getElementById("receiptName");
-if(el)el.textContent=f?`✅ ${f.name}`:"";
-});
-}
-}
-async function createOrder(){
-const receipt=document.getElementById("receipt")?.files?.[0];
-if(!receipt){
-alert("تکایە پسوڵەی پارەدان upload بکە");
-return;
-}
-if(!selectedPay){
-alert("تکایە شێوازی پارەدان هەڵبژێرە");
-return;
-}
-const btn=document.getElementById("orderBtn");
-btn.disabled=true;
-btn.textContent="لە ناردندا...";
-const data=new FormData();
-data.append("customerName","");
-data.append("customerPhone","");
-data.append("country",selectedCountry.name);
-data.append("plan",`${selectedPlan[0]} — ${selectedPlan[1]}`);
-data.append("price",selectedPlan[2]);
-data.append("payment",selectedPay);
-data.append("receipt",receipt);
-try{
-const r=await fetch(`${API_BASE}/api/orders`,{method:"POST",body:data});
-const d=await r.json();
-if(!r.ok)throw Error(d.error||"Order failed");
-order=d.order;
-localStorage.setItem("firstesim_order",JSON.stringify(order));
-localStorage.setItem("firstesim_wait_until",String(Date.now()+300000));
-const msg=`سڵاو FirstESIM 👋
+const PAY_NUMBERS={FIB:"7506021212",FastPay:"7506021212","Super Qi":"7111649351",QuickPay:"7508107121"};
+const WHATSAPP="9647506021212";
+let LANG=localStorage.getItem("firstesim_lang")||"ku", currentCountry=0,currentPlan=0,currentPay="QuickPay",currentRegion="all";
 
-🆕 Order نوێ
-🆔 ${order.id}
-🌍 ${selectedCountry.name}
-📦 ${selectedPlan[0]} — ${selectedPlan[1]}
-💰 ${selectedPlan[2]}
-💳 ${selectedPay}
-
-پسوڵە لە سیستەمەکەدا upload کراوە.
-تکایە پشکنینی بکەن و QR ـەکە دابین بکەن.`;
-const waUrl=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
-try{window.open(waUrl,"_blank")}catch(e){}
-showOrder(true);
-}catch(e){
-alert("Order نەکرا. تکایە دووبارە هەوڵ بدە.");
-btn.disabled=false;
-btn.textContent="تۆمارکردنی Order";
-}
-}
-function statusText(s){return ({waiting_payment_check:"چاوەڕوانی پشکنینی پارەدان",payment_confirmed:"پارەدان پشتڕاست کرا",esim_ready:"eSIM ئامادەیە",completed:"تەواو کرا",cancelled:"هەڵوەشێنرایەوە"})[s]||s||"نادیار"}
-function qrUrl(o){return o.qrUrl?(o.qrUrl.startsWith("http")?o.qrUrl:`${API_BASE}${o.qrUrl}`):""}
-function startTracking(){clearInterval(pollHandle);pollHandle=setInterval(refreshOrder,10000);let saved=Number(localStorage.getItem("firstesim_wait_until")||0);let left=saved>Date.now()?Math.ceil((saved-Date.now())/1000):300;if(!saved)localStorage.setItem("firstesim_wait_until",String(Date.now()+left*1000));startTimer(left)}
-function startTimer(sec){clearInterval(timerHandle);let end=Date.now()+sec*1000;const tick=()=>{const left=Math.max(0,Math.ceil((end-Date.now())/1000));const el=document.getElementById("timer");if(el)el.textContent=`${String(Math.floor(left/60)).padStart(2,"0")}:${String(left%60).padStart(2,"0")}`;if(left<=0)clearInterval(timerHandle)};tick();timerHandle=setInterval(tick,1000)}
-async function refreshOrder(){if(!order?.id)return;try{const r=await fetch(`${API_BASE}/api/orders/${encodeURIComponent(order.id)}`);const d=await r.json();if(r.ok){order=d.order;localStorage.setItem("firstesim_order",JSON.stringify(order));showOrder(false)}}catch(e){}}
-function showOrder(start=true){if(!order)order=JSON.parse(localStorage.getItem("firstesim_order")||"null");if(!order){showOrders();return}setNav("navOrders");const ready=order.status==="esim_ready"&&order.qrUrl;app(`<button class="back" onclick="showOrders()">← سفارشەکان</button><section class="section"><h2>سفارشەکەت</h2><div class="card"><b>${esc(order.id)}</b><p>${esc(order.country)} — ${esc(order.plan)}</p><h3>${esc(order.price)}</h3><p>پارەدان: ${esc(order.payment)}</p></div>${ready?`<div class="card ready"><h2>✅ eSIM ئامادەیە</h2><p>QR ـەکەت ئێستا ئامادەیە.</p><img class="qr" src="${qrUrl(order)}" alt="eSIM QR"><div class="note"><b>Activation Code</b><br>${esc(order.activationCode||"—")}</div></div>`:`<div class="status"><b>⏳ داواکارییەکەت وەرگیراوە</b><div id="timer" class="timer">05:00</div><div>تکایە چاوەڕێ بکە. تیمی FirstESIM پارەکە پشکنین دەکات و QR ـی ڕاستەقینە دەنێرێت.</div></div>`}<button class="primary" onclick="refreshOrder()">🔄 نوێکردنەوە</button></section>`);if(start&&!ready)startTracking()}
-function showOrders(){setNav("navOrders");order=JSON.parse(localStorage.getItem("firstesim_order")||"null");app(`<header><div class="logo">First<span>ESIM</span></div></header><section class="section"><h2>سفارشەکانم</h2>${order?`<div class="card" onclick="showOrder()"><b>${esc(order.id)}</b><p>${esc(order.country)} — ${esc(order.plan)}</p><div class="small">${esc(statusText(order.status))}</div></div>`:`<div class="empty">هێشتا هیچ Order ـێکت نییە.</div>`}</section>`)}
-showHome();
+function cname(c){if(LANG==="ku")return c.name;if(LANG==="en")return c.en;const m={"Turkey":"Turkey","Germany":"Germany","USA":"United States","Europe + UK":"Europe + UK","Global":"Global","UAE":"UAE","Saudi Arabia":"Saudi Arabia","Azerbaijan":"Azerbaijan","China":"China","Italy":"Italy"};return m[c.en]||c.en}
+function setLang(v){LANG=v;localStorage.setItem("firstesim_lang",v);document.querySelectorAll(".lang").forEach(x=>x.classList.toggle("active",x.textContent.toLowerCase().includes(v==="ku"?"kur":v==="en"?"english":"العربي")));document.documentElement.lang=v;document.documentElement.dir=v==="en"?"ltr":"rtl";
+const T={ku:["گەشتی بێ سنوور","eSIM بۆ هەموو جیهان","خێرا و باوەڕپێکراو","نرخی باش","جیهانی","خێرا زۆر","200+ وڵات","باوەڕپێکراو","پشتیوانی 24 کاتژمێر","وڵاتە بناوبانگەکان"],en:["Unlimited Travel","eSIM for the whole world","Fast & reliable","Great prices","Global","Super fast","200+ countries","Trusted","24/7 support","Popular destinations"],ar:["سفر بلا حدود","eSIM لجميع أنحاء العالم","سريع وموثوق","أسعار مناسبة","تغطية عالمية","سريع جداً","أكثر من 200 دولة","موثوق","دعم 24/7","الوجهات الشائعة"]}[v];
+["homeTitle","homeSub","c1","c2","c3","ft1","ft2","ft3","ft4","popTitle"].forEach((id,i)=>document.getElementById(id).textContent=T[i]);renderPopular();renderCountries(filtered())}
+function showScreen(id){document.querySelectorAll(".screen").forEach(s=>s.classList.toggle("active",s.id===id));document.querySelectorAll(".nav").forEach(n=>n.classList.toggle("active",n.dataset.screen===id));window.scrollTo(0,0)}
+function renderPopular(){const names=["Turkey","Saudi Arabia","UAE","Europe + UK"];document.getElementById("popular").innerHTML=names.map(n=>{const c=countries.find(x=>x.en===n);if(!c)return"";return `<div class="pop" onclick="openCountry(${countries.indexOf(c)})"><img src="${c.image||""}"><div class="flag">${c.flag||"🌍"}</div><b>${cname(c)}</b></div>`}).join("")}
+function filtered(){let arr=currentRegion==="all"?countries:countries.filter(c=>c.region===currentRegion);const q=(document.getElementById("countrySearch")?.value||document.getElementById("homeSearch")?.value||"").toLowerCase().trim();if(q)arr=arr.filter(c=>(c.name+" "+c.en+" "+c.place+" "+c.region+" "+JSON.stringify(c.plans)).toLowerCase().includes(q));return arr}
+function renderCountries(arr){document.getElementById("countryList").innerHTML=arr.map(c=>`<div class="countryRow" onclick="openCountry(${countries.indexOf(c)})"><div class="flag">${c.flag||"🌍"}</div><div class="ctext"><strong>${cname(c)}</strong><small>${c.en}</small></div><em>${c.plans?.[0]?.[2]||""}</em><span class="arrow">›</span></div>`).join("")}
+function region(r,btn){currentRegion=r;document.querySelectorAll(".chip").forEach(x=>x.classList.remove("active"));btn.classList.add("active");renderCountries(filtered())}
+function countrySearch(){renderCountries(filtered())}
+function homeSearch(){showScreen("countries");document.getElementById("countrySearch").value=document.getElementById("homeSearch").value;renderCountries(filtered())}
+function openCountry(i){currentCountry=i;const c=countries[i];document.getElementById("detail").innerHTML=`<div class="detailHero" style="background-image:url('${c.image||""}')"><button class="detailBack" onclick="showScreen('countries')">‹</button><div class="detailTitle"><div class="flag">${c.flag||"🌍"}</div><div><h1>${cname(c)}</h1><small>${c.en}</small></div></div></div><div class="planTabs"><button class="planTab active">هەموو پلانەکان</button><button class="planTab">داتا</button><button class="planTab">بێ سنوور</button></div><div class="plans">${c.plans.map((p,i)=>{const un=p[0].toLowerCase()==="unlimited";return `<div class="plan ${un?"unlimited":""}"><div><div class="data">${p[0]}</div><div class="days">${p[1]}</div></div><div class="price">${p[2]}</div><button class="primary" onclick="openCheckout(${i})">کڕین</button></div>`}).join("")}</div><div class="infoCard"><h3>سوودەکان</h3><div class="benefits"><div>خێراترین ئینتەرنێت</div><div>پەیوەندی لە ڕۆماڵ و پاوەڕکڕاو</div><div>ئاسان بۆ گەشت</div><div>بەکارهێنانی فەرمانەی ناسینەی ID نییە</div></div></div>`;showScreen("plans")}
+function openCheckout(pi){currentPlan=pi;const c=countries[currentCountry],p=c.plans[pi];document.getElementById("checkoutBody").innerHTML=`<div class="formCard"><div style="background:#edf6ff;border-radius:13px;padding:12px"><b>${c.flag||"🌍"} ${cname(c)}</b><div style="font-size:11px;margin-top:5px">${p[0]} · ${p[1]} · <b>${p[2]}</b></div></div><label>ناوی کڕیار</label><input id="customerName" class="field" placeholder="ناوی تەواو"><label>ژمارەی مۆبایل</label><input id="customerPhone" class="field" inputmode="tel" placeholder="07xx xxx xxxx"><label>ژمارەی eSIM</label><div style="background:#f5f8fc;padding:12px;border-radius:12px;font-size:11px">پلان: ${p[0]}<br>ماوە: ${p[1]}<br>نرخ: ${p[2]}</div><button class="bigBtn" style="margin-top:15px" onclick="showScreen('payment')">بەردەوام بوون بۆ پارەدان</button></div>`;showScreen("checkout")}
+function selectPay(el,p){document.querySelectorAll(".payOption").forEach(x=>x.classList.remove("active"));el.classList.add("active");currentPay=p}
+async function finishOrder(){const name=document.getElementById("customerName")?.value.trim(),phone=document.getElementById("customerPhone")?.value.trim();if(!name||!phone){alert("تکایە ناو و ژمارەکەت بنووسە");showScreen("checkout");return}const c=countries[currentCountry],p=c.plans[currentPlan],orderId="#FE"+Math.floor(100000+Math.random()*900000);localStorage.setItem("firstesim_last_order",JSON.stringify({id:orderId,name,phone,country:c.en,plan:p[0],days:p[1],price:p[2],payment:currentPay,date:new Date().toLocaleString()}));renderOrder(orderId,name,phone,c,p);const msg=`سڵاو 👋%0A%0Aداواکاری eSIM%0A🌍 ${c.en}%0A📦 ${p[0]} - ${p[1]}%0A💰 ${p[2]}%0A👤 ${name}%0A📱 ${phone}%0A💳 ${currentPay}%0A🆔 ${orderId}`;window.open("https://wa.me/"+WHATSAPP+"?text="+msg,"_blank");showScreen("orders")}
+function renderOrder(id,name,phone,c,p){document.getElementById("orderList").innerHTML=`<div style="display:flex;justify-content:space-between"><b>${id}</b><small>${new Date().toLocaleString()}</small></div><hr><div style="font-weight:950">${c.flag} ${cname(c)}</div><div style="margin:7px 0;font-size:11px">${p[0]} · ${p[1]}</div><b>${p[2]}</b><div class="timeline" style="margin-top:15px"><div class="step done"><i class="dot"></i>سفارش دروست کرا</div><div class="step done"><i class="dot"></i>سکرین شۆت ناردرا</div><div class="step current"><i class="dot"></i>چاوەڕوانی پشتیوانە</div><div class="step"><i class="dot"></i>ئێسیم ئامادە دەکرێت</div></div><button class="bigBtn" style="margin-top:15px" onclick="showQR('${id}')">پیشاندانی QR Code</button>`}
+function showQR(id){document.getElementById("qrCode").textContent=id;document.getElementById("qrImg").src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data="+encodeURIComponent(id+" FirstESIM");showScreen("qr")}
+function downloadQR(){alert("QR Code ـەکە ئامادەیە بۆ بەکارهێنان")}
+const last=localStorage.getItem("firstesim_last_order");if(last){const o=JSON.parse(last),c=countries.find(x=>x.en===o.country)||countries[0],p=(c.plans||[]).find(x=>x[0]===o.plan)||c.plans[0];renderOrder(o.id,o.name,o.phone,c,p)}
+renderPopular();renderCountries(countries);setLang(LANG);
 </script>
 </body>
 </html>

@@ -1,1 +1,26 @@
-{"name":"FirstESIM App","short_name":"FirstESIM","start_url":"./","display":"standalone","background_color":"#f4f7fb","theme_color":"#0862bd","lang":"ku","dir":"rtl"}
+{
+  "name": "FirstESIM",
+  "short_name": "FirstESIM",
+  "start_url": "/FirstESIM-App/",
+  "scope": "/FirstESIM-App/",
+  "display": "standalone",
+  "background_color": "#f8fbff",
+  "theme_color": "#ffffff",
+  "orientation": "portrait",
+  "lang": "ku",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "/0016DE22-5EB2-4EBC-834A-F545DBDBC423.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/0016DE22-5EB2-4EBC-834A-F545DBDBC423.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
