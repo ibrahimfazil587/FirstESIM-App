@@ -2,473 +2,105 @@
 <html lang="ku" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="google-site-verification" content="xJStED7URyZT2os0025ErSNb0AGIvjKQsinvdSPod8s">
-
-   
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<!-- PWA -->
-<link rel="manifest" href="/manifest.json">
-<meta name="theme-color" content="#0862bd">
-
-<!-- iPhone / iOS PWA -->
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="FirstESIM">
-
-<!-- PWA Icon -->
+<link rel="manifest" href="/manifest.json">
 <link rel="apple-touch-icon" href="/0016DE22-5EB2-4EBC-834A-F545DBDBC423.png">
-   
-<title>FirstESIM | eSIM Turkey, Global & Travel eSIM Plans</title>
-<meta name="description" content="FirstESIM - پلانەکانی eSIM بۆ تورکیا، ئەوروپا، ئەمریکا، ئاسیا، ڕۆژهەڵاتی ناوەڕاست و جیهان.">
-<link rel="canonical" href="https://firstesim.net/">
-<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
-
-<meta property="og:title" content="FirstESIM | eSIM Turkey & Global">
-<meta property="og:description" content="eSIM internet plans for Turkey and destinations around the world.">
-<meta property="og:url" content="https://firstesim.net/">
-<meta property="og:type" content="website">
-
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"OnlineStore","name":"FirstESIM","url":"https://firstesim.net/","description":"FirstESIM - eSIM internet plans for Turkey and destinations around the world."}
-</script>
-
+<title>FirstESIM App</title>
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,"Noto Sans Arabic",sans-serif;background:#f4f7fb;color:#172033}
-header{background:#fff;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #edf0f5;position:sticky;top:0;z-index:100}
-.logo{font-size:28px;font-weight:900;color:#0862bd}
-.logo span{color:#e53935}
-.whatsapp-top{background:#18bf62;color:#fff;padding:14px 22px;border-radius:15px;font-size:16px;font-weight:900;text-decoration:none}
-
-.hero{
-margin:28px auto 20px;
-width:94%;
-max-width:900px;
-min-height:430px;
-border-radius:30px;
-padding:45px 30px;
-background-image:linear-gradient(90deg,rgba(0,55,145,.30),rgba(0,90,190,.10)),url('/0016DE22-5EB2-4EBC-834A-F545DBDBC423.png');
-background-size:cover;
-background-position:center;
-color:#fff;
-position:relative;
-overflow:hidden;
-box-shadow:0 8px 30px rgba(0,70,150,.18)
-}
-
-.hero h1,.hero p,.search{position:relative;z-index:2}
-.hero h1{
-font-family:"Noto Sans Arabic","SF Arabic","Geeza Pro",Arial,sans-serif;
-font-size:40px;
-line-height:1.4;
-margin:5px 0 12px;
-font-weight:900;
-letter-spacing:-.6px;
-color:#FFF8E7;
-text-shadow:0 3px 4px rgba(0,0,0,.75),0 6px 14px rgba(0,0,0,.45)
-}
-.hero p{
-font-family:"Noto Sans Arabic","SF Arabic","Geeza Pro",Arial,sans-serif;
-font-size:19px;
-line-height:1.7;
-font-weight:800;
-margin:0;
-color:#F5F7FF;
-text-shadow:0 3px 5px rgba(0,0,0,.75),0 5px 12px rgba(0,0,0,.40)
-}
-
-.search{
-margin-top:62px;
-margin-right:0;
-margin-left:auto;
-width:76%;
-max-width:650px;
-background:#fff;
-border-radius:20px;
-padding:5px;
-box-shadow:0 8px 25px rgba(0,0,0,.20)
-}
-.search input{
-width:100%;
-height:50px;
-border:0;
-outline:0;
-padding:12px 18px;
-font-family:"Noto Sans Arabic","SF Arabic","Geeza Pro",Arial,sans-serif;
-font-size:14px;
-font-weight:600;
-border-radius:16px;
-text-align:right;
-color:#222;
-background:#fff
-}
-.search input::placeholder{color:#999;opacity:1}
-
-.filters{
-display:flex;
-gap:12px;
-overflow-x:auto;
-padding:8px 3%;
-margin-bottom:25px;
-scrollbar-width:none
-}
-.filters::-webkit-scrollbar{display:none}
-.filter{
-border:0;
-background:#fff;
-color:#0964bd;
-padding:15px 26px;
-border-radius:19px;
-font-size:17px;
-font-weight:900;
-white-space:nowrap;
-box-shadow:0 3px 12px #0000000b;
-cursor:pointer
-}
-.filter.active{background:#0865c7;color:#fff}
-
-.container{width:94%;max-width:900px;margin:auto}
-.country{
-background:#fff;
-border-radius:27px;
-overflow:hidden;
-margin-bottom:28px;
-box-shadow:0 6px 24px #0000000b
-}
-.country-head{
-height:260px;
-position:relative;
-overflow:hidden;
-color:#fff;
-padding:24px 20px;
-background-size:cover;
-background-position:center
-}
-.country-head:before{
-content:"";
-position:absolute;
-inset:0;
-background:linear-gradient(90deg,rgba(0,0,0,.65),rgba(0,0,0,.12))
-}
-.country-title{
-position:relative;
-z-index:5;
-display:flex;
-align-items:center;
-justify-content:center;
-gap:16px;
-height:100%
-}
-.country-left{
-display:flex;
-align-items:center;
-justify-content:center;
-gap:16px
-}
-.country-flag{
-width:78px;
-height:78px;
-border-radius:22px;
-background:#ffffff20;
-border:1px solid #ffffff45;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:45px;
-backdrop-filter:blur(5px)
-}
-.country-name{
-font-size:46px!important;
-font-weight:900!important;
-color:#fff!important;
-line-height:1.1;
-text-shadow:0 3px 8px rgba(0,0,0,.9),0 0 15px rgba(0,0,0,.55)
-}
-.country-sub{display:none!important}
-.country-badges{
-display:flex;
-flex-direction:column;
-gap:9px;
-position:absolute;
-right:20px;
-top:12px
-}
-.country-badge{
-background:#ffffff20;
-border:1px solid #ffffff45;
-padding:9px 14px;
-border-radius:22px;
-font-size:12px;
-white-space:nowrap;
-backdrop-filter:blur(4px)
-}
-
-.plans{padding:15px;background:#f9fbfe}
-.plan{
-min-height:86px;
-background:#fff;
-border:1px solid #e9edf3;
-border-radius:19px;
-margin-bottom:11px;
-padding:10px 13px;
-display:grid;
-grid-template-columns:minmax(120px,1fr) minmax(180px,230px) auto;
-align-items:center;
-gap:15px;
-box-shadow:0 3px 10px #00000008;
-transition:.2s ease
-}
-.plan:hover{
-transform:translateY(-1px);
-box-shadow:0 6px 17px #00000012
-}
-.plan-info{min-width:80px;order:1}
-.plan-data{font-size:27px;font-weight:900;color:#172033}
-.plan-days{font-size:17px;color:#9299a7;margin-top:5px;font-weight:800}
-
-.plan-price{
-order:2;
-justify-self:center;
-min-width:210px;
-text-align:center;
-background:#ffe8e8;
-color:#df3333;
-border-radius:18px;
-padding:16px 22px;
-font-size:24px;
-font-weight:900;
-white-space:nowrap
-}
-
-.plan.unlimited{
-background:linear-gradient(105deg,#fff9d6 0%,#ffe98a 35%,#ffd84d 65%,#fff1a8 100%)!important;
-border:2px solid #e2ad19!important;
-box-shadow:0 6px 20px rgba(210,150,20,.30),inset 0 1px 0 #fffde8!important
-}
-.plan.unlimited .plan-data{
-color:#704400;
-font-size:29px;
-font-weight:900
-}
-.plan.unlimited .plan-days{
-color:#815900;
-font-size:18px;
-font-weight:900
-}
-.plan.unlimited .plan-price{
-background:linear-gradient(135deg,#fff9dc,#ffd34d)!important;
-color:#5b3500!important;
-border:1px solid #dfa914;
-min-width:210px;
-padding:17px 24px;
-font-size:24px;
-font-weight:900;
-box-shadow:0 3px 8px rgba(155,105,0,.18),inset 0 1px 0 #fff
-}
-
-.buy{
-order:3;
-border:0;
-background:linear-gradient(135deg,#16bd63,#0bb95c);
-color:#fff;
-border-radius:15px;
-padding:13px 18px;
-font-size:15px;
-font-weight:900;
-white-space:nowrap;
-cursor:pointer;
-box-shadow:0 4px 9px #16bd6340;
-transition:.2s ease
-}
-.buy:hover{transform:scale(1.04)}
-.empty{
-text-align:center;
-padding:50px 20px;
-color:#8992a2;
-display:none
-}
-
-@media(max-width:600px){
-header{padding:15px 14px}
-.logo{font-size:22px}
-.whatsapp-top{padding:11px 14px;font-size:12px}
-.hero{
-margin-top:18px;
-min-height:330px;
-padding:30px 20px;
-border-radius:25px;
-background-position:center
-}
-.hero h1{font-size:29px;line-height:1.35}
-.hero p{font-size:15px;line-height:1.6}
-.search{margin-top:38px;width:82%}
-.search input{height:46px;padding:12px 15px;font-size:13px}
-.filter{padding:13px 20px;font-size:14px}
-.country-head{height:220px;padding:20px 15px}
-.country-name{font-size:34px!important}
-.country-flag{width:64px;height:64px;font-size:36px}
-.country-badges{right:10px;top:8px}
-.country-badge{font-size:9px;padding:6px 8px}
-.plan{
-grid-template-columns:minmax(65px,1fr) minmax(115px,145px) auto;
-gap:7px;
-padding:8px;
-min-height:76px
-}
-.plan-data{font-size:19px}
-.plan-days{font-size:13px}
-.plan-price{min-width:115px;padding:11px 7px;font-size:15px}
-.plan.unlimited .plan-price{min-width:120px;font-size:16px}
-.plan.unlimited .plan-data{font-size:20px}
-.plan.unlimited .plan-days{font-size:14px}
-.buy{padding:10px 9px;font-size:11px}
-}
-
-@media(max-width:390px){
-.hero h1{font-size:27px}
-.hero p{font-size:14px}
-.search{width:86%}
-.plan{
-grid-template-columns:minmax(58px,1fr) minmax(100px,115px) auto;
-gap:5px;
-padding:6px
-}
-.plan-data{font-size:16px}
-.plan-days{font-size:11px}
-.plan-price{min-width:100px;font-size:13px;padding:10px 5px}
-.plan.unlimited .plan-price{min-width:102px;font-size:14px}
-.buy{padding:9px 7px;font-size:10px}
-}
-
-/* ===== FirstESIM App reference design ===== */
-body{background:#f3f6fa}
-.top{
-position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid #edf1f6;
-padding:10px 12px;min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:8px;
-box-shadow:0 2px 12px rgba(17,45,80,.05)
-}
-.brand{font-size:23px;font-weight:950;color:#111}
-.brand b{color:#146ed1}
-.top-actions{display:flex;align-items:center;gap:7px}
-.lang{height:42px;border:1px solid #d9e2ee;border-radius:14px;padding:7px 10px;background:#fff;font-weight:900}
-.wa{height:42px;display:flex;align-items:center;background:#55c96f;border-radius:14px;padding:0 12px;font-weight:900;color:#fff}
-.hero{
-width:calc(100% - 18px);max-width:1050px;margin:12px auto 8px;min-height:400px;border-radius:29px;
-overflow:visible;position:relative;color:#fff;padding:34px 18px 20px;
-background:linear-gradient(100deg,rgba(4,103,205,.93),rgba(16,151,230,.45)),url('/0016DE22-5EB2-4EBC-834A-F545DBDBC423.png') center/cover;
-box-shadow:0 12px 34px rgba(16,91,160,.18)
-}
-.hero h1{font-size:clamp(29px,5.4vw,50px);line-height:1.35;margin:10px 0 8px;font-weight:950;text-shadow:0 3px 8px rgba(0,0,0,.28)}
-.hero p{font-size:clamp(16px,3vw,22px);line-height:1.7;margin:0 0 14px;font-weight:800;text-shadow:0 2px 7px rgba(0,0,0,.25)}
-.hero-points{display:flex;flex-direction:column;align-items:flex-start;gap:4px;margin-bottom:26px}
-.point{background:transparent;border:0;padding:0;font-size:13px;font-weight:900}
-.search{
-position:absolute;left:3%;right:3%;bottom:-29px;z-index:5;max-width:none;
-background:#fff;border-radius:24px;padding:5px;box-shadow:0 10px 28px rgba(24,50,90,.18)
-}
-.search input{height:53px;border-radius:20px;font-size:13px}
-.wrap{max-width:1100px;margin:auto;padding:47px 9px 104px}
-.tabs{gap:8px;padding:7px 0 17px;overflow:auto;scrollbar-width:none}
-.tabs::-webkit-scrollbar{display:none}
-.tab{border:0;background:#fff;color:#1659a2;border-radius:18px;padding:11px 15px;white-space:nowrap;font-weight:950;box-shadow:0 6px 18px rgba(28,64,105,.07);font-size:12px}
-.tab.active{background:#2f70ca;color:#fff;box-shadow:0 8px 20px rgba(47,112,202,.25)}
-.section-title{margin:8px 2px 12px}
-.section-title h2{font-size:24px;font-weight:950}
-.featured{grid-template-columns:repeat(4,minmax(135px,1fr));gap:8px}
-.feature-card{border-radius:19px;box-shadow:0 7px 22px rgba(28,63,105,.08)}
-.feature-img{height:110px}
-.feature-flag{width:45px;height:45px;font-size:25px;bottom:-8px;right:8px;border:3px solid #fff}
-.feature-body{padding:15px 9px 9px}
-.feature-name{font-size:14px;font-weight:950}
-.feature-price{font-size:12px;margin:5px 0 7px}
-.feature-btn{background:#ef3340;border-radius:12px;padding:8px 5px;font-size:11px}
-.grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
-.country{border-radius:16px;box-shadow:0 5px 18px rgba(28,63,105,.06)}
-.country-head{min-height:0;height:0;padding-top:70%;background-size:cover}
-.country-head-inner{bottom:0;padding:7px}
-.country-name{font-size:14px}
-.country-meta,.badges{display:none}
-.flag{font-size:27px}
-.plans{padding:6px}
-.plan{display:grid;grid-template-columns:1fr;gap:3px;border:0;border-radius:10px;padding:5px;margin-bottom:4px;background:#f7fbff}
-.plan-data{font-size:12px;text-align:center}
-.plan-days{font-size:10px;text-align:center}
-.price{text-align:center;font-size:11px;background:#e8f7ff;border-radius:9px;padding:4px;color:#0862bd}
-.buy{font-size:10px;padding:6px;border-radius:9px}
-.bottom{padding:7px 7px calc(7px + env(safe-area-inset-bottom));justify-content:space-around;box-shadow:0 -4px 18px rgba(20,50,90,.08)}
-.nav{font-size:10px;padding:7px 7px}
-.nav.active{background:#edf6ff;border-radius:13px}
-@media(max-width:800px){
- .featured{grid-template-columns:repeat(4,145px);overflow-x:auto;padding-bottom:3px}
- .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-}
-@media(max-width:520px){
- .top{min-height:65px;padding:8px}
- .brand{font-size:20px}.wa{padding:0 10px;font-size:11px}.lang{height:40px;font-size:11px;padding:6px 7px}
- .hero{min-height:395px;padding:28px 15px 18px;border-radius:27px}
- .hero h1{font-size:30px}.hero p{font-size:15px}
- .featured{grid-template-columns:repeat(4,142px);margin-left:-9px;margin-right:-9px;padding-left:9px;padding-right:9px}
- .feature-img{height:103px}
- .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-}
-
+*{box-sizing:border-box}html,body{margin:0;background:#eef6fc;color:#071d50;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+button,input,select{font:inherit}button{cursor:pointer}
+:root{--blue:#0869e8;--dark:#06225c;--soft:#eef6ff;--green:#16a56a;--line:#dbe7f4;--red:#ef3340}
+.app{min-height:100vh;max-width:520px;margin:auto;background:#f8fbff;box-shadow:0 0 35px #0b376015}
+.screen{display:none;min-height:100vh;padding-bottom:88px}.screen.active{display:block}
+.header{height:70px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:9px 14px;border-bottom:1px solid #e8eef7;position:sticky;top:0;z-index:20}
+.header .back{border:0;background:none;color:var(--dark);font-size:28px;width:40px}.brand{display:flex;align-items:center;gap:7px;font-weight:1000;font-size:22px}.brand span{color:#126de2}.bell{border:0;background:none;font-size:22px}
+.langs{display:flex;gap:6px;padding:8px 14px;background:#fff}.lang{border:0;background:#eef3f9;border-radius:13px;padding:7px 12px;font-size:11px;font-weight:900;color:#26334d}.lang.active{background:var(--blue);color:#fff}
+.hero{margin:0 12px;border-radius:20px;overflow:hidden;position:relative;min-height:305px;background:linear-gradient(90deg,#0074dcdd,#0075d255),url('/0016DE22-5EB2-4EBC-834A-F545DBDBC423.png') center/cover}
+.hero .copy{padding:30px 18px;color:#fff;text-align:right}.hero h1{font-size:29px;line-height:1.3;margin:0 0 5px;font-weight:1000;text-shadow:0 2px 4px #001b45aa}.hero p{font-size:16px;line-height:1.65;margin:0 0 14px;font-weight:800}.checks{display:grid;gap:7px;font-size:12px;font-weight:900}.checks div{display:flex;align-items:center;gap:7px}.checks i{font-style:normal;border:2px solid #23ec88;border-radius:50%;width:23px;height:23px;display:grid;place-items:center;color:#23ec88}
+.search{margin:-26px 24px 13px;position:relative;z-index:4;background:#fff;border-radius:25px;padding:5px;box-shadow:0 8px 25px #123b6920}.search input{width:100%;height:49px;border:0;outline:0;border-radius:21px;padding:0 16px;text-align:right;color:#16233d;background:#fff}
+.features{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;padding:0 12px 15px}.feature{background:#fff;border-radius:15px;padding:9px 4px;text-align:center;box-shadow:0 3px 13px #123b6910;font-size:10px;font-weight:900}.feature b{display:block;font-size:20px;margin-bottom:4px}
+.section{padding:0 12px}.sectionHead{display:flex;align-items:center;justify-content:space-between;margin:5px 2px 9px}.sectionHead h2{font-size:19px;margin:0;font-weight:1000}.sectionHead a{font-size:10px;color:var(--blue);font-weight:900}
+.popular{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;overflow:hidden;margin-bottom:16px}.pop{background:#fff;border-radius:14px;box-shadow:0 3px 13px #123b6912;overflow:hidden;text-align:center}.pop img{width:100%;height:62px;object-fit:cover;display:block}.pop .flag{font-size:25px;margin-top:-14px}.pop b{display:block;font-size:11px;margin:2px 2px 8px}
+.countryList{display:grid;gap:7px}.countryRow{background:#fff;border-radius:14px;padding:7px 9px;display:flex;align-items:center;gap:8px;box-shadow:0 3px 12px #123b6910;border:1px solid #edf3fa}.countryRow .flag{font-size:28px;width:38px;text-align:center}.countryRow .ctext{flex:1}.countryRow strong{display:block;font-size:12px}.countryRow small{display:block;color:#68758b;font-size:10px}.countryRow em{font-style:normal;font-weight:950;font-size:11px;color:#0a64c9}.arrow{font-size:20px;color:#7d8ba1}
+.bottom{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(520px,100%);height:78px;background:#fff;border-top:1px solid #e1eaf4;display:flex;justify-content:space-around;align-items:center;z-index:30;padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -6px 20px #123b6910}.nav{border:0;background:none;color:#748198;font-size:10px;font-weight:900;display:flex;flex-direction:column;align-items:center;gap:3px}.nav b{font-size:21px}.nav.active{color:var(--blue)}
+.listSearch{margin:10px 12px;background:#edf4fb;border-radius:22px;padding:4px 12px;display:flex;align-items:center;gap:8px}.listSearch input{width:100%;border:0;background:none;outline:0;height:40px;text-align:right}.chips{display:flex;gap:6px;overflow:auto;padding:2px 12px 11px}.chip{white-space:nowrap;border:0;background:#edf2f8;color:#18315c;border-radius:15px;padding:7px 12px;font-size:10px;font-weight:900}.chip.active{background:var(--blue);color:#fff}
+.detailHero{height:235px;background-size:cover;background-position:center;position:relative;color:#fff}.detailHero:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 30%,#00184dcc)}.detailBack{position:absolute;z-index:2;top:12px;right:12px;border:0;background:#ffffff33;color:#fff;width:42px;height:42px;border-radius:50%;font-size:23px}.detailTitle{position:absolute;z-index:2;bottom:16px;right:18px;left:18px;display:flex;align-items:center;gap:10px}.detailTitle .flag{font-size:48px}.detailTitle h1{font-size:24px;margin:0}.detailTitle small{font-size:12px}.planTabs{display:flex;gap:7px;padding:8px 12px}.planTab{border:0;background:#f0f4f8;border-radius:15px;padding:8px 13px;font-size:10px;font-weight:900}.planTab.active{background:var(--blue);color:#fff}.plans{padding:0 12px}.plan{background:#fff;border:1px solid #e0e9f3;border-radius:14px;padding:9px;display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:7px;margin-bottom:7px;box-shadow:0 3px 11px #123b690d}.plan.unlimited{background:#fff4c6;border-color:#efcf51}.plan .data{font-size:15px;font-weight:1000}.plan .days{font-size:10px;color:#697891;margin-top:2px}.plan .price{font-size:13px;font-weight:1000}.primary{border:0;background:var(--blue);color:#fff;border-radius:11px;padding:7px 10px;font-size:10px;font-weight:1000}
+.infoCard{background:#fff;border-radius:17px;margin:10px 12px;padding:13px;box-shadow:0 4px 15px #123b6910}.infoCard h3{margin:0 0 9px;font-size:15px}.benefits{display:grid;gap:7px;font-size:11px;font-weight:800}.benefits div:before{content:"✓";display:inline-grid;place-items:center;width:19px;height:19px;background:#15a267;color:#fff;border-radius:50%;margin-left:6px}
+.buyBox{position:sticky;bottom:80px;background:#fff;padding:9px 12px;border-top:1px solid #e6edf5;z-index:10}.bigBtn{width:100%;border:0;background:var(--blue);color:#fff;border-radius:14px;padding:13px;font-size:14px;font-weight:1000}
+.formCard{margin:12px;background:#fff;border-radius:20px;padding:14px;box-shadow:0 4px 17px #123b6910}.formCard label{display:block;font-size:11px;font-weight:900;margin:10px 0 5px}.field{width:100%;height:45px;border:1px solid #dce6f1;border-radius:12px;padding:0 12px;outline:0;background:#fff}.payOption{display:flex;align-items:center;gap:10px;border:1px solid #dce6f1;border-radius:13px;padding:10px;margin:7px 0}.payOption.active{border:2px solid var(--blue);background:#f4f9ff}.payIcon{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;color:#fff;font-weight:1000}.fib{background:#14884c}.fast{background:#5422ba}.sq{background:#e51e2a}.quick{background:#155ce8}.radio{margin-right:auto}
+.orderCard{margin:14px 12px;background:#fff;border-radius:18px;padding:14px;box-shadow:0 4px 17px #123b6910}.timeline{display:grid;gap:10px}.step{display:flex;gap:9px;align-items:flex-start;font-size:11px;font-weight:800}.dot{width:18px;height:18px;border-radius:50%;background:#d7e0eb;flex:none}.step.done .dot{background:#15a267}.step.current .dot{background:var(--blue)}
+.qrBox{text-align:center;padding:15px}.qrBox img{width:220px;height:220px;border-radius:8px}.code{font-weight:1000;color:#0b245b;font-size:14px}.profile{margin:12px;background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 4px 17px #123b6910}.profileTop{padding:18px;text-align:center;background:linear-gradient(135deg,#eaf4ff,#fff)}.avatar{width:62px;height:62px;border-radius:50%;margin:auto;background:#1674df;color:#fff;display:grid;place-items:center;font-size:28px}.menuItem{display:flex;align-items:center;justify-content:space-between;padding:14px;border-top:1px solid #edf1f6;font-size:12px;font-weight:850}.menuItem span{color:#7c899d}
+@media(min-width:521px){body{background:#dfeaf4}}
 </style>
 </head>
-
 <body>
+<div class="app">
 
-<header class="top">
-<div class="brand">🌍 <b>First</b>ESIM</div>
-<div class="top-actions">
-<select class="lang" id="lang" onchange="setLang(this.value)">
-<option value="ku">کوردی</option><option value="ar">العربية</option><option value="en">English</option>
-</select>
-<a class="wa" href="https://wa.me/9647506021212">💬 WhatsApp</a>
-</div>
-</header>
-
-<section class="hero">
-<h1 id="heroTitle">🌍 eSIM Turkey و پلانەکانی eSIM بۆ گەشت</h1>
-<p id="heroSub">خێراترین ئینتەرنێت گەشتیاری بۆ هەموو جیهان</p>
-<div class="hero-points">
-<span class="point">✓ نەگۆڕی کڕیارەکان</span>
-<span class="point">✓ نرخی ڕوون</span>
-<span class="point">✓ جیهانی</span>
-</div>
-<div class="search">
-<input id="search" type="text" placeholder="گەڕان بە ناوی وڵات، GB، Unlimited، ڕۆژ، نرخ..." oninput="searchPlans()">
-</div>
+<section id="home" class="screen active">
+<header class="header"><button class="menu" onclick="showScreen('profile')">☰</button><div class="brand">🌐 <span>First</span>ESIM</div><button class="bell">♧</button></header>
+<div class="langs"><button class="lang active" onclick="setLang('ku')">KUR</button><button class="lang" onclick="setLang('en')">English</button><button class="lang" onclick="setLang('ar')">العربي</button></div>
+<div class="hero"><div class="copy"><h1 id="homeTitle">گەشتی بێ سنوور</h1><p id="homeSub">eSIM بۆ هەموو جیهان<br>خێرا، ئاسان و باوەڕپێکراو</p><div class="checks"><div><i>✓</i><span id="c1">خێرا و باوەڕپێکراو</span></div><div><i>✓</i><span id="c2">نرخی باش</span></div><div><i>✓</i><span id="c3">جیهانی</span></div></div></div></div>
+<div class="search"><input id="homeSearch" placeholder="گەڕان بە ناوی وڵات..." oninput="homeSearch()"></div>
+<div class="features"><div class="feature"><b>⚡</b><span id="ft1">خێرا زۆر</span></div><div class="feature"><b>🌐</b><span id="ft2">200+ وڵات</span></div><div class="feature"><b>🛡️</b><span id="ft3">باوەڕپێکراو</span></div><div class="feature"><b>🎧</b><span id="ft4">پشتیوانی 24 کاتژمێر</span></div></div>
+<div class="section"><div class="sectionHead"><h2 id="popTitle">🔥 وڵاتە بناوبانگەکان</h2><a onclick="showScreen('countries')">هەموو وڵاتەکان →</a></div><div id="popular" class="popular"></div></div>
 </section>
 
-<div class="wrap">
-<div class="tabs">
-<button id="fAll" class="tab active" onclick="filterRegion('all',this)">▦ هەموو</button>
-<button id="fEurope" class="tab" onclick="filterRegion('europe',this)">🌍 ئەوروپا</button>
-<button id="fAsia" class="tab" onclick="filterRegion('asia',this)">🌏 ئاسیا</button>
-<button id="fMiddle" class="tab" onclick="filterRegion('middle',this)">🌙 ڕۆژهەڵاتی ناوەڕاست</button>
-<button id="fAmerica" class="tab" onclick="filterRegion('america',this)">🌎 ئەمەریکا</button>
-<button id="fGlobal" class="tab" onclick="filterRegion('global',this)">🌐 جیهان</button>
-</div>
-<div class="section-title"><h2>🔥 <span id="featuredTitle">وڵاتە پڕفرۆشەکان</span></h2></div>
-<div id="featured" class="featured"></div>
-<div class="section-title"><h2>⭐ <span id="allTitle">هەموو وڵاتەکان</span></h2><span id="count"></span></div>
-<div class="container" id="countries"></div>
-<div class="empty" id="empty">هیچ پلانێک نەدۆزرایەوە 😕</div>
-</div>
+<section id="countries" class="screen">
+<header class="header"><button class="back" onclick="showScreen('home')">‹</button><div class="brand" id="countriesTitle">وڵاتەکان</div><button class="bell">⌕</button></header>
+<div class="listSearch">⌕<input id="countrySearch" placeholder="گەڕان..." oninput="countrySearch()"></div>
+<div class="chips"><button class="chip active" onclick="region('all',this)">هەموو</button><button class="chip" onclick="region('europe',this)">ئەوروپا</button><button class="chip" onclick="region('asia',this)">ئاسیا</button><button class="chip" onclick="region('middle',this)">ڕۆژهەڵات</button><button class="chip" onclick="region('global',this)">جیهان</button></div>
+<div class="section"><div id="countryList" class="countryList"></div></div>
+</section>
+
+<section id="plans" class="screen">
+<div id="detail"></div>
+</section>
+
+<section id="checkout" class="screen">
+<header class="header"><button class="back" onclick="showScreen('plans')">‹</button><div class="brand" id="checkoutTitle">ژمارەی پلان</div><span></span></header>
+<div id="checkoutBody"></div>
+</section>
+
+<section id="payment" class="screen">
+<header class="header"><button class="back" onclick="showScreen('checkout')">‹</button><div class="brand">شیوەی پارەدان</div><span></span></header>
+<div class="formCard"><div style="background:#fff4c6;padding:10px;border-radius:12px;font-size:11px;font-weight:900">ⓘ تکایە شێوازی پارەدانت هەڵبژێرە</div>
+<div class="payOption active" onclick="selectPay(this,'FIB')"><div class="payIcon fib">FIB</div><div><b>FIB</b><small style="display:block">بانکی فیدرالی عێراق</small></div><span class="radio">◯</span></div>
+<div class="payOption" onclick="selectPay(this,'FastPay')"><div class="payIcon fast">Fast</div><div><b>FastPay</b><small style="display:block">فاست پی</small></div><span class="radio">◯</span></div>
+<div class="payOption" onclick="selectPay(this,'Super Qi')"><div class="payIcon sq">Q</div><div><b>Super QI</b><small style="display:block">سوپەر کیوای</small></div><span class="radio">◯</span></div>
+<div class="payOption" onclick="selectPay(this,'QuickPay')"><div class="payIcon quick">↗</div><div><b>QuickPay</b><small style="display:block">کویک پی</small></div><span class="radio">🔵</span></div>
+<div class="infoCard" style="margin:12px 0 0"><h3>زانیاری پارەدان</h3><div style="font-size:11px;line-height:1.8">FIB: 7506021212<br>FastPay: 7506021212<br>Super QI: 7111649351<br>QuickPay: 7508107121</div></div>
+<button class="bigBtn" onclick="finishOrder()">بەردەوام بوون بۆ داواکاری</button></div>
+</section>
+
+<section id="orders" class="screen">
+<header class="header"><button class="back" onclick="showScreen('home')">‹</button><div class="brand">سفارشەکانم</div><span></span></header>
+<div id="orderList" class="orderCard"></div>
+</section>
+
+<section id="qr" class="screen">
+<header class="header"><button class="back" onclick="showScreen('orders')">‹</button><div class="brand">ئێسیم ئامادەیە</div><span></span></header>
+<div class="orderCard qrBox"><div style="font-size:40px">🟢</div><h3>eSIM ئامادەیە</h3><p style="font-size:11px">کۆدی QR ـی ئێسیمەکەت لێرەیە</p><img id="qrImg" alt="QR Code"><div class="code" id="qrCode">#FE123456</div><div style="font-size:11px;margin:8px">دەتوانیت QR Code ـەکە بەکاربهێنیت</div><button class="bigBtn" onclick="downloadQR()">⬇ گەڕاندنەوەی QR Code</button></div>
+</section>
+
+<section id="profile" class="screen">
+<header class="header"><button class="back" onclick="showScreen('home')">‹</button><div class="brand">پڕۆفایل</div><span></span></header>
+<div class="profile"><div class="profileTop"><div class="avatar">👤</div><h3 id="profileName">کڕیار</h3><small id="profileEmail">customer@firstesim.net</small></div>
+<div class="menuItem" onclick="showScreen('countries')">زمان / Language <span>›</span></div><div class="menuItem" onclick="showScreen('orders')">ژمارەی داواکارییەکان <span>›</span></div><div class="menuItem" onclick="showScreen('orders')">سفارشەکانم <span>›</span></div><div class="menuItem" onclick="location.href='https://wa.me/9647506021212'">WhatsApp پشتیوانی <span>›</span></div><div class="menuItem">FAQ <span>›</span></div><div class="menuItem">دەربارەمان <span>›</span></div></div>
+</section>
 
 <nav class="bottom">
-<button class="nav active" onclick="scrollTo({top:0,behavior:'smooth'})">⌂ سەرەکی</button>
-<button class="nav" onclick="document.getElementById('countries').scrollIntoView({behavior:'smooth'})">◉ وڵاتەکان</button>
-<button class="nav" onclick="document.getElementById('countries').scrollIntoView({behavior:'smooth'})">🛒 پلانەکان</button>
-<button class="nav" onclick="location.href='https://wa.me/9647506021212'">◌ پەیوەندی</button>
-<button class="nav" onclick="scrollTo({top:document.body.scrollHeight,behavior:'smooth'})">••• زیاتر</button>
+<button class="nav active" data-screen="home" onclick="showScreen('home')"><b>⌂</b>سەرەکی</button>
+<button class="nav" data-screen="countries" onclick="showScreen('countries')"><b>◎</b>وڵاتەکان</button>
+<button class="nav" data-screen="orders" onclick="showScreen('orders')"><b>▣</b>سفارشەکانم</button>
+<button class="nav" data-screen="profile" onclick="showScreen('profile')"><b>♙</b>پڕۆفایل</button>
 </nav>
-<div class="empty" id="empty">هیچ پلانێک نەدۆزرایەوە 😕</div>
+</div>
 
 <script>
-
-const WHATSAPP="9647506021212";
-
 const countries=[
 
 {
@@ -1720,245 +1352,30 @@ plans:[
 }
 
 ];
+const PAY_NUMBERS={FIB:"7506021212",FastPay:"7506021212","Super Qi":"7111649351",QuickPay:"7508107121"};
+const WHATSAPP="9647506021212";
+let LANG=localStorage.getItem("firstesim_lang")||"ku", currentCountry=0,currentPlan=0,currentPay="QuickPay",currentRegion="all";
 
-function render(list=countries){
-window.__currentList=list;
-const box=document.getElementById("countries");
-box.innerHTML=list.map(c=>`
-<section class="country" id="c-${countries.indexOf(c)}">
-<div class="country-head" style="background-image:url('${c.image||""}')">
-<div class="country-head-inner">
-<div><div class="country-name">${APP_LANG==="en"?c.en:APP_LANG==="ar"?countryArabic(c.en):c.name}</div></div>
-<div class="flag">${c.flag||"🌍"}</div>
-</div></div>
-<div class="plans">
-${c.plans.map((p,pi)=>{
- const un=String(p[0]).trim().toLowerCase()==="unlimited";
- return `<div class="plan ${un?"unlimited":""}">
- <div><div class="plan-data">${APP_LANG==="ar"&&un?"غير محدود":p[0]}</div><div class="plan-days">${APP_LANG==="en"?String(p[1]).replace(/ڕۆژ/g,"days"):APP_LANG==="ar"?String(p[1]).replace(/ڕۆژ/g,"يوم"):p[1]}</div></div>
- <div class="price">${p[2]}</div>
- <button class="buy" onclick="buy(${countries.indexOf(c)},${pi})">${APP_LANG==="en"?"View plans":APP_LANG==="ar"?"عرض الخطط":"بینینی پلانەکان"}</button>
- </div>`;
-}).join("")}
-</div></section
-const I18N={
- ku:{heroTitle:"🌍 eSIM Turkey و پلانەکانی eSIM بۆ گەشت",heroSub:"خێراترین ئینتەرنێت گەشتیاری بۆ هەموو جیهان",featured:"وڵاتە پڕفرۆشەکان",all:"هەموو وڵاتەکان",allTab:"▦ هەموو"},
- ar:{heroTitle:"🌍 شرائح eSIM لتركيا وخطط eSIM للسفر",heroSub:"إنترنت سفر سريع لجميع أنحاء العالم",featured:"الدول الأكثر طلباً",all:"جميع الدول",allTab:"▦ الكل"},
- en:{heroTitle:"🌍 Turkey eSIM & Travel eSIM Plans",heroSub:"Fast travel internet plans for the whole world",featured:"Popular destinations",all:"All countries",allTab:"▦ All"}
-};
-let APP_LANG=localStorage.getItem("firstesim_lang")||"ku";
-function countryArabic(en){
- try{
-  const m={"USA":"US","UAE":"AE","Europe + UK":"GB","Global":""};
-  if(en==="Global")return"العالم";
-  if(m[en])return new Intl.DisplayNames(["ar"],{type:"region"}).of(m[en])||en;
-  return en;
- }catch(e){return en}
-}
-function setLang(v){
- APP_LANG=["ku","ar","en"].includes(v)?v:"ku";
- localStorage.setItem("firstesim_lang",APP_LANG);
- document.documentElement.lang=APP_LANG;
- document.documentElement.dir=APP_LANG==="en"?"ltr":"rtl";
- document.getElementById("lang").value=APP_LANG;
- document.getElementById("heroTitle").textContent=I18N[APP_LANG].heroTitle;
- document.getElementById("heroSub").textContent=I18N[APP_LANG].heroSub;
- document.getElementById("featuredTitle").textContent=I18N[APP_LANG].featured;
- document.getElementById("allTitle").textContent=I18N[APP_LANG].all;
- document.getElementById("fAll").textContent=I18N[APP_LANG].allTab;
- renderFeatured();
- render(window.__currentList||countries);
-}
-function renderFeatured(){
- const names=["Turkey","Saudi Arabia","UAE","Europe + UK"];
- const list=names.map(n=>countries.find(c=>c.en===n)).filter(Boolean);
- document.getElementById("featured").innerHTML=list.map(c=>`
- <article class="feature-card">
- <div class="feature-img" style="background-image:url('${c.image||""}')"><div class="feature-flag">${c.flag||"🌍"}</div></div>
- <div class="feature-body"><div class="feature-name">${APP_LANG==="en"?c.en:APP_LANG==="ar"?countryArabic(c.en):c.name}</div>
- <div class="feature-price">${c.plans?.[0]?.[2]||""}</div>
- <button class="feature-btn" onclick="document.getElementById('c-${countries.indexOf(c)}')?.scrollIntoView({behavior:'smooth'})">${APP_LANG==="en"?"View plans":APP_LANG==="ar"?"عرض الخطط":"بینینی پلانەکان"}</button>
- </div></article>`).join("");
-}
-renderFeatured();
-setLang(APP_LANG);
->`).join("");
-document.getElementById("empty").style.display=list.length?"none":"block";
-document.getElementById("count").textContent=list.length+" "+(APP_LANG==="en"?"countries":APP_LANG==="ar"?"دولة":"وڵات");
-}
-
-async function buy(ci, pi){
-
-  const c = countries[ci];
-  const p = c.plans[pi];
-
-  const customerName = prompt("ناوی کڕیار بنووسە:");
-  if(!customerName) return;
-
-  const customerPhone = prompt("ژمارەی مۆبایل بنووسە:");
-  if(!customerPhone) return;
-
-  const payment = prompt(
-    "شێوازی پارەدان بنووسە:\nFIB / FastPay / Super Qi / QuickPay"
-  );
-
-  if(!payment) return;
-
-  const orderData = new FormData();
-
-  orderData.append("customerName", customerName);
-  orderData.append("customerPhone", customerPhone);
-
-  orderData.append("country", c.name);
-  orderData.append("plan", p[0]);
-  orderData.append("price", p[2]);
-
-  orderData.append("payment", payment);
-
-  try{
-
-    const response = await fetch(
-      "https://firstesim-api.onrender.com/api/orders",
-      {
-        method:"POST",
-        body:orderData
-      }
-    );
-
-    const data = await response.json();
-
-    if(!response.ok){
-      alert(
-        data.error || "هەڵەیەک ڕوویدا."
-      );
-      return;
-    }
-
-    const order = data.order;
-
-    const message = `سڵاو 👋
-
-داواکاری eSIM ـم کرد:
-
-🌍 وڵات: ${c.name}
-📦 پلان: ${p[0]}
-📅 ماوە: ${p[1]}
-💰 نرخ: ${p[2]}
-
-👤 ناو: ${customerName}
-📱 ژمارە: ${customerPhone}
-💳 پارەدان: ${payment}
-
-🆔 Order ID: ${order.id}
-
-تکایە داواکارییەکەم پشکنین بکەن.`;
-
-    window.location.href =
-      "https://wa.me/" +
-      WHATSAPP +
-      "?text=" +
-      encodeURIComponent(message);
-
-  }catch(error){
-
-    console.error(error);
-
-    alert(
-      "پەیوەندی بە سیستەمی Order نەکرا. تکایە دووبارە هەوڵ بدەرەوە."
-    );
-  }
-}
-
-function filterRegion(region,btn){
-
-document
-.querySelectorAll(".filter")
-.forEach(x=>x.classList.remove("active"));
-
-btn.classList.add("active");
-
-document.getElementById("search").value="";
-
-render(
-region==="all"
-?countries
-:countries.filter(c=>c.region===region)
-);
-
-}
-
-function searchPlans(){
-
-const input=document.getElementById("search");
-const value=String(input?.value||"").trim();
-
-if(!value){
-render(countries);
-return;
-}
-
-const normalize=s=>String(s||"")
-.toLowerCase()
-.normalize("NFKC")
-.replace(/[يى]/g,"ی")
-.replace(/[كک]/g,"ک")
-.replace(/[ةۀ]/g,"ە")
-.replace(/[ؤ]/g,"ۆ")
-.replace(/[إأآ]/g,"ا")
-.replace(/[ئ]/g,"ی")
-.replace(/[ـ]/g,"")
-.replace(/[.,،؛;:!?؟()[\]{}_-]+/g," ")
-.replace(/\s+/g," ")
-.trim();
-
-const q=normalize(value);
-const qc=q.replace(/\s/g,"");
-
-const result=countries.filter(c=>{
-
-const planText=(Array.isArray(c.plans)?c.plans:[])
-.map(p=>Array.isArray(p)?p.join(" "):String(p||""))
-.join(" ");
-
-const text=normalize([
-c.name,
-c.en,
-c.place,
-c.region,
-c.flag,
-c.scene,
-planText
-].join(" "));
-
-const compact=text.replace(/\s/g,"");
-
-return text.includes(q)||compact.includes(qc);
-
-});
-
-render(result);
-
-}
-
-render();
-// =========================
-// FirstESIM PWA
-// =========================
-
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker
-      .register("/sw.js")
-      .then(() => {
-        console.log("FirstESIM PWA فعالە ✅");
-      })
-      .catch((error) => {
-        console.log("PWA Service Worker Error:", error);
-      });
-  });
-}
-   
+function cname(c){if(LANG==="ku")return c.name;if(LANG==="en")return c.en;const m={"Turkey":"Turkey","Germany":"Germany","USA":"United States","Europe + UK":"Europe + UK","Global":"Global","UAE":"UAE","Saudi Arabia":"Saudi Arabia","Azerbaijan":"Azerbaijan","China":"China","Italy":"Italy"};return m[c.en]||c.en}
+function setLang(v){LANG=v;localStorage.setItem("firstesim_lang",v);document.querySelectorAll(".lang").forEach(x=>x.classList.toggle("active",x.textContent.toLowerCase().includes(v==="ku"?"kur":v==="en"?"english":"العربي")));document.documentElement.lang=v;document.documentElement.dir=v==="en"?"ltr":"rtl";
+const T={ku:["گەشتی بێ سنوور","eSIM بۆ هەموو جیهان","خێرا و باوەڕپێکراو","نرخی باش","جیهانی","خێرا زۆر","200+ وڵات","باوەڕپێکراو","پشتیوانی 24 کاتژمێر","وڵاتە بناوبانگەکان"],en:["Unlimited Travel","eSIM for the whole world","Fast & reliable","Great prices","Global","Super fast","200+ countries","Trusted","24/7 support","Popular destinations"],ar:["سفر بلا حدود","eSIM لجميع أنحاء العالم","سريع وموثوق","أسعار مناسبة","تغطية عالمية","سريع جداً","أكثر من 200 دولة","موثوق","دعم 24/7","الوجهات الشائعة"]}[v];
+["homeTitle","homeSub","c1","c2","c3","ft1","ft2","ft3","ft4","popTitle"].forEach((id,i)=>document.getElementById(id).textContent=T[i]);renderPopular();renderCountries(filtered())}
+function showScreen(id){document.querySelectorAll(".screen").forEach(s=>s.classList.toggle("active",s.id===id));document.querySelectorAll(".nav").forEach(n=>n.classList.toggle("active",n.dataset.screen===id));window.scrollTo(0,0)}
+function renderPopular(){const names=["Turkey","Saudi Arabia","UAE","Europe + UK"];document.getElementById("popular").innerHTML=names.map(n=>{const c=countries.find(x=>x.en===n);if(!c)return"";return `<div class="pop" onclick="openCountry(${countries.indexOf(c)})"><img src="${c.image||""}"><div class="flag">${c.flag||"🌍"}</div><b>${cname(c)}</b></div>`}).join("")}
+function filtered(){let arr=currentRegion==="all"?countries:countries.filter(c=>c.region===currentRegion);const q=(document.getElementById("countrySearch")?.value||document.getElementById("homeSearch")?.value||"").toLowerCase().trim();if(q)arr=arr.filter(c=>(c.name+" "+c.en+" "+c.place+" "+c.region+" "+JSON.stringify(c.plans)).toLowerCase().includes(q));return arr}
+function renderCountries(arr){document.getElementById("countryList").innerHTML=arr.map(c=>`<div class="countryRow" onclick="openCountry(${countries.indexOf(c)})"><div class="flag">${c.flag||"🌍"}</div><div class="ctext"><strong>${cname(c)}</strong><small>${c.en}</small></div><em>${c.plans?.[0]?.[2]||""}</em><span class="arrow">›</span></div>`).join("")}
+function region(r,btn){currentRegion=r;document.querySelectorAll(".chip").forEach(x=>x.classList.remove("active"));btn.classList.add("active");renderCountries(filtered())}
+function countrySearch(){renderCountries(filtered())}
+function homeSearch(){showScreen("countries");document.getElementById("countrySearch").value=document.getElementById("homeSearch").value;renderCountries(filtered())}
+function openCountry(i){currentCountry=i;const c=countries[i];document.getElementById("detail").innerHTML=`<div class="detailHero" style="background-image:url('${c.image||""}')"><button class="detailBack" onclick="showScreen('countries')">‹</button><div class="detailTitle"><div class="flag">${c.flag||"🌍"}</div><div><h1>${cname(c)}</h1><small>${c.en}</small></div></div></div><div class="planTabs"><button class="planTab active">هەموو پلانەکان</button><button class="planTab">داتا</button><button class="planTab">بێ سنوور</button></div><div class="plans">${c.plans.map((p,i)=>{const un=p[0].toLowerCase()==="unlimited";return `<div class="plan ${un?"unlimited":""}"><div><div class="data">${p[0]}</div><div class="days">${p[1]}</div></div><div class="price">${p[2]}</div><button class="primary" onclick="openCheckout(${i})">کڕین</button></div>`}).join("")}</div><div class="infoCard"><h3>سوودەکان</h3><div class="benefits"><div>خێراترین ئینتەرنێت</div><div>پەیوەندی لە ڕۆماڵ و پاوەڕکڕاو</div><div>ئاسان بۆ گەشت</div><div>بەکارهێنانی فەرمانەی ناسینەی ID نییە</div></div></div>`;showScreen("plans")}
+function openCheckout(pi){currentPlan=pi;const c=countries[currentCountry],p=c.plans[pi];document.getElementById("checkoutBody").innerHTML=`<div class="formCard"><div style="background:#edf6ff;border-radius:13px;padding:12px"><b>${c.flag||"🌍"} ${cname(c)}</b><div style="font-size:11px;margin-top:5px">${p[0]} · ${p[1]} · <b>${p[2]}</b></div></div><label>ناوی کڕیار</label><input id="customerName" class="field" placeholder="ناوی تەواو"><label>ژمارەی مۆبایل</label><input id="customerPhone" class="field" inputmode="tel" placeholder="07xx xxx xxxx"><label>ژمارەی eSIM</label><div style="background:#f5f8fc;padding:12px;border-radius:12px;font-size:11px">پلان: ${p[0]}<br>ماوە: ${p[1]}<br>نرخ: ${p[2]}</div><button class="bigBtn" style="margin-top:15px" onclick="showScreen('payment')">بەردەوام بوون بۆ پارەدان</button></div>`;showScreen("checkout")}
+function selectPay(el,p){document.querySelectorAll(".payOption").forEach(x=>x.classList.remove("active"));el.classList.add("active");currentPay=p}
+async function finishOrder(){const name=document.getElementById("customerName")?.value.trim(),phone=document.getElementById("customerPhone")?.value.trim();if(!name||!phone){alert("تکایە ناو و ژمارەکەت بنووسە");showScreen("checkout");return}const c=countries[currentCountry],p=c.plans[currentPlan],orderId="#FE"+Math.floor(100000+Math.random()*900000);localStorage.setItem("firstesim_last_order",JSON.stringify({id:orderId,name,phone,country:c.en,plan:p[0],days:p[1],price:p[2],payment:currentPay,date:new Date().toLocaleString()}));renderOrder(orderId,name,phone,c,p);const msg=`سڵاو 👋%0A%0Aداواکاری eSIM%0A🌍 ${c.en}%0A📦 ${p[0]} - ${p[1]}%0A💰 ${p[2]}%0A👤 ${name}%0A📱 ${phone}%0A💳 ${currentPay}%0A🆔 ${orderId}`;window.open("https://wa.me/"+WHATSAPP+"?text="+msg,"_blank");showScreen("orders")}
+function renderOrder(id,name,phone,c,p){document.getElementById("orderList").innerHTML=`<div style="display:flex;justify-content:space-between"><b>${id}</b><small>${new Date().toLocaleString()}</small></div><hr><div style="font-weight:950">${c.flag} ${cname(c)}</div><div style="margin:7px 0;font-size:11px">${p[0]} · ${p[1]}</div><b>${p[2]}</b><div class="timeline" style="margin-top:15px"><div class="step done"><i class="dot"></i>سفارش دروست کرا</div><div class="step done"><i class="dot"></i>سکرین شۆت ناردرا</div><div class="step current"><i class="dot"></i>چاوەڕوانی پشتیوانە</div><div class="step"><i class="dot"></i>ئێسیم ئامادە دەکرێت</div></div><button class="bigBtn" style="margin-top:15px" onclick="showQR('${id}')">پیشاندانی QR Code</button>`}
+function showQR(id){document.getElementById("qrCode").textContent=id;document.getElementById("qrImg").src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data="+encodeURIComponent(id+" FirstESIM");showScreen("qr")}
+function downloadQR(){alert("QR Code ـەکە ئامادەیە بۆ بەکارهێنان")}
+const last=localStorage.getItem("firstesim_last_order");if(last){const o=JSON.parse(last),c=countries.find(x=>x.en===o.country)||countries[0],p=(c.plans||[]).find(x=>x[0]===o.plan)||c.plans[0];renderOrder(o.id,o.name,o.phone,c,p)}
+renderPopular();renderCountries(countries);setLang(LANG);
 </script>
-
 </body>
 </html>
