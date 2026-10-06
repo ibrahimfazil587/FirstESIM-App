@@ -1,11 +1,15 @@
 const API_BASE = "https://firstesim-api.onrender.com";
 
-const plans={
+const plans = {
   "تورکیا": [
-    ["10 GB","30 ڕۆژ","IQD 8,500"],["20 GB","30 ڕۆژ","IQD 11,500"],
-    ["50 GB","30 ڕۆژ","IQD 23,000"],["Unlimited","3 ڕۆژ","IQD 8,000"],
-    ["Unlimited","5 ڕۆژ","IQD 10,000"],["Unlimited","7 ڕۆژ","IQD 11,500"],
-    ["Unlimited","10 ڕۆژ","IQD 18,000"],["Unlimited","15 ڕۆژ","IQD 23,000"],
+    ["10 GB","30 ڕۆژ","IQD 8,500"],
+    ["20 GB","30 ڕۆژ","IQD 11,500"],
+    ["50 GB","30 ڕۆژ","IQD 23,000"],
+    ["Unlimited","3 ڕۆژ","IQD 8,000"],
+    ["Unlimited","5 ڕۆژ","IQD 10,000"],
+    ["Unlimited","7 ڕۆژ","IQD 11,500"],
+    ["Unlimited","10 ڕۆژ","IQD 18,000"],
+    ["Unlimited","15 ڕۆژ","IQD 23,000"],
     ["Unlimited","30 ڕۆژ","IQD 28,000"]
   ],
 
@@ -53,7 +57,7 @@ const plans={
   ]
 };
 
-const flags={
+const flags = {
   "تورکیا":"🇹🇷",
   "ئەڵمانیا":"🇩🇪",
   "ئەمریکا":"🇺🇸",
@@ -64,250 +68,553 @@ const flags={
   "سوئیسرا":"🇨🇭"
 };
 
-
-/* =========================
-   ژمارەکانی پارەدان
-========================= */
-
-const paymentNumbers={
+const paymentNumbers = {
   "FIB":"7506021212",
   "FastPay":"7506021212",
   "Super Qi":"7111649351",
   "QuickPay":"7508107121"
 };
 
+let lang = 0;
+let selectedCountry = "";
+let selectedPlan = null;
+let selectedPlanIndex = -1;
+let selectedPay = "";
+let order = null;
 
-let lang=0,
-    selectedCountry="",
-    selectedPlan=null,
-    selectedPay="",
-    order=null;
+function app(content, active = "home") {
+  document.getElementById("app").innerHTML =
+    `<div class="page">${content}</div>${bottomNav(active)}`;
 
-
-/* =========================
-   APP
-========================= */
-
-function app(content){
-  document.getElementById("app").innerHTML=
-    `<div class="page">${content}</div>`;
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 }
 
+function bottomNav(active) {
+  return `
+    <nav class="bottom-nav">
 
-/* =========================
-   HOME
-========================= */
+      <button
+        class="${active==="home"?"active":""}"
+        onclick="showHome()"
+      >
+        <div>⌂</div>
+        <span>سەرەکی</span>
+      </button>
 
-function showHome(){
+      <button
+        class="${active==="countries"?"active":""}"
+        onclick="showCountries()"
+      >
+        <div>◎</div>
+        <span>وڵاتەکان</span>
+      </button>
+
+      <button
+        class="${active==="orders"?"active":""}"
+        onclick="showOrders()"
+      >
+        <div>▣</div>
+        <span>سەفارشەکان</span>
+      </button>
+
+      <button
+        class="${active==="profile"?"active":""}"
+        onclick="showProfile()"
+      >
+        <div>♙</div>
+        <span>پرۆفایل</span>
+      </button>
+
+    </nav>
+  `;
+}
+
+function showHome() {
+
+  const popular = [
+    "تورکیا",
+    "ئەڵمانیا",
+    "ئەمریکا",
+    "ئیمارات"
+  ];
 
   app(`
-    <section class="hero">
-      <h1>گەشتی بێ سنوور 🌍</h1>
-      <p>eSIM ـی خێرا و ئاسان بۆ هەموو جیهان</p>
+
+    <section class="hero hero-home">
+
+      <div class="hero-badge">
+        🌍 FirstESIM
+      </div>
+
+      <h1>
+        گەشتی بێ سنوور
+      </h1>
+
+      <p>
+        eSIM ـی خێرا، ئاسان و باوەڕپێکراو بۆ هەموو جیهان
+      </p>
 
       <input
-        class="search"
-        placeholder="گەڕان بە ناوی وڵات..."
+        class="search hero-search"
+        placeholder="🔎 گەڕان بە ناوی وڵات..."
         oninput="filterCountries(this.value)"
       >
+
     </section>
 
-    <div class="section-title">
-      <h3>وڵاتە بەناوبانگەکان</h3>
+
+    <div class="feature-row">
+
+      <div class="feature">
+        <b>⚡</b>
+        <strong>خێرا</strong>
+        <span>چالاککردنی ئاسان</span>
+      </div>
+
+      <div class="feature">
+        <b>🌐</b>
+        <strong>${Object.keys(plans).length}+ وڵات</strong>
+        <span>پۆششی جیهانی</span>
+      </div>
+
+      <div class="feature">
+        <b>✓</b>
+        <strong>باوەڕپێکراو</strong>
+        <span>پشتیوانی</span>
+      </div>
+
     </div>
 
-    <div id="countryGrid" class="grid">
-      ${countryCards()}
+
+    <div class="section-title">
+
+      <h3>
+        وڵاتە بەناوبانگەکان
+      </h3>
+
+      <button
+        class="link-btn"
+        onclick="showCountries()"
+      >
+        هەموو وڵاتەکان ←
+      </button>
+
     </div>
-  `);
+
+
+    <div
+      id="countryGrid"
+      class="grid"
+    >
+      ${countryCards("", popular)}
+    </div>
+
+  `, "home");
 }
 
 
-/* =========================
-   COUNTRY CARDS
-========================= */
+function countryCards(filter="", only=null) {
 
-function countryCards(filter=""){
+  let list =
+    only ||
+    Object.keys(plans);
 
-  return Object.keys(plans)
+  return list
+
     .filter(c =>
-      c.includes(filter) ||
-      filter===""
+      plans[c] &&
+      (
+        c.includes(filter) ||
+        filter === ""
+      )
     )
+
     .map(c => `
+
       <div
         class="card country-card"
         onclick='showCountry(${JSON.stringify(c)})'
       >
 
         <div class="flag">
-          ${flags[c]||"🌍"}
+          ${flags[c] || "🌍"}
         </div>
 
-        <b>${c}</b>
+        <b>
+          ${c}
+        </b>
 
         <div class="small">
           ${plans[c].length} پلان
         </div>
 
+        <div class="country-arrow">
+          ›
+        </div>
+
       </div>
+
     `)
+
     .join("");
 }
 
 
-function filterCountries(v){
+function filterCountries(v) {
 
-  document.getElementById("countryGrid").innerHTML=
+  document.getElementById(
+    "countryGrid"
+  ).innerHTML =
     countryCards(v.trim());
 
 }
 
 
-function showCountries(){
+function showCountries() {
 
   app(`
-    <button
-      class="back"
-      onclick="showHome()"
-    >
-      ← گەڕانەوە
-    </button>
 
-    <h2>وڵاتەکان</h2>
+    <div class="page-head">
+
+      <button
+        class="back"
+        onclick="showHome()"
+      >
+        ←
+      </button>
+
+      <h2>
+        وڵاتەکان
+      </h2>
+
+      <span></span>
+
+    </div>
+
 
     <input
-      class="search"
-      placeholder="گەڕان..."
+      class="search top-search"
+      placeholder="🔎 گەڕان..."
       oninput="filterCountriesPage(this.value)"
     >
 
-    <div id="countryGrid" class="grid">
+
+    <div
+      id="countryGrid"
+      class="country-list"
+    >
       ${countryCards()}
     </div>
-  `);
+
+  `, "countries");
 
 }
 
 
-function filterCountriesPage(v){
+function filterCountriesPage(v) {
 
-  document.getElementById("countryGrid").innerHTML=
+  document.getElementById(
+    "countryGrid"
+  ).innerHTML =
     countryCards(v.trim());
 
 }
 
 
-/* =========================
-   COUNTRY
-========================= */
+function showCountry(c) {
 
-function showCountry(c){
-
-  selectedCountry=c;
+  selectedCountry = c;
 
   app(`
-    <button
-      class="back"
-      onclick="showCountries()"
-    >
-      ← وڵاتەکان
-    </button>
 
-    <div class="card">
+    <div class="page-head">
 
-      <div class="flag">
-        ${flags[c]||"🌍"}
+      <button
+        class="back"
+        onclick="showCountries()"
+      >
+        ←
+      </button>
+
+      <h2>
+        ${c}
+      </h2>
+
+      <button class="icon-btn">
+        ♡
+      </button>
+
+    </div>
+
+
+    <div class="country-hero">
+
+      <div class="country-hero-flag">
+        ${flags[c] || "🌍"}
       </div>
 
-      <h2>${c}</h2>
+      <div>
 
-      <div class="small">
-        پلانەکانی eSIM
+        <h1>
+          ${c}
+        </h1>
+
+        <p>
+          پلانەکانی eSIM
+        </p>
+
       </div>
 
     </div>
 
-    <div>
 
-      ${plans[c].map((p,i)=>`
+    <div class="filter-pills">
+
+      <span class="pill active">
+        هەموو پلانەکان
+      </span>
+
+      <span class="pill">
+        بێ سنوور
+      </span>
+
+      <span class="pill">
+        داتا
+      </span>
+
+    </div>
+
+
+    <div class="plans-list">
+
+      ${plans[c].map((p,i) => `
 
         <div
           class="plan ${p[0]==="Unlimited"?"unlimited":""}"
         >
 
-          <div>
+          <div class="plan-main">
+
+            ${
+              p[0]==="Unlimited"
+              ?
+              '<span class="plan-tag">بێ سنوور</span>'
+              :
+              ''
+            }
 
             <div class="plan-data">
               ${p[0]}
             </div>
 
             <div class="small">
-              ${p[1]}
+              ماوە: ${p[1]}
             </div>
 
           </div>
 
-          <div class="price">
-            ${p[2]}
-          </div>
 
-          <button
-            class="buy"
-            onclick="checkout(${i})"
-          >
-            کڕین
-          </button>
+          <div class="plan-side">
+
+            <div class="price">
+              ${p[2]}
+            </div>
+
+            <button
+              class="buy"
+              onclick="planDetails(${i})"
+            >
+              کڕین
+            </button>
+
+          </div>
 
         </div>
 
       `).join("")}
 
     </div>
-  `);
 
+  `, "countries");
 }
 
 
-/* =========================
-   CHECKOUT
-========================= */
+function planDetails(i) {
 
-function checkout(i){
+  selectedPlanIndex = i;
 
-  selectedPlan=
+  selectedPlan =
     plans[selectedCountry][i];
 
-  selectedPay="";
+  app(`
+
+    <div class="page-head">
+
+      <button
+        class="back"
+        onclick="showCountry(${JSON.stringify(selectedCountry)})"
+      >
+        ←
+      </button>
+
+      <h2>
+        زانیاری پلان
+      </h2>
+
+      <span></span>
+
+    </div>
+
+
+    <div class="detail-card">
+
+      <div class="detail-top">
+
+        <div class="country-hero-flag small-flag">
+          ${flags[selectedCountry] || "🌍"}
+        </div>
+
+        <div>
+
+          <h2>
+            ${selectedCountry}
+          </h2>
+
+          <div class="small">
+            ${
+              selectedCountry === "تورکیا"
+              ? "Turkiye"
+              : ""
+            }
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="detail-price">
+        ${selectedPlan[2]}
+      </div>
+
+
+      <div class="detail-title">
+        ${selectedPlan[0]}
+      </div>
+
+
+      <div class="detail-meta">
+
+        <div>
+          🌐
+          <b>${selectedPlan[0]}</b>
+          <span>داتا</span>
+        </div>
+
+        <div>
+          ▣
+          <b>${selectedPlan[1]}</b>
+          <span>ماوە</span>
+        </div>
+
+        <div>
+          📶
+          <b>4G/5G</b>
+          <span>پەیوەندی</span>
+        </div>
+
+      </div>
+
+
+      <div class="benefits">
+
+        <p>
+          ✓ خێرایی ئینتەرنێتی بەرز
+        </p>
+
+        <p>
+          ✓ پەیوەندی ڕاستەوخۆ و باوەڕپێکراو
+        </p>
+
+        <p>
+          ✓ ئاسان بۆ گەشتکردن
+        </p>
+
+        <p>
+          ✓ بەکارهێنانی بێ سنوور لە چوارچێوەی پلان
+        </p>
+
+      </div>
+
+
+      <button
+        class="primary"
+        onclick="checkout(${i})"
+      >
+        بەردەوام بە بۆ سەفارش
+      </button>
+
+    </div>
+
+  `, "countries");
+}
+
+
+function checkout(i) {
+
+  selectedPlanIndex = i;
+
+  selectedPlan =
+    plans[selectedCountry][i];
+
+  selectedPay = "";
 
   app(`
-    <button
-      class="back"
-      onclick='showCountry(${JSON.stringify(selectedCountry)})'
-    >
-      ← گەڕانەوە
-    </button>
 
-    <h2>پشتڕاستکردنی کڕین</h2>
+    <div class="page-head">
 
-    <div class="card">
+      <button
+        class="back"
+        onclick="planDetails(${i})"
+      >
+        ←
+      </button>
+
+      <h2>
+        شێوازی پارەدان
+      </h2>
+
+      <span></span>
+
+    </div>
+
+
+    <div class="summary-card">
 
       <b>
-        ${flags[selectedCountry]}
+        ${flags[selectedCountry] || "🌍"}
         ${selectedCountry}
       </b>
 
       <p>
-        ${selectedPlan[0]} — ${selectedPlan[1]}
+        ${selectedPlan[0]} —
+        ${selectedPlan[1]}
       </p>
 
-      <h2>
+      <strong>
         ${selectedPlan[2]}
-      </h2>
+      </strong>
 
     </div>
 
-    <h3>شێوازی پارەدان</h3>
+
+    <div class="note payment-note">
+      💡 تکایە شێوازی پارەدان هەڵبژێرە
+    </div>
+
 
     ${pay(
       "🏦",
@@ -315,11 +622,13 @@ function checkout(i){
       "بانکی فیدرالی عێراق"
     )}
 
+
     ${pay(
       "⚡",
       "FastPay",
       "فاست پەی"
     )}
+
 
     ${pay(
       "Q",
@@ -327,30 +636,45 @@ function checkout(i){
       "سوپەر کیوای"
     )}
 
+
     ${pay(
       "↗",
       "QuickPay",
       "کویک پەی"
     )}
 
+
+    <div class="payment-help">
+
+      زانیاری پارەدان
+
+      <br>
+
+      <span>
+        دوای پارەدان، تکایە سکرینی شۆت بنێرە.
+      </span>
+
+    </div>
+
+
     <button
       class="primary"
       onclick="paymentStep()"
     >
-      بەردەوام بە پارەدان
+      بەردەوام بۆ دڵنیابوون
     </button>
-  `);
 
+  `, "home");
 }
 
 
-/* =========================
-   PAYMENT METHOD
-========================= */
+function pay(icon,name,sub) {
 
-function pay(icon,name,sub){
+  const number =
+    paymentNumbers[name];
 
   return `
+
     <div
       class="pay ${selectedPay===name?"active":""}"
       onclick='selectPayment(${JSON.stringify(name)})'
@@ -360,123 +684,173 @@ function pay(icon,name,sub){
         ${icon}
       </div>
 
-      <div>
 
-        <b>${name}</b>
+      <div class="pay-info">
+
+        <b>
+          ${name}
+        </b>
 
         <div class="small">
           ${sub}
         </div>
 
-        <div
-          style="
-            margin-top:6px;
-            font-size:16px;
-            font-weight:800;
-            direction:ltr;
-            text-align:right;
-          "
-        >
-          📱 ${paymentNumbers[name]}
+        <div class="pay-number">
+          ${number}
         </div>
 
       </div>
 
+
+      <div
+        class="radio ${selectedPay===name?"checked":""}"
+      >
+        ${selectedPay===name?"✓":""}
+      </div>
+
     </div>
+
   `;
+}
+
+
+function selectPayment(name) {
+
+  selectedPay = name;
+
+  renderPaymentSelection();
 
 }
 
 
-function selectPayment(name){
+function renderPaymentSelection() {
 
-  selectedPay=name;
+  const root =
+    document.getElementById("app");
 
-  checkout(
-    plans[selectedCountry].indexOf(selectedPlan)
-  );
+  if (!root) return;
+
+
+  root
+    .querySelectorAll(".pay")
+    .forEach(el =>
+      el.classList.remove("active")
+    );
+
+
+  root
+    .querySelectorAll(".radio")
+    .forEach(el => {
+
+      el.classList.remove("checked");
+
+      el.textContent = "";
+
+    });
+
+
+  const pays =
+    [...root.querySelectorAll(".pay")];
+
+
+  const index =
+    [
+      "FIB",
+      "FastPay",
+      "Super Qi",
+      "QuickPay"
+    ].indexOf(selectedPay);
+
+
+  if (
+    index >= 0 &&
+    pays[index]
+  ) {
+
+    pays[index]
+      .classList.add("active");
+
+
+    const radio =
+      pays[index]
+        .querySelector(".radio");
+
+
+    if (radio) {
+
+      radio.classList.add("checked");
+
+      radio.textContent = "✓";
+
+    }
+
+  }
 
 }
 
 
-/* =========================
-   PAYMENT STEP
-========================= */
+function paymentStep() {
 
-function paymentStep(){
-
-  if(!selectedPay){
+  if (!selectedPay) {
 
     alert(
       "تکایە شێوازی پارەدان هەڵبژێرە"
     );
 
     return;
+
   }
 
 
   app(`
 
-    <button
-      class="back"
-      onclick="checkout(${plans[selectedCountry].indexOf(selectedPlan)})"
-    >
-      ← گەڕانەوە
-    </button>
+    <div class="page-head">
+
+      <button
+        class="back"
+        onclick="checkout(${selectedPlanIndex})"
+      >
+        ←
+      </button>
+
+      <h2>
+        پارەدان بە ${selectedPay}
+      </h2>
+
+      <span></span>
+
+    </div>
 
 
-    <h2>
-      پارەدان بە ${selectedPay}
-    </h2>
-
-
-    <!-- ژمارەی پارەدان -->
-
-    <div
-      class="card"
-      style="
-        text-align:center;
-        margin:15px 0;
-      "
-    >
+    <div class="payment-number-card">
 
       <div class="small">
-        ژمارەی پارەدان
+        ژمارەی ${selectedPay}
       </div>
 
-      <div
-        style="
-          font-size:28px;
-          font-weight:900;
-          direction:ltr;
-          margin-top:8px;
-        "
-      >
+      <strong>
         ${paymentNumbers[selectedPay]}
-      </div>
+      </strong>
 
-      <div
-        style="
-          margin-top:8px;
-        "
+      <button
+        onclick="copyPaymentNumber()"
       >
-        تکایە پارەکە بۆ ئەم ژمارەیە بنێرە
-      </div>
+        📋 کۆپی ژمارە
+      </button>
 
     </div>
 
 
     <div class="note">
 
-      تکایە زانیارییەکان پڕبکەرەوە
-      و دوای پارەدان وێنەی پسوڵەکە باربکە.
-
-      Order ـەکە ڕاستەوخۆ بۆ FirstESIM نێردراوە.
+      تکایە پارەکە بۆ ئەم ژمارەیە بنێرە،
+      پاشان ناوی کڕیار و ژمارەی مۆبایل
+      پڕبکەرەوە و پسوڵەکە باربکە.
 
     </div>
 
 
-    <div class="card">
+    <div class="card form-card">
 
       <input
         id="customerName"
@@ -484,6 +858,7 @@ function paymentStep(){
         placeholder="ناوی کڕیار"
         autocomplete="name"
       >
+
 
       <input
         id="customerPhone"
@@ -498,14 +873,16 @@ function paymentStep(){
 
     <div class="upload">
 
+      <div class="upload-icon">
+        ▧
+      </div>
+
       <b>
-        📎 ناردنی پسوڵە
+        سکرینی شۆت باربکە
       </b>
 
       <p class="small">
-        PNG / JPG / PDF —
-        ئەگەر هێشتا پسوڵە نییە،
-        دەتوانیت بەبێ فایل تۆمار بکەیت.
+        PNG / JPG / PDF
       </p>
 
       <input
@@ -522,78 +899,98 @@ function paymentStep(){
       class="primary"
       onclick="createOrder()"
     >
-      تۆمارکردنی سەفارش
+      ناردنی سکرینی شۆت
     </button>
 
-  `);
+  `, "home");
 
 }
 
 
-/* =========================
-   CREATE ORDER
-========================= */
+function copyPaymentNumber() {
 
-async function createOrder(){
+  const number =
+    paymentNumbers[selectedPay];
 
-  const customerName=
-    document.getElementById("customerName")
+  navigator.clipboard?.writeText(number);
+
+  alert(
+    "ژمارەکە کۆپی کرا"
+  );
+
+}
+
+
+async function createOrder() {
+
+  const customerName =
+    document
+      .getElementById("customerName")
       ?.value.trim();
 
-  const customerPhone=
-    document.getElementById("customerPhone")
+
+  const customerPhone =
+    document
+      .getElementById("customerPhone")
       ?.value.trim();
 
-  const receipt=
-    document.getElementById("receipt")
+
+  const receipt =
+    document
+      .getElementById("receipt")
       ?.files?.[0];
 
 
-  if(!customerName){
+  if (!customerName) {
 
     alert(
       "تکایە ناوی کڕیار بنووسە"
     );
 
     return;
+
   }
 
 
-  if(!customerPhone){
+  if (!customerPhone) {
 
     alert(
       "تکایە ژمارەی مۆبایل بنووسە"
     );
 
     return;
+
   }
 
 
-  if(!selectedPay){
+  if (!selectedPay) {
 
     alert(
       "تکایە شێوازی پارەدان هەڵبژێرە"
     );
 
     return;
+
   }
 
 
-  const btn=
-    document.getElementById("orderBtn");
+  const btn =
+    document.getElementById(
+      "orderBtn"
+    );
 
 
-  if(btn){
+  if (btn) {
 
-    btn.disabled=true;
+    btn.disabled = true;
 
-    btn.textContent=
+    btn.textContent =
       "لە ناردندا...";
 
   }
 
 
-  const data=
+  const data =
     new FormData();
 
 
@@ -633,7 +1030,7 @@ async function createOrder(){
   );
 
 
-  if(receipt){
+  if (receipt) {
 
     data.append(
       "receipt",
@@ -643,9 +1040,9 @@ async function createOrder(){
   }
 
 
-  try{
+  try {
 
-    const r=
+    const r =
       await fetch(
         `${API_BASE}/api/orders`,
         {
@@ -655,20 +1052,22 @@ async function createOrder(){
       );
 
 
-    const d=
+    const d =
       await r.json();
 
 
-    if(!r.ok){
+    if (!r.ok) {
 
       throw new Error(
-        d.error||"Order failed"
+        d.error ||
+        "Order failed"
       );
 
     }
 
 
-    order=d.order;
+    order =
+      d.order;
 
 
     localStorage.setItem(
@@ -680,7 +1079,7 @@ async function createOrder(){
     showOrder();
 
 
-  }catch(e){
+  } catch(e) {
 
     console.error(e);
 
@@ -689,12 +1088,12 @@ async function createOrder(){
     );
 
 
-    if(btn){
+    if (btn) {
 
-      btn.disabled=false;
+      btn.disabled = false;
 
-      btn.textContent=
-        "تۆمارکردنی سەفارش";
+      btn.textContent =
+        "ناردنی سکرینی شۆت";
 
     }
 
@@ -703,37 +1102,35 @@ async function createOrder(){
 }
 
 
-/* =========================
-   REFRESH ORDER
-========================= */
+async function refreshOrder() {
 
-async function refreshOrder(){
-
-  if(!order?.id)return;
+  if (!order?.id) return;
 
 
-  try{
+  try {
 
-    const r=
+    const r =
       await fetch(
         `${API_BASE}/api/orders/${encodeURIComponent(order.id)}`
       );
 
 
-    const d=
+    const d =
       await r.json();
 
 
-    if(!r.ok){
+    if (!r.ok) {
 
       throw new Error(
-        d.error||"Order not found"
+        d.error ||
+        "Order not found"
       );
 
     }
 
 
-    order=d.order;
+    order =
+      d.order;
 
 
     localStorage.setItem(
@@ -745,7 +1142,7 @@ async function refreshOrder(){
     showOrder();
 
 
-  }catch(e){
+  } catch(e) {
 
     alert(
       "نەتوانرا دۆخی Order نوێ بکرێتەوە."
@@ -756,13 +1153,9 @@ async function refreshOrder(){
 }
 
 
-/* =========================
-   ORDER STATUS
-========================= */
+function statusText(status) {
 
-function statusText(status){
-
-  const map={
+  const map = {
 
     waiting_payment_check:
       "چاوەڕوانی پشتڕاستکردنەوەی پارەدان",
@@ -783,21 +1176,17 @@ function statusText(status){
 
 
   return (
-    map[status]||
-    status||
+    map[status] ||
+    status ||
     "نادیار"
   );
 
 }
 
 
-/* =========================
-   QR URL
-========================= */
+function qrUrl(order) {
 
-function qrUrl(order){
-
-  if(!order?.qrUrl)
+  if (!order?.qrUrl)
     return "";
 
 
@@ -808,25 +1197,21 @@ function qrUrl(order){
 }
 
 
-/* =========================
-   SHOW ORDER
-========================= */
+function showOrder() {
 
-function showOrder(){
+  if (!order) {
 
-  if(!order){
-
-    order=
+    order =
       JSON.parse(
         localStorage.getItem(
           "firstesim_order"
-        )||"null"
+        ) || "null"
       );
 
   }
 
 
-  if(!order){
+  if (!order) {
 
     showOrders();
 
@@ -835,55 +1220,53 @@ function showOrder(){
   }
 
 
-  const ready=
-    order.status==="esim_ready" &&
+  const ready =
+    order.status === "esim_ready" &&
     order.qrUrl;
 
 
   app(`
 
-    <button
-      class="back"
-      onclick="showOrders()"
-    >
-      ← سەفارشەکان
-    </button>
+    <div class="page-head">
+
+      <button
+        class="back"
+        onclick="showOrders()"
+      >
+        ←
+      </button>
+
+      <h2>
+        سەفارشەکە
+      </h2>
+
+      <span></span>
+
+    </div>
 
 
-    <h2>
-      سەفارشەکە
-    </h2>
+    <div class="order-card">
 
-
-    <div class="card">
-
-      <b>
+      <div class="order-id">
         ${order.id}
-      </b>
+      </div>
 
-      <p>
-        ${flags[order.country]||"🌍"}
+      <div class="order-country">
+        ${flags[order.country] || "🌍"}
         ${order.country}
-      </p>
+      </div>
 
       <p>
         ${order.plan}
       </p>
 
-      <h3>
+      <strong>
         ${order.price}
-      </h3>
+      </strong>
 
       <p>
         پارەدان:
         ${order.payment}
-      </p>
-
-      <p>
-        دۆخ:
-        <b>
-          ${statusText(order.status)}
-        </b>
       </p>
 
     </div>
@@ -893,54 +1276,60 @@ function showOrder(){
       ready
       ?
       `
-        <div class="card">
+
+        <div class="qr">
+
+          <div class="success-icon">
+            ✓
+          </div>
 
           <h3>
-            📱 QR ـی eSIM
+            eSIM ئامادەیە
           </h3>
+
+          <p class="small">
+            QR Code ـی ئامادەی بەکارهێنانە
+          </p>
 
           <img
             src="${qrUrl(order)}"
             alt="eSIM QR Code"
-            style="
-              display:block;
-              width:100%;
-              max-width:360px;
-              margin:12px auto;
-              border-radius:14px;
-            "
+            class="real-qr"
           >
 
-          <div class="note">
+          <div class="activation">
 
             <b>
-              Activation Code:
+              Activation Code
             </b>
 
             <br>
 
-            ${order.activationCode||"—"}
+            ${order.activationCode || "—"}
 
           </div>
 
         </div>
+
       `
       :
       `
+
         <div class="status waiting">
 
           ● ${statusText(order.status)}
 
         </div>
 
+
         <div class="note">
 
           کاتێک تیمی FirstESIM
-          پارەکە پشتڕاست بکات
-          و QR Code دابنێت،
-          لێرەدا دەردەکەوێت.
+          پارەکە پشتڕاست بکات و QR Code
+          دابنێت، لێرەدا دەردەکەوێت.
 
         </div>
+
       `
     }
 
@@ -952,47 +1341,53 @@ function showOrder(){
       🔄 نوێکردنەوەی دۆخ
     </button>
 
-  `);
+  `, "orders");
 
 }
 
 
-/* =========================
-   ORDERS
-========================= */
+function showOrders() {
 
-function showOrders(){
-
-  order=
+  order =
     JSON.parse(
       localStorage.getItem(
         "firstesim_order"
-      )||"null"
+      ) || "null"
     );
 
 
   app(`
 
-    <h2>
-      سەفارشەکان
-    </h2>
+    <div class="page-head">
+
+      <span></span>
+
+      <h2>
+        سەفارشەکان
+      </h2>
+
+      <span></span>
+
+    </div>
+
 
     ${
       order
       ?
       `
+
         <div
-          class="card"
+          class="order-card clickable"
           onclick="showOrder()"
         >
 
-          <b>
+          <div class="order-id">
             ${order.id}
-          </b>
+          </div>
 
           <p>
 
-            ${flags[order.country]||"🌍"}
+            ${flags[order.country] || "🌍"}
 
             ${order.country}
 
@@ -1003,75 +1398,128 @@ function showOrders(){
           </p>
 
           <div class="small">
-
             ${statusText(order.status)}
-
           </div>
 
         </div>
+
       `
       :
       `
-        <div class="card">
 
-          هێشتا هیچ
-          سەفارشەیەکت نییە.
+        <div class="card empty">
+
+          هێشتا هیچ سەفارشەیەکت نییە.
 
         </div>
+
       `
     }
 
-  `);
+  `, "orders");
 
 }
 
 
-/* =========================
-   PROFILE
-========================= */
-
-function showProfile(){
+function showProfile() {
 
   app(`
 
-    <h2>
-      پرۆفایل
-    </h2>
+    <div class="page-head">
+
+      <span></span>
+
+      <h2>
+        پرۆفایل
+      </h2>
+
+      <span></span>
+
+    </div>
 
 
-    <div class="card">
+    <div class="profile-card">
 
-      <h3>
-        FirstESIM
-      </h3>
+      <div class="avatar">
+        👤
+      </div>
 
-      <p>
-        زمان / Language
-      </p>
+      <div>
 
-      <button
-        class="lang"
-        onclick="cycleLanguage()"
-      >
-        کوردی → English → العربية
+        <h3>
+          FirstESIM
+        </h3>
+
+        <p>
+          خزمەتگوزاری eSIM
+        </p>
+
+      </div>
+
+      <span>
+        ›
+      </span>
+
+    </div>
+
+
+    <div class="profile-menu">
+
+      <div>
+        🌐
+        <b>زمان / Language</b>
+        <span>Kurdish ›</span>
+      </div>
+
+      <div onclick="showOrders()">
+        ▣
+        <b>سەفارشەکان</b>
+        <span>›</span>
+      </div>
+
+      <div>
+        💬
+        <b>پشتیوانی WhatsApp</b>
+        <span>›</span>
+      </div>
+
+      <div>
+        ❔
+        <b>پرسیارە باوەکان (FAQ)</b>
+        <span>›</span>
+      </div>
+
+      <div>
+        ℹ️
+        <b>دەربارەمان</b>
+        <span>›</span>
+      </div>
+
+    </div>
+
+
+    <div class="language-switch">
+
+      <button class="selected">
+        کوردی
+      </button>
+
+      <button>
+        English
+      </button>
+
+      <button>
+        العربية
       </button>
 
     </div>
 
-
-    <div
-      class="card"
-      style="margin-top:12px"
-    >
-      💬 پشتگیری بە WhatsApp
-    </div>
-
-  `);
+  `, "profile");
 
 }
 
 
-function cycleLanguage(){
+function cycleLanguage() {
 
   alert(
     "لە وەشانی دواتردا کوردی، English و العربية بە تەواوی زیاد دەکرێن."
@@ -1079,9 +1527,5 @@ function cycleLanguage(){
 
 }
 
-
-/* =========================
-   START APP
-========================= */
 
 showHome();
