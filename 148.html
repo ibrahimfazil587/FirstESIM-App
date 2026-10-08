@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="FirstESIM">
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/0016DE22-5EB2-4EBC-834A-F545DBDBC423.png">
+<title>FirstESIM App</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;background:#eef6fc;color:#071d50;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+button,input,select{font:inherit}button{cursor:pointer}
+:root{--blue:#0869e8;--dark:#06225c;--soft:#eef6ff;--green:#16a56a;--line:#dbe7f4;--red:#ef3340}
+.app{min-height:100vh;max-width:520px;margin:auto;background:#f8fbff;box-shadow:0 0 35px #0b376015}
+.screen{display:none;min-height:100vh;padding-bottom:88px}.screen.active{display:block}
+.header{height:70px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:9px 14px;border-bottom:1px solid #e8eef7;position:sticky;top:0;z-index:20}
+.header .back{border:0;background:none;color:var(--dark);font-size:28px;width:40px}.brand{display:flex;align-items:center;gap:7px;font-weight:1000;font-size:22px}.brand span{color:#126de2}.bell{border:0;background:none;font-size:22px}
+.langs{display:flex;gap:6px;padding:8px 14px;background:#fff}.lang{border:0;background:#eef3f9;border-radius:13px;padding:7px 12px;font-size:11px;font-weight:900;color:#26334d}.lang.active{background:var(--blue);color:#fff}
+.hero{margin:0 12px;border-radius:20px;overflow:hidden;position:relative;min-height:305px;background:linear-gradient(90deg,#0074dcdd,#0075d255),url('/0016DE22-5EB2-4EBC-834A-F545DBDBC423.png') center/cover}
+.hero .copy{padding:30px 18px;color:#fff;text-align:right}.hero h1{font-size:29px;line-height:1.3;margin:0 0 5px;font-weight:1000;text-shadow:0 2px 4px #001b45aa}.hero p{font-size:16px;line-height:1.65;margin:0 0 14px;font-weight:800}.checks{display:grid;gap:7px;font-size:12px;font-weight:900}.checks div{display:flex;align-items:center;gap:7px}.checks i{font-style:normal;border:2px solid #23ec88;border-radius:50%;width:23px;height:23px;display:grid;place-items:center;color:#23ec88}
+.search{margin:-26px 24px 13px;position:relative;z-index:4;background:#fff;border-radius:25px;padding:5px;box-shadow:0 8px 25px #123b6920}.search input{width:100%;height:49px;border:0;outline:0;border-radius:21px;padding:0 16px;text-align:right;color:#16233d;background:#fff}
+.features{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;padding:0 12px 15px}.feature{background:#fff;border-radius:15px;padding:9px 4px;text-align:center;box-shadow:0 3px 13px #123b6910;font-size:10px;font-weight:900}.feature b{display:block;font-size:20px;margin-bottom:4px}
+.section{padding:0 12px}.sectionHead{display:flex;align-items:center;justify-content:space-between;margin:5px 2px 9px}.sectionHead h2{font-size:19px;margin:0;font-weight:1000}.sectionHead a{font-size:10px;color:var(--blue);font-weight:900}
+.popular{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;overflow:hidden;margin-bottom:16px}.pop{background:#fff;border-radius:14px;box-shadow:0 3px 13px #123b6912;overflow:hidden;text-align:center}.pop img{width:100%;height:62px;object-fit:cover;display:block}.pop .flag{font-size:25px;margin-top:-14px}.pop b{display:block;font-size:11px;margin:2px 2px 8px}
+.countryList{display:grid;gap:7px}.countryRow{background:#fff;border-radius:14px;padding:7px 9px;display:flex;align-items:center;gap:8px;box-shadow:0 3px 12px #123b6910;border:1px solid #edf3fa}.countryRow .flag{font-size:28px;width:38px;text-align:center}.countryRow .ctext{flex:1}.countryRow strong{display:block;font-size:12px}.countryRow small{display:block;color:#68758b;font-size:10px}.countryRow em{font-style:normal;font-weight:950;font-size:11px;color:#0a64c9}.arrow{font-size:20px;color:#7d8ba1}
+.bottom{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(520px,100%);height:78px;background:#fff;border-top:1px solid #e1eaf4;display:flex;justify-content:space-around;align-items:center;z-index:30;padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -6px 20px #123b6910}.nav{border:0;background:none;color:#748198;font-size:10px;font-weight:900;display:flex;flex-direction:column;align-items:center;gap:3px}.nav b{font-size:21px}.nav.active{color:var(--blue)}
+.listSearch{margin:10px 12px;background:#edf4fb;border-radius:22px;padding:4px 12px;display:flex;align-items:center;gap:8px}.listSearch input{width:100%;border:0;background:none;outline:0;height:40px;text-align:right}.chips{display:flex;gap:6px;overflow:auto;padding:2px 12px 11px}.chip{white-space:nowrap;border:0;background:#edf2f8;color:#18315c;border-radius:15px;padding:7px 12px;font-size:10px;font-weight:900}.chip.active{background:var(--blue);color:#fff}
+.detailHero{height:235px;background-size:cover;background-position:center;position:relative;color:#fff}.detailHero:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 30%,#00184dcc)}.detailBack{position:absolute;z-index:2;top:12px;right:12px;border:0;background:#ffffff33;color:#fff;width:42px;height:42px;border-radius:50%;font-size:23px}.detailTitle{position:absolute;z-index:2;bottom:16px;right:18px;left:18px;display:flex;align-items:center;gap:10px}.detailTitle .flag{font-size:48px}.detailTitle h1{font-size:24px;margin:0}.detailTitle small{font-size:12px}.planTabs{display:flex;gap:7px;padding:8px 12px}.planTab{border:0;background:#f0f4f8;border-radius:15px;padding:8px 13px;font-size:10px;font-weight:900}.planTab.active{background:var(--blue);color:#fff}.plans{padding:0 12px}.plan{background:#fff;border:1px solid #e0e9f3;border-radius:14px;padding:9px;display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:7px;margin-bottom:7px;box-shadow:0 3px 11px #123b690d}.plan.unlimited{background:#fff4c6;border-color:#efcf51}.plan .data{font-size:15px;font-weight:1000}.plan .days{font-size:10px;color:#697891;margin-top:2px}.plan .price{font-size:13px;font-weight:1000}.primary{border:0;background:var(--blue);color:#fff;border-radius:11px;padding:7px 10px;font-size:10px;font-weight:1000}
+.infoCard{background:#fff;border-radius:17px;margin:10px 12px;padding:13px;box-shadow:0 4px 15px #123b6910}.infoCard h3{margin:0 0 9px;font-size:15px}.benefits{display:grid;gap:7px;font-size:11px;font-weight:800}.benefits div:before{content:"✓";display:inline-grid;place-items:center;width:19px;height:19px;background:#15a267;color:#fff;border-radius:50%;margin-left:6px}
+.buyBox{position:sticky;bottom:80px;background:#fff;padding:9px 12px;border-top:1px solid #e6edf5;z-index:10}.bigBtn{width:100%;border:0;background:var(--blue);color:#fff;border-radius:14px;padding:13px;font-size:14px;font-weight:1000}
+.formCard{margin:12px;background:#fff;border-radius:20px;padding:14px;box-shadow:0 4px 17px #123b6910}.formCard label{display:block;font-size:11px;font-weight:900;margin:10px 0 5px}.field{width:100%;height:45px;border:1px solid #dce6f1;border-radius:12px;padding:0 12px;outline:0;background:#fff}.payOption{display:flex;align-items:center;gap:10px;border:1px solid #dce6f1;border-radius:13px;padding:10px;margin:7px 0}.payOption.active{border:2px solid var(--blue);background:#f4f9ff}.payIcon{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;color:#fff;font-weight:1000}.fib{background:#14884c}.fast{background:#5422ba}.sq{background:#e51e2a}.quick{background:#155ce8}.radio{margin-right:auto}
+.orderCard{margin:14px 12px;background:#fff;border-radius:18px;padding:14px;box-shadow:0 4px 17px #123b6910}.timeline{display:grid;gap:10px}.step{display:flex;gap:9px;align-items:flex-start;font-size:11px;font-weight:800}.dot{width:18px;height:18px;border-radius:50%;background:#d7e0eb;flex:none}.step.done .dot{background:#15a267}.step.current .dot{background:var(--blue)}
+.qrBox{text-align:center;padding:15px}.qrBox img{width:220px;height:220px;border-radius:8px}.code{font-weight:1000;color:#0b245b;font-size:14px}.profile{margin:12px;background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 4px 17px #123b6910}.profileTop{padding:18px;text-align:center;background:linear-gradient(135deg,#eaf4ff,#fff)}.avatar{width:62px;height:62px;border-radius:50%;margin:auto;background:#1674df;color:#fff;display:grid;place-items:center;font-size:28px}.menuItem{display:flex;align-items:center;justify-content:space-between;padding:14px;border-top:1px solid #edf1f6;font-size:12px;font-weight:850}.menuItem span{color:#7c899d}
+@media(min-width:521px){body{background:#dfeaf4}}
+</style>
+</head>
+<body>
+<div class="app">
+
+<section id="home" class="screen active">
+<header class="header"><button class="menu" onclick="showScreen('profile')">☰</button><div class="brand">🌐 <span>First</span>ESIM</div><button class="bell">♧</button></header>
+<div class="langs"><button class="lang active" onclick="setLang('ku')">KUR</button><button class="lang" onclick="setLang('en')">English</button><button class="lang" onclick="setLang('ar')">العربي</button></div>
+<div class="hero"><div class="copy"><h1 id="homeTitle">گەشتی بێ سنوور</h1><p id="homeSub">eSIM بۆ هەموو جیهان<br>خێرا، ئاسان و باوەڕپێکراو</p><div class="checks"><div><i>✓</i><span id="c1">خێرا و باوەڕپێکراو</span></div><div><i>✓</i><span id="c2">نرخی باش</span></div><div><i>✓</i><span id="c3">جیهانی</span></div></div></div></div>
+<div class="search"><input id="homeSearch" placeholder="گەڕان بە ناوی وڵات..." oninput="homeSearch()"></div>
+<div class="features"><div class="feature"><b>⚡</b><span id="ft1">خێرا زۆر</span></div><div class="feature"><b>🌐</b><span id="ft2">200+ وڵات</span></div><div class="feature"><b>🛡️</b><span id="ft3">باوەڕپێکراو</span></div><div class="feature"><b>🎧</b><span id="ft4">پشتیوانی 24 کاتژمێر</span></div></div>
+<div class="section"><div class="sectionHead"><h2 id="popTitle">🔥 وڵاتە بناوبانگەکان</h2><a onclick="showScreen('countries')">هەموو وڵاتەکان →</a></div><div id="popular" class="popular"></div></div>
+</section>
+
+<section id="countries" class="screen">
+<header class="header"><button class="back" onclick="showScreen('home')">‹</button><div class="brand" id="countriesTitle">وڵاتەکان</div><button class="bell">⌕</button></header>
+<div class="listSearch">⌕<input id="countrySearch" placeholder="گەڕان..." oninput="countrySearch()"></div>
+<div class="chips"><button class="chip active" onclick="region('all',this)">هەموو</button><button class="chip" onclick="region('europe',this)">ئەوروپا</button><button class="chip" onclick="region('asia',this)">ئاسیا</button><button class="chip" onclick="region('middle',this)">ڕۆژهەڵات</button><button class="chip" onclick="region('global',this)">جیهان</button></div>
+<div class="section"><div id="countryList" class="countryList"></div></div>
+</section>
+
+<section id="plans" class="screen">
+<div id="detail"></div>
+</section>
+
+<section id="checkout" class="screen">
+<header class="header"><button class="back" onclick="showScreen('plans')">‹</button><div class="brand" id="checkoutTitle">ژمارەی پلان</div><span></span></header>
+<div id="checkoutBody"></div>
+</section>
+
+<section id="payment" class="screen">
+<header class="header"><button class="back" onclick="showScreen('checkout')">‹</button><div class="brand">شیوەی پارەدان</div><span></span></header>
+<div class="formCard"><div style="background:#fff4c6;padding:10px;border-radius:12px;font-size:11px;font-weight:900">ⓘ تکایە شێوازی پارەدانت هەڵبژێرە</div>
+<div class="payOption active" onclick="selectPay(this,'FIB')"><div class="payIcon fib">FIB</div><div><b>FIB</b><small style="display:block">بانکی فیدرالی عێراق</small></div><span class="radio">◯</span></div>
+<div class="payOption" onclick="selectPay(this,'FastPay')"><div class="payIcon fast">Fast</div><div><b>FastPay</b><small style="display:block">فاست پی</small></div><span class="radio">◯</span></div>
+<div class="payOption" onclick="selectPay(this,'Super Qi')"><div class="payIcon sq">Q</div><div><b>Super QI</b><small style="display:block">سوپەر کیوای</small></div><span class="radio">◯</span></div>
+<div class="payOption" onclick="selectPay(this,'QuickPay')"><div class="payIcon quick">↗</div><div><b>QuickPay</b><small style="display:block">کویک پی</small></div><span class="radio">🔵</span></div>
+<div class="infoCard" style="margin:12px 0 0"><h3>زانیاری پارەدان</h3><div style="font-size:11px;line-height:1.8">FIB: 7506021212<br>FastPay: 7506021212<br>Super QI: 7111649351<br>QuickPay: 7508107121</div></div>
+<button class="bigBtn" onclick="finishOrder()">بەردەوام بوون بۆ داواکاری</button></div>
+</section>
+
+<section id="orders" class="screen">
+<header class="header"><button class="back" onclick="showScreen('home')">‹</button><div class="brand">سفارشەکانم</div><span></span></header>
+<div id="orderList" class="orderCard"></div>
+</section>
+
+<section id="qr" class="screen">
+<header class="header"><button class="back" onclick="showScreen('orders')">‹</button><div class="brand">ئێسیم ئامادەیە</div><span></span></header>
+<div class="orderCard qrBox"><div style="font-size:40px">🟢</div><h3>eSIM ئامادەیە</h3><p style="font-size:11px">کۆدی QR ـی ئێسیمەکەت لێرەیە</p><img id="qrImg" alt="QR Code"><div class="code" id="qrCode">#FE123456</div><div style="font-size:11px;margin:8px">دەتوانیت QR Code ـەکە بەکاربهێنیت</div><button class="bigBtn" onclick="downloadQR()">⬇ گەڕاندنەوەی QR Code</button></div>
+</section>
+
+<section id="profile" class="screen">
+<header class="header"><button class="back" onclick="showScreen('home')">‹</button><div class="brand">پڕۆفایل</div><span></span></header>
+<div class="profile"><div class="profileTop"><div class="avatar">👤</div><h3 id="profileName">کڕیار</h3><small id="profileEmail">customer@firstesim.net</small></div>
+<div class="menuItem" onclick="showScreen('countries')">زمان / Language <span>›</span></div><div class="menuItem" onclick="showScreen('orders')">ژمارەی داواکارییەکان <span>›</span></div><div class="menuItem" onclick="showScreen('orders')">سفارشەکانم <span>›</span></div><div class="menuItem" onclick="location.href='https://wa.me/9647506021212'">WhatsApp پشتیوانی <span>›</span></div><div class="menuItem">FAQ <span>›</span></div><div class="menuItem">دەربارەمان <span>›</span></div></div>
+</section>
+
+<nav class="bottom">
+<button class="nav active" data-screen="home" onclick="showScreen('home')"><b>⌂</b>سەرەکی</button>
+<button class="nav" data-screen="countries" onclick="showScreen('countries')"><b>◎</b>وڵاتەکان</button>
+<button class="nav" data-screen="orders" onclick="showScreen('orders')"><b>▣</b>سفارشەکانم</button>
+<button class="nav" data-screen="profile" onclick="showScreen('profile')"><b>♙</b>پڕۆفایل</button>
+</nav>
+</div>
+
+<script>
+const countries=[
+
+{
+name:"تورکیا",
+en:"Turkey",
+flag:"🇹🇷",
+region:"europe",
+place:"ئەوروپا",
+scene:"🕌",
+image:"/0016DE22-5EB2-4EBC-834A-F545DBDBC423.png",
+plans:[
+["10 GB","30 ڕۆژ","IQD 8,500"],
+["20 GB","30 ڕۆژ","IQD 11,500"],
+["10 GB","15 ڕۆژ","IQD 8,500"],
+["20 GB","15 ڕۆژ","IQD 10,500"],
+["50 GB","30 ڕۆژ","IQD 23,000"],
+["Unlimited","3 ڕۆژ","IQD 8,000"],
+["Unlimited","5 ڕۆژ","IQD 10,000"],
+["Unlimited","7 ڕۆژ","IQD 11,500"],
+["Unlimited","10 ڕۆژ","IQD 18,000"],
+["Unlimited","15 ڕۆژ","IQD 23,000"],
+["Unlimited","30 ڕۆژ","IQD 28,000"]
+]
+},
+
+{
+name:"ئەڵمانیا",
+en:"Germany",
+flag:"🇩🇪",
+region:"europe",
+place:"ئەوروپا",
+scene:"🏰",
+image:"/1DD5D2EA-D5E7-40D1-AF10-487874998116.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 6,500"],
+["2 GB","15 ڕۆژ","IQD 7,000"],
+["3 GB","30 ڕۆژ","IQD 8,000"],
+["5 GB","30 ڕۆژ","IQD 9,000"],
+["10 GB","30 ڕۆژ","IQD 12,000"],
+["20 GB","30 ڕۆژ","IQD 19,000"],
+["Unlimited","3 ڕۆژ","IQD 11,500"],
+["Unlimited","5 ڕۆژ","IQD 14,000"],
+["Unlimited","7 ڕۆژ","IQD 16,000"],
+["Unlimited","10 ڕۆژ","IQD 22,000"],
+["Unlimited","15 ڕۆژ","IQD 30,000"],
+["Unlimited","30 ڕۆژ","IQD 44,000"]
+]
+},
+
+{
+name:"ئەمریکا",
+en:"United States",
+flag:"🇺🇸",
+region:"america",
+place:"ئەمەریکا",
+scene:"🗽",
+image:"/07269030-034D-4B1A-B27F-5D05C8C8F215.png",
+plans:[
+["3 GB","30 ڕۆژ","IQD 10,000"],
+["10 GB","30 ڕۆژ","IQD 20,000"],
+["20 GB","30 ڕۆژ","IQD 25,000"],
+["Unlimited","3 ڕۆژ","IQD 15,000"],
+["Unlimited","5 ڕۆژ","IQD 20,000"],
+["Unlimited","7 ڕۆژ","IQD 25,000"],
+["Unlimited","10 ڕۆژ","IQD 30,000"],
+["Unlimited","15 ڕۆژ","IQD 50,000"],
+["Unlimited","30 ڕۆژ","IQD 80,000"]
+]
+},
+
+{
+name:"ئەوروپا + UK",
+en:"Europe + UK",
+flag:"🇪🇺",
+region:"europe",
+place:"ئەوروپا",
+scene:"🌍",
+image:"/4E1BC982-A88B-4B96-A57B-E0AAC5C8BC9B.png",
+plans:[
+["5 GB","30 ڕۆژ","IQD 14,000"],
+["10 GB","30 ڕۆژ","IQD 16,000"],
+["20 GB","30 ڕۆژ","IQD 18,500"],
+["Unlimited","3 ڕۆژ","IQD 15,000"],
+["Unlimited","5 ڕۆژ","IQD 16,500"],
+["Unlimited","7 ڕۆژ","IQD 18,500"],
+["Unlimited","10 ڕۆژ","IQD 25,000"],
+["Unlimited","15 ڕۆژ","IQD 30,000"],
+["Unlimited","30 ڕۆژ","IQD 40,000"]
+]
+},
+
+{
+name:"جیهان",
+en:"Global",
+flag:"🌍",
+region:"global",
+place:"جیهان",
+scene:"🌍",
+image:"/680AF33F-91E2-4F69-B5E7-E260FC374EBB.png",
+plans:[
+["200 MB","30 ڕۆژ","IQD 7,500"],
+["300 MB","3 ڕۆژ","IQD 7,000"],
+["1 GB","5 ڕۆژ","IQD 9,000"],
+["1 GB","7 ڕۆژ","IQD 10,000"],
+["2 GB","15 ڕۆژ","IQD 13,500"],
+["3 GB","30 ڕۆژ","IQD 20,000"],
+["5 GB","30 ڕۆژ","IQD 25,000"],
+["5 GB","60 ڕۆژ","IQD 25,000"],
+["10 GB","30 ڕۆژ","IQD 35,000"],
+["10 GB","180 ڕۆژ","IQD 85,000"],
+["20 GB","30 ڕۆژ","IQD 55,000"],
+["20 GB","365 ڕۆژ","IQD 100,000"],
+["60 GB","125 ڕۆژ","IQD 255,000"]
+]
+},
+
+{
+name:"ئیمارات",
+en:"UAE",
+flag:"🇦🇪",
+region:"middle",
+place:"ڕۆژهەڵاتی ناوەڕاست",
+scene:"🏙️",
+image:"/8DF6A966-A0E8-4F2D-981B-A1AED2247CE2.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 9,500"],
+["2 GB","15 ڕۆژ","IQD 11,500"],
+["3 GB","30 ڕۆژ","IQD 12,500"],
+["5 GB","30 ڕۆژ","IQD 20,000"],
+["10 GB","30 ڕۆژ","IQD 25,000"],
+["Unlimited","10 ڕۆژ","IQD 45,000"],
+["Unlimited","15 ڕۆژ","IQD 80,000"],
+["Unlimited","30 ڕۆژ","IQD 100,000"]
+]
+},
+
+{
+name:"ئازەربایجان",
+en:"Azerbaijan",
+flag:"🇦🇿",
+region:"asia",
+place:"ئاسیا",
+scene:"🏙️",
+image:"/A655C95A-FF07-4651-ADD2-FBC1F76D56B8.png",
+plans:[
+["5 GB","30 ڕۆژ","IQD 15,000"],
+["10 GB","30 ڕۆژ","IQD 25,000"],
+["20 GB","30 ڕۆژ","IQD 30,000"],
+["Unlimited","3 ڕۆژ","IQD 20,000"],
+["Unlimited","5 ڕۆژ","IQD 30,000"],
+["Unlimited","7 ڕۆژ","IQD 35,000"],
+["Unlimited","10 ڕۆژ","IQD 45,000"],
+["Unlimited","15 ڕۆژ","IQD 75,000"],
+["Unlimited","30 ڕۆژ","IQD 100,000"]
+]
+},
+
+{
+name:"چین",
+en:"China",
+flag:"🇨🇳",
+region:"asia",
+place:"ئاسیا",
+scene:"🏯",
+image:"/302F32DB-D0D9-44CD-A467-89B630DCB8D4.png",
+plans:[
+["3 GB","30 ڕۆژ","IQD 10,000"],
+["5 GB","30 ڕۆژ","IQD 11,500"],
+["10 GB","30 ڕۆژ","IQD 20,000"],
+["20 GB","30 ڕۆژ","IQD 25,000"],
+["Unlimited","3 ڕۆژ","IQD 13,500"],
+["Unlimited","5 ڕۆژ","IQD 20,000"],
+["Unlimited","7 ڕۆژ","IQD 25,000"],
+["Unlimited","10 ڕۆژ","IQD 30,000"],
+["Unlimited","15 ڕۆژ","IQD 40,000"],
+["Unlimited","30 ڕۆژ","IQD 55,000"]
+]
+},
+
+{
+name:"عومان",
+en:"Oman",
+flag:"🇴🇲",
+region:"middle",
+place:"ڕۆژهەڵاتی ناوەڕاست",
+scene:"🏜️",
+image:"/C5E1A9C4-3575-493C-8AB7-6877B0240E9C.png",
+plans:[
+["3 GB","30 ڕۆژ","IQD 10,000"],
+["5 GB","30 ڕۆژ","IQD 12,500"],
+["10 GB","30 ڕۆژ","IQD 25,000"],
+["20 GB","30 ڕۆژ","IQD 45,000"],
+["Unlimited","3 ڕۆژ","IQD 20,000"],
+["Unlimited","5 ڕۆژ","IQD 20,000"],
+["Unlimited","7 ڕۆژ","IQD 25,000"],
+["Unlimited","10 ڕۆژ","IQD 30,000"],
+["Unlimited","15 ڕۆژ","IQD 50,000"],
+["Unlimited","30 ڕۆژ","IQD 70,000"]
+]
+},
+
+{
+name:"سوئیسرا",
+en:"Switzerland",
+flag:"🇨🇭",
+region:"europe",
+place:"ئەوروپا",
+scene:"🏔️",
+image:"/AA0B469F-84C9-459D-A5D9-86370712B02B.png",
+plans:[
+["5 GB","30 ڕۆژ","IQD 16,000"],
+["10 GB","30 ڕۆژ","IQD 23,000"],
+["20 GB","30 ڕۆژ","IQD 31,000"],
+["Unlimited","3 ڕۆژ","IQD 15,000"],
+["Unlimited","5 ڕۆژ","IQD 18,000"],
+["Unlimited","7 ڕۆژ","IQD 23,000"],
+["Unlimited","10 ڕۆژ","IQD 28,000"],
+["Unlimited","15 ڕۆژ","IQD 38,000"],
+["Unlimited","30 ڕۆژ","IQD 53,000"]
+]
+},
+
+{
+name:"ئیتالیا",
+en:"Italy",
+flag:"🇮🇹",
+region:"europe",
+place:"ئەوروپا",
+scene:"🏛️",
+image:"/6442CC42-02CD-420B-86A5-63C6BA505559.png",
+plans:[
+["5 GB","30 ڕۆژ","IQD 12,000"],
+["10 GB","30 ڕۆژ","IQD 16,000"],
+["20 GB","30 ڕۆژ","IQD 23,000"],
+["Unlimited","3 ڕۆژ","IQD 13,000"],
+["Unlimited","5 ڕۆژ","IQD 15,000"],
+["Unlimited","7 ڕۆژ","IQD 16,500"],
+["Unlimited","10 ڕۆژ","IQD 23,000"],
+["Unlimited","15 ڕۆژ","IQD 28,000"],
+["Unlimited","30 ڕۆژ","IQD 38,000"]
+]
+},
+
+{
+name:"لوبنان",
+en:"Lebanon",
+flag:"🇱🇧",
+region:"middle",
+place:"ڕۆژهەڵاتی ناوەڕاست",
+scene:"🌲",
+image:"/F158C01E-273C-4662-A6B5-D1188D6F1231.png",
+plans:[
+["1 GB","5 ڕۆژ","$7.99"],
+["1 GB","7 ڕۆژ","$8.99"],
+["2 GB","15 ڕۆژ","$11.99"],
+["3 GB","30 ڕۆژ","$13.99"],
+["5 GB","30 ڕۆژ","$18.99"],
+["5 GB","60 ڕۆژ","$18.99"],
+["10 GB","30 ڕۆژ","$12.99"],
+["10 GB","180 ڕۆژ","$73.99"],
+["20 GB","30 ڕۆژ","$44.99"],
+["20 GB","365 ڕۆژ","$85.99"]
+]
+},
+
+{
+name:"دانمارک",
+en:"Denmark",
+flag:"🇩🇰",
+region:"europe",
+place:"ئەوروپا",
+scene:"🏰",
+image:"/34B8F9F0-D435-4866-A7C1-3AF60292047E.png",
+plans:[
+["5 GB","30 ڕۆژ","IQD 11,500"],
+["10 GB","30 ڕۆژ","IQD 13,500"],
+["20 GB","30 ڕۆژ","IQD 15,000"],
+["Unlimited","3 ڕۆژ","IQD 12,000"],
+["Unlimited","5 ڕۆژ","IQD 14,000"],
+["Unlimited","7 ڕۆژ","IQD 15,500"],
+["Unlimited","10 ڕۆژ","IQD 22,000"],
+["Unlimited","15 ڕۆژ","IQD 27,000"],
+["Unlimited","30 ڕۆژ","IQD 37,000"]
+]
+},
+
+{
+name:"سینگاپور",
+en:"Singapore",
+flag:"🇸🇬",
+region:"asia",
+place:"ئاسیا",
+scene:"🏙️",
+image:"/C655CFC7-AD61-48B4-890C-D605980BD9CD.png",
+plans:[
+["2 GB","15 ڕۆژ","IQD 13,000"],
+["3 GB","30 ڕۆژ","IQD 13,500"],
+["5 GB","30 ڕۆژ","IQD 14,500"],
+["10 GB","30 ڕۆژ","IQD 15,500"],
+["20 GB","30 ڕۆژ","IQD 20,000"],
+["Unlimited","3 ڕۆژ","IQD 16,500"],
+["Unlimited","5 ڕۆژ","IQD 17,500"],
+["Unlimited","7 ڕۆژ","IQD 19,000"],
+["Unlimited","10 ڕۆژ","IQD 25,000"],
+["Unlimited","15 ڕۆژ","IQD 30,000"],
+["Unlimited","30 ڕۆژ","IQD 40,000"]
+]
+},
+
+{
+name:"تایلاند",
+en:"Thailand",
+flag:"🇹🇭",
+region:"asia",
+place:"ئاسیا",
+scene:"🏝️",
+image:"/F5B13CE0-9BD1-48EC-B32A-E516D269AE77.png",
+plans:[
+["5 GB","30 ڕۆژ","IQD 16,000"],
+["10 GB","30 ڕۆژ","IQD 23,000"],
+["20 GB","30 ڕۆژ","IQD 31,000"],
+["Unlimited","3 ڕۆژ","IQD 15,000"],
+["Unlimited","5 ڕۆژ","IQD 18,000"],
+["Unlimited","7 ڕۆژ","IQD 23,000"],
+["Unlimited","10 ڕۆژ","IQD 28,000"],
+["Unlimited","15 ڕۆژ","IQD 38,000"],
+["Unlimited","30 ڕۆژ","IQD 53,000"]
+]
+},
+
+{
+name:"سعودیە",
+en:"Saudi Arabia",
+flag:"🇸🇦",
+region:"middle",
+place:"ڕۆژهەڵاتی ناوەڕاست",
+scene:"🕋",
+image:"/649453C0-8A0B-4954-8CF4-61D659C88541.png",
+plans:[
+["20 GB","30 ڕۆژ","IQD 40,000"],
+["25 GB","45 ڕۆژ","IQD 60,000"],
+["50 GB","30 ڕۆژ","IQD 90,000"],
+["Unlimited","3 ڕۆژ","IQD 15,000"],
+["Unlimited","5 ڕۆژ","IQD 20,000"],
+["Unlimited","7 ڕۆژ","IQD 25,000"],
+["Unlimited","10 ڕۆژ","IQD 35,000"],
+["Unlimited","15 ڕۆژ","IQD 60,000"]
+]
+},
+
+{
+name:"ژاپۆن",
+en:"Japan",
+flag:"🇯🇵",
+region:"asia",
+place:"ئاسیا",
+scene:"🗻",
+image:"/6CC4A6FE-2EEB-41B4-AEC9-7DA57B42BAB8.png",
+plans:[
+["2 GB","15 ڕۆژ","IQD 9,500"],
+["3 GB","30 ڕۆژ","IQD 10,500"],
+["5 GB","30 ڕۆژ","IQD 12,000"],
+["10 GB","30 ڕۆژ","IQD 15,000"],
+["20 GB","30 ڕۆژ","IQD 21,000"],
+["500 MB","7 ڕۆژ","IQD 8,000"],
+["Unlimited","3 ڕۆژ","IQD 14,500"],
+["Unlimited","5 ڕۆژ","IQD 21,000"],
+["Unlimited","7 ڕۆژ","IQD 21,000"],
+["Unlimited","10 ڕۆژ","IQD 26,000"],
+["Unlimited","15 ڕۆژ","IQD 41,000"],
+["Unlimited","30 ڕۆژ","IQD 56,000"]
+]
+},
+
+{
+name:"ئارووبا",
+en:"Aruba",
+flag:"🇦🇼",
+region:"america",
+place:"ئەمەریکا",
+scene:"🏝️",
+image:"/297A9FFA-0002-45C6-A016-2F4533B095AC.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 12,500"],
+["2 GB","15 ڕۆژ","IQD 20,000"],
+["3 GB","30 ڕۆژ","IQD 25,000"],
+["5 GB","30 ڕۆژ","IQD 35,000"],
+["10 GB","30 ڕۆژ","IQD 55,000"]
+]
+},
+
+{
+name:"ئەفغانستان",
+en:"Afghanistan",
+flag:"🇦🇫",
+region:"asia",
+place:"ئاسیا",
+scene:"🏔️",
+image:"/B5920B07-4456-44BD-9817-43699336D7C9.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 12,500"],
+["2 GB","15 ڕۆژ","IQD 20,000"],
+["3 GB","30 ڕۆژ","IQD 25,000"],
+["5 GB","30 ڕۆژ","IQD 30,000"],
+["10 GB","30 ڕۆژ","IQD 55,000"]
+]
+},
+
+{
+name:"نەمسا",
+en:"Austria",
+flag:"🇦🇹",
+region:"europe",
+place:"ئەوروپا",
+scene:"🏰",
+image:"/841E1CA9-BD2D-4AEF-AF5B-CCDA59E44CB6.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 12,000"],
+["2 GB","15 ڕۆژ","IQD 12,500"],
+["3 GB","30 ڕۆژ","IQD 13,500"],
+["5 GB","30 ڕۆژ","IQD 14,000"],
+["10 GB","30 ڕۆژ","IQD 16,000"],
+["20 GB","30 ڕۆژ","IQD 18,500"],
+["Unlimited","3 ڕۆژ","IQD 15,000"],
+["Unlimited","5 ڕۆژ","IQD 15,500"],
+["Unlimited","7 ڕۆژ","IQD 19,500"],
+["Unlimited","10 ڕۆژ","IQD 18,500"],
+["Unlimited","15 ڕۆژ","IQD 30,000"],
+["Unlimited","30 ڕۆژ","IQD 35,000"]
+]
+},
+
+{
+name:"ئەلبانیا",
+en:"Albania",
+flag:"🇦🇱",
+region:"europe",
+place:"ئەوروپا",
+scene:"🏰",
+image:"/76930A21-B06E-4E68-A888-C4E11C6AFD00.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 9,000"],
+["2 GB","15 ڕۆژ","IQD 11,000"],
+["3 GB","30 ڕۆژ","IQD 12,500"],
+["5 GB","30 ڕۆژ","IQD 20,000"],
+["10 GB","30 ڕۆژ","IQD 30,000"],
+["20 GB","30 ڕۆژ","IQD 40,000"],
+["Unlimited","3 ڕۆژ","IQD 20,000"],
+["Unlimited","5 ڕۆژ","IQD 30,000"],
+["Unlimited","7 ڕۆژ","IQD 35,000"],
+["Unlimited","10 ڕۆژ","IQD 40,000"],
+["Unlimited","15 ڕۆژ","IQD 75,000"],
+["Unlimited","30 ڕۆژ","IQD 100,000"]
+]
+},
+
+{
+name:"ئاندۆرا",
+en:"Andorra",
+flag:"🇦🇩",
+region:"europe",
+place:"ئەوروپا",
+scene:"🏔️",
+image:"/467C1306-48E4-4293-9461-409504BEFD25.png",
+plans:[
+["Unlimited","3 ڕۆژ","IQD 25,000"],
+["Unlimited","5 ڕۆژ","IQD 35,000"],
+["Unlimited","7 ڕۆژ","IQD 40,000"],
+["Unlimited","10 ڕۆژ","IQD 55,000"],
+["1 GB","7 ڕۆژ","IQD 9,500"],
+["2 GB","15 ڕۆژ","IQD 12,000"],
+["3 GB","30 ڕۆژ","IQD 14,000"],
+["5 GB","30 ڕۆژ","IQD 20,000"],
+["10 GB","30 ڕۆژ","IQD 30,000"],
+["20 GB","30 ڕۆژ","IQD 45,000"]
+]
+},
+
+{
+name:"ئەرژەنتین",
+en:"Argentina",
+flag:"🇦🇷",
+region:"america",
+place:"ئەمەریکا",
+scene:"🏔️",
+image:"/3DCD6928-C8DB-4FB8-8292-F288D362C4BB.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 9,500"],
+["2 GB","15 ڕۆژ","IQD 12,000"],
+["3 GB","30 ڕۆژ","IQD 13,500"],
+["5 GB","30 ڕۆژ","IQD 20,000"],
+["10 GB","30 ڕۆژ","IQD 30,000"],
+["20 GB","30 ڕۆژ","IQD 40,000"],
+["Unlimited","3 ڕۆژ","IQD 25,000"],
+["Unlimited","5 ڕۆژ","IQD 35,000"],
+["Unlimited","7 ڕۆژ","IQD 40,000"],
+["Unlimited","10 ڕۆژ","IQD 50,000"],
+["Unlimited","15 ڕۆژ","IQD 85,000"],
+["Unlimited","30 ڕۆژ","IQD 155,000"]
+]
+},
+
+{
+name:"ئەرمەنستان",
+en:"Armenia",
+flag:"🇦🇲",
+region:"asia",
+place:"ئاسیا",
+scene:"🏔️",
+image:"/05E4F252-60F7-446E-BAF0-3D29EF006F94.png",
+plans:[
+["Unlimited","3 ڕۆژ","IQD 13,000"],
+["Unlimited","5 ڕۆژ","IQD 11,000"],
+["Unlimited","7 ڕۆژ","IQD 14,000"],
+["Unlimited","10 ڕۆژ","IQD 20,000"],
+["Unlimited","15 ڕۆژ","IQD 25,000"],
+["Unlimited","30 ڕۆژ","IQD 35,000"],
+["1 GB","7 ڕۆژ","IQD 7,000"],
+["2 GB","15 ڕۆژ","IQD 7,500"],
+["3 GB","30 ڕۆژ","IQD 8,000"],
+["5 GB","30 ڕۆژ","IQD 9,500"],
+["10 GB","30 ڕۆژ","IQD 10,000"],
+["20 GB","30 ڕۆژ","IQD 13,000"]
+]
+},
+
+{
+name:"بەلجیکا",
+en:"Belgium",
+flag:"🇧🇪",
+region:"europe",
+place:"ئەوروپا",
+scene:"🏰",
+image:"/A15AEBDA-70F0-400D-868D-0177B2DDC5CA.png",
+plans:[
+["Unlimited","3 ڕۆژ","IQD 14,500"],
+["Unlimited","5 ڕۆژ","IQD 16,000"],
+["Unlimited","7 ڕۆژ","IQD 19,000"],
+["Unlimited","10 ڕۆژ","IQD 25,000"],
+["Unlimited","15 ڕۆژ","IQD 30,000"],
+["Unlimited","30 ڕۆژ","IQD 40,000"],
+["1 GB","7 ڕۆژ","IQD 13,500"],
+["2 GB","15 ڕۆژ","IQD 15,000"],
+["3 GB","30 ڕۆژ","IQD 17,500"],
+["5 GB","30 ڕۆژ","IQD 25,000"],
+["10 GB","30 ڕۆژ","IQD 30,000"],
+["20 GB","30 ڕۆژ","IQD 35,000"]
+]
+},
+
+{
+name:"بەنغلادیش",
+en:"Bangladesh",
+flag:"🇧🇩",
+region:"asia",
+place:"ئاسیا",
+scene:"🌏",
+image:"/CC58BAD1-ADA0-4D79-8A2B-75E7271CDC98.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 8,500"],
+["2 GB","15 ڕۆژ","IQD 10,000"],
+["3 GB","30 ڕۆژ","IQD 12,500"],
+["5 GB","30 ڕۆژ","IQD 20,000"],
+["10 GB","30 ڕۆژ","IQD 25,000"],
+["20 GB","30 ڕۆژ","IQD 30,000"],
+["Unlimited","3 ڕۆژ","IQD 20,000"],
+["Unlimited","5 ڕۆژ","IQD 25,000"],
+["Unlimited","7 ڕۆژ","IQD 30,000"],
+["Unlimited","10 ڕۆژ","IQD 40,000"],
+["Unlimited","15 ڕۆژ","IQD 65,000"],
+["Unlimited","30 ڕۆژ","IQD 90,000"]
+]
+},
+
+{
+name:"برازیل",
+en:"Brazil",
+flag:"🇧🇷",
+region:"america",
+place:"ئەمەریکا",
+scene:"🏝️",
+image:"/EA44E8EA-7072-44EB-B366-5B66CAF6B9ED.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 8,000"],
+["2 GB","15 ڕۆژ","IQD 9,500"],
+["5 GB","30 ڕۆژ","IQD 10,500"],
+["10 GB","30 ڕۆژ","IQD 20,000"],
+["20 GB","30 ڕۆژ","IQD 30,000"],
+["3 GB","30 ڕۆژ","IQD 10,500"],
+["Unlimited","3 ڕۆژ","IQD 20,000"],
+["Unlimited","5 ڕۆژ","IQD 30,000"],
+["Unlimited","7 ڕۆژ","IQD 35,000"],
+["Unlimited","10 ڕۆژ","IQD 40,000"],
+["Unlimited","15 ڕۆژ","IQD 70,000"],
+["Unlimited","30 ڕۆژ","IQD 100,000"]
+]
+},
+
+{
+name:"عێراق",
+en:"Iraq",
+flag:"🇮🇶",
+region:"middle",
+place:"ڕۆژهەڵاتی ناوەڕاست",
+scene:"🇮🇶",
+image:"/9CC1DA2C-0C2C-49FD-AE17-FF6748C0ED2C.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 9,500"],
+["2 GB","15 ڕۆژ","IQD 12,000"],
+["3 GB","30 ڕۆژ","IQD 13,500"],
+["5 GB","30 ڕۆژ","IQD 25,000"],
+["10 GB","30 ڕۆژ","IQD 30,000"],
+["20 GB","30 ڕۆژ","IQD 40,000"]
+]
+},
+
+{
+name:"کرواتیا",
+en:"Croatia",
+flag:"🇭🇷",
+region:"europe",
+place:"ئەوروپا",
+scene:"🏰",
+image:"/7EB24468-E101-4A7B-A94B-8873A66838B1.png",
+plans:[
+["Unlimited","3 ڕۆژ","IQD 13,500"],
+["Unlimited","5 ڕۆژ","IQD 15,500"],
+["Unlimited","7 ڕۆژ","IQD 17,000"],
+["Unlimited","10 ڕۆژ","IQD 23,000"],
+["Unlimited","15 ڕۆژ","IQD 28,000"],
+["Unlimited","30 ڕۆژ","IQD 38,000"],
+["1 GB","7 ڕۆژ","IQD 10,500"],
+["2 GB","15 ڕۆژ","IQD 11,000"],
+["3 GB","30 ڕۆژ","IQD 11,500"],
+["5 GB","30 ڕۆژ","IQD 12,000"],
+["10 GB","30 ڕۆژ","IQD 14,000"],
+["20 GB","30 ڕۆژ","IQD 18,000"]
+]
+},
+
+{
+name:"ئۆزبەکستان",
+en:"Uzbekistan",
+flag:"🇺🇿",
+region:"asia",
+place:"ئاسیا",
+scene:"🏙️",
+image:"/18AD25C3-DA6C-4904-86CC-63DB3D50CACB.png",
+plans:[
+["5 GB","30 ڕۆژ","IQD 22,000"],
+["10 GB","30 ڕۆژ","IQD 32,000"],
+["20 GB","30 ڕۆژ","IQD 42,000"],
+["1 GB","7 ڕۆژ","IQD 11,500"],
+["2 GB","15 ڕۆژ","IQD 14,000"],
+["3 GB","30 ڕۆژ","IQD 16,000"],
+["Unlimited","3 ڕۆژ","IQD 22,000"],
+["Unlimited","5 ڕۆژ","IQD 32,000"],
+["Unlimited","7 ڕۆژ","IQD 42,000"],
+["Unlimited","15 ڕۆژ","IQD 77,000"]
+]
+},
+
+{
+name:"سکۆتلەند",
+en:"Scotland",
+flag:"🏴",
+region:"europe",
+place:"ئەوروپا",
+scene:"🏰",
+image:"/E531E2D4-6F66-4A33-8A52-4CFF08DCA0D3.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 10,500"],
+["2 GB","15 ڕۆژ","IQD 11,500"],
+["3 GB","30 ڕۆژ","IQD 12,000"],
+["5 GB","30 ڕۆژ","IQD 14,000"],
+["10 GB","30 ڕۆژ","IQD 16,000"],
+["20 GB","30 ڕۆژ","IQD 23,000"],
+["Unlimited","10 ڕۆژ","IQD 28,000"]
+]
+},
+
+{
+name:"ڤێتنام",
+en:"Vietnam",
+flag:"🇻🇳",
+region:"asia",
+place:"ئاسیا",
+scene:"🏝️",
+image:"/4F9A8DE8-52EA-4174-93D0-C603F349060F.png",
+plans:[
+["Unlimited","10 ڕۆژ","IQD 42,000"],
+["Unlimited","15 ڕۆژ","IQD 67,000"],
+["Unlimited","3 ڕۆژ","IQD 22,000"],
+["Unlimited","5 ڕۆژ","IQD 27,000"],
+["Unlimited","7 ڕۆژ","IQD 32,000"],
+["Unlimited","30 ڕۆژ","IQD 92,000"],
+["1 GB","7 ڕۆژ","IQD 10,500"],
+["2 GB","15 ڕۆژ","IQD 12,000"],
+["3 GB","30 ڕۆژ","IQD 13,000"],
+["5 GB","30 ڕۆژ","IQD 16,000"],
+["10 GB","30 ڕۆژ","IQD 22,000"],
+["20 GB","30 ڕۆژ","IQD 32,000"]
+]
+},
+
+{
+name:"دوورگەکانی ڤیرجینیای ئەمریکا",
+en:"Virgin Islands (U.S.)",
+flag:"🇻🇮",
+region:"america",
+place:"ئەمەریکا",
+scene:"🏝️",
+image:"/5881DB50-3562-469F-9733-10620C33E163.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 8,000"],
+["2 GB","15 ڕۆژ","IQD 9,500"],
+["3 GB","30 ڕۆژ","IQD 10,000"],
+["5 GB","30 ڕۆژ","IQD 12,500"],
+["10 GB","30 ڕۆژ","IQD 20,000"],
+["20 GB","30 ڕۆژ","IQD 25,000"],
+["Unlimited","3 ڕۆژ","IQD 20,000"],
+["Unlimited","5 ڕۆژ","IQD 25,000"],
+["Unlimited","7 ڕۆژ","IQD 25,000"],
+["Unlimited","10 ڕۆژ","IQD 30,000"],
+["Unlimited","15 ڕۆژ","IQD 55,000"],
+["Unlimited","30 ڕۆژ","IQD 75,000"]
+]
+},
+
+/* =========================
+   وڵاتە نوێکان
+========================= */
+
+{
+name:"ئیسپانیا",
+en:"Spain",
+flag:"🇪🇸",
+region:"europe",
+place:"ئەوروپا",
+scene:"🏰",
+image:"/A82ABA9A-DE74-4128-A70F-3458CD14D6C2.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 12,500"],
+["2 GB","15 ڕۆژ","IQD 13,000"],
+["3 GB","30 ڕۆژ","IQD 13,000"],
+["5 GB","30 ڕۆژ","IQD 14,000"],
+["10 GB","30 ڕۆژ","IQD 16,000"],
+["20 GB","30 ڕۆژ","IQD 18,500"],
+["Unlimited","3 ڕۆژ","IQD 15,500"],
+["Unlimited","5 ڕۆژ","IQD 17,500"],
+["Unlimited","7 ڕۆژ","IQD 19,000"],
+["Unlimited","10 ڕۆژ","IQD 25,000"],
+["Unlimited","15 ڕۆژ","IQD 30,000"],
+["Unlimited","30 ڕۆژ","IQD 40,000"]
+]
+},
+
+{
+name:"مەکسیک",
+en:"Mexico",
+flag:"🇲🇽",
+region:"america",
+place:"ئەمەریکا",
+scene:"🏝️",
+image:"/C35D33FD-B373-48A9-A727-C66B7D81B777.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 8,500"],
+["2 GB","15 ڕۆژ","IQD 10,000"],
+["3 GB","30 ڕۆژ","IQD 11,500"],
+["5 GB","30 ڕۆژ","IQD 14,500"],
+["10 GB","30 ڕۆژ","IQD 25,000"],
+["20 GB","30 ڕۆژ","IQD 35,000"],
+["Unlimited","3 ڕۆژ","IQD 20,000"],
+["Unlimited","5 ڕۆژ","IQD 30,000"],
+["Unlimited","7 ڕۆژ","IQD 35,000"],
+["Unlimited","10 ڕۆژ","IQD 40,000"],
+["Unlimited","15 ڕۆژ","IQD 70,000"],
+["Unlimited","30 ڕۆژ","IQD 100,000"]
+]
+},
+
+{
+name:"یۆنان",
+en:"Greece",
+flag:"🇬🇷",
+region:"europe",
+place:"ئەوروپا",
+scene:"🏛️",
+plans:[
+["Unlimited","3 ڕۆژ","IQD 16,000"],
+["Unlimited","5 ڕۆژ","IQD 18,000"],
+["Unlimited","7 ڕۆژ","IQD 19,500"],
+["Unlimited","10 ڕۆژ","IQD 25,000"],
+["Unlimited","15 ڕۆژ","IQD 35,000"],
+["Unlimited","30 ڕۆژ","IQD 40,000"],
+["1 GB","7 ڕۆژ","IQD 12,500"],
+["2 GB","15 ڕۆژ","IQD 13,000"],
+["3 GB","30 ڕۆژ","IQD 13,500"],
+["5 GB","30 ڕۆژ","IQD 15,500"],
+["10 GB","30 ڕۆژ","IQD 17,500"],
+["20 GB","30 ڕۆژ","IQD 25,000"]
+]
+},
+
+{
+name:"بۆسنیا و هەرزەگۆڤینا",
+en:"Bosnia and Herzegovina",
+flag:"🇧🇦",
+region:"europe",
+place:"ئەوروپا",
+scene:"🏰",
+image:"/2F53CBC1-1899-4108-96CA-43320CA1DD10.png",
+plans:[
+["Unlimited","30 ڕۆژ","IQD 65,000"],
+["1 GB","7 ڕۆژ","IQD 7,500"],
+["2 GB","15 ڕۆژ","IQD 9,000"],
+["3 GB","30 ڕۆژ","IQD 10,000"],
+["5 GB","30 ڕۆژ","IQD 12,000"]
+]
+},
+
+{
+name:"بولگاریا",
+en:"Bulgaria",
+flag:"🇧🇬",
+region:"europe",
+place:"ئەوروپا",
+scene:"🏰",
+image:"/6ADA717F-D74E-4F1E-89B2-58DA2D839A84.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 12,500"],
+["2 GB","15 ڕۆژ","IQD 13,000"],
+["3 GB","30 ڕۆژ","IQD 13,500"],
+["5 GB","30 ڕۆژ","IQD 14,000"],
+["10 GB","30 ڕۆژ","IQD 16,000"],
+["20 GB","30 ڕۆژ","IQD 20,000"],
+["Unlimited","3 ڕۆژ","IQD 15,500"],
+["Unlimited","5 ڕۆژ","IQD 17,500"],
+["Unlimited","7 ڕۆژ","IQD 19,000"],
+["Unlimited","10 ڕۆژ","IQD 25,000"],
+["Unlimited","15 ڕۆژ","IQD 30,000"],
+["Unlimited","30 ڕۆژ","IQD 40,000"]
+]
+},
+
+{
+name:"بۆلیڤیا",
+en:"Bolivia",
+flag:"🇧🇴",
+region:"america",
+place:"ئەمەریکا",
+scene:"🏔️",
+image:"/71CCD1A6-108F-40CE-9635-220FB3159543.png",
+plans:[
+["Unlimited","3 ڕۆژ","IQD 25,000"],
+["Unlimited","5 ڕۆژ","IQD 35,000"],
+["Unlimited","7 ڕۆژ","IQD 40,000"],
+["Unlimited","10 ڕۆژ","IQD 55,000"],
+["Unlimited","15 ڕۆژ","IQD 90,000"],
+["Unlimited","30 ڕۆژ","IQD 155,000"],
+["1 GB","7 ڕۆژ","IQD 9,000"],
+["2 GB","15 ڕۆژ","IQD 11,000"],
+["3 GB","30 ڕۆژ","IQD 12,500"],
+["5 GB","30 ڕۆژ","IQD 20,000"],
+["10 GB","30 ڕۆژ","IQD 25,000"],
+["20 GB","30 ڕۆژ","IQD 40,000"]
+]
+},
+
+{
+name:"باربادۆس",
+en:"Barbados",
+flag:"🇧🇧",
+region:"america",
+place:"ئەمەریکا",
+scene:"🏝️",
+plans:[
+["1 GB","7 ڕۆژ","IQD 12,500"],
+["2 GB","15 ڕۆژ","IQD 20,000"],
+["3 GB","30 ڕۆژ","IQD 25,000"],
+["5 GB","30 ڕۆژ","IQD 35,000"]
+]
+},
+
+{
+name:"کامیرۆن",
+en:"Cameroon",
+flag:"🇨🇲",
+region:"america",
+place:"ئەفریقا",
+scene:"🌍",
+image:"/880B8F1F-DA96-4ABC-94D3-B1DD09A87BB6.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 13,000"],
+["2 GB","15 ڕۆژ","IQD 20,000"],
+["3 GB","30 ڕۆژ","IQD 25,000"],
+["5 GB","30 ڕۆژ","IQD 35,000"],
+["10 GB","30 ڕۆژ","IQD 55,000"]
+]
+},
+
+{
+name:"کۆستاریکا",
+en:"Costa Rica",
+flag:"🇨🇷",
+region:"america",
+place:"ئەمەریکا",
+scene:"🏝️",
+image:"/2EAF829A-6A28-4FB9-A554-524E7D858C7E.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 10,000"],
+["2 GB","15 ڕۆژ","IQD 14,500"],
+["3 GB","30 ڕۆژ","IQD 14,000"],
+["5 GB","30 ڕۆژ","IQD 25,000"],
+["10 GB","30 ڕۆژ","IQD 30,000"],
+["20 GB","30 ڕۆژ","IQD 40,000"]
+]
+},
+
+{
+name:"دۆمینیکان",
+en:"Dominican Republic",
+flag:"🇩🇴",
+region:"america",
+place:"ئەمەریکا",
+scene:"🏝️",
+image:"/B503A389-F665-43E4-96C0-F6B6D51A2B16.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 9,500"],
+["2 GB","15 ڕۆژ","IQD 11,500"],
+["3 GB","30 ڕۆژ","IQD 12,500"],
+["5 GB","30 ڕۆژ","IQD 20,000"],
+["10 GB","30 ڕۆژ","IQD 25,000"],
+["20 GB","30 ڕۆژ","IQD 35,000"],
+["Unlimited","3 ڕۆژ","IQD 20,000"],
+["Unlimited","5 ڕۆژ","IQD 30,000"],
+["Unlimited","7 ڕۆژ","IQD 35,000"],
+["Unlimited","10 ڕۆژ","IQD 45,000"],
+["Unlimited","15 ڕۆژ","IQD 75,000"],
+["Unlimited","30 ڕۆژ","IQD 155,000"]
+]
+},
+
+{
+name:"سابا",
+en:"Saba",
+flag:"🇸🇽",
+region:"america",
+place:"ئەمەریکا",
+scene:"🏝️",
+plans:[
+["1 GB","7 ڕۆژ","IQD 12,500"],
+["2 GB","15 ڕۆژ","IQD 20,000"],
+["3 GB","30 ڕۆژ","IQD 25,000"],
+["5 GB","30 ڕۆژ","IQD 35,000"]
+]
+},
+
+{
+name:"جۆرجیا",
+en:"Georgia",
+flag:"🇬🇪",
+region:"asia",
+place:"ئاسیا",
+scene:"🏔️",
+image:"/9851602A-6957-46E7-AECA-EC6E23377566.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 8,500"],
+["2 GB","15 ڕۆژ","IQD 10,500"],
+["3 GB","30 ڕۆژ","IQD 12,000"],
+["5 GB","30 ڕۆژ","IQD 20,000"],
+["10 GB","30 ڕۆژ","IQD 30,000"],
+["20 GB","30 ڕۆژ","IQD 45,000"]
+]
+},
+
+{
+name:"ئەنتیگوا و باربودا",
+en:"Antigua & Barbuda",
+flag:"🇦🇬",
+region:"america",
+place:"ئەمەریکا",
+scene:"🏝️",
+plans:[
+["1 GB","7 ڕۆژ","IQD 20,000"],
+["2 GB","15 ڕۆژ","IQD 20,000"],
+["3 GB","30 ڕۆژ","IQD 25,000"],
+["5 GB","30 ڕۆژ","IQD 35,000"]
+]
+},
+
+{
+name:"کۆڵۆمبیا",
+en:"Colombia",
+flag:"🇨🇴",
+region:"america",
+place:"ئەمەریکا",
+scene:"🏝️",
+image:"/F1642543-2150-48ED-BE08-A8E544BC65A4.png",
+plans:[
+["5 GB","30 ڕۆژ","IQD 30,000"],
+["3 GB","30 ڕۆژ","IQD 20,000"],
+["2 GB","15 ڕۆژ","IQD 20,000"],
+["1 GB","7 ڕۆژ","IQD 11,500"]
+]
+},
+
+{
+name:"بۆنەیر",
+en:"Bonaire",
+flag:"🇧🇶",
+region:"america",
+place:"ئەمەریکا",
+scene:"🏝️",
+image:"/5FE47BC2-69FC-428D-9791-00307AD71BA8.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 12,500"],
+["2 GB","15 ڕۆژ","IQD 20,000"],
+["3 GB","30 ڕۆژ","IQD 25,000"],
+["5 GB","30 ڕۆژ","IQD 35,000"],
+["Unlimited","3 ڕۆژ","IQD 50,000"],
+["Unlimited","5 ڕۆژ","IQD 70,000"],
+["Unlimited","7 ڕۆژ","IQD 90,000"],
+["Unlimited","10 ڕۆژ","IQD 155,000"]
+]
+},
+
+{
+name:"قوبرس",
+en:"Cyprus",
+flag:"🇨🇾",
+region:"europe",
+place:"ئەوروپا",
+scene:"🏝️",
+image:"/56060452-E3CE-4E87-8BBA-3BA0F0A4619D.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 10,500"],
+["2 GB","15 ڕۆژ","IQD 11,000"],
+["3 GB","30 ڕۆژ","IQD 11,500"],
+["5 GB","30 ڕۆژ","IQD 12,500"],
+["10 GB","30 ڕۆژ","IQD 14,500"],
+["20 GB","30 ڕۆژ","IQD 17,500"],
+["Unlimited","3 ڕۆژ","IQD 13,000"],
+["Unlimited","5 ڕۆژ","IQD 15,000"],
+["Unlimited","7 ڕۆژ","IQD 17,000"],
+["Unlimited","10 ڕۆژ","IQD 23,000"],
+["Unlimited","15 ڕۆژ","IQD 28,000"],
+["Unlimited","30 ڕۆژ","IQD 38,000"]
+]
+},
+
+{
+name:"ئەڵجەزایر",
+en:"Algeria",
+flag:"🇩🇿",
+region:"america",
+place:"ئەفریقا",
+scene:"🌍",
+image:"/62CFC380-AF4B-411D-BBF9-A24FB20602A6.png",
+plans:[
+["Unlimited","3 ڕۆژ","IQD 22,000"],
+["Unlimited","5 ڕۆژ","IQD 27,000"],
+["Unlimited","7 ڕۆژ","IQD 32,000"],
+["Unlimited","10 ڕۆژ","IQD 37,000"],
+["Unlimited","15 ڕۆژ","IQD 62,000"],
+["Unlimited","30 ڕۆژ","IQD 82,000"],
+["1 GB","7 ڕۆژ","IQD 10,500"],
+["2 GB","15 ڕۆژ","IQD 11,500"],
+["3 GB","30 ڕۆژ","IQD 12,500"],
+["5 GB","30 ڕۆژ","IQD 15,000"],
+["10 GB","30 ڕۆژ","IQD 22,000"],
+["20 GB","30 ڕۆژ","IQD 27,000"]
+]
+},
+
+{
+name:"بێرمودا",
+en:"Bermuda",
+flag:"🇧🇲",
+region:"america",
+place:"ئەمەریکا",
+scene:"🏝️",
+plans:[
+["1 GB","7 ڕۆژ","IQD 12,500"],
+["2 GB","15 ڕۆژ","IQD 20,000"],
+["3 GB","30 ڕۆژ","IQD 25,000"],
+["5 GB","30 ڕۆژ","IQD 35,000"]
+]
+},
+
+{
+name:"ئێستۆنیا",
+en:"Estonia",
+flag:"🇪🇪",
+region:"europe",
+place:"ئەوروپا",
+scene:"🏰",
+image:"/1F7E90AD-25DD-4FBD-AABF-1142699B4FF7.png",
+plans:[
+["5 GB","30 ڕۆژ","IQD 14,000"],
+["10 GB","30 ڕۆژ","IQD 15,500"],
+["20 GB","30 ڕۆژ","IQD 18,000"],
+["1 GB","7 ڕۆژ","IQD 12,000"],
+["2 GB","15 ڕۆژ","IQD 12,500"],
+["3 GB","30 ڕۆژ","IQD 13,000"],
+["Unlimited","3 ڕۆژ","IQD 15,000"],
+["Unlimited","5 ڕۆژ","IQD 17,000"],
+["Unlimited","7 ڕۆژ","IQD 19,000"],
+["Unlimited","10 ڕۆژ","IQD 25,000"],
+["Unlimited","15 ڕۆژ","IQD 30,000"],
+["Unlimited","30 ڕۆژ","IQD 35,000"]
+]
+},
+
+{
+name:"فینلەند",
+en:"Finland",
+flag:"🇫🇮",
+region:"europe",
+place:"ئەوروپا",
+scene:"🏔️",
+image:"/6BF770FF-305B-4BAC-811F-351ABDB7178C.png",
+plans:[
+["5 GB","30 ڕۆژ","IQD 9,000"],
+["10 GB","30 ڕۆژ","IQD 13,000"],
+["20 GB","30 ڕۆژ","IQD 13,000"],
+["1 GB","7 ڕۆژ","IQD 7,000"],
+["2 GB","15 ڕۆژ","IQD 7,500"],
+["3 GB","30 ڕۆژ","IQD 8,000"],
+["Unlimited","3 ڕۆژ","IQD 10,000"],
+["Unlimited","5 ڕۆژ","IQD 12,000"],
+["Unlimited","7 ڕۆژ","IQD 14,000"],
+["Unlimited","10 ڕۆژ","IQD 20,000"],
+["Unlimited","15 ڕۆژ","IQD 25,000"],
+["Unlimited","30 ڕۆژ","IQD 35,000"]
+]
+},
+
+{
+name:"گرینلەند",
+en:"Greenland",
+flag:"🇬🇱",
+region:"america",
+place:"ئەمەریکا",
+scene:"🏔️",
+image:"/F77C478E-7346-4B0C-988B-E7407C0E6E16.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 8,500"],
+["2 GB","15 ڕۆژ","IQD 9,500"],
+["3 GB","30 ڕۆژ","IQD 10,500"],
+["Unlimited","10 ڕۆژ","IQD 85,000"]
+]
+},
+
+{
+name:"هەنگاریا",
+en:"Hungary",
+flag:"🇭🇺",
+region:"europe",
+place:"ئەوروپا",
+scene:"🏰",
+image:"/06A39002-6EF9-44D6-8B4D-222A7030F13F.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 12,000"],
+["2 GB","15 ڕۆژ","IQD 12,500"],
+["3 GB","30 ڕۆژ","IQD 13,500"],
+["5 GB","30 ڕۆژ","IQD 15,000"],
+["10 GB","30 ڕۆژ","IQD 17,500"],
+["20 GB","30 ڕۆژ","IQD 18,000"],
+["Unlimited","3 ڕۆژ","IQD 15,000"],
+["Unlimited","5 ڕۆژ","IQD 17,000"],
+["Unlimited","7 ڕۆژ","IQD 19,000"],
+["Unlimited","10 ڕۆژ","IQD 25,000"],
+["Unlimited","15 ڕۆژ","IQD 30,000"],
+["Unlimited","30 ڕۆژ","IQD 40,000"]
+]
+},
+
+{
+name:"سوید",
+en:"Sweden",
+flag:"🇸🇪",
+region:"europe",
+place:"ئەوروپا",
+scene:"🏰",
+image:"/35EDA313-6B2D-4D32-A6FA-6668E9A07319.png",
+plans:[
+["Unlimited","3 ڕۆژ","IQD 10,000"],
+["Unlimited","5 ڕۆژ","IQD 12,000"],
+["Unlimited","7 ڕۆژ","IQD 14,000"],
+["Unlimited","10 ڕۆژ","IQD 20,000"],
+["Unlimited","15 ڕۆژ","IQD 25,000"],
+["Unlimited","30 ڕۆژ","IQD 35,000"],
+["1 GB","7 ڕۆژ","IQD 7,000"],
+["2 GB","15 ڕۆژ","IQD 7,500"],
+["3 GB","30 ڕۆژ","IQD 8,000"],
+["5 GB","30 ڕۆژ","IQD 9,000"],
+["10 GB","30 ڕۆژ","IQD 10,500"],
+["20 GB","30 ڕۆژ","IQD 13,000"]
+]
+},
+
+{
+name:"کوێت",
+en:"Kuwait",
+flag:"🇰🇼",
+region:"middle",
+place:"ڕۆژهەڵاتی ناوەڕاست",
+scene:"🏙️",
+image:"/27CC67DD-196E-489E-A940-784E38BCF483.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 9,000"],
+["2 GB","15 ڕۆژ","IQD 10,500"],
+["3 GB","30 ڕۆژ","IQD 12,000"],
+["5 GB","30 ڕۆژ","IQD 15,000"],
+["10 GB","30 ڕۆژ","IQD 25,000"],
+["20 GB","30 ڕۆژ","IQD 45,000"],
+["Unlimited","3 ڕۆژ","IQD 20,000"],
+["Unlimited","5 ڕۆژ","IQD 25,000"],
+["Unlimited","7 ڕۆژ","IQD 30,000"],
+["Unlimited","10 ڕۆژ","IQD 35,000"],
+["Unlimited","15 ڕۆژ","IQD 60,000"],
+["Unlimited","30 ڕۆژ","IQD 80,000"]
+]
+},
+
+{
+name:"تایوان",
+en:"Taiwan",
+flag:"🇹🇼",
+region:"asia",
+place:"ئاسیا",
+scene:"🏙️",
+image:"/1432EF76-9B51-4C89-9183-C9EFFD1D68AB.png",
+plans:[
+["1 GB","7 ڕۆژ","IQD 13,000"],
+["2 GB","15 ڕۆژ","IQD 13,500"],
+["5 GB","30 ڕۆژ","IQD 16,000"],
+["10 GB","30 ڕۆژ","IQD 19,500"],
+["3 GB","30 ڕۆژ","IQD 14,500"],
+["20 GB","30 ڕۆژ","IQD 30,000"],
+["Unlimited","3 ڕۆژ","IQD 18,500"],
+["Unlimited","5 ڕۆژ","IQD 25,000"],
+["Unlimited","7 ڕۆژ","IQD 25,000"],
+["Unlimited","10 ڕۆژ","IQD 30,000"],
+["Unlimited","15 ڕۆژ","IQD 45,000"],
+["Unlimited","30 ڕۆژ","IQD 60,000"]
+]
+}
+
+];
+const API_BASE="https://firstesim-api.onrender.com";
+const PAY_NUMBERS={FIB:"7506021212",FastPay:"7506021212","Super Qi":"7111649351",QuickPay:"7508107121"};
+const WHATSAPP="9647506021212";
+let LANG=localStorage.getItem("firstesim_lang")||"ku", currentCountry=0,currentPlan=0,currentPay="QuickPay",currentRegion="all";
+
+function cname(c){if(LANG==="ku")return c.name;if(LANG==="en")return c.en;const m={"Turkey":"Turkey","Germany":"Germany","USA":"United States","Europe + UK":"Europe + UK","Global":"Global","UAE":"UAE","Saudi Arabia":"Saudi Arabia","Azerbaijan":"Azerbaijan","China":"China","Italy":"Italy"};return m[c.en]||c.en}
+function setLang(v){LANG=v;localStorage.setItem("firstesim_lang",v);document.querySelectorAll(".lang").forEach(x=>x.classList.toggle("active",x.textContent.toLowerCase().includes(v==="ku"?"kur":v==="en"?"english":"العربي")));document.documentElement.lang=v;document.documentElement.dir=v==="en"?"ltr":"rtl";
+const T={ku:["گەشتی بێ سنوور","eSIM بۆ هەموو جیهان","خێرا و باوەڕپێکراو","نرخی باش","جیهانی","خێرا زۆر","200+ وڵات","باوەڕپێکراو","پشتیوانی 24 کاتژمێر","وڵاتە بناوبانگەکان"],en:["Unlimited Travel","eSIM for the whole world","Fast & reliable","Great prices","Global","Super fast","200+ countries","Trusted","24/7 support","Popular destinations"],ar:["سفر بلا حدود","eSIM لجميع أنحاء العالم","سريع وموثوق","أسعار مناسبة","تغطية عالمية","سريع جداً","أكثر من 200 دولة","موثوق","دعم 24/7","الوجهات الشائعة"]}[v];
+["homeTitle","homeSub","c1","c2","c3","ft1","ft2","ft3","ft4","popTitle"].forEach((id,i)=>document.getElementById(id).textContent=T[i]);renderPopular();renderCountries(filtered())}
+function showScreen(id){document.querySelectorAll(".screen").forEach(s=>s.classList.toggle("active",s.id===id));document.querySelectorAll(".nav").forEach(n=>n.classList.toggle("active",n.dataset.screen===id));window.scrollTo(0,0)}
+function renderPopular(){const names=["Turkey","Saudi Arabia","UAE","Europe + UK"];document.getElementById("popular").innerHTML=names.map(n=>{const c=countries.find(x=>x.en===n);if(!c)return"";return `<div class="pop" onclick="openCountry(${countries.indexOf(c)})"><img src="${c.image||""}"><div class="flag">${c.flag||"🌍"}</div><b>${cname(c)}</b></div>`}).join("")}
+function filtered(){let arr=currentRegion==="all"?countries:countries.filter(c=>c.region===currentRegion);const q=(document.getElementById("countrySearch")?.value||document.getElementById("homeSearch")?.value||"").toLowerCase().trim();if(q)arr=arr.filter(c=>(c.name+" "+c.en+" "+c.place+" "+c.region+" "+JSON.stringify(c.plans)).toLowerCase().includes(q));return arr}
+function renderCountries(arr){document.getElementById("countryList").innerHTML=arr.map(c=>`<div class="countryRow" onclick="openCountry(${countries.indexOf(c)})"><div class="flag">${c.flag||"🌍"}</div><div class="ctext"><strong>${cname(c)}</strong><small>${c.en}</small></div><em>${c.plans?.[0]?.[2]||""}</em><span class="arrow">›</span></div>`).join("")}
+function region(r,btn){currentRegion=r;document.querySelectorAll(".chip").forEach(x=>x.classList.remove("active"));btn.classList.add("active");renderCountries(filtered())}
+function countrySearch(){renderCountries(filtered())}
+function homeSearch(){showScreen("countries");document.getElementById("countrySearch").value=document.getElementById("homeSearch").value;renderCountries(filtered())}
+function openCountry(i){currentCountry=i;const c=countries[i];document.getElementById("detail").innerHTML=`<div class="detailHero" style="background-image:url('${c.image||""}')"><button class="detailBack" onclick="showScreen('countries')">‹</button><div class="detailTitle"><div class="flag">${c.flag||"🌍"}</div><div><h1>${cname(c)}</h1><small>${c.en}</small></div></div></div><div class="planTabs"><button class="planTab active">هەموو پلانەکان</button><button class="planTab">داتا</button><button class="planTab">بێ سنوور</button></div><div class="plans">${c.plans.map((p,i)=>{const un=p[0].toLowerCase()==="unlimited";return `<div class="plan ${un?"unlimited":""}"><div><div class="data">${p[0]}</div><div class="days">${p[1]}</div></div><div class="price">${p[2]}</div><button class="primary" onclick="openCheckout(${i})">کڕین</button></div>`}).join("")}</div><div class="infoCard"><h3>سوودەکان</h3><div class="benefits"><div>خێراترین ئینتەرنێت</div><div>پەیوەندی لە ڕۆماڵ و پاوەڕکڕاو</div><div>ئاسان بۆ گەشت</div><div>بەکارهێنانی فەرمانەی ناسینەی ID نییە</div></div></div>`;showScreen("plans")}
+function openCheckout(pi){currentPlan=pi;const c=countries[currentCountry],p=c.plans[pi];document.getElementById("checkoutBody").innerHTML=`<div class="formCard"><div style="background:#edf6ff;border-radius:13px;padding:12px"><b>${c.flag||"🌍"} ${cname(c)}</b><div style="font-size:11px;margin-top:5px">${p[0]} · ${p[1]} · <b>${p[2]}</b></div></div><div style="background:#f5f8fc;padding:12px;border-radius:12px;font-size:11px;line-height:1.8">پلان: ${p[0]}<br>ماوە: ${p[1]}<br>نرخ: ${p[2]}</div><button class="bigBtn" style="margin-top:15px" onclick="showScreen('payment');paymentReceiptBox()">بەردەوام بوون بۆ پارەدان</button></div>`;showScreen("checkout")}
+
+function selectPay(el,p){document.querySelectorAll(".payOption").forEach(x=>x.classList.remove("active"));el.classList.add("active");currentPay=p}
+function paymentReceiptBox(){if(document.getElementById("receiptBox"))return;const box=document.querySelector("#payment .formCard");if(!box)return;const btn=box.querySelector(".bigBtn");const wrap=document.createElement("div");wrap.id="receiptBox";wrap.className="upload";wrap.innerHTML=`<b>پسوڵەی پارەدان</b><div style="font-size:11px;margin-top:5px;color:#667085">دوای پارەدان، وێنەی پسوڵەکەت لێرە upload بکە.</div><input id="receipt" type="file" accept="image/*,.pdf" style="width:100%;margin-top:10px">`;box.insertBefore(wrap,btn)}
+
+async function finishOrder(){const receipt=document.getElementById("receipt")?.files?.[0];if(!receipt){paymentReceiptBox();alert("تکایە وێنەی پسوڵەی پارەدان upload بکە");return}if(!currentPay){alert("تکایە شێوازی پارەدان هەڵبژێرە");return}const c=countries[currentCountry],p=c.plans[currentPlan];const data=new FormData();data.append("customerName","");data.append("customerPhone","");data.append("country",c.en);data.append("plan",`${p[0]} — ${p[1]}`);data.append("price",p[2]);data.append("payment",currentPay);data.append("receipt",receipt);try{const res=await fetch(`${API_BASE}/api/orders`,{method:"POST",body:data});const o=await res.json();if(!res.ok||!o.id)throw new Error(o.message||"order_failed");localStorage.setItem("firstesim_last_order",JSON.stringify(o));const msg=`سڵاو 👋%0A%0Aداواکاری نوێی eSIM%0A🌍 ${encodeURIComponent(c.en)}%0A📦 ${encodeURIComponent(p[0]+" - "+p[1])}%0A💰 ${encodeURIComponent(p[2])}%0A💳 ${encodeURIComponent(currentPay)}%0A🆔 ${encodeURIComponent(o.id)}`;window.open("https://wa.me/"+WHATSAPP+"?text="+msg,"_blank");renderOrder(o);showScreen("orders");startOrderTracking()}catch(e){alert("ناردنی داواکاری سەرکەوتوو نەبوو. تکایە دووبارە هەوڵ بدەرەوە.");console.error(e)}}
+
+function orderQrUrl(o){if(!o?.qrUrl)return"";return String(o.qrUrl).startsWith("http")?o.qrUrl:API_BASE+o.qrUrl}
+function renderOrder(o){const ready=o?.status==="esim_ready"&&o?.qrUrl;const waitUntil=Number(localStorage.getItem("firstesim_wait_until")||0);const remain=Math.max(0,waitUntil-Date.now());const mm=String(Math.floor(remain/60000)).padStart(2,"0"),ss=String(Math.floor(remain/1000)%60).padStart(2,"0");document.getElementById("orderList").innerHTML=`<div style="display:flex;justify-content:space-between"><b>${o.id||""}</b><small>${o.createdAt?new Date(o.createdAt).toLocaleString():new Date().toLocaleString()}</small></div><hr><div style="font-weight:950">${o.country||""}</div><div style="margin:7px 0;font-size:11px">${o.plan||""}</div><b>${o.price||""}</b><div class="status ${ready?"ready":""}" style="margin-top:15px">${ready?"<b>ئێسیمەکەت ئامادەیە ✅</b>":"<b>چاوەڕوانی پشتیوانە</b><div class="timer" id="orderTimer">"+mm+":"+ss+"</div><div style="font-size:11px;text-align:center">دوای ناردنی پسوڵە، پشتیوانی داواکارییەکەت پشکنین دەکات و QR ـی ڕاستەقینە دادەنێت.</div>"}</div>${ready?`<button class="bigBtn" style="margin-top:15px" onclick="showQRFromOrder()">پیشاندانی QR Code</button>`:""}`;if(ready&&o.qrUrl){showQRFromOrder()}}
+function showQRFromOrder(){const raw=localStorage.getItem("firstesim_last_order");if(!raw)return;const o=JSON.parse(raw);if(!o.qrUrl||o.status!=="esim_ready")return;document.getElementById("qrCode").textContent=o.activationCode||o.id||"";document.getElementById("qrImg").src=orderQrUrl(o);showScreen("qr")}
+function downloadQR(){const raw=localStorage.getItem("firstesim_last_order"),o=raw?JSON.parse(raw):null;if(o?.qrUrl)window.open(orderQrUrl(o),"_blank")}
+async function refreshOrder(openIfReady=false){const raw=localStorage.getItem("firstesim_last_order");if(!raw)return;const old=JSON.parse(raw);if(!old.id)return;try{const res=await fetch(`${API_BASE}/api/orders/${encodeURIComponent(old.id)}`);if(!res.ok)return;const o=await res.json();localStorage.setItem("firstesim_last_order",JSON.stringify(o));renderOrder(o);if(openIfReady&&o.status==="esim_ready"&&o.qrUrl)showQRFromOrder()}catch(e){console.error(e)}}
+function startOrderTracking(){const raw=localStorage.getItem("firstesim_last_order");if(!raw)return;const o=JSON.parse(raw);if(o.status==="esim_ready"&&o.qrUrl){renderOrder(o);return}let until=Number(localStorage.getItem("firstesim_wait_until")||0);if(!until){until=Date.now()+300000;localStorage.setItem("firstesim_wait_until",String(until))}clearInterval(window.firstEsimTimer);clearInterval(window.firstEsimPoll);const tick=()=>{const left=Math.max(0,until-Date.now());const el=document.getElementById("orderTimer");if(el)el.textContent=String(Math.floor(left/60000)).padStart(2,"0")+":"+String(Math.floor(left/1000)%60).padStart(2,"0")};tick();window.firstEsimTimer=setInterval(tick,1000);window.firstEsimPoll=setInterval(()=>refreshOrder(true),10000);refreshOrder(true)}
+function initSavedOrder(){const raw=localStorage.getItem("firstesim_last_order");if(!raw)return;try{const o=JSON.parse(raw);renderOrder(o);if(o.status!=="esim_ready"||!o.qrUrl)startOrderTracking()}catch(e){localStorage.removeItem("firstesim_last_order")}}
+
+renderPopular();renderCountries(countries);setLang(LANG);initSavedOrder();
+</script>
+</body>
+</html>
