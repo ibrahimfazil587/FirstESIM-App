@@ -53,6 +53,9 @@ button:focus-visible,input:focus-visible,[onclick]:focus-visible{outline:3px sol
 @media(max-width:340px){.popular,.features{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:521px){body{background:#d9e6f3}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+.authPanel{padding:15px;border-top:1px solid #edf1f6}.authIntro{font-size:12px;color:var(--muted);margin:0 0 12px}.authTabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}.authTab{border:1px solid var(--line);border-radius:12px;background:#fff;padding:10px;font-size:13px;font-weight:800}.authTab.active{background:var(--dark);border-color:var(--dark);color:#fff}.authForm label{display:block;font-size:12px;font-weight:700;margin:10px 0 5px}.authForm input{width:100%;height:46px;border:1px solid #d3e0ee;border-radius:12px;padding:0 12px;background:#fff;font-size:15px;direction:auto}.authSubmit{width:100%;border:0;border-radius:13px;background:var(--blue);color:#fff;min-height:48px;font-weight:800;margin-top:13px}.authMessage{font-size:12px;margin-top:10px;white-space:pre-wrap}.authMessage.error{color:#c62828}.authMessage.success{color:#087443}.authStatus{background:#f1f7ff;border:1px solid #dbeaff;border-radius:14px;padding:12px;margin-bottom:12px;font-size:13px}.authStatus b{display:block;margin-bottom:4px}.guestNote{font-size:11px;color:var(--muted);text-align:center;margin:10px 0 0}
+
 </style>
 </head>
 <body>
@@ -116,7 +119,21 @@ button:focus-visible,input:focus-visible,[onclick]:focus-visible{outline:3px sol
 
 <section id="profile" class="screen">
 <header class="header"><button class="back" onclick="showScreen('home')">‹</button><div class="brand">پڕۆفایل</div><span></span></header>
-<div class="profile"><div class="profileTop"><div class="avatar">👤</div><h3 id="profileName">کڕیار</h3><small id="profileEmail">customer@firstesim.net</small></div>
+<div class="profile"><div class="profileTop"><div class="avatar">👤</div><h3 id="profileName">کڕیار</h3><small id="profileEmail">میوان / Guest</small></div>
+<div class="authPanel" id="authPanel">
+  <div id="authStatus" class="authStatus"><b id="authStatusTitle">هەژمارت هەیە؟</b><span id="authStatusText">هەژمار دروست بکە یان بچۆ ژوورەوە بۆ بەڕێوەبردنی داواکارییەکانت.</span></div>
+  <div class="authTabs"><button type="button" class="authTab active" id="loginTab" onclick="setAuthMode('login')">چوونەژوورەوە</button><button type="button" class="authTab" id="registerTab" onclick="setAuthMode('register')">دروستکردنی هەژمار</button></div>
+  <form class="authForm" id="authForm" onsubmit="submitAuth(event)">
+    <div id="authNameWrap" hidden><label for="authName" id="authNameLabel">ناوی تەواو</label><input id="authName" name="name" autocomplete="name" maxlength="100"></div>
+    <label for="authIdentity" id="authIdentityLabel">ئیمەیڵ یان ژمارەی مۆبایل</label><input id="authIdentity" name="identity" autocomplete="username" required maxlength="180" placeholder="Email یان +964...">
+    <div id="authPhoneWrap" hidden><label for="authPhone" id="authPhoneLabel">ژمارەی مۆبایل</label><input id="authPhone" name="phone" type="tel" autocomplete="tel" maxlength="30" placeholder="+964..."></div>
+    <label for="authPassword" id="authPasswordLabel">وشەی نهێنی</label><input id="authPassword" name="password" type="password" autocomplete="current-password" minlength="8" required maxlength="128">
+    <button class="authSubmit" id="authSubmit" type="submit">چوونەژوورەوە</button>
+  </form>
+  <button type="button" class="authSubmit" id="authLogout" onclick="logoutAccount()" hidden style="background:#eaf1f9;color:var(--dark)">چوونەدەرەوە</button>
+  <div id="authMessage" class="authMessage" role="status" aria-live="polite"></div>
+  <p class="guestNote" id="guestNote">هەروەها دەتوانیت بەبێ هەژمار کڕین بکەیت؛ چوونەژوورەوە پێویست نییە.</p>
+</div>
 <div class="menuItem" onclick="showScreen('countries')">زمان / Language <span>›</span></div><div class="menuItem" onclick="showScreen('orders')">ژمارەی داواکارییەکان <span>›</span></div><div class="menuItem" onclick="showScreen('orders')">سفارشەکانم <span>›</span></div><div class="menuItem" onclick="location.href='https://wa.me/9647506021212'">WhatsApp پشتیوانی <span>›</span></div><div class="menuItem">FAQ <span>›</span></div><div class="menuItem">دەربارەمان <span>›</span></div></div>
 </section>
 
@@ -1434,7 +1451,7 @@ function selectPay(el,p){document.querySelectorAll(".payOption").forEach(x=>x.cl
 function goToReceiptStep(){if(!currentPay){alert('تکایە شێوازی پارەدان هەڵبژێرە');return}showScreen('receiptStep')}
 function paymentReceiptBox(){}
 async function makeSmallReceipt(file){if(!file)return null;if(!file.type.startsWith('image/'))return file;try{const bmp=await createImageBitmap(file);const max=1600;const scale=Math.min(1,max/Math.max(bmp.width,bmp.height));const w=Math.max(1,Math.round(bmp.width*scale)),h=Math.max(1,Math.round(bmp.height*scale));const canvas=document.createElement('canvas');canvas.width=w;canvas.height=h;const ctx=canvas.getContext('2d');ctx.drawImage(bmp,0,0,w,h);const blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/jpeg',0.82));if(!blob)return file;return new File([blob],'receipt.jpg',{type:'image/jpeg'})}catch(_){return file}}
-async function finishOrder(){const receiptInput=document.getElementById('receipt');const original=receiptInput?.files?.[0];if(!original){alert('تکایە وێنەی پسوڵەی پارەدان upload بکە');return}if(!currentPay){alert('تکایە شێوازی پارەدان هەڵبژێرە');return}const c=countries[currentCountry],p=c.plans[currentPlan];const btn=document.querySelector('#receiptStep .bigBtn');if(btn){btn.disabled=true;btn.textContent='لە ناردندا...'}try{const receipt=await makeSmallReceipt(original);const data=new FormData();data.append('customerName','');data.append('customerPhone','');data.append('country',c.en);data.append('plan',`${p[0]} — ${p[1]}`);data.append('price',p[2]);data.append('payment',currentPay);data.append('receipt',receipt,receipt.name||'receipt');const r=await fetch(`${API_BASE}/api/orders`,{method:'POST',body:data});let d={};try{d=await r.json()}catch(_){}if(!r.ok)throw new Error(d.error||`HTTP ${r.status}`);if(!d.order||!d.order.id)throw new Error('Order ID missing');const o=d.order;rememberOrder(o);waitUntil=Date.now()+300000;localStorage.setItem('firstesim_wait_until',String(waitUntil));try{await setupCustomerPush(o.id)}catch(e){console.warn('customer push setup',e)}const msg=`سڵاو FirstESIM 👋
+async function finishOrder(){const receiptInput=document.getElementById('receipt');const original=receiptInput?.files?.[0];if(!original){alert('تکایە وێنەی پسوڵەی پارەدان upload بکە');return}if(!currentPay){alert('تکایە شێوازی پارەدان هەڵبژێرە');return}const c=countries[currentCountry],p=c.plans[currentPlan];const btn=document.querySelector('#receiptStep .bigBtn');if(btn){btn.disabled=true;btn.textContent='لە ناردندا...'}try{const receipt=await makeSmallReceipt(original);const data=new FormData();data.append('customerName','');data.append('customerPhone','');data.append('country',c.en);data.append('plan',`${p[0]} — ${p[1]}`);data.append('price',p[2]);data.append('payment',currentPay);data.append('receipt',receipt,receipt.name||'receipt');const authToken=localStorage.getItem(AUTH_TOKEN_KEY);const orderHeaders=authToken?{Authorization:`Bearer ${authToken}`} : {};const r=await fetch(`${API_BASE}/api/orders`,{method:'POST',headers:orderHeaders,body:data});let d={};try{d=await r.json()}catch(_){}if(!r.ok)throw new Error(d.error||`HTTP ${r.status}`);if(!d.order||!d.order.id)throw new Error('Order ID missing');const o=d.order;rememberOrder(o);waitUntil=Date.now()+300000;localStorage.setItem('firstesim_wait_until',String(waitUntil));try{await setupCustomerPush(o.id)}catch(e){console.warn('customer push setup',e)}const msg=`سڵاو FirstESIM 👋
 
 🆕 Order نوێ
 🆔 ${o.id}
@@ -1575,6 +1592,110 @@ async function refreshAllOrders(){const items=getOrderHistory();if(!items.length
 function initSavedOrder(){const last=localStorage.getItem('firstesim_last_order');if(last){try{const o=JSON.parse(last);if(o?.id)rememberOrder(o)}catch(_){}}for(const o of getOrderHistory()){if(o.status==='esim_ready'&&o.qrUrl)feKnownReady.add(String(o.id))}renderOrderHistory();if(getOrderHistory().some(o=>o.status!=='esim_ready'))startOrderTracking()}
 for(const feOrder of getOrderHistory()){if(feOrder.status==='esim_ready'&&feOrder.qrUrl)feKnownReady.add(String(feOrder.id));}
 setLang(LANG);
+
+// Optional customer accounts. Guest checkout remains available.
+const AUTH_TOKEN_KEY='firstesim_customer_token_v1';
+const AUTH_USER_KEY='firstesim_customer_user_v1';
+let authMode='login';
+function authCopy(){
+ const d={ku:{login:'چوونەژوورەوە',register:'دروستکردنی هەژمار',name:'ناوی تەواو',identity:'ئیمەیڵ یان ژمارەی مۆبایل',phone:'ژمارەی مۆبایل',password:'وشەی نهێنی',guest:'هەروەها دەتوانیت بەبێ هەژمار کڕین بکەیت؛ چوونەژوورەوە پێویست نییە.',statusTitle:'هەژمارت هەیە؟',statusText:'هەژمار دروست بکە یان بچۆ ژوورەوە بۆ بەڕێوەبردنی داواکارییەکانت.',signed:'بە هەژمارەکەت چوویتە ژوورەوە',logout:'چوونەدەرەوە',busy:'تکایە چاوەڕێ بکە...',need:'تکایە خانەکان پڕ بکەرەوە.',fail:'چوونەژوورەوە/دروستکردنی هەژمار سەرکەوتوو نەبوو.',ok:'هەژمارەکەت بە سەرکەوتوویی دروست کرا.'},en:{login:'Sign in',register:'Create account',name:'Full name',identity:'Email or phone number',phone:'Phone number',password:'Password',guest:'You can still buy as a guest. An account is optional.',statusTitle:'Your FirstESIM account',statusText:'Create an account or sign in to manage your orders.',signed:'You are signed in',logout:'Sign out',busy:'Please wait…',need:'Please complete the required fields.',fail:'Sign in or account creation failed.',ok:'Account created successfully.'},ar:{login:'تسجيل الدخول',register:'إنشاء حساب',name:'الاسم الكامل',identity:'البريد الإلكتروني أو رقم الهاتف',phone:'رقم الهاتف',password:'كلمة المرور',guest:'يمكنك الشراء كضيف أيضاً؛ الحساب اختياري.',statusTitle:'حساب FirstESIM',statusText:'أنشئ حساباً أو سجّل الدخول لإدارة طلباتك.',signed:'تم تسجيل الدخول',logout:'تسجيل الخروج',busy:'يرجى الانتظار…',need:'يرجى إكمال الحقول المطلوبة.',fail:'فشل تسجيل الدخول أو إنشاء الحساب.',ok:'تم إنشاء الحساب بنجاح.'}};
+ return d[LANG]||d.ku;
+}
+function getAuthUser(){try{return JSON.parse(localStorage.getItem(AUTH_USER_KEY)||'null')}catch(_){return null}}
+function setAuthMessage(msg,type=''){const el=document.getElementById('authMessage');if(el){el.textContent=msg||'';el.className='authMessage '+type}}
+function setAuthMode(mode){authMode=mode==='register'?'register':'login';const t=authCopy();document.getElementById('loginTab').classList.toggle('active',authMode==='login');document.getElementById('registerTab').classList.toggle('active',authMode==='register');document.getElementById('authNameWrap').hidden=authMode!=='register';document.getElementById('authPhoneWrap').hidden=authMode!=='register';document.getElementById('authName').required=authMode==='register';document.getElementById('authPhone').required=authMode==='register';document.getElementById('authPassword').autocomplete=authMode==='register'?'new-password':'current-password';document.getElementById('authSubmit').textContent=t[authMode];document.getElementById('authNameLabel').textContent=t.name;document.getElementById('authIdentityLabel').textContent=t.identity;document.getElementById('authPhoneLabel').textContent=t.phone;document.getElementById('authPasswordLabel').textContent=t.password;document.getElementById('guestNote').textContent=t.guest;setAuthMessage('')}
+function renderAuthState(){const t=authCopy(),u=getAuthUser(),logged=!!(u&&localStorage.getItem(AUTH_TOKEN_KEY));document.getElementById('authStatusTitle').textContent=logged?(u.name||u.email||u.phone||t.signed):t.statusTitle;document.getElementById('authStatusText').textContent=logged?t.signed:t.statusText;document.getElementById('authForm').hidden=logged;document.getElementById('authLogout').hidden=!logged;document.getElementById('loginTab').hidden=logged;document.getElementById('registerTab').hidden=logged;document.getElementById('profileName').textContent=logged?(u.name||u.email||u.phone||t.signed):t.statusTitle;document.getElementById('profileEmail').textContent=logged?(u.email||u.phone||''):({ku:'میوان / Guest',en:'Guest checkout',ar:'متابعة كضيف'}[LANG]||'Guest');}
+async function submitAuth(event){event.preventDefault();const t=authCopy(),identity=document.getElementById('authIdentity').value.trim(),password=document.getElementById('authPassword').value,name=document.getElementById('authName').value.trim(),phone=document.getElementById('authPhone').value.trim();if(!identity||!password||(authMode==='register'&&(!name||!phone))){setAuthMessage(t.need,'error');return}const btn=document.getElementById('authSubmit');btn.disabled=true;btn.textContent=t.busy;setAuthMessage('');try{const endpoint=authMode==='register'?'/api/auth/register':'/api/auth/login';const payload=authMode==='register'?{name,email:identity.includes('@')?identity:'',phone:phone||(!identity.includes('@')?identity:''),password}:{identity,password};const response=await fetch(API_BASE+endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});let data={};try{data=await response.json()}catch(_){}if(!response.ok||!data.token||!data.user)throw new Error(data.error||t.fail);localStorage.setItem(AUTH_TOKEN_KEY,data.token);localStorage.setItem(AUTH_USER_KEY,JSON.stringify(data.user));renderAuthState();setAuthMessage(authMode==='register'?t.ok:t.signed,'success');document.getElementById('authForm').reset();}catch(err){setAuthMessage(err.message||t.fail,'error')}finally{btn.disabled=false;btn.textContent=authCopy()[authMode]}}
+function logoutAccount(){localStorage.removeItem(AUTH_TOKEN_KEY);localStorage.removeItem(AUTH_USER_KEY);renderAuthState();setAuthMode('login');setAuthMessage('')}
+renderAuthState();setAuthMode('login');
+
 </script>
+
+<style>
+#firstesimRecovery{display:none;border:1px solid #d6e4f5;border-radius:18px;padding:16px;margin-top:12px;background:#fff}
+#firstesimRecovery input,#firstesimRecovery select{box-sizing:border-box;width:100%;padding:13px;border:1px solid #cdddf0;border-radius:12px;margin:6px 0;font:inherit}
+#firstesimRecovery button{padding:13px;border:0;border-radius:12px;background:#0867e8;color:white;font:inherit;font-weight:700;margin-top:8px;width:100%}
+</style>
+<div id="firstesimRecovery">
+  <h3 id="ferTitle">Forgot password / Verification</h3>
+  <label for="ferIdentity">Email or phone</label><input id="ferIdentity" autocomplete="username" placeholder="Email or phone number">
+  <label for="ferChannel">Send code by</label><select id="ferChannel"><option value="email">Email</option><option value="phone">SMS / Phone</option></select>
+  <div id="ferVerifyControls" hidden>
+    <label for="ferCode">6-digit code</label><input id="ferCode" inputmode="numeric" maxlength="6" autocomplete="one-time-code" placeholder="000000">
+    <label for="ferNewPassword">New password (10+ characters)</label><input id="ferNewPassword" type="password" minlength="10" autocomplete="new-password">
+  </div>
+  <button type="button" id="ferSend">Send code</button>
+  <button type="button" id="ferSubmit" hidden>Verify / Reset password</button>
+  <button type="button" id="ferClose" style="background:#eaf0f8;color:#06225c">Cancel</button>
+  <p id="ferMessage" role="status"></p>
+</div>
+<script>
+(function(){
+ const box=document.getElementById('firstesimRecovery'); if(!box)return;
+ const api=(typeof API_BASE!=='undefined')?API_BASE:'https://firstesim-api.onrender.com';
+ let mode='reset';
+ const msg=(s)=>document.getElementById('ferMessage').textContent=s;
+ function openRecovery(nextMode){
+  mode=nextMode;
+  box.style.display='block';
+  document.getElementById('ferVerifyControls').hidden=true;
+  document.getElementById('ferSubmit').hidden=true;
+  document.getElementById('ferSend').hidden=false;
+  document.getElementById('ferTitle').textContent=mode==='verify'?'Verify email or phone':'Forgot password';
+  document.getElementById('ferIdentity').value='';
+  msg('');
+  box.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function addForgotButton(){
+  const form=document.getElementById('authForm');
+  if(form&&!document.getElementById('ferOpen')){
+    const b=document.createElement('button');b.type='button';b.id='ferOpen';b.textContent='Forgot password? / Verify email or phone';
+    b.style.cssText='display:block;position:relative;z-index:20;pointer-events:auto;margin:10px 0;padding:12px;border:0;border-radius:12px;background:#eaf0f8;color:#06225c;font-weight:700;width:100%;cursor:pointer';
+    b.addEventListener('click',function(ev){ev.preventDefault();ev.stopPropagation();openRecovery('reset');});
+    form.insertAdjacentElement('afterend',b);
+  }
+  const profile=document.getElementById('authLogout');
+  if(profile&&!document.getElementById('ferVerifyOpen')){
+    const b=document.createElement('button');b.type='button';b.id='ferVerifyOpen';b.textContent='Verify email / phone';
+    b.style.cssText='display:block;position:relative;z-index:20;pointer-events:auto;margin:10px 0;padding:12px;border:0;border-radius:12px;background:#eaf0f8;color:#06225c;font-weight:700;width:100%;cursor:pointer';
+    b.addEventListener('click',function(ev){ev.preventDefault();ev.stopPropagation();openRecovery('verify');});
+    profile.insertAdjacentElement('afterend',b);
+  }
+}
+addForgotButton();
+setTimeout(addForgotButton, 500);
+setTimeout(addForgotButton, 1500);
+document.addEventListener('click',function(ev){
+ const target=ev.target&&ev.target.closest?ev.target.closest('#ferOpen,#ferVerifyOpen'):null;
+ if(target){ev.preventDefault();openRecovery(target.id==='ferVerifyOpen'?'verify':'reset');}
+});
+
+ document.getElementById('ferClose').onclick=()=>box.style.display='none';
+ document.getElementById('ferSend').onclick=async()=>{
+  const identity=document.getElementById('ferIdentity').value.trim(),channel=document.getElementById('ferChannel').value;
+  try{
+   let url,body,headers={'Content-Type':'application/json'};
+   if(mode==='verify'){url='/api/auth/send-verification';body={channel};const token=localStorage.getItem(typeof AUTH_TOKEN_KEY!=='undefined'?AUTH_TOKEN_KEY:'firstesim_auth_token');headers.Authorization='Bearer '+token;}
+   else{url='/api/auth/forgot-password';body={identity,channel};}
+   const r=await fetch(api+url,{method:'POST',headers,body:JSON.stringify(body)}),d=await r.json().catch(()=>({}));
+   if(!r.ok)throw new Error(d.error||('HTTP '+r.status));
+   document.getElementById('ferVerifyControls').hidden=false;document.getElementById('ferSubmit').hidden=false;document.getElementById('ferSend').hidden=true;
+   msg('If configured, a code was sent. Enter the 6-digit code.'); 
+  }catch(e){msg(e.message||'Could not send code.');}
+ };
+ document.getElementById('ferSubmit').onclick=async()=>{
+  const channel=document.getElementById('ferChannel').value,code=document.getElementById('ferCode').value.trim();
+  try{
+   let url,body,headers={'Content-Type':'application/json'};
+   if(mode==='verify'){url='/api/auth/verify';body={channel,code};const token=localStorage.getItem(typeof AUTH_TOKEN_KEY!=='undefined'?AUTH_TOKEN_KEY:'firstesim_auth_token');headers.Authorization='Bearer '+token;}
+   else{url='/api/auth/reset-password';body={identity:document.getElementById('ferIdentity').value.trim(),channel,code,password:document.getElementById('ferNewPassword').value};}
+   const r=await fetch(api+url,{method:'POST',headers,body:JSON.stringify(body)}),d=await r.json().catch(()=>({}));
+   if(!r.ok)throw new Error(d.error||('HTTP '+r.status));
+   msg(d.message||'Success');if(mode==='reset')setTimeout(()=>{box.style.display='none';},1200);
+  }catch(e){msg(e.message||'Verification failed.');}
+ };
+})();
+</script>
+
 </body>
 </html>
