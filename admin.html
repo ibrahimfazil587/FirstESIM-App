@@ -43,6 +43,8 @@ function setMessage(text,type='ok'){ $('message').innerHTML=`<div class="notice 
 function headers(){return {'x-admin-key':key};}
 function statusText(s){return ({waiting_payment_check:'چاوەڕوانی پشکنینی پارەدان',payment_confirmed:'پارەدان پشتڕاست کرا',esim_ready:'eSIM ئامادەیە',completed:'تەواو کرا',cancelled:'هەڵوەشێنرایەوە'})[s]||s||'نادیار';}
 function fileUrl(u){return u?(u.startsWith('http')?u:API+u):'';}
+async function openProtectedFile(url){try{const r=await fetch(fileUrl(url),{headers:headers()});if(!r.ok)throw new Error('HTTP '+r.status);const blob=await r.blob();const objectUrl=URL.createObjectURL(blob);window.open(objectUrl,'_blank','noopener');setTimeout(()=>URL.revokeObjectURL(objectUrl),60000);}catch(e){setMessage('نەتوانرا فایل بکرێتەوە: '+e.message,'err');}}
+async function loadProtectedImage(url,imgId){try{const r=await fetch(fileUrl(url),{headers:headers()});if(!r.ok)throw new Error('HTTP '+r.status);const blob=await r.blob();const obj=URL.createObjectURL(blob);const img=$(imgId);if(img){if(img.dataset.objectUrl)URL.revokeObjectURL(img.dataset.objectUrl);img.src=obj;img.dataset.objectUrl=obj;}}catch(e){console.warn('Protected image unavailable',e);}}
 function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
 async function login(){key=keyInput.value.trim();if(!key){setMessage('تکایە ADMIN_KEY بنووسە.','err');return;}sessionStorage.setItem('firstesim_admin_key',key);await loadOrders();}
 async function loadOrders(silent=false){
@@ -54,8 +56,8 @@ async function loadOrders(silent=false){
 function render(orders){$('count').textContent=orders.length;const box=$('orders');if(!orders.length){box.innerHTML='<div class="card">هیچ Order ـێک نییە.</div>';return;}
  box.innerHTML=orders.map(o=>{const id=esc(o.id);const receipt=fileUrl(o.receiptUrl);const qr=fileUrl(o.qrUrl);return `<div class="card order"><div class="top"><h2>${id}</h2><span class="status ${o.status==='esim_ready'?'ready':''}">${esc(statusText(o.status))}</span></div>
  <p><b>🌍 وڵات:</b> ${esc(o.country)}</p><p><b>📦 پلان:</b> ${esc(o.plan)}</p><p><b>💰 نرخ:</b> ${esc(o.price)}</p><p><b>💳 پارەدان:</b> ${esc(o.payment)}</p><p><b>📅 کات:</b> ${esc(o.createdAt?new Date(o.createdAt).toLocaleString():'—')}</p>
- ${receipt?`<p>🧾 <a href="${esc(receipt)}" target="_blank" rel="noopener">کردنەوەی پسوڵە</a></p>`:''}
- ${qr?`<p><b>QR:</b><img class="qr-preview" src="${esc(qr)}" alt="QR code"><a href="${esc(qr)}" target="_blank" rel="noopener">کردنەوەی QR</a></p>`:''}
+ ${receipt?`<p>🧾 <button type="button" class="btn" onclick="openProtectedFile('${esc(o.receiptUrl)}')">کردنەوەی پسوڵە</button></p>`:''}
+ ${qr?`<p><b>QR:</b><button type="button" class="btn" onclick="openProtectedFile('${esc(o.qrUrl)}')">کردنەوەی QR</button></p>`:''}
  <label for="status-${id}"><b>گۆڕینی دۆخ</b></label><select id="status-${id}"><option value="waiting_payment_check" ${o.status==='waiting_payment_check'?'selected':''}>چاوەڕوانی پارە</option><option value="payment_confirmed" ${o.status==='payment_confirmed'?'selected':''}>پارە پشتڕاستە</option><option value="completed" ${o.status==='completed'?'selected':''}>تەواو</option><option value="cancelled" ${o.status==='cancelled'?'selected':''}>هەڵوەشاندنەوە</option></select>
  <div class="row" style="margin-top:9px"><button class="btn green" onclick="setStatus('${id}','payment_confirmed')">پارە پشتڕاست بکە</button><button class="btn" onclick="saveSelectedStatus('${id}')">پاشەکەوتی دۆخ</button></div>
  <div style="margin-top:12px"><label for="qr-${id}"><b>📱 Upload QR</b></label><input id="qr-${id}" type="file" accept="image/*,.png,.jpg,.jpeg"><label for="code-${id}"><b>Activation Code</b></label><input id="code-${id}" type="text" value="${esc(o.activationCode||'')}" placeholder="Activation Code"><button class="btn" style="margin-top:8px;width:100%" onclick="uploadQR('${id}')">Upload QR و ئاگادارکردنەوە</button></div>
@@ -69,7 +71,7 @@ async function enableNotifications(){try{
  if(!('serviceWorker'in navigator)||!('PushManager'in window)||!('Notification'in window))throw new Error('ئەم browser ـە Push Notification پشتگیری ناکات.');
  if(!key){key=keyInput.value.trim();if(!key)throw new Error('سەرەتا ADMIN_KEY بنووسە.');sessionStorage.setItem('firstesim_admin_key',key);}
  const permission=await Notification.requestPermission();if(permission!=='granted')throw new Error('مۆڵەتی Notification ڕێگەپێنەدرا.');
- const reg=await navigator.serviceWorker.register('/sw-admin.js',{scope:'/'});await navigator.serviceWorker.ready;
+ const reg=await navigator.serviceWorker.register(new URL('sw-admin.js', document.baseURI),{scope:new URL('.', document.baseURI).pathname});await navigator.serviceWorker.ready;
  const kr=await fetch(`${API}/api/admin/push/public-key`,{headers:headers()});const kd=await kr.json();if(!kr.ok||!kd.publicKey)throw new Error(kd.error||'نەتوانرا VAPID public key وەربگیرێت.');
  let sub=await reg.pushManager.getSubscription();if(!sub)sub=await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:urlBase64ToUint8Array(kd.publicKey)});
  const sr=await fetch(`${API}/api/admin/push/subscribe`,{method:'POST',headers:{...headers(),'Content-Type':'application/json'},body:JSON.stringify({subscription:sub.toJSON()})});const sd=await sr.json();if(!sr.ok)throw new Error(sd.error||'Subscription پاشەکەوت نەکرا.');
