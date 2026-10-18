@@ -1444,9 +1444,41 @@ async function fetchPrivateOrderFile(url,order){if(!url)throw new Error('File UR
 
 
 let orderPoll=null,timerHandle=null,waitUntil=0,activeQrOrderId='';
-const ORDER_HISTORY_KEY='firstesim_order_history_v1';
-function getOrderHistory(){try{const a=JSON.parse(localStorage.getItem(ORDER_HISTORY_KEY)||'[]');return Array.isArray(a)?a:[]}catch(_){return []}}
-function saveOrderHistory(items){const unique=[];const seen=new Set();for(const o of items){if(o&&o.id&&!seen.has(o.id)){seen.add(o.id);unique.push(o)}}localStorage.setItem(ORDER_HISTORY_KEY,JSON.stringify(unique.slice(0,100)));if(unique[0])localStorage.setItem('firstesim_last_order',JSON.stringify(unique[0]));}
+
+function getOrderHistoryKey(){
+  try {
+    const user = JSON.parse(localStorage.getItem('firstesim_user_v1') || 'null');
+    const identity = user && (user.id || user.email || user.phone);
+    return 'firstesim_order_history_v1_' + (identity || 'guest');
+  } catch (_) {
+    return 'firstesim_order_history_v1_guest';
+  }
+}
+
+function getOrderHistory(){
+  try {
+    const a = JSON.parse(localStorage.getItem(getOrderHistoryKey()) || '[]');
+    return Array.isArray(a) ? a : [];
+  } catch (_) {
+    return [];
+  }
+}
+
+function saveOrderHistory(items){
+  const unique = [];
+  const seen = new Set();
+  for (const o of items) {
+    if (o && o.id && !seen.has(o.id)) {
+      seen.add(o.id);
+      unique.push(o);
+    }
+  }
+  localStorage.setItem(getOrderHistoryKey(), JSON.stringify(unique.slice(0,100)));
+  if (unique[0]) {
+    localStorage.setItem('firstesim_last_order', JSON.stringify(unique[0]));
+  }
+}
+
 function rememberOrder(o){const previous=getOrderHistory().find(x=>x.id===o.id);const merged={...(previous||{}),...o};if(!merged._accessToken&&previous?._accessToken)merged._accessToken=previous._accessToken;const items=getOrderHistory().filter(x=>x.id!==o.id);items.unshift(merged);saveOrderHistory(items);}
 function planForOrder(o){const c=countries.find(x=>x.en===o.country)||countries[0];const p=(c.plans||[]).find(x=>`${x[0]} — ${x[1]}`===o.plan)||(c.plans||[]).find(x=>x[0]===String(o.plan||'').split(' — ')[0])||(c.plans||[])[0]||['eSIM','',o.price||''];return {c,p};}
 
