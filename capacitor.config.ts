@@ -4,7 +4,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 const config: CapacitorConfig = {
   appId: 'com.firstesim.app',
   appName: 'FirstESIM',
-  webDir: '.',
+  webDir: 'www',
   bundledWebRuntime: false
 };
 
