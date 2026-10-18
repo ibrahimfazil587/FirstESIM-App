@@ -1,0 +1,75 @@
+
+name: FirstESIM Mobile Build
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - mobile-app-build
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get source code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Check Capacitor configuration
+        run: npx cap --version
+
+      - name: Check project files
+        run: |
+          test -f index.html
+          test -f capacitor.config.ts
+          test -f package.json
+
+      - name: Prepare Android project
+        run: npx cap add android
+
+      - name: Sync Android project
+        run: npx cap sync android
+
+      - name: Upload Android project
+        uses: actions/upload-artifact@v4
+        with:
+          name: firstesim-android-project
+          path: android/
+          if-no-files-found: error
+
+  ios-config-check:
+    runs-on: macos-latest
+
+    steps:
+      - name: Get source code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Prepare iOS project
+        run: npx cap add ios
+
+      - name: Sync iOS project
+        run: npx cap sync ios
+
+      - name: Upload iOS project
+        uses: actions/upload-artifact@v4
+        with:
+          name: firstesim-ios-project
+          path: ios/
+          if-no-files-found: error
