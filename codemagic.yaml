@@ -9,9 +9,9 @@ workflows:
     environment:
       ios_signing:
         distribution_type: app_store
-        bundle_identifier: com.firstesim.app
+        bundle_identifier: net.firstesim.app
       vars:
-        APP_ID: com.firstesim.app
+        APP_ID: net.firstesim.app
       node: 22
       xcode: latest
     scripts:
