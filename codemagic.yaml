@@ -6,7 +6,7 @@ workflows:
     instance_type: mac_mini_m2
 
     integrations:
-      app_store_connect: firstesim_app_store
+      app_store_connect: FirstESIM
 
     environment:
       ios_signing:
