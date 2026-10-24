@@ -22,20 +22,18 @@ workflows:
         script: |
           npm install
 
-   
       - name: Prepare Capacitor iOS project
-        
         script: |
           npm run build
           npx cap add ios
           npx cap sync ios
           cd ios/App
-          pod install
+          pod install --repo-update
           cd ../..
           echo "Checking iOS project location:"
           pwd
           find . -maxdepth 5 -name "App.xcodeproj"
-
+          find . -maxdepth 5 -name "App.xcworkspace"
 
       - name: Configure iOS code signing
         script: |
@@ -44,7 +42,7 @@ workflows:
       - name: Build and sign iOS app
         script: |
           xcode-project build-ipa \
-            --project ios/App/App.xcodeproj \
+            --workspace ios/App/App.xcworkspace \
             --scheme App
 
     artifacts:
