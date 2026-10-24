@@ -22,6 +22,7 @@ workflows:
         script: |
           npm install
 
+   
       - name: Prepare Capacitor iOS project
         script: |
           npm run build
@@ -29,6 +30,10 @@ workflows:
           cd ios/App
           pod install
           cd ../..
+          echo "Checking iOS project location:"
+          pwd
+          find . -maxdepth 5 -name "App.xcodeproj"
+
 
       - name: Configure iOS code signing
         script: |
