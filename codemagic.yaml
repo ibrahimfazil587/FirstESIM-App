@@ -6,7 +6,7 @@ workflows:
     instance_type: mac_mini_m2
 
     integrations:
-      app_store_connect: FirstESIM
+      app_store_connect: firstesim_app_store
 
     environment:
       ios_signing:
@@ -19,7 +19,8 @@ workflows:
 
     scripts:
       - name: Install dependencies
-        script: npm install
+        script: |
+          npm install
 
       - name: Prepare Capacitor iOS project
         script: |
@@ -27,15 +28,16 @@ workflows:
           npx cap add ios || true
           npx cap sync ios
 
+      - name: Configure iOS code signing
+        script: |
+          xcode-project use-profiles
+
       - name: Build and sign iOS app
         script: |
-          xcodebuild \
-            -project ios/App/App.xcodeproj \
-            -scheme App \
-            -sdk iphoneos \
-            -configuration Release \
-            -archivePath build/FirstESIM.xcarchive \
-            archive
+          xcode-project build-ipa \
+            --project ios/App/App.xcodeproj \
+            --scheme App
 
     artifacts:
-      - build/FirstESIM.xcarchive/**
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
