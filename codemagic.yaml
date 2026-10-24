@@ -24,8 +24,10 @@ workflows:
 
    
       - name: Prepare Capacitor iOS project
+        
         script: |
           npm run build
+          npx cap add ios
           npx cap sync ios
           cd ios/App
           pod install
