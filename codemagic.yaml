@@ -28,7 +28,9 @@ workflows:
             -scheme App \
             -sdk iphoneos \
             -configuration Release \
+
             -archivePath build/FirstESIM.xcarchive \
-            archive CODE_SIGNING_ALLOWED=NO
+            archive
+        
     artifacts:
       - build/FirstESIM.xcarchive/**
