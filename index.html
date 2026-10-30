@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="FirstESIM">
 <link rel="manifest" href="/manifest.json">
 <link id="firstesim-push-sw" rel="serviceworker" href="/sw-customer.js">
-<link rel="apple-touch-icon" href="/0016DE22-5EB2-4EBC-834A-F545DBDBC423.png">
+<link rel="apple-touch-icon" href="https://firstesim.net/0016DE22-5EB2-4EBC-834A-F545DBDBC423.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@500;600;700;800&display=swap">
@@ -27,7 +27,7 @@ button:focus-visible,input:focus-visible,[onclick]:focus-visible{outline:3px sol
 .header>span:empty{width:44px}
 .brand{display:flex;align-items:center;gap:7px;font-weight:800;font-size:20px;color:var(--dark)}.brand span{color:var(--blue)}
 .langs{display:flex;gap:8px;padding:10px 14px;background:#fff}.lang{border:1px solid var(--line);background:#fff;border-radius:999px;padding:0 14px;min-height:36px;font-size:12px;font-weight:700;color:var(--dark);transition:background .15s,color .15s}.lang.active{background:var(--dark);border-color:var(--dark);color:#fff}
-.hero{margin:6px 12px 0;border-radius:28px;overflow:hidden;position:relative;min-height:320px;background:linear-gradient(270deg,#041a4af0 0%,#06368ccc 52%,#0869e855 100%),url('/0016DE22-5EB2-4EBC-834A-F545DBDBC423.png') center/cover,#06225c}
+.hero{margin:6px 12px 0;border-radius:28px;overflow:hidden;position:relative;min-height:320px;background:linear-gradient(270deg,#041a4af0 0%,#06368ccc 52%,#0869e855 100%),url('https://firstesim.net/0016DE22-5EB2-4EBC-834A-F545DBDBC423.png') center/cover,#06225c}
 .hero .copy{padding:32px 22px 56px;color:#fff;text-align:right}.hero h1{font-size:clamp(28px,8vw,36px);line-height:1.25;margin:0 0 8px;font-weight:800;text-shadow:0 2px 10px #001b4566}.hero p{font-size:16px;line-height:1.7;margin:0 0 18px;font-weight:600;color:#e3efff}
 .checks{display:grid;gap:9px;font-size:13px;font-weight:700}.checks div{display:flex;align-items:center;gap:9px}.checks i{font-style:normal;background:#ffffff1f;border:1.5px solid #5ff0a6;border-radius:50%;width:24px;height:24px;display:grid;place-items:center;color:#5ff0a6;font-size:13px}
 .search{margin:-28px 22px 16px;position:relative;z-index:4;background:#fff;border-radius:999px;padding:5px;box-shadow:0 10px 28px #0b376026;border:1px solid #e3edf8}.search input{width:100%;height:50px;border:0;outline:0;border-radius:999px;padding:0 18px;text-align:right;color:var(--ink);background:#fff;font-size:16px}
@@ -54,32 +54,8 @@ button:focus-visible,input:focus-visible,[onclick]:focus-visible{outline:3px sol
 @media(min-width:521px){body{background:#d9e6f3}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 
-.authPanel{padding:15px;border-top:1px solid #edf1f6}.authIntro{font-size:12px;color:var(--muted);margin:0 0 12px}.authTabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}.authTab{border:1px solid var(--line);border-radius:12px;background:#fff;padding:10px;font-size:13px;font-weight:800}.authTab.active{background:var(--dark);border-color:var(--dark);color:#fff}.authForm label{display:block;font-size:12px;font-weight:700;margin:10px 0 5px}.authForm input{width:100%;height:46px;border:1px solid #d3e0ee;border-radius:12px;padding:0 12px;background:#fff;font-size:15px;direction:auto}.authSubmit{width:100%;border:0;border-radius:13px;background:var(--blue);color:#fff;min-height:48px;font-weight:800;margin-top:13px}.authMessage{font-size:12px;margin-top:10px;white-space:pre-wrap}.authMessage.error{color:#c62828}.authMessage.success{color:#087443}.authStatus{background:#f1f7ff;border:1px solid #dbeaff;border-radius:14px;padding:12px;margin-bottom:12px;font-size:13px}.authStatus b{display:block;margin-bottom:4px}.guestNote{font-size:11px;color:var(--muted);text-align:center;margin:10px 0 0}
 
 </style>
-
-<style id="firstesim-iphone-layout-fix">
-  :root { --nav: 68px; }
-  html { width:100%; min-height:100%; -webkit-text-size-adjust:100%; }
-  body { width:100%; min-width:0; overflow-x:hidden; padding:0; padding-bottom:env(safe-area-inset-bottom); }
-  .app { width:100%; max-width:520px; min-height:100dvh; overflow-x:clip; }
-  .screen { width:100%; min-height:100dvh; padding-bottom:calc(var(--nav) + 24px + env(safe-area-inset-bottom)); }
-  input, select, textarea, button { max-width:100%; }
-  img { max-width:100%; }
-  .bottom { bottom:0; padding-bottom:env(safe-area-inset-bottom); height:calc(var(--nav) + env(safe-area-inset-bottom)); }
-  .buyBox { bottom:calc(var(--nav) + env(safe-area-inset-bottom)); }
-  .qrBox img { width:min(230px, 70vw); height:auto; aspect-ratio:1/1; object-fit:contain; }
-  @media(max-width:380px) {
-    .hero { min-height:280px; border-radius:22px; }
-    .hero .copy { padding:26px 16px 48px; }
-    .features { gap:6px; padding-left:10px; padding-right:10px; }
-    .feature { padding:9px 3px; overflow-wrap:anywhere; }
-    .nav { min-width:0; flex:1; font-size:10px; }
-    .nav b { width:44px; }
-    .header { padding-left:8px; padding-right:8px; }
-  }
-</style>
-
 </head>
 <body>
 <div class="app">
@@ -141,30 +117,15 @@ button:focus-visible,input:focus-visible,[onclick]:focus-visible{outline:3px sol
 </section>
 
 <section id="profile" class="screen">
-<header class="header"><button class="back" onclick="showScreen('home')">‹</button><div class="brand">پڕۆفایل</div><span></span></header>
-<div class="profile"><div class="profileTop"><div class="avatar">👤</div><h3 id="profileName">کڕیار</h3><small id="profileEmail">میوان / Guest</small></div>
-<div class="authPanel" id="authPanel">
-  <div id="authStatus" class="authStatus"><b id="authStatusTitle">هەژمارت هەیە؟</b><span id="authStatusText">هەژمار دروست بکە یان بچۆ ژوورەوە بۆ بەڕێوەبردنی داواکارییەکانت.</span></div>
-  <div class="authTabs" style="grid-template-columns:1fr"><button type="button" class="authTab active" id="loginTab" onclick="setAuthMode('login')">چوونەژوورەوە</button><button type="button" class="authTab" id="registerTab" hidden aria-hidden="true" tabindex="-1">دروستکردنی هەژمار</button></div>
-  <form class="authForm" id="authForm" onsubmit="submitAuth(event)">
-    <div id="authNameWrap" hidden><label for="authName" id="authNameLabel">ناوی تەواو</label><input id="authName" name="name" autocomplete="name" maxlength="100"></div>
-    <label for="authIdentity" id="authIdentityLabel">ئیمەیڵ یان ژمارەی مۆبایل</label><input id="authIdentity" name="identity" autocomplete="username" required maxlength="180" placeholder="Email یان +964...">
-    <div id="authPhoneWrap" hidden><label for="authPhone" id="authPhoneLabel">ژمارەی مۆبایل</label><input id="authPhone" name="phone" type="tel" autocomplete="tel" maxlength="30" placeholder="+964..."></div>
-    <label for="authPassword" id="authPasswordLabel">وشەی نهێنی</label><input id="authPassword" name="password" type="password" autocomplete="current-password" minlength="8" required maxlength="128">
-    <button class="authSubmit" id="authSubmit" type="submit">چوونەژوورەوە</button>
-  </form>
-  <button type="button" class="authSubmit" id="authLogout" onclick="logoutAccount()" hidden style="background:#eaf1f9;color:var(--dark)">چوونەدەرەوە</button>
-  <div id="authMessage" class="authMessage" role="status" aria-live="polite"></div>
-  <p class="guestNote" id="guestNote">هەروەها دەتوانیت بەبێ هەژمار کڕین بکەیت؛ چوونەژوورەوە پێویست نییە.</p>
-</div>
-<div class="menuItem" onclick="showScreen('countries')">زمان / Language <span>›</span></div><div class="menuItem" onclick="showScreen('orders')">ژمارەی داواکارییەکان <span>›</span></div><div class="menuItem" onclick="showScreen('orders')">سفارشەکانم <span>›</span></div><div class="menuItem" onclick="location.href='https://wa.me/9647506021212'">WhatsApp پشتیوانی <span>›</span></div><div class="menuItem">FAQ <span>›</span></div><div class="menuItem">دەربارەمان <span>›</span></div></div>
+<header class="header"><button class="back" onclick="showScreen('home')">‹</button><div class="brand" id="moreTitle">زیاتر</div><span></span></header>
+<div class="profile"><div class="menuItem" onclick="showScreen('countries')">زمان / Language <span>›</span></div><div class="menuItem" onclick="showScreen('orders')">ژمارەی داواکارییەکان <span>›</span></div><div class="menuItem" onclick="showScreen('orders')">سفارشەکانم <span>›</span></div><div class="menuItem" onclick="location.href='https://wa.me/9647506021212'">WhatsApp پشتیوانی <span>›</span></div><div class="menuItem">FAQ <span>›</span></div><div class="menuItem">دەربارەمان <span>›</span></div></div>
 </section>
 
 <nav class="bottom">
 <button class="nav active" data-screen="home" onclick="showScreen('home')"><b>⌂</b>سەرەکی</button>
 <button class="nav" data-screen="countries" onclick="showScreen('countries')"><b>◎</b>وڵاتەکان</button>
 <button class="nav" data-screen="orders" onclick="showScreen('orders')"><b>▣</b>سفارشەکانم</button>
-<button class="nav" data-screen="profile" onclick="showScreen('profile')"><b>♙</b>پڕۆفایل</button>
+<button class="nav" data-screen="profile" onclick="showScreen('profile')"><b>☰</b><span id="moreNav">زیاتر</span></button>
 </nav>
 </div>
 
@@ -178,7 +139,7 @@ flag:"🇹🇷",
 region:"europe",
 place:"ئەوروپا",
 scene:"🕌",
-image:"/0016DE22-5EB2-4EBC-834A-F545DBDBC423.png",
+image:"https://firstesim.net/0016DE22-5EB2-4EBC-834A-F545DBDBC423.png",
 plans:[
 ["10 GB","30 ڕۆژ","IQD 11,500"],
 ["20 GB","30 ڕۆژ","IQD 14,500"],
@@ -201,7 +162,7 @@ flag:"🇩🇪",
 region:"europe",
 place:"ئەوروپا",
 scene:"🏰",
-image:"/1DD5D2EA-D5E7-40D1-AF10-487874998116.png",
+image:"https://firstesim.net/1DD5D2EA-D5E7-40D1-AF10-487874998116.png",
 plans:[
 ["1 GB","7 ڕۆژ","IQD 6,500"],
 ["2 GB","15 ڕۆژ","IQD 7,000"],
@@ -225,7 +186,7 @@ flag:"🇺🇸",
 region:"america",
 place:"ئەمەریکا",
 scene:"🗽",
-image:"/07269030-034D-4B1A-B27F-5D05C8C8F215.png",
+image:"https://firstesim.net/07269030-034D-4B1A-B27F-5D05C8C8F215.png",
 plans:[
 ["3 GB","30 ڕۆژ","IQD 10,000"],
 ["10 GB","30 ڕۆژ","IQD 20,000"],
@@ -246,7 +207,7 @@ flag:"🇪🇺",
 region:"europe",
 place:"ئەوروپا",
 scene:"🌍",
-image:"/4E1BC982-A88B-4B96-A57B-E0AAC5C8BC9B.png",
+image:"https://firstesim.net/4E1BC982-A88B-4B96-A57B-E0AAC5C8BC9B.png",
 plans:[
 ["5 GB","30 ڕۆژ","IQD 14,000"],
 ["10 GB","30 ڕۆژ","IQD 16,000"],
@@ -267,7 +228,7 @@ flag:"🌍",
 region:"global",
 place:"جیهان",
 scene:"🌍",
-image:"/680AF33F-91E2-4F69-B5E7-E260FC374EBB.png",
+image:"https://firstesim.net/680AF33F-91E2-4F69-B5E7-E260FC374EBB.png",
 plans:[
 ["200 MB","30 ڕۆژ","IQD 7,500"],
 ["300 MB","3 ڕۆژ","IQD 7,000"],
@@ -292,7 +253,7 @@ flag:"🇦🇪",
 region:"middle",
 place:"ڕۆژهەڵاتی ناوەڕاست",
 scene:"🏙️",
-image:"/8DF6A966-A0E8-4F2D-981B-A1AED2247CE2.png",
+image:"https://firstesim.net/8DF6A966-A0E8-4F2D-981B-A1AED2247CE2.png",
 plans:[
 ["1 GB","7 ڕۆژ","IQD 9,500"],
 ["2 GB","15 ڕۆژ","IQD 11,500"],
@@ -312,7 +273,7 @@ flag:"🇦🇿",
 region:"asia",
 place:"ئاسیا",
 scene:"🏙️",
-image:"/A655C95A-FF07-4651-ADD2-FBC1F76D56B8.png",
+image:"https://firstesim.net/A655C95A-FF07-4651-ADD2-FBC1F76D56B8.png",
 plans:[
 ["5 GB","30 ڕۆژ","IQD 15,000"],
 ["10 GB","30 ڕۆژ","IQD 25,000"],
@@ -333,7 +294,7 @@ flag:"🇨🇳",
 region:"asia",
 place:"ئاسیا",
 scene:"🏯",
-image:"/302F32DB-D0D9-44CD-A467-89B630DCB8D4.png",
+image:"https://firstesim.net/302F32DB-D0D9-44CD-A467-89B630DCB8D4.png",
 plans:[
 ["3 GB","30 ڕۆژ","IQD 10,000"],
 ["5 GB","30 ڕۆژ","IQD 11,500"],
@@ -355,7 +316,7 @@ plans:[
   region: "asia",
   place: "ئاسیا",
   scene: "🏝️",
-  image: "PUT_MALAYSIA_IMAGE_FILENAME_HERE",
+  image:"",
   plans: [
     ["1 GB", "7 ڕۆژ", "IQD 7,500"],
     ["2 GB", "15 ڕۆژ", "IQD 9,000"],
@@ -379,7 +340,7 @@ flag:"🇴🇲",
 region:"middle",
 place:"ڕۆژهەڵاتی ناوەڕاست",
 scene:"🏜️",
-image:"/C5E1A9C4-3575-493C-8AB7-6877B0240E9C.png",
+image:"https://firstesim.net/C5E1A9C4-3575-493C-8AB7-6877B0240E9C.png",
 plans:[
 ["3 GB","30 ڕۆژ","IQD 10,000"],
 ["5 GB","30 ڕۆژ","IQD 12,500"],
@@ -401,7 +362,7 @@ flag:"🇨🇭",
 region:"europe",
 place:"ئەوروپا",
 scene:"🏔️",
-image:"/AA0B469F-84C9-459D-A5D9-86370712B02B.png",
+image:"https://firstesim.net/AA0B469F-84C9-459D-A5D9-86370712B02B.png",
 plans:[
 ["5 GB","30 ڕۆژ","IQD 16,000"],
 ["10 GB","30 ڕۆژ","IQD 23,000"],
@@ -422,7 +383,7 @@ flag:"🇮🇹",
 region:"europe",
 place:"ئەوروپا",
 scene:"🏛️",
-image:"/6442CC42-02CD-420B-86A5-63C6BA505559.png",
+image:"https://firstesim.net/6442CC42-02CD-420B-86A5-63C6BA505559.png",
 plans:[
 ["5 GB","30 ڕۆژ","IQD 12,000"],
 ["10 GB","30 ڕۆژ","IQD 16,000"],
@@ -443,7 +404,7 @@ flag:"🇱🇧",
 region:"middle",
 place:"ڕۆژهەڵاتی ناوەڕاست",
 scene:"🌲",
-image:"/F158C01E-273C-4662-A6B5-D1188D6F1231.png",
+image:"https://firstesim.net/F158C01E-273C-4662-A6B5-D1188D6F1231.png",
 plans:[
 ["1 GB","5 ڕۆژ","$7.99"],
 ["1 GB","7 ڕۆژ","$8.99"],
@@ -465,7 +426,7 @@ flag:"🇩🇰",
 region:"europe",
 place:"ئەوروپا",
 scene:"🏰",
-image:"/34B8F9F0-D435-4866-A7C1-3AF60292047E.png",
+image:"https://firstesim.net/34B8F9F0-D435-4866-A7C1-3AF60292047E.png",
 plans:[
 ["5 GB","30 ڕۆژ","IQD 11,500"],
 ["10 GB","30 ڕۆژ","IQD 13,500"],
@@ -486,7 +447,7 @@ flag:"🇸🇬",
 region:"asia",
 place:"ئاسیا",
 scene:"🏙️",
-image:"/C655CFC7-AD61-48B4-890C-D605980BD9CD.png",
+image:"https://firstesim.net/C655CFC7-AD61-48B4-890C-D605980BD9CD.png",
 plans:[
 ["2 GB","15 ڕۆژ","IQD 13,000"],
 ["3 GB","30 ڕۆژ","IQD 13,500"],
@@ -509,7 +470,7 @@ flag:"🇹🇭",
 region:"asia",
 place:"ئاسیا",
 scene:"🏝️",
-image:"/F5B13CE0-9BD1-48EC-B32A-E516D269AE77.png",
+image:"https://firstesim.net/F5B13CE0-9BD1-48EC-B32A-E516D269AE77.png",
 plans:[
 ["5 GB","30 ڕۆژ","IQD 16,000"],
 ["10 GB","30 ڕۆژ","IQD 23,000"],
@@ -530,7 +491,7 @@ flag:"🇸🇦",
 region:"middle",
 place:"ڕۆژهەڵاتی ناوەڕاست",
 scene:"🕋",
-image:"/649453C0-8A0B-4954-8CF4-61D659C88541.png",
+image:"https://firstesim.net/649453C0-8A0B-4954-8CF4-61D659C88541.png",
 plans:[
 ["20 GB","30 ڕۆژ","IQD 40,000"],
 ["25 GB","45 ڕۆژ","IQD 60,000"],
@@ -550,7 +511,7 @@ flag:"🇯🇵",
 region:"asia",
 place:"ئاسیا",
 scene:"🗻",
-image:"/6CC4A6FE-2EEB-41B4-AEC9-7DA57B42BAB8.png",
+image:"https://firstesim.net/6CC4A6FE-2EEB-41B4-AEC9-7DA57B42BAB8.png",
 plans:[
 ["2 GB","15 ڕۆژ","IQD 9,500"],
 ["3 GB","30 ڕۆژ","IQD 10,500"],
@@ -574,7 +535,7 @@ flag:"🇦🇼",
 region:"america",
 place:"ئەمەریکا",
 scene:"🏝️",
-image:"/297A9FFA-0002-45C6-A016-2F4533B095AC.png",
+image:"https://firstesim.net/297A9FFA-0002-45C6-A016-2F4533B095AC.png",
 plans:[
 ["1 GB","7 ڕۆژ","IQD 12,500"],
 ["2 GB","15 ڕۆژ","IQD 20,000"],
@@ -591,7 +552,7 @@ flag:"🇦🇫",
 region:"asia",
 place:"ئاسیا",
 scene:"🏔️",
-image:"/B5920B07-4456-44BD-9817-43699336D7C9.png",
+image:"https://firstesim.net/B5920B07-4456-44BD-9817-43699336D7C9.png",
 plans:[
 ["1 GB","7 ڕۆژ","IQD 12,500"],
 ["2 GB","15 ڕۆژ","IQD 20,000"],
@@ -608,7 +569,7 @@ flag:"🇦🇹",
 region:"europe",
 place:"ئەوروپا",
 scene:"🏰",
-image:"/841E1CA9-BD2D-4AEF-AF5B-CCDA59E44CB6.png",
+image:"https://firstesim.net/841E1CA9-BD2D-4AEF-AF5B-CCDA59E44CB6.png",
 plans:[
 ["1 GB","7 ڕۆژ","IQD 12,000"],
 ["2 GB","15 ڕۆژ","IQD 12,500"],
@@ -632,7 +593,7 @@ flag:"🇦🇱",
 region:"europe",
 place:"ئەوروپا",
 scene:"🏰",
-image:"/76930A21-B06E-4E68-A888-C4E11C6AFD00.png",
+image:"https://firstesim.net/76930A21-B06E-4E68-A888-C4E11C6AFD00.png",
 plans:[
 ["1 GB","7 ڕۆژ","IQD 9,000"],
 ["2 GB","15 ڕۆژ","IQD 11,000"],
@@ -656,7 +617,7 @@ flag:"🇦🇩",
 region:"europe",
 place:"ئەوروپا",
 scene:"🏔️",
-image:"/467C1306-48E4-4293-9461-409504BEFD25.png",
+image:"https://firstesim.net/467C1306-48E4-4293-9461-409504BEFD25.png",
 plans:[
 ["Unlimited","3 ڕۆژ","IQD 25,000"],
 ["Unlimited","5 ڕۆژ","IQD 35,000"],
@@ -678,7 +639,7 @@ flag:"🇦🇷",
 region:"america",
 place:"ئەمەریکا",
 scene:"🏔️",
-image:"/3DCD6928-C8DB-4FB8-8292-F288D362C4BB.png",
+image:"https://firstesim.net/3DCD6928-C8DB-4FB8-8292-F288D362C4BB.png",
 plans:[
 ["1 GB","7 ڕۆژ","IQD 9,500"],
 ["2 GB","15 ڕۆژ","IQD 12,000"],
@@ -702,7 +663,7 @@ flag:"🇦🇲",
 region:"asia",
 place:"ئاسیا",
 scene:"🏔️",
-image:"/05E4F252-60F7-446E-BAF0-3D29EF006F94.png",
+image:"https://firstesim.net/05E4F252-60F7-446E-BAF0-3D29EF006F94.png",
 plans:[
 ["Unlimited","3 ڕۆژ","IQD 13,000"],
 ["Unlimited","5 ڕۆژ","IQD 11,000"],
@@ -726,7 +687,7 @@ flag:"🇧🇪",
 region:"europe",
 place:"ئەوروپا",
 scene:"🏰",
-image:"/A15AEBDA-70F0-400D-868D-0177B2DDC5CA.png",
+image:"https://firstesim.net/A15AEBDA-70F0-400D-868D-0177B2DDC5CA.png",
 plans:[
 ["Unlimited","3 ڕۆژ","IQD 14,500"],
 ["Unlimited","5 ڕۆژ","IQD 16,000"],
@@ -750,7 +711,7 @@ flag:"🇧🇩",
 region:"asia",
 place:"ئاسیا",
 scene:"🌏",
-image:"/CC58BAD1-ADA0-4D79-8A2B-75E7271CDC98.png",
+image:"https://firstesim.net/CC58BAD1-ADA0-4D79-8A2B-75E7271CDC98.png",
 plans:[
 ["1 GB","7 ڕۆژ","IQD 8,500"],
 ["2 GB","15 ڕۆژ","IQD 10,000"],
@@ -774,7 +735,7 @@ flag:"🇧🇷",
 region:"america",
 place:"ئەمەریکا",
 scene:"🏝️",
-image:"/EA44E8EA-7072-44EB-B366-5B66CAF6B9ED.png",
+image:"https://firstesim.net/EA44E8EA-7072-44EB-B366-5B66CAF6B9ED.png",
 plans:[
 ["1 GB","7 ڕۆژ","IQD 8,000"],
 ["2 GB","15 ڕۆژ","IQD 9,500"],
@@ -798,7 +759,7 @@ flag:"🇮🇶",
 region:"middle",
 place:"ڕۆژهەڵاتی ناوەڕاست",
 scene:"🇮🇶",
-image:"/9CC1DA2C-0C2C-49FD-AE17-FF6748C0ED2C.png",
+image:"https://firstesim.net/9CC1DA2C-0C2C-49FD-AE17-FF6748C0ED2C.png",
 plans:[
 ["1 GB","7 ڕۆژ","IQD 9,500"],
 ["2 GB","15 ڕۆژ","IQD 12,000"],
@@ -816,7 +777,7 @@ flag:"🇭🇷",
 region:"europe",
 place:"ئەوروپا",
 scene:"🏰",
-image:"/7EB24468-E101-4A7B-A94B-8873A66838B1.png",
+image:"https://firstesim.net/7EB24468-E101-4A7B-A94B-8873A66838B1.png",
 plans:[
 ["Unlimited","3 ڕۆژ","IQD 13,500"],
 ["Unlimited","5 ڕۆژ","IQD 15,500"],
@@ -840,7 +801,7 @@ flag:"🇺🇿",
 region:"asia",
 place:"ئاسیا",
 scene:"🏙️",
-image:"/18AD25C3-DA6C-4904-86CC-63DB3D50CACB.png",
+image:"https://firstesim.net/18AD25C3-DA6C-4904-86CC-63DB3D50CACB.png",
 plans:[
 ["5 GB","30 ڕۆژ","IQD 22,000"],
 ["10 GB","30 ڕۆژ","IQD 32,000"],
@@ -862,7 +823,7 @@ flag:"🏴",
 region:"europe",
 place:"ئەوروپا",
 scene:"🏰",
-image:"/E531E2D4-6F66-4A33-8A52-4CFF08DCA0D3.png",
+image:"https://firstesim.net/E531E2D4-6F66-4A33-8A52-4CFF08DCA0D3.png",
 plans:[
 ["1 GB","7 ڕۆژ","IQD 10,500"],
 ["2 GB","15 ڕۆژ","IQD 11,500"],
@@ -881,7 +842,7 @@ flag:"🇻🇳",
 region:"asia",
 place:"ئاسیا",
 scene:"🏝️",
-image:"/4F9A8DE8-52EA-4174-93D0-C603F349060F.png",
+image:"https://firstesim.net/4F9A8DE8-52EA-4174-93D0-C603F349060F.png",
 plans:[
 ["Unlimited","10 ڕۆژ","IQD 42,000"],
 ["Unlimited","15 ڕۆژ","IQD 67,000"],
@@ -905,7 +866,7 @@ flag:"🇻🇮",
 region:"america",
 place:"ئەمەریکا",
 scene:"🏝️",
-image:"/5881DB50-3562-469F-9733-10620C33E163.png",
+image:"https://firstesim.net/5881DB50-3562-469F-9733-10620C33E163.png",
 plans:[
 ["1 GB","7 ڕۆژ","IQD 8,000"],
 ["2 GB","15 ڕۆژ","IQD 9,500"],
@@ -933,7 +894,7 @@ flag:"🇪🇸",
 region:"europe",
 place:"ئەوروپا",
 scene:"🏰",
-image:"/A82ABA9A-DE74-4128-A70F-3458CD14D6C2.png",
+image:"https://firstesim.net/A82ABA9A-DE74-4128-A70F-3458CD14D6C2.png",
 plans:[
 ["1 GB","7 ڕۆژ","IQD 12,500"],
 ["2 GB","15 ڕۆژ","IQD 13,000"],
@@ -957,7 +918,7 @@ flag:"🇲🇽",
 region:"america",
 place:"ئەمەریکا",
 scene:"🏝️",
-image:"/C35D33FD-B373-48A9-A727-C66B7D81B777.png",
+image:"https://firstesim.net/C35D33FD-B373-48A9-A727-C66B7D81B777.png",
 plans:[
 ["1 GB","7 ڕۆژ","IQD 8,500"],
 ["2 GB","15 ڕۆژ","IQD 10,000"],
@@ -1004,7 +965,7 @@ flag:"🇧🇦",
 region:"europe",
 place:"ئەوروپا",
 scene:"🏰",
-image:"/2F53CBC1-1899-4108-96CA-43320CA1DD10.png",
+image:"https://firstesim.net/2F53CBC1-1899-4108-96CA-43320CA1DD10.png",
 plans:[
 ["Unlimited","30 ڕۆژ","IQD 65,000"],
 ["1 GB","7 ڕۆژ","IQD 7,500"],
@@ -1021,7 +982,7 @@ flag:"🇧🇬",
 region:"europe",
 place:"ئەوروپا",
 scene:"🏰",
-image:"/6ADA717F-D74E-4F1E-89B2-58DA2D839A84.png",
+image:"https://firstesim.net/6ADA717F-D74E-4F1E-89B2-58DA2D839A84.png",
 plans:[
 ["1 GB","7 ڕۆژ","IQD 12,500"],
 ["2 GB","15 ڕۆژ","IQD 13,000"],
@@ -1045,7 +1006,7 @@ flag:"🇧🇴",
 region:"america",
 place:"ئەمەریکا",
 scene:"🏔️",
-image:"/71CCD1A6-108F-40CE-9635-220FB3159543.png",
+image:"https://firstesim.net/71CCD1A6-108F-40CE-9635-220FB3159543.png",
 plans:[
 ["Unlimited","3 ڕۆژ","IQD 25,000"],
 ["Unlimited","5 ڕۆژ","IQD 35,000"],
@@ -1084,7 +1045,7 @@ flag:"🇨🇲",
 region:"america",
 place:"ئەفریقا",
 scene:"🌍",
-image:"/880B8F1F-DA96-4ABC-94D3-B1DD09A87BB6.png",
+image:"https://firstesim.net/880B8F1F-DA96-4ABC-94D3-B1DD09A87BB6.png",
 plans:[
 ["1 GB","7 ڕۆژ","IQD 13,000"],
 ["2 GB","15 ڕۆژ","IQD 20,000"],
@@ -1101,7 +1062,7 @@ flag:"🇨🇷",
 region:"america",
 place:"ئەمەریکا",
 scene:"🏝️",
-image:"/2EAF829A-6A28-4FB9-A554-524E7D858C7E.png",
+image:"https://firstesim.net/2EAF829A-6A28-4FB9-A554-524E7D858C7E.png",
 plans:[
 ["1 GB","7 ڕۆژ","IQD 10,000"],
 ["2 GB","15 ڕۆژ","IQD 14,500"],
@@ -1119,7 +1080,7 @@ flag:"🇩🇴",
 region:"america",
 place:"ئەمەریکا",
 scene:"🏝️",
-image:"/B503A389-F665-43E4-96C0-F6B6D51A2B16.png",
+image:"https://firstesim.net/B503A389-F665-43E4-96C0-F6B6D51A2B16.png",
 plans:[
 ["1 GB","7 ڕۆژ","IQD 9,500"],
 ["2 GB","15 ڕۆژ","IQD 11,500"],
@@ -1158,7 +1119,7 @@ flag:"🇬🇪",
 region:"asia",
 place:"ئاسیا",
 scene:"🏔️",
-image:"/9851602A-6957-46E7-AECA-EC6E23377566.png",
+image:"https://firstesim.net/9851602A-6957-46E7-AECA-EC6E23377566.png",
 plans:[
 ["1 GB","7 ڕۆژ","IQD 8,500"],
 ["2 GB","15 ڕۆژ","IQD 10,500"],
@@ -1191,7 +1152,7 @@ flag:"🇨🇴",
 region:"america",
 place:"ئەمەریکا",
 scene:"🏝️",
-image:"/F1642543-2150-48ED-BE08-A8E544BC65A4.png",
+image:"https://firstesim.net/F1642543-2150-48ED-BE08-A8E544BC65A4.png",
 plans:[
 ["5 GB","30 ڕۆژ","IQD 30,000"],
 ["3 GB","30 ڕۆژ","IQD 20,000"],
@@ -1207,7 +1168,7 @@ flag:"🇧🇶",
 region:"america",
 place:"ئەمەریکا",
 scene:"🏝️",
-image:"/5FE47BC2-69FC-428D-9791-00307AD71BA8.png",
+image:"https://firstesim.net/5FE47BC2-69FC-428D-9791-00307AD71BA8.png",
 plans:[
 ["1 GB","7 ڕۆژ","IQD 12,500"],
 ["2 GB","15 ڕۆژ","IQD 20,000"],
@@ -1227,7 +1188,7 @@ flag:"🇨🇾",
 region:"europe",
 place:"ئەوروپا",
 scene:"🏝️",
-image:"/56060452-E3CE-4E87-8BBA-3BA0F0A4619D.png",
+image:"https://firstesim.net/56060452-E3CE-4E87-8BBA-3BA0F0A4619D.png",
 plans:[
 ["1 GB","7 ڕۆژ","IQD 10,500"],
 ["2 GB","15 ڕۆژ","IQD 11,000"],
@@ -1251,7 +1212,7 @@ flag:"🇩🇿",
 region:"america",
 place:"ئەفریقا",
 scene:"🌍",
-image:"/62CFC380-AF4B-411D-BBF9-A24FB20602A6.png",
+image:"https://firstesim.net/62CFC380-AF4B-411D-BBF9-A24FB20602A6.png",
 plans:[
 ["Unlimited","3 ڕۆژ","IQD 22,000"],
 ["Unlimited","5 ڕۆژ","IQD 27,000"],
@@ -1290,7 +1251,7 @@ flag:"🇪🇪",
 region:"europe",
 place:"ئەوروپا",
 scene:"🏰",
-image:"/1F7E90AD-25DD-4FBD-AABF-1142699B4FF7.png",
+image:"https://firstesim.net/1F7E90AD-25DD-4FBD-AABF-1142699B4FF7.png",
 plans:[
 ["5 GB","30 ڕۆژ","IQD 14,000"],
 ["10 GB","30 ڕۆژ","IQD 15,500"],
@@ -1314,7 +1275,7 @@ flag:"🇫🇮",
 region:"europe",
 place:"ئەوروپا",
 scene:"🏔️",
-image:"/6BF770FF-305B-4BAC-811F-351ABDB7178C.png",
+image:"https://firstesim.net/6BF770FF-305B-4BAC-811F-351ABDB7178C.png",
 plans:[
 ["5 GB","30 ڕۆژ","IQD 9,000"],
 ["10 GB","30 ڕۆژ","IQD 13,000"],
@@ -1338,7 +1299,7 @@ flag:"🇬🇱",
 region:"america",
 place:"ئەمەریکا",
 scene:"🏔️",
-image:"/F77C478E-7346-4B0C-988B-E7407C0E6E16.png",
+image:"https://firstesim.net/F77C478E-7346-4B0C-988B-E7407C0E6E16.png",
 plans:[
 ["1 GB","7 ڕۆژ","IQD 8,500"],
 ["2 GB","15 ڕۆژ","IQD 9,500"],
@@ -1354,7 +1315,7 @@ flag:"🇭🇺",
 region:"europe",
 place:"ئەوروپا",
 scene:"🏰",
-image:"/06A39002-6EF9-44D6-8B4D-222A7030F13F.png",
+image:"https://firstesim.net/06A39002-6EF9-44D6-8B4D-222A7030F13F.png",
 plans:[
 ["1 GB","7 ڕۆژ","IQD 12,000"],
 ["2 GB","15 ڕۆژ","IQD 12,500"],
@@ -1378,7 +1339,7 @@ flag:"🇸🇪",
 region:"europe",
 place:"ئەوروپا",
 scene:"🏰",
-image:"/35EDA313-6B2D-4D32-A6FA-6668E9A07319.png",
+image:"https://firstesim.net/35EDA313-6B2D-4D32-A6FA-6668E9A07319.png",
 plans:[
 ["Unlimited","3 ڕۆژ","IQD 10,000"],
 ["Unlimited","5 ڕۆژ","IQD 12,000"],
@@ -1402,7 +1363,7 @@ flag:"🇰🇼",
 region:"middle",
 place:"ڕۆژهەڵاتی ناوەڕاست",
 scene:"🏙️",
-image:"/27CC67DD-196E-489E-A940-784E38BCF483.png",
+image:"https://firstesim.net/27CC67DD-196E-489E-A940-784E38BCF483.png",
 plans:[
 ["1 GB","7 ڕۆژ","IQD 9,000"],
 ["2 GB","15 ڕۆژ","IQD 10,500"],
@@ -1426,7 +1387,7 @@ flag:"🇹🇼",
 region:"asia",
 place:"ئاسیا",
 scene:"🏙️",
-image:"/1432EF76-9B51-4C89-9183-C9EFFD1D68AB.png",
+image:"https://firstesim.net/1432EF76-9B51-4C89-9183-C9EFFD1D68AB.png",
 plans:[
 ["1 GB","7 ڕۆژ","IQD 13,000"],
 ["2 GB","15 ڕۆژ","IQD 13,500"],
@@ -1449,17 +1410,17 @@ const WHATSAPP="9647506021212";
 let LANG=localStorage.getItem("firstesim_lang")||"ku", currentCountry=0,currentPlan=0,currentPay="QuickPay",currentRegion="all";
 
 function cname(c){if(LANG==="ku")return c.name;if(LANG==="en")return c.en;const m={"Turkey":"Turkey","Germany":"Germany","USA":"United States","Europe + UK":"Europe + UK","Global":"Global","UAE":"UAE","Saudi Arabia":"Saudi Arabia","Azerbaijan":"Azerbaijan","China":"China","Italy":"Italy"};return m[c.en]||c.en}
-function setLang(v){LANG=v;localStorage.setItem("firstesim_lang",v);document.querySelectorAll(".lang").forEach(x=>x.classList.toggle("active",x.textContent.toLowerCase().includes(v==="ku"?"kur":v==="en"?"english":"العربي")));document.documentElement.lang=v;document.documentElement.dir=v==="en"?"ltr":"rtl";
+function setLang(v){LANG=v;localStorage.setItem("firstesim_lang",v);document.querySelectorAll(".lang").forEach(x=>x.classList.toggle("active",x.textContent.toLowerCase().includes(v==="ku"?"kur":v==="en"?"english":"العربي")));document.documentElement.lang=v;document.documentElement.dir=v==="en"?"ltr":"rtl";const moreLabel={ku:"زیاتر",en:"More",ar:"المزيد"}[v]||"More";const moreTitle=document.getElementById("moreTitle");if(moreTitle)moreTitle.textContent=moreLabel;const moreNav=document.getElementById("moreNav");if(moreNav)moreNav.textContent=moreLabel;
 const T={ku:["گەشتی بێ سنوور","eSIM بۆ هەموو جیهان","خێرا و باوەڕپێکراو","نرخی باش","جیهانی","خێرا زۆر","200+ وڵات","باوەڕپێکراو","پشتیوانی 24 کاتژمێر","وڵاتە بناوبانگەکان"],en:["Unlimited Travel","eSIM for the whole world","Fast & reliable","Great prices","Global","Super fast","200+ countries","Trusted","24/7 support","Popular destinations"],ar:["سفر بلا حدود","eSIM لجميع أنحاء العالم","سريع وموثوق","أسعار مناسبة","تغطية عالمية","سريع جداً","أكثر من 200 دولة","موثوق","دعم 24/7","الوجهات الشائعة"]}[v];
 ["homeTitle","homeSub","c1","c2","c3","ft1","ft2","ft3","ft4","popTitle"].forEach((id,i)=>document.getElementById(id).textContent=T[i]);renderPopular();renderCountries(filtered())}
 function showScreen(id){document.querySelectorAll(".screen").forEach(s=>s.classList.toggle("active",s.id===id));document.querySelectorAll(".nav").forEach(n=>n.classList.toggle("active",n.dataset.screen===id));window.scrollTo(0,0)}
-function renderPopular(){const names=["Turkey","Saudi Arabia","UAE","Europe + UK"];document.getElementById("popular").innerHTML=names.map(n=>{const c=countries.find(x=>x.en===n);if(!c)return"";return `<div class="pop" onclick="openCountry(${countries.indexOf(c)})"><img src="${c.image||""}"><div class="flag">${c.flag||"🌍"}</div><b>${cname(c)}</b></div>`}).join("")}
+function renderPopular(){const names=["Turkey","Saudi Arabia","UAE","Europe + UK"];document.getElementById("popular").innerHTML=names.map(n=>{const c=countries.find(x=>x.en===n);if(!c)return"";return `<div class="pop" onclick="openCountry(${countries.indexOf(c)})"><img src="${c.image && !c.image.includes("PUT_") ? c.image : ""}" alt="" onerror="this.style.display='none'"><div class="flag">${c.flag||"🌍"}</div><b>${cname(c)}</b></div>`}).join("")}
 function filtered(){let arr=currentRegion==="all"?countries:countries.filter(c=>c.region===currentRegion);const q=(document.getElementById("countrySearch")?.value||document.getElementById("homeSearch")?.value||"").toLowerCase().trim();if(q)arr=arr.filter(c=>(c.name+" "+c.en+" "+c.place+" "+c.region+" "+JSON.stringify(c.plans)).toLowerCase().includes(q));return arr}
 function renderCountries(arr){document.getElementById("countryList").innerHTML=arr.map(c=>`<div class="countryRow" onclick="openCountry(${countries.indexOf(c)})"><div class="flag">${c.flag||"🌍"}</div><div class="ctext"><strong>${cname(c)}</strong><small>${c.en}</small></div><em>${c.plans?.[0]?.[2]||""}</em><span class="arrow">›</span></div>`).join("")}
 function region(r,btn){currentRegion=r;document.querySelectorAll(".chip").forEach(x=>x.classList.remove("active"));btn.classList.add("active");renderCountries(filtered())}
 function countrySearch(){renderCountries(filtered())}
 function homeSearch(){showScreen("countries");document.getElementById("countrySearch").value=document.getElementById("homeSearch").value;renderCountries(filtered())}
-function openCountry(i){currentCountry=i;const c=countries[i];document.getElementById("detail").innerHTML=`<div class="detailHero" style="background-image:url('${c.image||""}')"><button class="detailBack" onclick="showScreen('countries')">‹</button><div class="detailTitle"><div class="flag">${c.flag||"🌍"}</div><div><h1>${cname(c)}</h1><small>${c.en}</small></div></div></div><div class="planTabs"><button class="planTab active" onclick="filterPlans('all',this)">هەموو پلانەکان</button><button class="planTab" onclick="filterPlans('data',this)">داتا</button><button class="planTab" onclick="filterPlans('unlimited',this)">بێ سنوور</button></div><div id="planList" class="plans">${c.plans.map((p,i)=>{const un=p[0].toLowerCase()==="unlimited";return `<div class="plan ${un?"unlimited":""}" data-plan-type="${un?"unlimited":"data"}"><div><div class="data">${p[0]}</div><div class="days">${p[1]}</div></div><div class="price">${p[2]}</div><span class="signal" aria-label="network signal"><i></i><i></i><i></i><i></i></span><button class="primary" onclick="openCheckout(${i})">کڕین</button></div>`}).join("")}</div><div class="infoCard"><h3>سوودەکان</h3><div class="benefits"><div>خێراترین ئینتەرنێت</div><div>پەیوەندی لە ڕۆماڵ و پاوەڕکڕاو</div><div>ئاسان بۆ گەشت</div><div>بەکارهێنانی فەرمانەی ناسینەی ID نییە</div></div></div>`;showScreen("plans")}
+function openCountry(i){currentCountry=i;const c=countries[i];document.getElementById("detail").innerHTML=`<div class="detailHero" style="background-image:linear-gradient(180deg,#0b3d91 0%,#06225c 100%),url('${c.image || ""}')"><button class="detailBack" onclick="showScreen('countries')">‹</button><div class="detailTitle"><div class="flag">${c.flag||"🌍"}</div><div><h1>${cname(c)}</h1><small>${c.en}</small></div></div></div><div class="planTabs"><button class="planTab active" onclick="filterPlans('all',this)">هەموو پلانەکان</button><button class="planTab" onclick="filterPlans('data',this)">داتا</button><button class="planTab" onclick="filterPlans('unlimited',this)">بێ سنوور</button></div><div id="planList" class="plans">${c.plans.map((p,i)=>{const un=p[0].toLowerCase()==="unlimited";return `<div class="plan ${un?"unlimited":""}" data-plan-type="${un?"unlimited":"data"}"><div><div class="data">${p[0]}</div><div class="days">${p[1]}</div></div><div class="price">${p[2]}</div><span class="signal" aria-label="network signal"><i></i><i></i><i></i><i></i></span><button class="primary" onclick="openCheckout(${i})">کڕین</button></div>`}).join("")}</div><div class="infoCard"><h3>سوودەکان</h3><div class="benefits"><div>خێراترین ئینتەرنێت</div><div>پەیوەندی لە ڕۆماڵ و پاوەڕکڕاو</div><div>ئاسان بۆ گەشت</div><div>بەکارهێنانی فەرمانەی ناسینەی ID نییە</div></div></div>`;showScreen("plans")}
 function filterPlans(type,btn){document.querySelectorAll("#plans .planTab").forEach(x=>x.classList.remove("active"));btn.classList.add("active");document.querySelectorAll("#planList .plan").forEach(x=>{x.style.display=(type==="all"||x.dataset.planType===type)?"grid":"none"})}
 const API_BASE="https://firstesim-api.onrender.com";
 let orderPoll=null,timerHandle=null,waitUntil=0,activeQrOrderId='';
@@ -1474,7 +1435,7 @@ function selectPay(el,p){document.querySelectorAll(".payOption").forEach(x=>x.cl
 function goToReceiptStep(){if(!currentPay){alert('تکایە شێوازی پارەدان هەڵبژێرە');return}showScreen('receiptStep')}
 function paymentReceiptBox(){}
 async function makeSmallReceipt(file){if(!file)return null;if(!file.type.startsWith('image/'))return file;try{const bmp=await createImageBitmap(file);const max=1600;const scale=Math.min(1,max/Math.max(bmp.width,bmp.height));const w=Math.max(1,Math.round(bmp.width*scale)),h=Math.max(1,Math.round(bmp.height*scale));const canvas=document.createElement('canvas');canvas.width=w;canvas.height=h;const ctx=canvas.getContext('2d');ctx.drawImage(bmp,0,0,w,h);const blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/jpeg',0.82));if(!blob)return file;return new File([blob],'receipt.jpg',{type:'image/jpeg'})}catch(_){return file}}
-async function finishOrder(){const receiptInput=document.getElementById('receipt');const original=receiptInput?.files?.[0];if(!original){alert('تکایە وێنەی پسوڵەی پارەدان upload بکە');return}if(!currentPay){alert('تکایە شێوازی پارەدان هەڵبژێرە');return}const c=countries[currentCountry],p=c.plans[currentPlan];const btn=document.querySelector('#receiptStep .bigBtn');if(btn){btn.disabled=true;btn.textContent='لە ناردندا...'}try{const receipt=await makeSmallReceipt(original);const data=new FormData();data.append('customerName','');data.append('customerPhone','');data.append('country',c.en);data.append('plan',`${p[0]} — ${p[1]}`);data.append('price',p[2]);data.append('payment',currentPay);data.append('receipt',receipt,receipt.name||'receipt');const authToken=localStorage.getItem(AUTH_TOKEN_KEY);const orderHeaders=authToken?{Authorization:`Bearer ${authToken}`} : {};const r=await fetch(`${API_BASE}/api/orders`,{method:'POST',headers:orderHeaders,body:data});let d={};try{d=await r.json()}catch(_){}if(!r.ok)throw new Error(d.error||`HTTP ${r.status}`);if(!d.order||!d.order.id)throw new Error('Order ID missing');const o=d.order;rememberOrder(o);waitUntil=Date.now()+300000;localStorage.setItem('firstesim_wait_until',String(waitUntil));try{await setupCustomerPush(o.id)}catch(e){console.warn('customer push setup',e)}const msg=`سڵاو FirstESIM 👋
+async function finishOrder(){const receiptInput=document.getElementById('receipt');const original=receiptInput?.files?.[0];if(!original){alert('تکایە وێنەی پسوڵەی پارەدان upload بکە');return}if(!currentPay){alert('تکایە شێوازی پارەدان هەڵبژێرە');return}const c=countries[currentCountry],p=c.plans[currentPlan];const btn=document.querySelector('#receiptStep .bigBtn');if(btn){btn.disabled=true;btn.textContent='لە ناردندا...'}try{const receipt=await makeSmallReceipt(original);const data=new FormData();data.append('customerName','');data.append('customerPhone','');data.append('country',c.en);data.append('plan',`${p[0]} — ${p[1]}`);data.append('price',p[2]);data.append('payment',currentPay);data.append('receipt',receipt,receipt.name||'receipt');const r=await fetch(`${API_BASE}/api/orders`,{method:'POST',body:data});let d={};try{d=await r.json()}catch(_){}if(!r.ok)throw new Error(d.error||`HTTP ${r.status}`);if(!d.order||!d.order.id)throw new Error('Order ID missing');const o=d.order;rememberOrder(o);waitUntil=Date.now()+300000;localStorage.setItem('firstesim_wait_until',String(waitUntil));try{await setupCustomerPush(o.id)}catch(e){console.warn('customer push setup',e)}const msg=`سڵاو FirstESIM 👋
 
 🆕 Order نوێ
 🆔 ${o.id}
@@ -1606,7 +1567,7 @@ function statusLabel(status){return feT(status)||status||feT('unknown')}
 function renderOrder(o,c,p){rememberOrder(o);const items=getOrderHistory();const box=document.getElementById('orderList');if(!items.length){box.innerHTML=`<div class="formCard" style="text-align:center;padding:24px">${feT('emptyOrders')}</div>`;return}box.innerHTML=items.map(item=>{const found=planForOrder(item),cc=found.c,pp=found.p;const ready=item.status==='esim_ready'&&!!item.qrUrl;const safeId=String(item.id).replace(/[^a-zA-Z0-9_-]/g,'');return `<div class="formCard" style="margin-bottom:12px;padding:15px;border:1px solid #e0e9f5;border-radius:16px"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><b>${feT('order')} ${escOrder(item.id)}</b><small>${new Date(item.createdAt||Date.now()).toLocaleString(LANG==='ku'?'ckb-IQ':LANG==='ar'?'ar-IQ':'en-US')}</small></div><hr><div style="font-weight:950">${cc.flag||'🌍'} ${escOrder(cname(cc))}</div><div style="margin:7px 0;font-size:12px">${escOrder(pp[0])} · ${escOrder(feDuration(pp[1]||''))}</div><b>${escOrder(item.price||pp[2]||'')}</b><div style="margin-top:8px;font-size:12px">💳 ${escOrder(item.payment||'')}</div><div style="margin-top:8px;font-size:12px;font-weight:900;color:${ready?'#15803d':item.status==='cancelled'?'#b91c1c':'#0862bd'}">${statusLabel(item.status)}</div>${ready?`<button class="bigBtn" style="margin-top:12px" onclick="showQRForOrder('${safeId}')">${LANG==='ku'?'پیشاندانی QR ـی ئەم داواکارییە':LANG==='ar'?'عرض رمز QR لهذا الطلب':'Show this order’s QR Code'}</button>`:`<button class="bigBtn" style="margin-top:12px" onclick="refreshOneOrder('${safeId}')">${LANG==='ku'?'نوێکردنەوەی دۆخ':LANG==='ar'?'تحديث الحالة':'Refresh status'}</button>`}</div>`}).join('')}
 function renderOrderHistory(){const items=getOrderHistory();if(!items.length){const old=localStorage.getItem('firstesim_last_order');if(old){try{const o=JSON.parse(old);if(o?.id)rememberOrder(o)}catch(_){}}}const list=getOrderHistory();if(list.length)renderOrder(list[0],...Object.values(planForOrder(list[0])));else document.getElementById('orderList').innerHTML=`<div class="formCard" style="text-align:center;padding:24px">${feT('emptyOrders')}</div>`}
 function goToReceiptStep(){if(!currentPay){alert(feT('choosePaymentAlert'));return}showScreen('receiptStep')}
-async function finishOrder(){const receiptInput=document.getElementById('receipt');const original=receiptInput?.files?.[0];if(!original){alert(feT('receiptAlert'));return}if(!currentPay){alert(feT('choosePaymentAlert'));return}const c=countries[currentCountry],p=c.plans[currentPlan];const btn=document.querySelector('#receiptStep .bigBtn');if(btn){btn.disabled=true;btn.textContent=feT('sending')}try{const receipt=await makeSmallReceipt(original);const data=new FormData();data.append('customerName','');data.append('customerPhone','');data.append('country',c.en);data.append('plan',`${p[0]} — ${p[1]}`);data.append('price',p[2]);data.append('payment',currentPay);data.append('receipt',receipt,receipt.name||'receipt');const r=await fetch(`${API_BASE}/api/orders`,{method:'POST',body:data});let d={};try{d=await r.json()}catch(_){}if(!r.ok)throw new Error(d.error||`HTTP ${r.status}`);if(!d.order||!d.order.id)throw new Error('Order ID missing');const o=d.order;rememberOrder(o);waitUntil=Date.now()+300000;localStorage.setItem('firstesim_wait_until',String(waitUntil));try{await setupCustomerPush(o.id)}catch(e){console.warn('customer push setup',e)}const msg=`Hello FirstESIM 👋\n\nNew order\nID: ${o.id}\nCountry: ${c.en}\nPlan: ${p[0]} - ${p[1]}\nPrice: ${p[2]}\nPayment: ${currentPay}\n\nReceipt uploaded in the app. Please verify the payment and provide the QR Code.`;renderOrder(o,c,p);showScreen('orders');try{window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`,'_blank')}catch(_){}startOrderTracking()}catch(e){console.error(e);alert(feT('orderFailed')+'\n\n'+(e?.message||''))}finally{if(btn){btn.disabled=false;btn.textContent=feT('sendReceipt')}}}
+async function finishOrder(){const receiptInput=document.getElementById('receipt');const original=receiptInput?.files?.[0];if(!original){alert(feT('receiptAlert'));return}if(!currentPay){alert(feT('choosePaymentAlert'));return}const c=countries[currentCountry],p=c.plans[currentPlan];const btn=document.querySelector('#receiptStep .bigBtn');if(btn){btn.disabled=true;btn.textContent=feT('sending')}try{const receipt=await makeSmallReceipt(original);const data=new FormData();data.append('customerName','');data.append('customerPhone','');data.append('country',c.en);data.append('plan',`${p[0]} — ${p[1]}`);data.append('price',p[2]);data.append('payment',currentPay);data.append('receipt',receipt,receipt.name||'receipt');const r=await fetch(`${API_BASE}/api/orders`,{method:'POST',body:data});let d={};try{d=await r.json()}catch(_){}if(!r.ok)throw new Error(d.error||`HTTP ${r.status}`);if(!d.order||!d.order.id)throw new Error('Order ID missing');const o=d.order;rememberOrder(o);waitUntil=Date.now()+300000;localStorage.setItem('firstesim_wait_until',String(waitUntil));try{await setupCustomerPush(o.id)}catch(e){console.warn('customer push setup',e)}const msg=`Hello FirstESIM 👋\n\nNew order\nID: ${o.id}\nCountry: ${c.en}\nPlan: ${p[0]} - ${p[1]}\nPrice: ${p[2]}\nPayment: ${currentPay}\n\nReceipt uploaded in the app. Please verify the payment and provide the QR Code.`;renderOrder(o,c,p);showScreen('orders');try{window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`,'_blank')}catch(_){}startOrderTracking()}catch(e){console.error(e);alert(feT('orderFailed')+'\n\n'+(e?.message||'Network request failed')+'\n\nAPI: '+API_BASE)}finally{if(btn){btn.disabled=false;btn.textContent=feT('sendReceipt')}}}
 async function showQRForOrder(id){const o=getOrderHistory().find(x=>x.id===id);if(!o){alert(feT('orderNotFound'));return}try{const r=await fetch(`${API_BASE}/api/orders/${encodeURIComponent(id)}`);const d=await r.json();if(!r.ok||!d.order)throw new Error(d.error||'Order not found');rememberOrder(d.order);const fresh=d.order;if(fresh.status!=='esim_ready'||!fresh.qrUrl){alert(feT('qrNotReady'));renderOrderHistory();return}activeQrOrderId=fresh.id;document.getElementById('qrCode').textContent=fresh.activationCode||fresh.id;document.getElementById('qrImg').src=fresh.qrUrl.startsWith('http')?fresh.qrUrl:`${API_BASE}${fresh.qrUrl}`;showScreen('qr')}catch(e){alert(feT('qrFailed'));console.error(e)}}
 const feKnownReady=new Set();
 function notifyReadyOrder(o){if(!o||o.status!=='esim_ready'||!o.qrUrl)return;const key=String(o.id);if(feKnownReady.has(key))return;feKnownReady.add(key);const prior=localStorage.getItem('firstesim_notified_ready_'+key);if(prior)return;localStorage.setItem('firstesim_notified_ready_'+key,'1');try{if('Notification'in window&&Notification.permission==='granted'){new Notification(feT('readyNoticeTitle'),{body:`${feT('order')} ${key}: ${feT('readyNoticeBody')}`,icon:'/0016DE22-5EB2-4EBC-834A-F545DBDBC423.png',tag:'firstesim-ready-'+key})}}catch(e){console.warn('local ready notification',e)}}
@@ -1616,122 +1577,10 @@ function initSavedOrder(){const last=localStorage.getItem('firstesim_last_order'
 for(const feOrder of getOrderHistory()){if(feOrder.status==='esim_ready'&&feOrder.qrUrl)feKnownReady.add(String(feOrder.id));}
 setLang(LANG);
 
-// Optional customer accounts. Guest checkout remains available.
-const AUTH_TOKEN_KEY='firstesim_customer_token_v1';
-const AUTH_USER_KEY='firstesim_customer_user_v1';
-let authMode='login';
-function authCopy(){
- const d={ku:{login:'چوونەژوورەوە',register:'دروستکردنی هەژمار',name:'ناوی تەواو',identity:'ئیمەیڵ یان ژمارەی مۆبایل',phone:'ژمارەی مۆبایل',password:'وشەی نهێنی',guest:'هەروەها دەتوانیت بەبێ هەژمار کڕین بکەیت؛ چوونەژوورەوە پێویست نییە.',statusTitle:'چوونەژوورەوە',statusText:'بچۆ ژوورەوە بۆ بەڕێوەبردنی داواکارییەکانت.',signed:'بە هەژمارەکەت چوویتە ژوورەوە',logout:'چوونەدەرەوە',busy:'تکایە چاوەڕێ بکە...',need:'تکایە خانەکان پڕ بکەرەوە.',fail:'چوونەژوورەوە/دروستکردنی هەژمار سەرکەوتوو نەبوو.',ok:'هەژمارەکەت بە سەرکەوتوویی دروست کرا.'},en:{login:'Sign in',register:'Create account',name:'Full name',identity:'Email or phone number',phone:'Phone number',password:'Password',guest:'You can still buy as a guest. An account is optional.',statusTitle:'Sign in',statusText:'Sign in to manage your orders.',signed:'You are signed in',logout:'Sign out',busy:'Please wait…',need:'Please complete the required fields.',fail:'Sign in or account creation failed.',ok:'Account created successfully.'},ar:{login:'تسجيل الدخول',register:'إنشاء حساب',name:'الاسم الكامل',identity:'البريد الإلكتروني أو رقم الهاتف',phone:'رقم الهاتف',password:'كلمة المرور',guest:'يمكنك الشراء كضيف أيضاً؛ الحساب اختياري.',statusTitle:'تسجيل الدخول',statusText:'سجّل الدخول لإدارة طلباتك.',signed:'تم تسجيل الدخول',logout:'تسجيل الخروج',busy:'يرجى الانتظار…',need:'يرجى إكمال الحقول المطلوبة.',fail:'فشل تسجيل الدخول أو إنشاء الحساب.',ok:'تم إنشاء الحساب بنجاح.'}};
- return d[LANG]||d.ku;
-}
-function getAuthUser(){try{return JSON.parse(localStorage.getItem(AUTH_USER_KEY)||'null')}catch(_){return null}}
-function setAuthMessage(msg,type=''){const el=document.getElementById('authMessage');if(el){el.textContent=msg||'';el.className='authMessage '+type}}
-function setAuthMode(mode){authMode='login';const t=authCopy();document.getElementById('loginTab').classList.add('active');document.getElementById('registerTab').hidden=true;document.getElementById('authNameWrap').hidden=true;document.getElementById('authPhoneWrap').hidden=true;document.getElementById('authName').required=false;document.getElementById('authPhone').required=false;document.getElementById('authPassword').autocomplete='current-password';document.getElementById('authSubmit').textContent=t.login;document.getElementById('authNameLabel').textContent=t.name;document.getElementById('authIdentityLabel').textContent=t.identity;document.getElementById('authPhoneLabel').textContent=t.phone;document.getElementById('authPasswordLabel').textContent=t.password;document.getElementById('guestNote').textContent=t.guest;setAuthMessage('')}
-function renderAuthState(){const t=authCopy(),u=getAuthUser(),logged=!!(u&&localStorage.getItem(AUTH_TOKEN_KEY));document.getElementById('authStatusTitle').textContent=logged?(u.name||u.email||u.phone||t.signed):t.statusTitle;document.getElementById('authStatusText').textContent=logged?t.signed:t.statusText;document.getElementById('authForm').hidden=logged;document.getElementById('authLogout').hidden=!logged;document.getElementById('loginTab').hidden=logged;document.getElementById('registerTab').hidden=logged;document.getElementById('profileName').textContent=logged?(u.name||u.email||u.phone||t.signed):t.statusTitle;document.getElementById('profileEmail').textContent=logged?(u.email||u.phone||''):({ku:'میوان / Guest',en:'Guest checkout',ar:'متابعة كضيف'}[LANG]||'Guest');}
-async function submitAuth(event){event.preventDefault();const t=authCopy(),identity=document.getElementById('authIdentity').value.trim(),password=document.getElementById('authPassword').value;if(!identity||!password){setAuthMessage(t.need,'error');return}const btn=document.getElementById('authSubmit');btn.disabled=true;btn.textContent=t.busy;setAuthMessage('');try{const response=await fetch(API_BASE+'/api/auth/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({identity,password})});let data={};try{data=await response.json()}catch(_){}if(!response.ok||!data.token||!data.user)throw new Error(data.error||t.fail);localStorage.setItem(AUTH_TOKEN_KEY,data.token);localStorage.setItem(AUTH_USER_KEY,JSON.stringify(data.user));renderAuthState();setAuthMessage(t.signed,'success');document.getElementById('authForm').reset();}catch(err){setAuthMessage(err.message||t.fail,'error')}finally{btn.disabled=false;btn.textContent=authCopy().login}}
-function logoutAccount(){localStorage.removeItem(AUTH_TOKEN_KEY);localStorage.removeItem(AUTH_USER_KEY);renderAuthState();setAuthMode('login');setAuthMessage('')}
-renderAuthState();setAuthMode('login');
 
 </script>
 
-<style>
-#firstesimRecovery{display:none;border:1px solid #d6e4f5;border-radius:18px;padding:16px;margin-top:12px;background:#fff}
-#firstesimRecovery input,#firstesimRecovery select{box-sizing:border-box;width:100%;padding:13px;border:1px solid #cdddf0;border-radius:12px;margin:6px 0;font:inherit}
-#firstesimRecovery button{padding:13px;border:0;border-radius:12px;background:#0867e8;color:white;font:inherit;font-weight:700;margin-top:8px;width:100%}
-</style>
-<div id="firstesimRecovery">
-  <h3 id="ferTitle">Forgot password / Verification</h3>
-  <label for="ferIdentity">Email or phone</label><input id="ferIdentity" autocomplete="username" placeholder="Email or phone number">
-  <label for="ferChannel">Send code by</label><select id="ferChannel"><option value="email">Email</option><option value="phone">SMS / Phone</option></select>
-  <div id="ferVerifyControls" hidden>
-    <label for="ferCode">6-digit code</label><input id="ferCode" inputmode="numeric" maxlength="6" autocomplete="one-time-code" placeholder="000000">
-    <label for="ferNewPassword">New password (10+ characters)</label><input id="ferNewPassword" type="password" minlength="10" autocomplete="new-password">
-  </div>
-  <button type="button" id="ferSend">Send code</button>
-  <button type="button" id="ferSubmit" hidden>Verify / Reset password</button>
-  <button type="button" id="ferClose" style="background:#eaf0f8;color:#06225c">Cancel</button>
-  <p id="ferMessage" role="status"></p>
-</div>
-<script>
-(function(){
- const box=document.getElementById('firstesimRecovery'); if(!box)return;
- const api=(typeof API_BASE!=='undefined')?API_BASE:'https://firstesim-api.onrender.com';
- let mode='reset';
- const msg=(s)=>document.getElementById('ferMessage').textContent=s;
- function openRecovery(nextMode){
-  mode=nextMode;
-  box.style.display='block';
-  document.getElementById('ferVerifyControls').hidden=true;
-  document.getElementById('ferSubmit').hidden=true;
-  document.getElementById('ferSend').hidden=false;
-  document.getElementById('ferTitle').textContent=mode==='verify'?'Verify email or phone':'Forgot password';
-  document.getElementById('ferIdentity').value='';
-  msg('');
-  box.scrollIntoView({behavior:'smooth',block:'center'});
-}
-function addForgotButton(){
-  const form=document.getElementById('authForm');
-  if(form&&!document.getElementById('ferOpen')){
-    const b=document.createElement('button');b.type='button';b.id='ferOpen';b.textContent='Forgot password? / Verify email or phone';
-    b.style.cssText='display:block;position:relative;z-index:20;pointer-events:auto;margin:10px 0;padding:12px;border:0;border-radius:12px;background:#eaf0f8;color:#06225c;font-weight:700;width:100%;cursor:pointer';
-    b.addEventListener('click',function(ev){ev.preventDefault();ev.stopPropagation();openRecovery('reset');});
-    form.insertAdjacentElement('afterend',b);
-  }
-  const profile=document.getElementById('authLogout');
-  if(profile&&!document.getElementById('ferVerifyOpen')){
-    const b=document.createElement('button');b.type='button';b.id='ferVerifyOpen';b.textContent='Verify email / phone';
-    b.style.cssText='display:block;position:relative;z-index:20;pointer-events:auto;margin:10px 0;padding:12px;border:0;border-radius:12px;background:#eaf0f8;color:#06225c;font-weight:700;width:100%;cursor:pointer';
-    b.addEventListener('click',function(ev){ev.preventDefault();ev.stopPropagation();openRecovery('verify');});
-    profile.insertAdjacentElement('afterend',b);
-  }
-}
-addForgotButton();
-setTimeout(addForgotButton, 500);
-setTimeout(addForgotButton, 1500);
-document.addEventListener('click',function(ev){
- const target=ev.target&&ev.target.closest?ev.target.closest('#ferOpen,#ferVerifyOpen'):null;
- if(target){ev.preventDefault();openRecovery(target.id==='ferVerifyOpen'?'verify':'reset');}
-});
 
- document.getElementById('ferClose').onclick=()=>box.style.display='none';
- document.getElementById('ferSend').onclick=async()=>{
-  const identity=document.getElementById('ferIdentity').value.trim(),channel=document.getElementById('ferChannel').value;
-  try{
-   let url,body,headers={'Content-Type':'application/json'};
-   if(mode==='verify'){url='/api/auth/send-verification';body={channel};const token=localStorage.getItem(typeof AUTH_TOKEN_KEY!=='undefined'?AUTH_TOKEN_KEY:'firstesim_auth_token');headers.Authorization='Bearer '+token;}
-   else{url='/api/auth/forgot-password';body={identity,channel};}
-   const r=await fetch(api+url,{method:'POST',headers,body:JSON.stringify(body)}),d=await r.json().catch(()=>({}));
-   if(!r.ok)throw new Error(d.error||('HTTP '+r.status));
-   document.getElementById('ferVerifyControls').hidden=false;document.getElementById('ferSubmit').hidden=false;document.getElementById('ferSend').hidden=true;
-   msg('If configured, a code was sent. Enter the 6-digit code.'); 
-  }catch(e){msg(e.message||'Could not send code.');}
- };
- document.getElementById('ferSubmit').onclick=async()=>{
-  const channel=document.getElementById('ferChannel').value,code=document.getElementById('ferCode').value.trim();
-  try{
-   let url,body,headers={'Content-Type':'application/json'};
-   if(mode==='verify'){url='/api/auth/verify';body={channel,code};const token=localStorage.getItem(typeof AUTH_TOKEN_KEY!=='undefined'?AUTH_TOKEN_KEY:'firstesim_auth_token');headers.Authorization='Bearer '+token;}
-   else{url='/api/auth/reset-password';body={identity:document.getElementById('ferIdentity').value.trim(),channel,code,password:document.getElementById('ferNewPassword').value};}
-   const r=await fetch(api+url,{method:'POST',headers,body:JSON.stringify(body)}),d=await r.json().catch(()=>({}));
-   if(!r.ok)throw new Error(d.error||('HTTP '+r.status));
-   msg(d.message||'Success');if(mode==='reset')setTimeout(()=>{box.style.display='none';},1200);
-  }catch(e){msg(e.message||'Verification failed.');}
- };
-})();
-</script>
-
-
-<style id="firstesim-guest-only-profile">
-/* Guest-only profile: hide sign-in/register UI while preserving guest checkout and orders. */
-#authPanel .authStatus,
-#authPanel .authTabs,
-#authPanel .authForm,
-#authPanel #authLogout,
-#authPanel #authMessage { display:none !important; }
-#authPanel .guestNote { display:block !important; font-size:14px; line-height:1.8; padding:14px 4px; margin:0; }
-#authPanel { border-top:0; padding-top:10px; }
-#firstesimRecovery { display:none !important; }
-</style>
 
 </body>
 </html>
