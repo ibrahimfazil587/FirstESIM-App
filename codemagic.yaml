@@ -1,3 +1,4 @@
+
 workflows:
   firstesim-ios:
     name: FirstESIM iOS Build
@@ -24,12 +25,11 @@ workflows:
       - name: Prepare web assets and Capacitor configuration
         script: |
           set -e
-          # This app uses index.html at the repository root as its web entry point.
           rm -rf www
           mkdir -p www
           cp index.html www/index.html
-          # Keep root-level country/brand image assets available to the app.
           find . -maxdepth 1 -type f \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.webp' -o -iname '*.svg' \) -exec cp {} www/ \;
+
           cat > capacitor.config.json <<'EOF'
           {
             "appId": "net.firstesim.app",
@@ -38,17 +38,41 @@ workflows:
             "ios": { "contentInset": "automatic" }
           }
           EOF
-          # Recreate the native project so stale Xcode references to missing
-          # public/config.xml/capacitor.config.json files are not retained.
+
           rm -rf ios
           npx cap add ios
           npx cap sync ios
           cd ios/App
           pod install --repo-update
           cd ../..
+
           test -f ios/App/App.xcworkspace/contents.xcworkspacedata
           test -f ios/App/App.xcodeproj/project.pbxproj
           test -f ios/App/App/public/index.html
+
+      - name: Configure iPhone-only device support
+        script: |
+          set -e
+          cd ios/App
+
+          ruby - <<'RUBY'
+          require 'xcodeproj'
+
+          project = Xcodeproj::Project.open('App.xcodeproj')
+          app_target = project.targets.find { |target| target.product_type == 'com.apple.product-type.application' }
+
+          abort 'App target not found' unless app_target
+
+          app_target.build_configurations.each do |config|
+            config.build_settings['TARGETED_DEVICE_FAMILY'] = '1'
+            config.build_settings['SUPPORTS_MACCATALYST'] = 'NO'
+          end
+
+          project.save
+          puts 'FirstESIM is configured for iPhone only.'
+          RUBY
+
+          cd ../..
 
       - name: Increment iOS build number
         script: |
