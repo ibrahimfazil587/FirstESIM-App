@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#0862bd">
 <title>FirstESIM — Admin Panel</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#f3f6fa;font-family:Arial,sans-serif;color:#172033}.wrap{max-width:1000px;margin:auto;padding:16px}h1{color:#0862bd;font-size:24px}.card{background:#fff;border:1px solid #e5eaf1;border-radius:18px;padding:16px;margin:12px 0;box-shadow:0 4px 18px #0000000a}input,button,select{font:inherit}.input,input[type=text],select{width:100%;padding:13px;border:1px solid #d9e1ec;border-radius:12px;background:#fff}.btn{border:0;background:#0862bd;color:#fff;border-radius:12px;padding:11px 15px;font-weight:800;cursor:pointer}.green{background:#159447}.danger{background:#c62828}.gray{background:#edf2f7;color:#172033}.row{display:flex;gap:10px;flex-wrap:wrap}.row>*{flex:1}.muted{color:#64748b}.status{padding:6px 10px;border-radius:10px;background:#fff4cf;display:inline-block;font-size:12px}.ready{background:#dff8e8}.top{display:flex;justify-content:space-between;gap:10px;align-items:center}.order{border-top:1px solid #e8edf4;padding-top:14px;margin-top:14px}.hidden{display:none}.notice{padding:12px;border-radius:12px;margin-top:10px;font-weight:700;font-size:14px}.ok{background:#e5f8eb;color:#126b35}.err{background:#fff0f0;color:#a91f1f}.warn{background:#fff4d8;color:#805600}a{color:#0862bd;font-weight:800;overflow-wrap:anywhere}.qr-preview{max-width:180px;max-height:180px;display:block;margin:8px 0;border-radius:10px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.actions button,.actions label{flex:1;min-width:120px;text-align:center}.small{font-size:12px;color:#64748b}
+*{box-sizing:border-box}body{margin:0;background:#f3f6fa;font-family:Arial,sans-serif;color:#172033}.wrap{max-width:1000px;margin:auto;padding:16px}h1{color:#0862bd;font-size:24px}.card{background:#fff;border:1px solid #e5eaf1;border-radius:18px;padding:16px;margin:12px 0;box-shadow:0 4px 18px #0000000a}input,button,select,textarea{font:inherit}textarea.input{width:100%;padding:13px;border:1px solid #d9e1ec;border-radius:12px;background:#fff;resize:vertical}.input,input[type=text],select{width:100%;padding:13px;border:1px solid #d9e1ec;border-radius:12px;background:#fff}.btn{border:0;background:#0862bd;color:#fff;border-radius:12px;padding:11px 15px;font-weight:800;cursor:pointer}.green{background:#159447}.danger{background:#c62828}.gray{background:#edf2f7;color:#172033}.row{display:flex;gap:10px;flex-wrap:wrap}.row>*{flex:1}.muted{color:#64748b}.status{padding:6px 10px;border-radius:10px;background:#fff4cf;display:inline-block;font-size:12px}.ready{background:#dff8e8}.top{display:flex;justify-content:space-between;gap:10px;align-items:center}.order{border-top:1px solid #e8edf4;padding-top:14px;margin-top:14px}.hidden{display:none}.notice{padding:12px;border-radius:12px;margin-top:10px;font-weight:700;font-size:14px}.ok{background:#e5f8eb;color:#126b35}.err{background:#fff0f0;color:#a91f1f}.warn{background:#fff4d8;color:#805600}a{color:#0862bd;font-weight:800;overflow-wrap:anywhere}.qr-preview{max-width:180px;max-height:180px;display:block;margin:8px 0;border-radius:10px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.actions button,.actions label{flex:1;min-width:120px;text-align:center}.small{font-size:12px;color:#64748b}
 </style>
 </head>
 <body>
@@ -57,11 +57,24 @@
       <h2>بانەرەکان</h2>
       <div id="bannersList"><p class="small">هیچ بانەرێک بارنەکراوە.</p></div>
     </section>
+
+    <section class="card" id="faqManager">
+      <div class="top"><h1>❓ بەڕێوەبردنی پرسیارە باوەکان</h1><span class="status">FAQ</span></div>
+      <p class="small">پرسیار و وەڵامەکان بە سێ زمان دابنێ. گۆڕانکارییەکان لە ئەپەکەدا بە ئۆتۆماتیکی نوێ دەبنەوە.</p>
+      <form id="faqForm">
+        <div class="row"><div><label><b>پرسیار بە کوردی</b></label><input id="faqQKu" class="input" type="text" maxlength="2000" placeholder="پرسیار بە کوردی"></div><div><label><b>وەڵام بە کوردی</b></label><textarea id="faqAKu" class="input" rows="3" maxlength="2000" placeholder="وەڵام بە کوردی"></textarea></div></div>
+        <div class="row"><div><label><b>Question in English</b></label><input id="faqQEn" class="input" type="text" maxlength="2000" placeholder="Question in English"></div><div><label><b>Answer in English</b></label><textarea id="faqAEn" class="input" rows="3" maxlength="2000" placeholder="Answer in English"></textarea></div></div>
+        <div class="row"><div><label><b>السؤال بالعربية</b></label><input id="faqQAr" class="input" type="text" maxlength="2000" placeholder="السؤال بالعربية"></div><div><label><b>الإجابة بالعربية</b></label><textarea id="faqAAr" class="input" rows="3" maxlength="2000" placeholder="الإجابة بالعربية"></textarea></div></div>
+        <div class="row"><div><label><b>ڕیزبەندی</b></label><input id="faqOrder" class="input" type="number" value="0"></div><div><label><b>دۆخ</b></label><select id="faqActive" class="input"><option value="true">چالاک</option><option value="false">ناچالاک</option></select></div></div>
+        <div class="row" style="margin-top:10px"><button class="btn green" type="submit" id="faqSaveBtn">پاشەکەوتی پرسیار</button><button class="btn gray" type="button" id="faqCancelBtn">پاککردنەوە / نوێ</button></div>
+      </form>
+      <div id="faqMessage" aria-live="polite"></div><hr><h2>پرسیارەکان</h2><div id="faqsList"><p class="small">بارکردنی پرسیارەکان...</p></div>
+    </section>
   </div>
 </div>
 <script>
-'use strict';
-const API='https://firstesim-api.onrender.com';
+  'use strict';
+const API='https://firstesim-backend-staging.onrender.com';
 const keyInput=document.getElementById('key');
 let key=sessionStorage.getItem('firstesim_admin_key')||'';
 keyInput.value=key;
@@ -77,7 +90,7 @@ async function login(){key=keyInput.value.trim();if(!key){setMessage('تکایە
 async function loadOrders(silent=false){
  if(!key){$('login').classList.remove('hidden');$('panel').classList.add('hidden');return;}
  try{const r=await fetch(`${API}/api/admin/orders`,{headers:headers()});const d=await r.json();if(!r.ok)throw new Error(d.error||'هەڵە لە چوونەژوورەوە');
- $('login').classList.add('hidden');$('panel').classList.remove('hidden');render(d.orders||[]);await loadBanners();if(!silent)setMessage('Orders بە سەرکەوتوویی بارکران.','ok');
+ $('login').classList.add('hidden');$('panel').classList.remove('hidden');render(d.orders||[]);await loadBanners();await loadFaqs();if(!silent)setMessage('Orders بە سەرکەوتوویی بارکران.','ok');
  }catch(e){setMessage('کێشە: '+e.message,'err');if(!silent){$('login').classList.remove('hidden');$('panel').classList.add('hidden');}}
 }
 function render(orders){$('count').textContent=orders.length;const box=$('orders');if(!orders.length){box.innerHTML='<div class="card">هیچ Order ـێک نییە.</div>';return;}
@@ -105,7 +118,7 @@ async function enableNotifications(){try{
  setMessage('Push Subscription پاشەکەوت کرا. ئێستا Order ـێکی نوێ تاقی بکەرەوە.','ok');
  }catch(e){console.error('Enable notification failed:',e);setMessage('کێشەی Notification: '+e.message,'err');}}
 
-let editingBannerId = '';
+  let editingBannerId = '';
 function bannerMessage(text,type='ok'){
   $('bannerMessage').innerHTML=`<div class="notice ${type}">${esc(text)}</div>`;
 }
@@ -201,6 +214,18 @@ async function deleteBanner(id){
   }catch(e){bannerMessage('کێشە: '+e.message,'err');}
 }
 $('bannerCancelBtn').addEventListener('click',resetBannerForm);
+
+let editingFaqId='';
+function faqMessage(text,type='ok'){$('faqMessage').innerHTML=`<div class="notice ${type}">${esc(text)}</div>`;}
+function resetFaqForm(){editingFaqId='';$('faqForm').reset();$('faqOrder').value='0';$('faqActive').value='true';$('faqSaveBtn').textContent='پاشەکەوتی پرسیار';}
+function faqPayload(){return {question:{ku:$('faqQKu').value.trim(),en:$('faqQEn').value.trim(),ar:$('faqQAr').value.trim()},answer:{ku:$('faqAKu').value.trim(),en:$('faqAEn').value.trim(),ar:$('faqAAr').value.trim()},sortOrder:Number($('faqOrder').value)||0,active:$('faqActive').value==='true'};}
+async function loadFaqs(){try{const r=await fetch(`${API}/api/admin/faqs`,{headers:headers()});const d=await r.json();if(!r.ok)throw new Error(d.error||'نەتوانرا FAQ باربکرێت.');renderFaqs(d.faqs||[]);}catch(e){faqMessage('کێشە: '+e.message,'err');}}
+function renderFaqs(items){const box=$('faqsList');if(!items.length){box.innerHTML='<p class="small">هیچ پرسیارێک نییە.</p>';return;}box.innerHTML=items.map(f=>{const id=esc(f.id);const q=f.question||{},an=f.answer||{};return `<div class="card order"><div class="top"><b>${esc(q.ku||q.en||q.ar||'FAQ')}</b><span class="status ${f.active?'ready':''}">${f.active?'چالاک':'ناچالاک'}</span></div><p><b>KU:</b> ${esc(q.ku||'—')}</p><p class="small">${esc(an.ku||'—')}</p><p><b>EN:</b> ${esc(q.en||'—')}</p><p class="small">${esc(an.en||'—')}</p><p><b>AR:</b> ${esc(q.ar||'—')}</p><p class="small">${esc(an.ar||'—')}</p><div class="actions"><button class="btn" type="button" onclick="editFaq('${id}')">دەستکاری</button><button class="btn gray" type="button" onclick="toggleFaq('${id}',${!f.active})">${f.active?'ناچالاککردن':'چالاککردن'}</button><button class="btn danger" type="button" onclick="deleteFaq('${id}')">سڕینەوە</button></div></div>`;}).join('');window._firstesimFaqs=items;}
+function editFaq(id){const f=(window._firstesimFaqs||[]).find(x=>x.id===id);if(!f)return;editingFaqId=id;const q=f.question||{},a=f.answer||{};$('faqQKu').value=q.ku||'';$('faqQEn').value=q.en||'';$('faqQAr').value=q.ar||'';$('faqAKu').value=a.ku||'';$('faqAEn').value=a.en||'';$('faqAAr').value=a.ar||'';$('faqOrder').value=Number(f.sortOrder)||0;$('faqActive').value=String(f.active!==false);$('faqSaveBtn').textContent='پاشەکەوتی گۆڕانکاری';$('faqManager').scrollIntoView({behavior:'smooth',block:'start'});}
+$('faqForm').addEventListener('submit',async e=>{e.preventDefault();const payload=faqPayload();if(!Object.keys(payload.question).some(k=>payload.question[k]&&payload.answer[k])){faqMessage('لانیکەم پرسیار و وەڵامێک بە هەمان زمان پڕ بکەرەوە.','err');return;}try{const r=await fetch(editingFaqId?`${API}/api/admin/faqs/${encodeURIComponent(editingFaqId)}`:`${API}/api/admin/faqs`,{method:editingFaqId?'PUT':'POST',headers:{...headers(),'Content-Type':'application/json'},body:JSON.stringify(payload)});const d=await r.json();if(!r.ok)throw new Error(d.error||'پاشەکەوت سەرکەوتوو نەبوو.');faqMessage('پرسیارەکە پاشەکەوت کرا.','ok');resetFaqForm();await loadFaqs();}catch(e){faqMessage('کێشە: '+e.message,'err');}});
+async function toggleFaq(id,active){const f=(window._firstesimFaqs||[]).find(x=>x.id===id);if(!f)return;try{const r=await fetch(`${API}/api/admin/faqs/${encodeURIComponent(id)}`,{method:'PUT',headers:{...headers(),'Content-Type':'application/json'},body:JSON.stringify({...f,active})});const d=await r.json();if(!r.ok)throw new Error(d.error||'گۆڕینی دۆخ سەرکەوتوو نەبوو.');await loadFaqs();faqMessage('دۆخی پرسیارەکە گۆڕدرا.','ok');}catch(e){faqMessage('کێشە: '+e.message,'err');}}
+async function deleteFaq(id){if(!confirm('دڵنیایت دەتەوێت ئەم پرسیارە بسڕیتەوە؟'))return;try{const r=await fetch(`${API}/api/admin/faqs/${encodeURIComponent(id)}`,{method:'DELETE',headers:headers()});const d=await r.json();if(!r.ok)throw new Error(d.error||'سڕینەوە سەرکەوتوو نەبوو.');if(editingFaqId===id)resetFaqForm();await loadFaqs();faqMessage('پرسیارەکە سڕایەوە.','ok');}catch(e){faqMessage('کێشە: '+e.message,'err');}}
+$('faqCancelBtn').addEventListener('click',resetFaqForm);
 
 $('loginBtn').addEventListener('click',login);$('refreshBtn').addEventListener('click',()=>loadOrders());$('notifyBtn').addEventListener('click',enableNotifications);
 if(key)loadOrders();
