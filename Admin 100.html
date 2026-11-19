@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="ku" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0862bd">
+<title>FirstESIM — Admin Panel</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f3f6fa;font-family:Arial,sans-serif;color:#172033}.wrap{max-width:1000px;margin:auto;padding:16px}h1{color:#0862bd;font-size:24px}.card{background:#fff;border:1px solid #e5eaf1;border-radius:18px;padding:16px;margin:12px 0;box-shadow:0 4px 18px #0000000a}input,button,select,textarea{font:inherit}textarea.input{width:100%;padding:13px;border:1px solid #d9e1ec;border-radius:12px;background:#fff;resize:vertical}.input,input[type=text],select{width:100%;padding:13px;border:1px solid #d9e1ec;border-radius:12px;background:#fff}.btn{border:0;background:#0862bd;color:#fff;border-radius:12px;padding:11px 15px;font-weight:800;cursor:pointer}.green{background:#159447}.danger{background:#c62828}.gray{background:#edf2f7;color:#172033}.row{display:flex;gap:10px;flex-wrap:wrap}.row>*{flex:1}.muted{color:#64748b}.status{padding:6px 10px;border-radius:10px;background:#fff4cf;display:inline-block;font-size:12px}.ready{background:#dff8e8}.top{display:flex;justify-content:space-between;gap:10px;align-items:center}.order{border-top:1px solid #e8edf4;padding-top:14px;margin-top:14px}.hidden{display:none}.notice{padding:12px;border-radius:12px;margin-top:10px;font-weight:700;font-size:14px}.ok{background:#e5f8eb;color:#126b35}.err{background:#fff0f0;color:#a91f1f}.warn{background:#fff4d8;color:#805600}a{color:#0862bd;font-weight:800;overflow-wrap:anywhere}.qr-preview{max-width:180px;max-height:180px;display:block;margin:8px 0;border-radius:10px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.actions button,.actions label{flex:1;min-width:120px;text-align:center}.small{font-size:12px;color:#64748b}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div id="login" class="card">
+    <h1>FirstESIM — Admin Panel</h1>
+    <p class="muted">ئەم بەشە تەنها بۆ Admin ـە.</p>
+    <label for="key"><b>ADMIN_KEY</b></label>
+    <input id="key" class="input" type="password" placeholder="ADMIN_KEY" autocomplete="current-password">
+    <div class="row" style="margin-top:10px"><button class="btn" id="loginBtn">چوونەژوورەوە</button></div>
+  </div>
+
+  <div id="panel" class="hidden">
+    <div class="card">
+      <div class="top"><h1>FirstESIM — Orders</h1><span id="count" class="status">0</span></div>
+      <div class="row">
+        <button class="btn" id="refreshBtn">🔄 نوێکردنەوە</button>
+        <button class="btn green" id="notifyBtn">🔔 Enable Notifications</button>
+      </div>
+      <div id="message" aria-live="polite"></div>
+      <p class="small">بۆ Push Notification لە iPhone، وێبسایتەکە لە Safari بکەرەوە، ئەگەر پێویست بوو زیادیکە بۆ Home Screen، پاشان ڕێگە بە Notifications بدە.</p>
+    </div>
+    <div id="orders"></div>
+
+    <section class="card" id="adsManager">
+      <div class="top"><h1>📢 بەڕێوەبردنی ڕیکلامەکان</h1><span class="status">Ads</span></div>
+      <p class="small">بانەر زیاد بکە یان دەستکاری بکە. گۆڕانکارییەکان لە API پاشەکەوت دەکرێن.</p>
+      <form id="bannerForm">
+        <label><b>ناونیشانی بانەر</b></label>
+        <input id="bannerTitle" class="input" type="text" maxlength="120" required placeholder="ناونیشانی ڕیکلام">
+        <label><b>دەقی بانەر</b></label>
+        <input id="bannerText" class="input" type="text" maxlength="300" placeholder="دەقی کورت (ئارەزوومەندانە)">
+        <label><b>لینکی کردنەوە (HTTPS)</b></label>
+        <input id="bannerLink" class="input" type="text" placeholder="https://example.com">
+        <label><b>وێنەی بانەر</b></label>
+        <input id="bannerImage" class="input" type="file" accept="image/png,image/jpeg,image/webp">
+        <div class="row">
+          <div><label><b>ڕیزبەندی</b></label><input id="bannerOrder" class="input" type="number" value="0"></div>
+          <div><label><b>دۆخ</b></label><select id="bannerActive" class="input"><option value="true">چالاک</option><option value="false">ناچالاک</option></select></div>
+        </div>
+        <div class="row" style="margin-top:10px">
+          <button class="btn green" type="submit" id="bannerSaveBtn">پاشەکەوتی بانەر</button>
+          <button class="btn gray" type="button" id="bannerCancelBtn">پاککردنەوە / نوێ</button>
+        </div>
+      </form>
+      <div id="bannerMessage" aria-live="polite"></div>
+      <hr>
+      <h2>بانەرەکان</h2>
+      <div id="bannersList"><p class="small">هیچ بانەرێک بارنەکراوە.</p></div>
+    </section>
+
+    <section class="card" id="faqManager">
+      <div class="top"><h1>❓ بەڕێوەبردنی پرسیارە باوەکان</h1><span class="status">FAQ</span></div>
+      <p class="small">پرسیار و وەڵامەکان بە سێ زمان دابنێ. گۆڕانکارییەکان لە ئەپەکەدا بە ئۆتۆماتیکی نوێ دەبنەوە.</p>
+      <form id="faqForm">
+        <div class="row"><div><label><b>پرسیار بە کوردی</b></label><input id="faqQKu" class="input" type="text" maxlength="2000" placeholder="پرسیار بە کوردی"></div><div><label><b>وەڵام بە کوردی</b></label><textarea id="faqAKu" class="input" rows="3" maxlength="2000" placeholder="وەڵام بە کوردی"></textarea></div></div>
+        <div class="row"><div><label><b>Question in English</b></label><input id="faqQEn" class="input" type="text" maxlength="2000" placeholder="Question in English"></div><div><label><b>Answer in English</b></label><textarea id="faqAEn" class="input" rows="3" maxlength="2000" placeholder="Answer in English"></textarea></div></div>
+        <div class="row"><div><label><b>السؤال بالعربية</b></label><input id="faqQAr" class="input" type="text" maxlength="2000" placeholder="السؤال بالعربية"></div><div><label><b>الإجابة بالعربية</b></label><textarea id="faqAAr" class="input" rows="3" maxlength="2000" placeholder="الإجابة بالعربية"></textarea></div></div>
+        <div class="row"><div><label><b>ڕیزبەندی</b></label><input id="faqOrder" class="input" type="number" value="0"></div><div><label><b>دۆخ</b></label><select id="faqActive" class="input"><option value="true">چالاک</option><option value="false">ناچالاک</option></select></div></div>
+        <div class="row" style="margin-top:10px"><button class="btn green" type="submit" id="faqSaveBtn">پاشەکەوتی پرسیار</button><button class="btn gray" type="button" id="faqCancelBtn">پاککردنەوە / نوێ</button></div>
+      </form>
+      <div id="faqMessage" aria-live="polite"></div><hr><h2>پرسیارەکان</h2><div id="faqsList"><p class="small">بارکردنی پرسیارەکان...</p></div>
+    </section>
+  </div>
+</div>
+<script>
+  'use strict';
+const API='https://firstesim-backend-staging.onrender.com';
+const keyInput=document.getElementById('key');
+let key=sessionStorage.getItem('firstesim_admin_key')||'';
+keyInput.value=key;
+const $=id=>document.getElementById(id);
+function setMessage(text,type='ok'){ $('message').innerHTML=`<div class="notice ${type}">${esc(text)}</div>`; }
+function headers(){return {'x-admin-key':key};}
+function statusText(s){return ({waiting_payment_check:'چاوەڕوانی پشکنینی پارەدان',payment_confirmed:'پارەدان پشتڕاست کرا',esim_ready:'eSIM ئامادەیە',completed:'تەواو کرا',cancelled:'هەڵوەشێنرایەوە'})[s]||s||'نادیار';}
+function fileUrl(u){return u?(u.startsWith('http')?u:API+u):'';}
+async function openProtectedFile(url){try{const r=await fetch(fileUrl(url),{headers:headers()});if(!r.ok)throw new Error('HTTP '+r.status);const blob=await r.blob();const objectUrl=URL.createObjectURL(blob);window.open(objectUrl,'_blank','noopener');setTimeout(()=>URL.revokeObjectURL(objectUrl),60000);}catch(e){setMessage('نەتوانرا فایل بکرێتەوە: '+e.message,'err');}}
+async function loadProtectedImage(url,imgId){try{const r=await fetch(fileUrl(url),{headers:headers()});if(!r.ok)throw new Error('HTTP '+r.status);const blob=await r.blob();const obj=URL.createObjectURL(blob);const img=$(imgId);if(img){if(img.dataset.objectUrl)URL.revokeObjectURL(img.dataset.objectUrl);img.src=obj;img.dataset.objectUrl=obj;}}catch(e){console.warn('Protected image unavailable',e);}}
+function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
+async function login(){key=keyInput.value.trim();if(!key){setMessage('تکایە ADMIN_KEY بنووسە.','err');return;}sessionStorage.setItem('firstesim_admin_key',key);await loadOrders();}
+async function loadOrders(silent=false){
+ if(!key){$('login').classList.remove('hidden');$('panel').classList.add('hidden');return;}
+ try{const r=await fetch(`${API}/api/admin/orders`,{headers:headers()});const d=await r.json();if(!r.ok)throw new Error(d.error||'هەڵە لە چوونەژوورەوە');
+ $('login').classList.add('hidden');$('panel').classList.remove('hidden');render(d.orders||[]);await loadBanners();await loadFaqs();if(!silent)setMessage('Orders بە سەرکەوتوویی بارکران.','ok');
+ }catch(e){setMessage('کێشە: '+e.message,'err');if(!silent){$('login').classList.remove('hidden');$('panel').classList.add('hidden');}}
+}
+function render(orders){$('count').textContent=orders.length;const box=$('orders');if(!orders.length){box.innerHTML='<div class="card">هیچ Order ـێک نییە.</div>';return;}
+ box.innerHTML=orders.map(o=>{const id=esc(o.id);const receipt=fileUrl(o.receiptUrl);const qr=fileUrl(o.qrUrl);return `<div class="card order"><div class="top"><h2>${id}</h2><span class="status ${o.status==='esim_ready'?'ready':''}">${esc(statusText(o.status))}</span></div>
+ <p><b>🌍 وڵات:</b> ${esc(o.country)}</p><p><b>📦 پلان:</b> ${esc(o.plan)}</p><p><b>💰 نرخ:</b> ${esc(o.price)}</p><p><b>💳 پارەدان:</b> ${esc(o.payment)}</p><p><b>📅 کات:</b> ${esc(o.createdAt?new Date(o.createdAt).toLocaleString():'—')}</p>
+ ${receipt?`<p>🧾 <button type="button" class="btn" onclick="openProtectedFile('${esc(o.receiptUrl)}')">کردنەوەی پسوڵە</button></p>`:''}
+ ${qr?`<p><b>QR:</b><button type="button" class="btn" onclick="openProtectedFile('${esc(o.qrUrl)}')">کردنەوەی QR</button></p>`:''}
+ <label for="status-${id}"><b>گۆڕینی دۆخ</b></label><select id="status-${id}"><option value="waiting_payment_check" ${o.status==='waiting_payment_check'?'selected':''}>چاوەڕوانی پارە</option><option value="payment_confirmed" ${o.status==='payment_confirmed'?'selected':''}>پارە پشتڕاستە</option><option value="completed" ${o.status==='completed'?'selected':''}>تەواو</option><option value="cancelled" ${o.status==='cancelled'?'selected':''}>هەڵوەشاندنەوە</option></select>
+ <div class="row" style="margin-top:9px"><button class="btn green" onclick="setStatus('${id}','payment_confirmed')">پارە پشتڕاست بکە</button><button class="btn" onclick="saveSelectedStatus('${id}')">پاشەکەوتی دۆخ</button></div>
+ <div style="margin-top:12px"><label for="qr-${id}"><b>📱 Upload QR</b></label><input id="qr-${id}" type="file" accept="image/*,.png,.jpg,.jpeg"><label for="code-${id}"><b>Activation Code</b></label><input id="code-${id}" type="text" value="${esc(o.activationCode||'')}" placeholder="Activation Code"><button class="btn" style="margin-top:8px;width:100%" onclick="uploadQR('${id}')">Upload QR و ئاگادارکردنەوە</button></div>
+ </div>`;}).join('');}
+async function setStatus(id,status){try{const r=await fetch(`${API}/api/admin/orders/${encodeURIComponent(id)}/status`,{method:'POST',headers:{...headers(),'Content-Type':'application/json'},body:JSON.stringify({status})});const d=await r.json();if(!r.ok)throw new Error(d.error||'Status failed');setMessage(`${id}: ${statusText(status)}`,'ok');await loadOrders(true);}catch(e){setMessage('کێشە: '+e.message,'err');}}
+async function saveSelectedStatus(id){const status=$(`status-${id}`)?.value;if(status)await setStatus(id,status);}
+async function uploadQR(id){const file=$(`qr-${id}`)?.files?.[0];const code=$(`code-${id}`)?.value||'';if(!file&&!code){setMessage('تکایە QR یان Activation Code زیاد بکە.','err');return;}const fd=new FormData();if(file)fd.append('qr',file);if(code)fd.append('activationCode',code);try{const r=await fetch(`${API}/api/admin/orders/${encodeURIComponent(id)}/qr`,{method:'POST',headers:headers(),body:fd});const d=await r.json();if(!r.ok)throw new Error(d.error||'QR upload failed');setMessage('QR/Activation Code پاشەکەوت کرا. Notification بۆ کڕیار تەنها ئەگەر Subscription ـی هەبێت دەنێردرێت.','ok');await loadOrders(true);}catch(e){setMessage('کێشە: '+e.message,'err');}}
+function urlBase64ToUint8Array(s){const padding='='.repeat((4-s.length%4)%4);const raw=atob((s+padding).replace(/-/g,'+').replace(/_/g,'/'));const out=new Uint8Array(raw.length);for(let i=0;i<raw.length;i++)out[i]=raw.charCodeAt(i);return out;}
+async function enableNotifications(){try{
+ if(!window.isSecureContext)throw new Error('Push پێویستی بە HTTPS هەیە.');
+ if(!('serviceWorker'in navigator)||!('PushManager'in window)||!('Notification'in window))throw new Error('ئەم browser ـە Push Notification پشتگیری ناکات.');
+ if(!key){key=keyInput.value.trim();if(!key)throw new Error('سەرەتا ADMIN_KEY بنووسە.');sessionStorage.setItem('firstesim_admin_key',key);}
+ const permission=await Notification.requestPermission();if(permission!=='granted')throw new Error('مۆڵەتی Notification ڕێگەپێنەدرا.');
+ const reg=await navigator.serviceWorker.register(new URL('sw-admin.js', document.baseURI),{scope:new URL('.', document.baseURI).pathname});await navigator.serviceWorker.ready;
+ const kr=await fetch(`${API}/api/admin/push/public-key`,{headers:headers()});const kd=await kr.json();if(!kr.ok||!kd.publicKey)throw new Error(kd.error||'نەتوانرا VAPID public key وەربگیرێت.');
+ let sub=await reg.pushManager.getSubscription();if(!sub)sub=await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:urlBase64ToUint8Array(kd.publicKey)});
+ const sr=await fetch(`${API}/api/admin/push/subscribe`,{method:'POST',headers:{...headers(),'Content-Type':'application/json'},body:JSON.stringify({subscription:sub.toJSON()})});const sd=await sr.json();if(!sr.ok)throw new Error(sd.error||'Subscription پاشەکەوت نەکرا.');
+ setMessage('Push Subscription پاشەکەوت کرا. ئێستا Order ـێکی نوێ تاقی بکەرەوە.','ok');
+ }catch(e){console.error('Enable notification failed:',e);setMessage('کێشەی Notification: '+e.message,'err');}}
+
+  let editingBannerId = '';
+function bannerMessage(text,type='ok'){
+  $('bannerMessage').innerHTML=`<div class="notice ${type}">${esc(text)}</div>`;
+}
+function resetBannerForm(){
+  editingBannerId='';
+  $('bannerForm').reset();
+  $('bannerOrder').value='0';
+  $('bannerActive').value='true';
+  $('bannerSaveBtn').textContent='پاشەکەوتی بانەر';
+}
+function bannerImageUrl(url){return url?(url.startsWith('http')?url:API+url):'';}
+async function loadBanners(){
+  if(!key)return;
+  try{
+    const r=await fetch(`${API}/api/admin/banners`,{headers:headers()});
+    const d=await r.json();
+    if(!r.ok)throw new Error(d.error||'نەتوانرا بانەرەکان باربکرێن.');
+    renderBanners(d.banners||[]);
+  }catch(e){bannerMessage('کێشە: '+e.message,'err');}
+}
+function renderBanners(items){
+  const box=$('bannersList');
+  if(!items.length){box.innerHTML='<p class="small">هێشتا هیچ بانەرێک زیاد نەکراوە.</p>';return;}
+  box.innerHTML=items.map(b=>{
+    const id=esc(b.id), img=bannerImageUrl(b.imageUrl);
+    return `<div class="order">
+      <div class="top"><b>${esc(b.title)}</b><span class="status ${b.active?'ready':''}">${b.active?'چالاک':'ناچالاک'}</span></div>
+      ${img?`<img class="qr-preview" src="${esc(img)}" alt="Banner">`:''}
+      ${b.text?`<p>${esc(b.text)}</p>`:''}
+      ${b.link?`<p><a href="${esc(b.link)}" target="_blank" rel="noopener">لینکی بانەر</a></p>`:''}
+      <p class="small">ڕیزبەندی: ${Number(b.sortOrder)||0}</p>
+      <div class="actions">
+        <button class="btn" type="button" onclick="editBanner('${id}')">دەستکاری</button>
+        <button class="btn gray" type="button" onclick="toggleBanner('${id}',${!b.active})">${b.active?'ناچالاککردن':'چالاککردن'}</button>
+        <button class="btn danger" type="button" onclick="deleteBanner('${id}')">سڕینەوە</button>
+      </div>
+    </div>`;
+  }).join('');
+  window._firstesimBanners=items;
+}
+function editBanner(id){
+  const b=(window._firstesimBanners||[]).find(x=>x.id===id);
+  if(!b)return;
+  editingBannerId=id;
+  $('bannerTitle').value=b.title||'';
+  $('bannerText').value=b.text||'';
+  $('bannerLink').value=b.link||'';
+  $('bannerOrder').value=Number(b.sortOrder)||0;
+  $('bannerActive').value=String(b.active!==false);
+  $('bannerImage').value='';
+  $('bannerSaveBtn').textContent='پاشەکەوتی گۆڕانکاری';
+  $('adsManager').scrollIntoView({behavior:'smooth',block:'start'});
+}
+$('bannerForm').addEventListener('submit',async e=>{
+  e.preventDefault();
+  if(!key){bannerMessage('سەرەتا بچۆ ژوورەوە.','err');return;}
+  const fd=new FormData();
+  fd.append('title',$('bannerTitle').value.trim());
+  fd.append('text',$('bannerText').value.trim());
+  fd.append('link',$('bannerLink').value.trim());
+  fd.append('sortOrder',$('bannerOrder').value);
+  fd.append('active',$('bannerActive').value);
+  const file=$('bannerImage').files[0];
+  if(file)fd.append('image',file);
+  if(!editingBannerId&&!file){bannerMessage('تکایە وێنەی بانەر هەڵبژێرە.','err');return;}
+  try{
+    const url=editingBannerId?`${API}/api/admin/banners/${encodeURIComponent(editingBannerId)}`:`${API}/api/admin/banners`;
+    const r=await fetch(url,{method:editingBannerId?'PUT':'POST',headers:headers(),body:fd});
+    const d=await r.json();
+    if(!r.ok)throw new Error(d.error||'پاشەکەوت سەرکەوتوو نەبوو.');
+    bannerMessage('بانەرەکە بە سەرکەوتوویی پاشەکەوت کرا.','ok');
+    resetBannerForm();await loadBanners();
+  }catch(err){bannerMessage('کێشە: '+err.message,'err');}
+});
+async function toggleBanner(id,active){
+  const b=(window._firstesimBanners||[]).find(x=>x.id===id);if(!b)return;
+  const fd=new FormData();
+  fd.append('title',b.title||'');fd.append('text',b.text||'');fd.append('link',b.link||'');
+  fd.append('sortOrder',b.sortOrder||0);fd.append('active',String(active));
+  try{
+    const r=await fetch(`${API}/api/admin/banners/${encodeURIComponent(id)}`,{method:'PUT',headers:headers(),body:fd});
+    const d=await r.json();if(!r.ok)throw new Error(d.error||'گۆڕینی دۆخ سەرکەوتوو نەبوو.');
+    await loadBanners();bannerMessage('دۆخی بانەر گۆڕدرا.','ok');
+  }catch(e){bannerMessage('کێشە: '+e.message,'err');}
+}
+async function deleteBanner(id){
+  if(!confirm('دڵنیایت دەتەوێت ئەم بانەرە بسڕیتەوە؟'))return;
+  try{
+    const r=await fetch(`${API}/api/admin/banners/${encodeURIComponent(id)}`,{method:'DELETE',headers:headers()});
+    const d=await r.json();if(!r.ok)throw new Error(d.error||'سڕینەوە سەرکەوتوو نەبوو.');
+    if(editingBannerId===id)resetBannerForm();
+    await loadBanners();bannerMessage('بانەرەکە سڕایەوە.','ok');
+  }catch(e){bannerMessage('کێشە: '+e.message,'err');}
+}
+$('bannerCancelBtn').addEventListener('click',resetBannerForm);
+
+let editingFaqId='';
+function faqMessage(text,type='ok'){$('faqMessage').innerHTML=`<div class="notice ${type}">${esc(text)}</div>`;}
+function resetFaqForm(){editingFaqId='';$('faqForm').reset();$('faqOrder').value='0';$('faqActive').value='true';$('faqSaveBtn').textContent='پاشەکەوتی پرسیار';}
+function faqPayload(){return {question:{ku:$('faqQKu').value.trim(),en:$('faqQEn').value.trim(),ar:$('faqQAr').value.trim()},answer:{ku:$('faqAKu').value.trim(),en:$('faqAEn').value.trim(),ar:$('faqAAr').value.trim()},sortOrder:Number($('faqOrder').value)||0,active:$('faqActive').value==='true'};}
+async function loadFaqs(){try{const r=await fetch(`${API}/api/admin/faqs`,{headers:headers()});const d=await r.json();if(!r.ok)throw new Error(d.error||'نەتوانرا FAQ باربکرێت.');renderFaqs(d.faqs||[]);}catch(e){faqMessage('کێشە: '+e.message,'err');}}
+function renderFaqs(items){const box=$('faqsList');if(!items.length){box.innerHTML='<p class="small">هیچ پرسیارێک نییە.</p>';return;}box.innerHTML=items.map(f=>{const id=esc(f.id);const q=f.question||{},an=f.answer||{};return `<div class="card order"><div class="top"><b>${esc(q.ku||q.en||q.ar||'FAQ')}</b><span class="status ${f.active?'ready':''}">${f.active?'چالاک':'ناچالاک'}</span></div><p><b>KU:</b> ${esc(q.ku||'—')}</p><p class="small">${esc(an.ku||'—')}</p><p><b>EN:</b> ${esc(q.en||'—')}</p><p class="small">${esc(an.en||'—')}</p><p><b>AR:</b> ${esc(q.ar||'—')}</p><p class="small">${esc(an.ar||'—')}</p><div class="actions"><button class="btn" type="button" onclick="editFaq('${id}')">دەستکاری</button><button class="btn gray" type="button" onclick="toggleFaq('${id}',${!f.active})">${f.active?'ناچالاککردن':'چالاککردن'}</button><button class="btn danger" type="button" onclick="deleteFaq('${id}')">سڕینەوە</button></div></div>`;}).join('');window._firstesimFaqs=items;}
+function editFaq(id){const f=(window._firstesimFaqs||[]).find(x=>x.id===id);if(!f)return;editingFaqId=id;const q=f.question||{},a=f.answer||{};$('faqQKu').value=q.ku||'';$('faqQEn').value=q.en||'';$('faqQAr').value=q.ar||'';$('faqAKu').value=a.ku||'';$('faqAEn').value=a.en||'';$('faqAAr').value=a.ar||'';$('faqOrder').value=Number(f.sortOrder)||0;$('faqActive').value=String(f.active!==false);$('faqSaveBtn').textContent='پاشەکەوتی گۆڕانکاری';$('faqManager').scrollIntoView({behavior:'smooth',block:'start'});}
+$('faqForm').addEventListener('submit',async e=>{e.preventDefault();const payload=faqPayload();if(!Object.keys(payload.question).some(k=>payload.question[k]&&payload.answer[k])){faqMessage('لانیکەم پرسیار و وەڵامێک بە هەمان زمان پڕ بکەرەوە.','err');return;}try{const r=await fetch(editingFaqId?`${API}/api/admin/faqs/${encodeURIComponent(editingFaqId)}`:`${API}/api/admin/faqs`,{method:editingFaqId?'PUT':'POST',headers:{...headers(),'Content-Type':'application/json'},body:JSON.stringify(payload)});const d=await r.json();if(!r.ok)throw new Error(d.error||'پاشەکەوت سەرکەوتوو نەبوو.');faqMessage('پرسیارەکە پاشەکەوت کرا.','ok');resetFaqForm();await loadFaqs();}catch(e){faqMessage('کێشە: '+e.message,'err');}});
+async function toggleFaq(id,active){const f=(window._firstesimFaqs||[]).find(x=>x.id===id);if(!f)return;try{const r=await fetch(`${API}/api/admin/faqs/${encodeURIComponent(id)}`,{method:'PUT',headers:{...headers(),'Content-Type':'application/json'},body:JSON.stringify({...f,active})});const d=await r.json();if(!r.ok)throw new Error(d.error||'گۆڕینی دۆخ سەرکەوتوو نەبوو.');await loadFaqs();faqMessage('دۆخی پرسیارەکە گۆڕدرا.','ok');}catch(e){faqMessage('کێشە: '+e.message,'err');}}
+async function deleteFaq(id){if(!confirm('دڵنیایت دەتەوێت ئەم پرسیارە بسڕیتەوە؟'))return;try{const r=await fetch(`${API}/api/admin/faqs/${encodeURIComponent(id)}`,{method:'DELETE',headers:headers()});const d=await r.json();if(!r.ok)throw new Error(d.error||'سڕینەوە سەرکەوتوو نەبوو.');if(editingFaqId===id)resetFaqForm();await loadFaqs();faqMessage('پرسیارەکە سڕایەوە.','ok');}catch(e){faqMessage('کێشە: '+e.message,'err');}}
+$('faqCancelBtn').addEventListener('click',resetFaqForm);
+
+$('loginBtn').addEventListener('click',login);$('refreshBtn').addEventListener('click',()=>loadOrders());$('notifyBtn').addEventListener('click',enableNotifications);
+if(key)loadOrders();
+</script>
+</body>
+</html>
