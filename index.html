@@ -1729,7 +1729,7 @@ function toggleFAQ(button){
  if(!wasOpen){item.classList.add("open");button.setAttribute("aria-expanded","true")}
 }
 
-const API_BASE="https://firstesim-backend-staging.onrender.com";
+const API_BASE="https://firstesim-api.onrender.com";
 let orderPoll=null,timerHandle=null,waitUntil=0,activeQrOrderId='';
 const ORDER_HISTORY_KEY='firstesim_order_history_v1';
 function getOrderHistory(){try{const a=JSON.parse(localStorage.getItem(ORDER_HISTORY_KEY)||'[]');return Array.isArray(a)?a:[]}catch(_){return []}}
